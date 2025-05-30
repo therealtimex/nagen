@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     "NAGEN cung cấp sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao. Dịch vụ đo vòm bàn chân miễn phí, tư vấn chuyên nghiệp. Bảo hành 12 tháng, giao hàng toàn quốc.",
   keywords: "tấm lót bàn chân, hỗ trợ vòm bàn chân, NAGEN, chăm sóc bàn chân, sản phẩm y tế",
   authors: [{ name: "NAGEN" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "NAGEN - Chăm sóc bàn chân chuyên nghiệp",
@@ -23,6 +22,16 @@ export const metadata: Metadata = {
     generator: 'v0.dev'
 }
 
+export async function generateViewport(): Promise<Viewport> {
+  return {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    themeColor: "#1e3a8a",
+  }
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -32,7 +41,6 @@ export default function RootLayout({
     <html lang="vi">
       <head>
         <link rel="canonical" href="https://nagen.vn" />
-        <meta name="theme-color" content="#1e3a8a" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
