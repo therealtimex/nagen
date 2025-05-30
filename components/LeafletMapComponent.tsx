@@ -241,10 +241,11 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
             className="leaflet-container"
           >
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              maxZoom={19}
+              attribution='RealTimeX &copy; <a href="https://realtimex.ai">realtimex.ai</a>'
+              url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+              maxZoom={20}
               minZoom={3}
+              subdomains={['mt0', 'mt1', 'mt2', 'mt3']}
               tileSize={256}
               detectRetina={true}
               errorTileUrl="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
