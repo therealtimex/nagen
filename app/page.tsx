@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -36,9 +38,86 @@ import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import DealerLocator from "@/components/DealerLocator"
+import NoSSRWrapper from "@/components/NoSSRWrapper"
+
+// Type definitions
+interface FormData {
+  name: string
+  phone: string
+  email: string
+  address: string
+  message: string
+  contactMethod: string[]
+  service: string
+}
+
+interface FormErrors {
+  name?: string
+  phone?: string
+  email?: string
+  message?: string
+  service?: string
+}
+
+interface PartnerFormData {
+  name: string
+  phone: string
+  email: string
+  address: string
+  experience: string
+  investment: string
+  message: string
+  contactMethod: string[]
+}
+
+// Define family member keys as a union type
+type FamilyMemberKey = "grandfather" | "grandmother" | "father" | "mother" | "children" | "others"
+
+interface FamilyMembers {
+  grandfather: number
+  grandmother: number
+  father: number
+  mother: number
+  children: number
+  others: number
+}
+
+interface AppointmentFormData {
+  name: string
+  birthDate: string
+  phone: string
+  address: string
+  appointmentTime: string
+  email: string
+  shoeSize: string
+  problems: string
+  familyMembers: FamilyMembers
+}
+
+interface ModalProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+interface FamilyMemberItem {
+  key: FamilyMemberKey
+  label: string
+}
 
 // Standardized CTA Button Component
-function CTAButton({ children, variant = "primary", size = "default", className = "", ...props }) {
+function CTAButton({
+  children,
+  variant = "primary",
+  size = "default",
+  className = "",
+  ...props
+}: {
+  children: React.ReactNode
+  variant?: "primary" | "secondary" | "outline" | "ghost"
+  size?: "sm" | "default" | "lg"
+  className?: string
+  [key: string]: any
+}) {
   const baseClasses =
     "font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2"
   const variants = {
@@ -63,14 +142,16 @@ function CTAButton({ children, variant = "primary", size = "default", className 
 // Enhanced Navigation with Submenus
 function EnhancedNavigation() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [activeSubmenu, setActiveSubmenu] = useState(null)
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 50)
+      }
+      window.addEventListener("scroll", handleScroll)
+      return () => window.removeEventListener("scroll", handleScroll)
     }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const menuItems = [
@@ -92,7 +173,7 @@ function EnhancedNavigation() {
     { name: "Liên hệ", href: "#contact" },
   ]
 
-  const handleNavigation = (href) => {
+  const handleNavigation = (href: string) => {
     const targetId = href.substring(1) // Remove the '#'
     const targetElement = document.getElementById(targetId)
 
@@ -377,7 +458,7 @@ function EnhancedFeedbackSlider() {
 // Enhanced Multi-step Form with Validation
 function EnhancedContactForm() {
   const [currentStep, setCurrentStep] = useState(1)
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
     email: "",
@@ -386,7 +467,7 @@ function EnhancedContactForm() {
     contactMethod: [],
     service: "",
   })
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -400,15 +481,17 @@ function EnhancedContactForm() {
 
   // Thêm useEffect để lấy giá trị ctv từ URL
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const ctv = urlParams.get("ctv")
-    if (ctv) {
-      setCtvValue(ctv)
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search)
+      const ctv = urlParams.get("ctv")
+      if (ctv) {
+        setCtvValue(ctv)
+      }
     }
   }, [])
 
-  const validateStep = (step) => {
-    const newErrors = {}
+  const validateStep = (step: number): boolean => {
+    const newErrors: FormErrors = {}
 
     if (step === 1) {
       if (!formData.name.trim()) newErrors.name = "Vui lòng nhập họ tên"
@@ -437,7 +520,7 @@ function EnhancedContactForm() {
     setErrors({})
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     try {
@@ -446,7 +529,7 @@ function EnhancedContactForm() {
         ...formData,
         event: "tuvan",
         ctv: ctvValue, // Thêm giá trị ctv vào data
-        source_url: window.location.href, // Tùy chọn: thêm URL gốc
+        source_url: typeof window !== "undefined" ? window.location.href : "", // Safe access to window
       }
 
       const response = await fetch(
@@ -761,8 +844,8 @@ function EnhancedContactForm() {
 }
 
 // Partner Registration Form Component
-function PartnerRegistrationForm({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({
+function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
+  const [formData, setFormData] = useState<PartnerFormData>({
     name: "",
     phone: "",
     email: "",
@@ -778,14 +861,16 @@ function PartnerRegistrationForm({ isOpen, onClose }) {
   const [ctvValue, setCtvValue] = useState("")
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const ctv = urlParams.get("ctv")
-    if (ctv) {
-      setCtvValue(ctv)
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search)
+      const ctv = urlParams.get("ctv")
+      if (ctv) {
+        setCtvValue(ctv)
+      }
     }
   }, [])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
@@ -794,7 +879,7 @@ function PartnerRegistrationForm({ isOpen, onClose }) {
         ...formData,
         event: "partner",
         ctv: ctvValue,
-        source_url: window.location.href,
+        source_url: typeof window !== "undefined" ? window.location.href : "",
       }
 
       const response = await fetch(
@@ -1042,8 +1127,8 @@ function PartnerRegistrationForm({ isOpen, onClose }) {
 }
 
 // Appointment Booking Form Component
-function AppointmentBookingForm({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({
+function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
+  const [formData, setFormData] = useState<AppointmentFormData>({
     name: "",
     birthDate: "",
     phone: "",
@@ -1067,14 +1152,16 @@ function AppointmentBookingForm({ isOpen, onClose }) {
   const [ctvValue, setCtvValue] = useState("")
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const ctv = urlParams.get("ctv")
-    if (ctv) {
-      setCtvValue(ctv)
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search)
+      const ctv = urlParams.get("ctv")
+      if (ctv) {
+        setCtvValue(ctv)
+      }
     }
   }, [])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
@@ -1083,7 +1170,7 @@ function AppointmentBookingForm({ isOpen, onClose }) {
         ...formData,
         event: "dochan",
         ctv: ctvValue,
-        source_url: window.location.href,
+        source_url: typeof window !== "undefined" ? window.location.href : "",
       }
 
       const response = await fetch(
@@ -1111,7 +1198,7 @@ function AppointmentBookingForm({ isOpen, onClose }) {
     }
   }
 
-  const handleFamilyMemberChange = (member, value) => {
+  const handleFamilyMemberChange = (member: FamilyMemberKey, value: string) => {
     setFormData({
       ...formData,
       familyMembers: {
@@ -1298,14 +1385,16 @@ function AppointmentBookingForm({ isOpen, onClose }) {
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  {[
-                    { key: "grandfather", label: "Ông" },
-                    { key: "grandmother", label: "Bà" },
-                    { key: "father", label: "Bố" },
-                    { key: "mother", label: "Mẹ" },
-                    { key: "children", label: "Con" },
-                    { key: "others", label: "Khác" },
-                  ].map((member) => (
+                  {(
+                    [
+                      { key: "grandfather", label: "Ông" },
+                      { key: "grandmother", label: "Bà" },
+                      { key: "father", label: "Bố" },
+                      { key: "mother", label: "Mẹ" },
+                      { key: "children", label: "Con" },
+                      { key: "others", label: "Khác" },
+                    ] as FamilyMemberItem[]
+                  ).map((member) => (
                     <div key={member.key} className="flex items-center space-x-3">
                       <label className="text-sm font-medium text-gray-700 min-w-[60px]">{member.label}:</label>
                       <Input
@@ -1346,8 +1435,9 @@ function AppointmentBookingForm({ isOpen, onClose }) {
   )
 }
 
-export default function HomePage() {
-  const videoRef = useRef(null)
+// Main Homepage Content Component
+function HomePageContent() {
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false)
   const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false)
 
@@ -1566,7 +1656,9 @@ export default function HomePage() {
                 variant="primary"
                 size="lg"
                 className="w-full max-w-md group transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => (window.location.href = "/tat-ca-san-pham")}
+                onClick={() => {
+                  window.location.href = "/tat-ca-san-pham"
+                }}
               >
                 Xem tất cả sản phẩm
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -1806,7 +1898,9 @@ export default function HomePage() {
               <CTAButton
                 size="lg"
                 className="group transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => (window.location.href = "/gioi-thieu-nagen")}
+                onClick={() => {
+                  window.location.href = "/gioi-thieu-nagen"
+                }}
               >
                 Tìm hiểu thêm về NAGEN
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -1937,7 +2031,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/tat-ca-san-pham?category=sungeo")}
+                    onClick={() => {
+                      window.location.href = "/tat-ca-san-pham?category=sungeo"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     {/*<ArrowRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />*/}
@@ -1947,7 +2043,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/tat-ca-san-pham?category=winageo")}
+                    onClick={() => {
+                      window.location.href = "/tat-ca-san-pham?category=winageo"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Winageo™
@@ -1956,7 +2054,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/tat-ca-san-pham?category=sohgeo")}
+                    onClick={() => {
+                      window.location.href = "/tat-ca-san-pham?category=sohgeo"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Sohgeo™
@@ -1965,7 +2065,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/tat-ca-san-pham?category=endurance")}
+                    onClick={() => {
+                      window.location.href = "/tat-ca-san-pham?category=endurance"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Endurance™
@@ -1974,7 +2076,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/tat-ca-san-pham?category=silhouette")}
+                    onClick={() => {
+                      window.location.href = "/tat-ca-san-pham?category=silhouette"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Silhouette™
@@ -2002,7 +2106,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/huong-dan-su-dung")}
+                    onClick={() => {
+                      window.location.href = "/huong-dan-su-dung"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Hướng dẫn sử dụng
@@ -2011,7 +2117,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/chinh-sach-bao-hanh")}
+                    onClick={() => {
+                      window.location.href = "/chinh-sach-bao-hanh"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách bảo hành
@@ -2053,7 +2161,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/chinh-sach-doi-tra")}
+                    onClick={() => {
+                      window.location.href = "/chinh-sach-doi-tra"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách đổi trả
@@ -2062,7 +2172,9 @@ export default function HomePage() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => (window.location.href = "/chinh-sach-van-chuyen")}
+                    onClick={() => {
+                      window.location.href = "/chinh-sach-van-chuyen"
+                    }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách vận chuyển
@@ -2089,3 +2201,12 @@ export default function HomePage() {
     </div>
   )
 }
+
+// Main HomePage Component with NoSSRWrapper
+const HomePage = () => (
+  <NoSSRWrapper>
+    <HomePageContent />
+  </NoSSRWrapper>
+)
+
+export default HomePage

@@ -1,5 +1,17 @@
-// Sample dealer data - in a real application, this would come from an API or database
-export const dealerData = [
+export type DealerStatus = "Đang mở cửa" | "Đóng cửa"
+
+export interface Dealer {
+  id: string
+  name: string
+  address: string
+  phone: string
+  status: DealerStatus
+  lat: number
+  lng: number
+  distance?: string
+}
+
+export const dealerData: Dealer[] = [
   {
     id: "dealer-1",
     name: "NAGEN Cầu Giấy",

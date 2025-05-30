@@ -4,8 +4,13 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { MapPin, Phone, Navigation, ChevronLeft, List } from "lucide-react"
-import LeafletMapComponent, { type Dealer } from "@/components/LeafletMapComponent"
-import { dealerData, getDealersByDistance } from "@/lib/dealers"
+import { dealerData, getDealersByDistance, type Dealer } from "@/lib/dealers"
+import dynamic from "next/dynamic"
+
+const LeafletMapComponent = dynamic(
+  () => import("@/components/LeafletMapComponent"),
+  { ssr: false }
+)
 
 const DealerLocator = () => {
   const [dealers, setDealers] = useState<Dealer[]>(dealerData)
@@ -20,7 +25,7 @@ const DealerLocator = () => {
     setIsLoading(true)
     setError(null)
 
-    if (navigator.geolocation) {
+    if (typeof window !== "undefined" && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords

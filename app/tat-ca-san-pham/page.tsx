@@ -430,10 +430,12 @@ export default function AllProductsPage() {
   // Add this useEffect after the existing useEffect for filtering
   useEffect(() => {
     // Read category from URL query parameters
-    const urlParams = new URLSearchParams(window.location.search)
-    const categoryParam = urlParams.get("category")
-    if (categoryParam) {
-      setSelectedCategory(categoryParam)
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search)
+      const categoryParam = urlParams.get("category")
+      if (categoryParam) {
+        setSelectedCategory(categoryParam)
+      }
     }
   }, [])
 
@@ -504,7 +506,7 @@ export default function AllProductsPage() {
                           onClick={() => {
                             setSelectedCategory("")
                             // Update URL without category parameter
-                            const url = new URL(window.location)
+                            const url = new URL(window.location.href)
                             url.searchParams.delete("category")
                             window.history.replaceState({}, "", url)
                           }}
@@ -532,7 +534,7 @@ export default function AllProductsPage() {
                     setSelectedCategory("")
                     setSortBy("popular")
                     // Clear URL parameters
-                    const url = new URL(window.location)
+                    const url = new URL(window.location.href)
                     url.searchParams.delete("category")
                     window.history.replaceState({}, "", url)
                   }}
@@ -565,14 +567,16 @@ export default function AllProductsPage() {
                   onValueChange={(value) => {
                     setSelectedCategory(value)
                     // Update URL with category parameter
-                    if (value) {
-                      const url = new URL(window.location)
-                      url.searchParams.set("category", value)
-                      window.history.replaceState({}, "", url)
-                    } else {
-                      const url = new URL(window.location)
-                      url.searchParams.delete("category")
-                      window.history.replaceState({}, "", url)
+                    if (typeof window !== "undefined") {
+                      if (value) {
+                        const url = new URL(window.location.href)
+                        url.searchParams.set("category", value)
+                        window.history.replaceState({}, "", url)
+                      } else {
+                        const url = new URL(window.location.href)
+                        url.searchParams.delete("category")
+                        window.history.replaceState({}, "", url)
+                      }
                     }
                   }}
                 >

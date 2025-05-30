@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet"
 import { Icon } from "leaflet"
+import L from "leaflet"
 import "leaflet/dist/leaflet.css"
 
 // Define types for dealer data
@@ -41,33 +42,37 @@ function MapController({
   useEffect(() => {
     // Ensure map is properly sized and tiles are loaded
     const handleMapReady = () => {
-      // Invalidate size to ensure proper rendering
-      setTimeout(() => {
-        map.invalidateSize()
+      try {
+        // Invalidate size to ensure proper rendering
+        setTimeout(() => {
+          map.invalidateSize()
 
-        // Set bounds to show all markers
-        if (dealers.length > 0) {
-          const bounds = new window.L.LatLngBounds()
+          // Set bounds to show all markers
+          if (dealers.length > 0) {
+            const bounds = L.latLngBounds([])
 
-          // Add dealer locations to bounds
-          dealers.forEach((dealer) => {
-            bounds.extend([dealer.lat, dealer.lng])
-          })
-
-          // Add user location to bounds if available
-          if (userLocation) {
-            bounds.extend([userLocation.lat, userLocation.lng])
-          }
-
-          // Fit bounds with padding
-          if (bounds.isValid()) {
-            map.fitBounds(bounds, {
-              padding: [20, 20],
-              maxZoom: 16,
+            // Add dealer locations to bounds
+            dealers.forEach((dealer) => {
+              bounds.extend([dealer.lat, dealer.lng])
             })
+
+            // Add user location to bounds if available
+            if (userLocation) {
+              bounds.extend([userLocation.lat, userLocation.lng])
+            }
+
+            // Fit bounds with padding only if bounds is valid
+            if (bounds.isValid()) {
+              map.fitBounds(bounds, {
+                padding: [20, 20],
+                maxZoom: 16,
+              })
+            }
           }
-        }
-      }, 100)
+        }, 100)
+      } catch (error) {
+        console.warn("Map initialization error:", error)
+      }
     }
 
     // Handle when map is ready
@@ -165,19 +170,22 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
 
   // Handle container resize
   useEffect(() => {
-    if (!mapContainerRef.current) return
+    if (!mapContainerRef.current || typeof window === "undefined") return
 
-    const resizeObserver = new ResizeObserver(() => {
-      // Delay to ensure container has final size
-      setTimeout(() => {
-        setIsMapReady((prev) => !prev) // Force re-render
-      }, 100)
-    })
+    // Check if ResizeObserver is available
+    if (typeof ResizeObserver !== "undefined") {
+      const resizeObserver = new ResizeObserver(() => {
+        // Delay to ensure container has final size
+        setTimeout(() => {
+          setIsMapReady((prev) => !prev) // Force re-render
+        }, 100)
+      })
 
-    resizeObserver.observe(mapContainerRef.current)
+      resizeObserver.observe(mapContainerRef.current)
 
-    return () => {
-      resizeObserver.disconnect()
+      return () => {
+        resizeObserver.disconnect()
+      }
     }
   }, [])
 
