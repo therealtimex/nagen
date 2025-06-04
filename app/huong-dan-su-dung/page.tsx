@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, CheckCircle, AlertTriangle, Info } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { getImagePath } from "@/lib/utils"
 
 export default function UsageGuidePage() {
   return (
@@ -133,7 +134,7 @@ export default function UsageGuidePage() {
               </div>
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=300&width=400&text=Installation+Guide"
+                  src={getImagePath("/placeholder.svg?height=300&width=400&text=Installation+Guide")}
                   alt="Hướng dẫn lắp đặt"
                   width={400}
                   height={300}

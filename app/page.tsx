@@ -39,6 +39,7 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import DealerLocator from "@/components/DealerLocator"
 import NoSSRWrapper from "@/components/NoSSRWrapper"
+import { getImagePath } from "@/lib/utils"
 
 // Type definitions
 interface FormData {
@@ -389,7 +390,7 @@ function EnhancedFeedbackSlider() {
               <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
                 <CardContent className="p-8 text-center">
                   <Image
-                    src={testimonial.image || "/placeholder.svg"}
+                    src={getImagePath(testimonial.image || "/placeholder.svg")}
                     alt={testimonial.name}
                     width={80}
                     height={80}
@@ -1615,7 +1616,7 @@ function HomePageContent() {
                 )}
                 <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center relative overflow-hidden">
                   <Image
-                    src={`/placeholder.svg?height=200&width=300&text=${product.name}`}
+                    src={getImagePath(`/placeholder.svg?height=200&width=300&text=${product.name}`)}
                     alt={product.desc}
                     width={300}
                     height={200}
@@ -1908,7 +1909,7 @@ function HomePageContent() {
             </div>
             <div className="aspect-video bg-black/10 rounded-xl flex items-center justify-center relative overflow-hidden">
               <Image
-                src="/placeholder.svg?height=400&width=600&text=About+NAGEN"
+                src={getImagePath("/placeholder.svg?height=400&width=600&text=About+NAGEN")}
                 alt="About NAGEN"
                 width={600}
                 height={400}

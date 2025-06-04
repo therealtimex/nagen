@@ -24,6 +24,7 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { getImagePath } from "@/lib/utils"
 
 export default function AboutNAGENPage() {
   const [activeSection, setActiveSection] = useState("")
@@ -182,7 +183,7 @@ export default function AboutNAGENPage() {
             <div className="space-y-6">
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=400&width=600&text=NAGEN+History+Timeline"
+                  src={getImagePath("/placeholder.svg?height=400&width=600&text=NAGEN+History+Timeline")}
                   alt="Lịch sử phát triển NAGEN"
                   width={600}
                   height={400}
@@ -249,7 +250,7 @@ export default function AboutNAGENPage() {
               <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 overflow-hidden">
                   <Image
-                    src={item.image || "/placeholder.svg"}
+                    src={getImagePath(item.image || "/placeholder.svg")}
                     alt={item.title}
                     width={300}
                     height={200}
@@ -328,7 +329,7 @@ export default function AboutNAGENPage() {
             <div className="space-y-6">
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=400&width=600&text=NAGEN+Mission"
+                  src={getImagePath("/placeholder.svg?height=400&width=600&text=NAGEN+Mission")}
                   alt="Sứ mệnh NAGEN"
                   width={600}
                   height={400}
@@ -440,7 +441,7 @@ export default function AboutNAGENPage() {
             <div className="space-y-6">
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=400&width=600&text=Delivery+Network"
+                  src={getImagePath("/placeholder.svg?height=400&width=600&text=Delivery+Network")}
                   alt="Mạng lưới giao hàng NAGEN"
                   width={600}
                   height={400}

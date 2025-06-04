@@ -23,6 +23,7 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import { getImagePath } from "@/lib/utils"
 
 // Product type definition
 interface Product {
@@ -216,7 +217,7 @@ function ProductCard({ product }: { product: Product }) {
       )}
       <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center relative overflow-hidden">
         <Image
-          src={product.image || "/placeholder.svg"}
+          src={getImagePath(product.image || "/placeholder.svg")}
           alt={product.name}
           width={300}
           height={200}
@@ -351,7 +352,7 @@ function ScientificResearchSection() {
             </div>
             <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
               <Image
-                src="/placeholder.svg?height=400&width=600&text=Research+and+Development"
+                src={getImagePath("/placeholder.svg?height=400&width=600&text=Research+and+Development")}
                 alt="Nghiên cứu và phát triển NAGEN"
                 width={600}
                 height={400}
