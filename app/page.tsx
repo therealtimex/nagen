@@ -39,7 +39,7 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import DealerLocator from "@/components/DealerLocator"
 import NoSSRWrapper from "@/components/NoSSRWrapper"
-import { getImagePath } from "@/lib/utils"
+import { getImagePath, navigateTo } from "@/lib/utils"
 
 // Type definitions
 interface FormData {
@@ -1657,9 +1657,7 @@ function HomePageContent() {
                 variant="primary"
                 size="lg"
                 className="w-full max-w-md group transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => {
-                  window.location.href = "/tat-ca-san-pham"
-                }}
+                onClick={() => navigateTo("/tat-ca-san-pham")}
               >
                 Xem tất cả sản phẩm
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -1899,9 +1897,7 @@ function HomePageContent() {
               <CTAButton
                 size="lg"
                 className="group transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => {
-                  window.location.href = "/gioi-thieu-nagen"
-                }}
+                onClick={() => navigateTo("/gioi-thieu-nagen")}
               >
                 Tìm hiểu thêm về NAGEN
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -2032,9 +2028,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      window.location.href = "/tat-ca-san-pham?category=sungeo"
-                    }}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=sungeo")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     {/*<ArrowRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />*/}
@@ -2044,9 +2038,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      window.location.href = "/tat-ca-san-pham?category=winageo"
-                    }}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=winageo")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Winageo™
@@ -2055,9 +2047,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      window.location.href = "/tat-ca-san-pham?category=sohgeo"
-                    }}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=sohgeo")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Sohgeo™
@@ -2066,9 +2056,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      window.location.href = "/tat-ca-san-pham?category=endurance"
-                    }}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=endurance")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Endurance™
@@ -2077,9 +2065,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      window.location.href = "/tat-ca-san-pham?category=silhouette"
-                    }}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=silhouette")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Silhouette™
@@ -2107,9 +2093,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      window.location.href = "/huong-dan-su-dung"
-                    }}
+                    onClick={() => navigateTo("/huong-dan-su-dung")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Hướng dẫn sử dụng
@@ -2119,7 +2103,7 @@ function HomePageContent() {
                   <a
                     href="#"
                     onClick={() => {
-                      window.location.href = "/chinh-sach-bao-hanh"
+                      navigateTo("/chinh-sach-bao-hanh")
                     }}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
@@ -2162,9 +2146,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      window.location.href = "/chinh-sach-doi-tra"
-                    }}
+                    onClick={() => navigateTo("/chinh-sach-doi-tra")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách đổi trả
@@ -2173,9 +2155,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      window.location.href = "/chinh-sach-van-chuyen"
-                    }}
+                    onClick={() => navigateTo("/chinh-sach-van-chuyen")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách vận chuyển
