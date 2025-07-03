@@ -1603,9 +1603,9 @@ function HomePageContent() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
-              { name: "Sungeo™", desc: "Tăm lót hỗ trợ vòm bàn chân Sungeo™", price: "599.000đ", popular: true },
-              { name: "Winageo™", desc: "Tăm lót hỗ trợ vòm bàn chân Winageo™", price: "699.000đ", popular: false },
-              { name: "Endurance™", desc: "Tăm lót hỗ trợ vòm bàn chân Endurance™", price: "799.000đ", popular: false },
+              { name: "Sungeo™", desc: "Tăm lót hỗ trợ vòm bàn chân Sungeo™", popular: true },
+              { name: "Winageo™", desc: "Tăm lót hỗ trợ vòm bàn chân Winageo™", popular: false },
+              { name: "Endurance™", desc: "Tăm lót hỗ trợ vòm bàn chân Endurance™", popular: false },
             ].map((product, index) => (
               <Card
                 key={index}
@@ -1629,8 +1629,7 @@ function HomePageContent() {
                   <CardDescription>Sản phẩm chất lượng cao, được nghiên cứu khoa học</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-red-600">{product.price}</span>
+                  <div className="flex items-center justify-end mb-4">
                     <div className="flex items-center space-x-1">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />

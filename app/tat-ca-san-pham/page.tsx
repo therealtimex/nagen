@@ -51,7 +51,7 @@ const productData: Product[] = [
     price: "599.000đ",
     originalPrice: "699.000đ",
     discount: "15%",
-    image: "/placeholder.svg?height=300&width=400&text=Sungeo+Classic",
+    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-sungen.jpg?height=300&width=400&text=Sungeo+Classic",
     category: "sungeo",
     rating: 4.9,
     reviewCount: 124,
@@ -77,7 +77,7 @@ const productData: Product[] = [
     name: "Tấm lót hỗ trợ vòm bàn chân Winageo™ Premium",
     description: "Công nghệ tiên tiến với vật liệu cao cấp, hỗ trợ tối đa cho vòm bàn chân",
     price: "699.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Winageo+Premium",
+    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-winagen.jpg?height=300&width=400&text=Winageo+Premium",
     category: "winageo",
     rating: 4.9,
     reviewCount: 87,
@@ -118,7 +118,7 @@ const productData: Product[] = [
     price: "799.000đ",
     originalPrice: "899.000đ",
     discount: "11%",
-    image: "/placeholder.svg?height=300&width=400&text=Endurance+Pro",
+    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-endurance.jpg?height=300&width=400&text=Endurance+Pro",
     category: "endurance",
     rating: 4.9,
     reviewCount: 76,
@@ -144,7 +144,7 @@ const productData: Product[] = [
     name: "Tấm lót hỗ trợ vòm bàn chân Silhouette™ Elegance",
     description: "Thiết kế siêu mỏng, phù hợp với giày cao gót và giày thời trang",
     price: "649.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Silhouette+Elegance",
+    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-silhouette.jpg?height=300&width=400&text=Silhouette+Elegance",
     category: "silhouette",
     rating: 4.8,
     reviewCount: 92,
@@ -228,9 +228,6 @@ function ProductCard({ product }: { product: Product }) {
           <Button variant="outline" size="icon" className="rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
             <Heart className="w-4 h-4 text-red-600" />
           </Button>
-          <Button variant="outline" size="icon" className="rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
-            <ShoppingCart className="w-4 h-4 text-blue-900" />
-          </Button>
         </div>
       </div>
       <CardHeader>
@@ -256,14 +253,6 @@ function ProductCard({ product }: { product: Product }) {
         <CardDescription className="line-clamp-2">{product.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col justify-end">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <span className="text-2xl font-bold text-red-600">{product.price}</span>
-            {product.originalPrice && (
-              <span className="text-sm text-gray-500 line-through ml-2">{product.originalPrice}</span>
-            )}
-          </div>
-        </div>
         <Button className="w-full bg-blue-900 hover:bg-blue-800 text-white group">
           Xem chi tiết
           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
