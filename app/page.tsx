@@ -1603,9 +1603,9 @@ function HomePageContent() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
-              { name: "Sungeo™", desc: "Tăm lót hỗ trợ vòm bàn chân Sungeo™", price: "599.000đ", popular: true },
-              { name: "Winageo™", desc: "Tăm lót hỗ trợ vòm bàn chân Winageo™", price: "699.000đ", popular: false },
-              { name: "Endurance™", desc: "Tăm lót hỗ trợ vòm bàn chân Endurance™", price: "799.000đ", popular: false },
+              { name: "Sungeo™", desc: "Tăm lót hỗ trợ vòm bàn chân Sungeo™", popular: true },
+              { name: "Winageo™", desc: "Tăm lót hỗ trợ vòm bàn chân Winageo™", popular: false },
+              { name: "Endurance™", desc: "Tăm lót hỗ trợ vòm bàn chân Endurance™", popular: false },
             ].map((product, index) => (
               <Card
                 key={index}
