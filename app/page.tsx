@@ -222,7 +222,7 @@ function EnhancedNavigation() {
               <div className="text-3xl font-bold">
                 <span className="text-blue-900">NA</span>
                 <span className="text-red-600">GE</span>
-                <span className="text-blue-900">N</span>
+                <span className="text-white">N</span>
               </div>
             </Link>
 
