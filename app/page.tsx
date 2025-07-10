@@ -160,8 +160,8 @@ function EnhancedNavigation() {
       name: "Sản phẩm",
       href: "#products",
       submenu: [
-        { name: "Sungeo™", href: "#sungeo" },
-        { name: "Winageo™", href: "#winageo" },
+        { name: "Sungeo™", href: "#sungen" },
+        { name: "Winagen™", href: "#winageo" },
         { name: "Sohgeo™", href: "#sohgeo" },
         { name: "Endurance™", href: "#endurance" },
         { name: "Silhouette™", href: "#silhouette" },
@@ -1606,7 +1606,7 @@ function HomePageContent() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
               { name: "Sungeo™", desc: "Tăm lót hỗ trợ vòm bàn chân Sungeo™", popular: true },
-              { name: "Winageo™", desc: "Tăm lót hỗ trợ vòm bàn chân Winageo™", popular: false },
+              { name: "Winagen™", desc: "Tăm lót hỗ trợ vòm bàn chân Winagen™", popular: false },
               { name: "Endurance™", desc: "Tăm lót hỗ trợ vòm bàn chân Endurance™", popular: false },
             ].map((product, index) => (
               <Card
@@ -2029,7 +2029,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=sungeo")}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=sungen")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     {/*<ArrowRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />*/}
@@ -2042,7 +2042,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=winageo")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Winageo™
+                    Winagen™
                   </a>
                 </li>
                 <li>

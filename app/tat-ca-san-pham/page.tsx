@@ -45,14 +45,14 @@ interface Product {
 // Sample product data
 const productData: Product[] = [
   {
-    id: "sungeo-1",
+    id: "sungen-1",
     name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Classic",
     description: "Tấm lót hỗ trợ vòm bàn chân cao cấp, giúp giảm đau và tăng sự thoải mái khi đi lại",
     price: "599.000đ",
     originalPrice: "699.000đ",
     discount: "15%",
     image: "/images/products/tam-lot-ho-tro-vom-ban-chan-sungen.jpg?height=300&width=400&text=Sungeo+Classic",
-    category: "sungeo",
+    category: "sungen",
     rating: 4.9,
     reviewCount: 124,
     popular: true,
@@ -60,12 +60,12 @@ const productData: Product[] = [
     tags: ["bestseller", "orthopedic"],
   },
   {
-    id: "sungeo-2",
+    id: "sungen-2",
     name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Sport",
     description: "Thiết kế đặc biệt cho vận động viên và người chơi thể thao, giảm chấn thương và tăng hiệu suất",
     price: "649.000đ",
     image: "/placeholder.svg?height=300&width=400&text=Sungeo+Sport",
-    category: "sungeo",
+    category: "sungen",
     rating: 4.8,
     reviewCount: 98,
     popular: false,
@@ -74,10 +74,10 @@ const productData: Product[] = [
   },
   {
     id: "winageo-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winageo™ Premium",
+    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™ Premium",
     description: "Công nghệ tiên tiến với vật liệu cao cấp, hỗ trợ tối đa cho vòm bàn chân",
     price: "699.000đ",
-    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-winagen.jpg?height=300&width=400&text=Winageo+Premium",
+    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-winagen.jpg?height=300&width=400&text=Winagen+Premium",
     category: "winageo",
     rating: 4.9,
     reviewCount: 87,
@@ -87,10 +87,10 @@ const productData: Product[] = [
   },
   {
     id: "winageo-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winageo™ Slim",
+    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™ Slim",
     description: "Thiết kế mỏng nhẹ, phù hợp với giày công sở và giày thời trang",
     price: "649.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Winageo+Slim",
+    image: "/placeholder.svg?height=300&width=400&text=Winagen+Slim",
     category: "winageo",
     rating: 4.7,
     reviewCount: 65,
@@ -166,12 +166,12 @@ const productData: Product[] = [
     tags: ["business", "formal"],
   },
   {
-    id: "sungeo-3",
+    id: "sungen-3",
     name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Kids",
     description: "Thiết kế đặc biệt cho trẻ em, hỗ trợ phát triển bàn chân khỏe mạnh",
     price: "499.000đ",
     image: "/placeholder.svg?height=300&width=400&text=Sungeo+Kids",
-    category: "sungeo",
+    category: "sungen",
     rating: 4.9,
     reviewCount: 45,
     popular: false,
@@ -180,10 +180,10 @@ const productData: Product[] = [
   },
   {
     id: "winageo-3",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winageo™ Medical",
+    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™ Medical",
     description: "Được phát triển với sự tư vấn của các bác sĩ chuyên khoa, dành cho người có vấn đề về bàn chân",
     price: "899.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Winageo+Medical",
+    image: "/placeholder.svg?height=300&width=400&text=Winagen+Medical",
     category: "winageo",
     rating: 5.0,
     reviewCount: 37,
@@ -233,10 +233,10 @@ function ProductCard({ product }: { product: Product }) {
       <CardHeader>
         <div className="flex items-center justify-between">
           <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200">
-            {product.category === "sungeo"
+            {product.category === "sungen"
               ? "Sungeo™"
               : product.category === "winageo"
-                ? "Winageo™"
+                ? "Winagen™"
                 : product.category === "sohgeo"
                   ? "Sohgeo™"
                   : product.category === "endurance"
@@ -483,10 +483,10 @@ export default function AllProductsPage() {
                     {selectedCategory && (
                       <Badge variant="secondary" className="bg-blue-100 text-blue-800 border-blue-300">
                         Danh mục:{" "}
-                        {selectedCategory === "sungeo"
+                        {selectedCategory === "sungen"
                           ? "Sungeo™"
                           : selectedCategory === "winageo"
-                            ? "Winageo™"
+                            ? "Winagen™"
                             : selectedCategory === "sohgeo"
                               ? "Sohgeo™"
                               : selectedCategory === "endurance"
@@ -575,8 +575,8 @@ export default function AllProductsPage() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">Tất cả danh mục</SelectItem>
-                    <SelectItem value="sungeo">Sungeo™</SelectItem>
-                    <SelectItem value="winageo">Winageo™</SelectItem>
+                    <SelectItem value="sungen">Sungeo™</SelectItem>
+                    <SelectItem value="winageo">Winagen™</SelectItem>
                     <SelectItem value="sohgeo">Sohgeo™</SelectItem>
                     <SelectItem value="endurance">Endurance™</SelectItem>
                     <SelectItem value="silhouette">Silhouette™</SelectItem>
@@ -612,10 +612,10 @@ export default function AllProductsPage() {
               <h2 className="text-2xl font-bold text-blue-900">
                 {selectedCategory
                   ? `Sản phẩm ${
-                      selectedCategory === "sungeo"
+                      selectedCategory === "sungen"
                         ? "Sungeo™"
                         : selectedCategory === "winageo"
-                          ? "Winageo™"
+                          ? "Winagen™"
                           : selectedCategory === "sohgeo"
                             ? "Sohgeo™"
                             : selectedCategory === "endurance"
@@ -629,10 +629,10 @@ export default function AllProductsPage() {
               {selectedCategory && (
                 <p className="text-gray-500 text-sm mt-1">
                   Khám phá bộ sưu tập{" "}
-                  {selectedCategory === "sungeo"
+                  {selectedCategory === "sungen"
                     ? "Sungeo™"
                     : selectedCategory === "winageo"
-                      ? "Winageo™"
+                      ? "Winagen™"
                       : selectedCategory === "sohgeo"
                         ? "Sohgeo™"
                         : selectedCategory === "endurance"
