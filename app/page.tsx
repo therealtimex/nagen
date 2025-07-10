@@ -160,7 +160,7 @@ function EnhancedNavigation() {
       name: "Sản phẩm",
       href: "#products",
       submenu: [
-        { name: "Sungeo™", href: "#sungeo" },
+        { name: "Sungeo™", href: "#sungeo 123" },
         { name: "Winageo™", href: "#winageo" },
         { name: "Sohgeo™", href: "#sohgeo" },
         { name: "Endurance™", href: "#endurance" },
