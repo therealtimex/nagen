@@ -47,7 +47,7 @@ const productData: Product[] = [
   {
     id: "sungen-1",
     name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Classic",
-    description: "Tấm lót hỗ trợ vòm bàn chân cao cấp, giúp giảm đau và tăng sự thoải mái khi đi lại",
+    description: "Sungen™ là tấm lót hỗ trợ vòm bàn chân đã khởi đầu một ngành công nghiệp và giúp hàng triệu người nhận ra rằng họ có thể sống mà không bị đau chân.\nĐây là sản phẩm định hình bàn chân lý tưởng cho mục đích sử dụng hàng ngày và cung cấp mức độ hỗ trợ cao nhất trong danh mục sản phẩm đa dạng của chúng tôi.\nSản phẩm này hỗ trợ toàn bộ xương bàn chân, bạn sẽ cần một khoảng thời gian để làm quen, nhưng chúng tôi nghĩ bạn sẽ đồng ý rằng kết quả rất xứng đáng với những nỗ lực của bạn.\nChúng tôi đưa ra một kế hoạch đơn giản cho việc thích nghi và làm quen, và hầu hết người sử dụng có thể thoải mái đeo chúng cả ngày liên tục trong vòng bốn đến sáu tuần.",
     price: "599.000đ",
     originalPrice: "699.000đ",
     discount: "15%",
@@ -357,7 +357,7 @@ function ScientificResearchSection() {
 }
 
 export default function AllProductsPage() {
-  const [products, setProducts] = useState<Product[]>(productData)
+  const [products, setProducts] = useState<Product[]>(productData.filter(product => product.id !== "sungen-2"))
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("")
   const [sortBy, setSortBy] = useState("popular")
