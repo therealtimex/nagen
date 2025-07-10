@@ -160,11 +160,13 @@ function EnhancedNavigation() {
       name: "Sản phẩm",
       href: "#products",
       submenu: [
-        { name: "Sungeo™", href: "#sungen" },
-        { name: "Winagen™", href: "#winageo" },
-        { name: "Sohgeo™", href: "#sohgeo" },
+        { name: "Sungen™", href: "#sungen" },
+        { name: "Winagen™", href: "#winagen" },
+        { name: "Softgen™", href: "#softgen" },
         { name: "Endurance™", href: "#endurance" },
         { name: "Silhouette™", href: "#silhouette" },
+        { name: "Đệm lót cao su tự nhiên", href: "#demlotcaosu" },
+
       ],
     },
     { name: "Dịch vụ", href: "#services" },
