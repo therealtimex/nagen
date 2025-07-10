@@ -220,7 +220,7 @@ function EnhancedNavigation() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
               <Image
-                src="/placeholder-logo.png"
+                src="/images/logo nagen.PNG"
                 alt="Nagen Logo"
                 width={120}
                 height={40}
