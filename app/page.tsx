@@ -219,11 +219,13 @@ function EnhancedNavigation() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="text-3xl font-bold">
-                <span className="text-blue-900">NA</span>
-                <span className="text-red-600">GE</span>
-                <span className="text-white">N</span>
-              </div>
+              <Image
+                src="/placeholder-logo.png"
+                alt="Nagen Logo"
+                width={120}
+                height={40}
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
