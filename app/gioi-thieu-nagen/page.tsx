@@ -13,8 +13,6 @@ import {
   Star,
   CheckCircle,
   Globe,
-  Factory,
-  Microscope,
   Shield,
   Target,
   MapPin,
@@ -85,39 +83,37 @@ export default function AboutNAGENPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-red-600 text-white py-20 lg:py-32 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-red-600 text-white py-4 lg:py-8 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2 mb-6">✨ Câu chuyện NAGEN</Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
+            <Badge className="bg-white/20 text-white border-white/30 text-sm px-3 py-1 mb-2">✨ Câu chuyện NAGEN</Badge>
+            <h1 className="text-2xl lg:text-4xl font-bold leading-tight mb-2">
               Hành trình chăm sóc
-              <span className="text-red-300 block">bàn chân Việt Nam</span>
+              <span className="text-red-300 inline-block ml-2">bàn chân Việt Nam</span>
             </h1>
-            <p className="text-xl text-blue-100 leading-relaxed max-w-3xl mx-auto mb-8">
-              Từ những nghiên cứu khoa học đầu tiên đến việc trở thành thương hiệu uy tín hàng đầu trong lĩnh vực chăm
-              sóc bàn chân tại Việt Nam
+            <p className="text-base text-blue-100 leading-relaxed max-w-3xl mx-auto mb-3">
+              Từ những nghiên cứu khoa học đến thương hiệu uy tín hàng đầu trong lĩnh vực chăm sóc bàn chân
             </p>
 
             {/* Navigation Menu */}
-            <div className="flex flex-wrap justify-center gap-4 mt-12">
+            <div className="flex justify-center mt-2 w-full">
               {[
-                { id: "history", label: "Lịch sử phát triển", icon: Calendar },
-                { id: "origin", label: "Nguồn gốc sản phẩm", icon: Globe },
-                { id: "introduction", label: "Giới thiệu NAGEN", icon: Award },
-                { id: "delivery", label: "Hoạt động giao hàng", icon: Truck },
+                { id: "history", label: "Lịch sử", icon: Calendar },
+                { id: "origin", label: "Nguồn gốc", icon: Globe },
+                { id: "introduction", label: "Giới thiệu", icon: Award },
+                { id: "delivery", label: "Giao hàng", icon: Truck },
               ].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
-                    activeSection === item.id
-                      ? "bg-white text-blue-900 shadow-lg"
-                      : "bg-white/20 text-white hover:bg-white/30"
-                  }`}
+                  className={`flex items-center px-2 py-1 mx-1 rounded-full transition-all duration-300 text-xs ${activeSection === item.id
+                    ? "bg-white text-blue-900 shadow-lg"
+                    : "bg-white/20 text-white hover:bg-white/30"
+                    }`}
                 >
-                  <item.icon className="w-5 h-5" />
-                  <span className="font-medium">{item.label}</span>
+                  <item.icon className="w-3 h-3 mr-1" />
+                  <span>{item.label}</span>
                 </button>
               ))}
             </div>
@@ -131,40 +127,51 @@ export default function AboutNAGENPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-blue-100 text-blue-800">Lịch sử phát triển</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Hành trình 15 năm phát triển và đổi mới</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Lịch sử phát triển sản phẩm</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Từ năm 2009, NAGEN bắt đầu hành trình nghiên cứu và phát triển các sản phẩm chăm sóc bàn chân. Với sự
-                đầu tư không ngừng vào công nghệ và nghiên cứu khoa học, chúng tôi đã tạo ra những sản phẩm chất lượng
-                cao được tin tưởng bởi hàng nghìn khách hàng.
+                Sungen, Winagen, Softgen, Endurance, Silhouette, Comfort Cushion do Bio Orthotics International sản xuất là những dòng sản phẩm hỗ trợ vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Khởi đầu cho những dòng sản phẩm tuyệt vời này đến từ thiết kế của Georg Alzner, một nhà thiết kế giày chỉnh hình bậc thầy.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Georg Alzner, nhà phát minh ra Tấm lót hỗ trợ vòm bàn chân Alznner®, sinh ra tại Romania, bắt đầu đào tạo chuyên gia trị liệu vào năm 1936 và tốt nghiệp năm 1942 với tư cách là bác sĩ chỉnh hình và chuyên gia vật lý trị liệu. Ông đến Tây Đức để tiếp tục học và năm 1948, ông nhận bằng thạc sĩ chuyên khoa chỉnh hình bàn chân.
               </p>
 
               {/* Timeline */}
               <div className="space-y-6">
                 {[
                   {
-                    year: "2009",
-                    title: "Khởi đầu nghiên cứu",
-                    desc: "Bắt đầu nghiên cứu về các vấn đề bàn chân phổ biến tại Việt Nam",
+                    year: "1936",
+                    title: "Khởi đầu sự nghiệp",
+                    desc: "Georg Alzner bắt đầu đào tạo chuyên gia trị liệu tại Romania",
                   },
                   {
-                    year: "2012",
-                    title: "Sản phẩm đầu tiên",
-                    desc: "Ra mắt dòng sản phẩm tấm lót hỗ trợ vòm bàn chân đầu tiên",
+                    year: "1942",
+                    title: "Tốt nghiệp chuyên ngành",
+                    desc: "Tốt nghiệp với tư cách là bác sĩ chỉnh hình và chuyên gia vật lý trị liệu",
                   },
                   {
-                    year: "2016",
-                    title: "Mở rộng thị trường",
-                    desc: "Phát triển hệ thống đại lý trên toàn quốc",
+                    year: "1948",
+                    title: "Chuyên gia chỉnh hình",
+                    desc: "Alzner nhận bằng thạc sĩ chuyên khoa chỉnh hình bàn chân tại Tây Đức",
                   },
                   {
-                    year: "2020",
-                    title: "Công nghệ tiên tiến",
-                    desc: "Ứng dụng công nghệ đo vòm bàn chân 3D hiện đại",
+                    year: "1965",
+                    title: "Phát minh đột phá",
+                    desc: "Alzner nộp đơn xin cấp bằng sáng chế cho sản phẩm hỗ trợ vòm bàn chân",
                   },
                   {
-                    year: "2024",
-                    title: "Thương hiệu hàng đầu",
-                    desc: "Trở thành thương hiệu uy tín #1 trong lĩnh vực chăm sóc bàn chân",
+                    year: "1969",
+                    title: "Bằng sáng chế đầu tiên",
+                    desc: "Chính phủ Canada cấp bằng sáng chế đầu tiên cho loại sản phẩm này",
+                  },
+                  {
+                    year: "1980",
+                    title: "Bio Orthotics International",
+                    desc: "Donald L. Airey thành lập công ty phân phối sản phẩm hỗ trợ vòm bàn chân",
+                  },
+                  {
+                    year: "1987",
+                    title: "Nhà sản xuất độc quyền",
+                    desc: "Airey trở thành chủ sở hữu và nhà sản xuất độc quyền các dòng sản phẩm",
                   },
                 ].map((milestone, index) => (
                   <div key={index} className="flex items-start space-x-4">
@@ -181,10 +188,10 @@ export default function AboutNAGENPage() {
             </div>
 
             <div className="space-y-6">
-              <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
+              <div className="aspect-video rounded-xl overflow-hidden">
                 <Image
-                  src={getImagePath("/placeholder.svg?height=400&width=600&text=NAGEN+History+Timeline")}
-                  alt="Lịch sử phát triển NAGEN"
+                  src={getImagePath("/images/lich-su-san-pham.jpg")}
+                  alt="Georg Alzner - Nhà sáng lập"
                   width={600}
                   height={400}
                   className="object-cover w-full h-full"
@@ -196,14 +203,14 @@ export default function AboutNAGENPage() {
               <div className="grid grid-cols-2 gap-4">
                 <Card className="text-center border-0 shadow-lg">
                   <CardContent className="p-6">
-                    <div className="text-3xl font-bold text-red-600 mb-2">15+</div>
-                    <div className="text-sm text-gray-600">Năm kinh nghiệm</div>
+                    <div className="text-3xl font-bold text-red-600 mb-2">50+</div>
+                    <div className="text-sm text-gray-600">Năm lịch sử</div>
                   </CardContent>
                 </Card>
                 <Card className="text-center border-0 shadow-lg">
                   <CardContent className="p-6">
-                    <div className="text-3xl font-bold text-blue-900 mb-2">10K+</div>
-                    <div className="text-sm text-gray-600">Khách hàng tin tưởng</div>
+                    <div className="text-3xl font-bold text-blue-900 mb-2">Triệu+</div>
+                    <div className="text-sm text-gray-600">Người được hỗ trợ</div>
                   </CardContent>
                 </Card>
               </div>
@@ -218,68 +225,65 @@ export default function AboutNAGENPage() {
           <div className="text-center mb-16">
             <Badge className="bg-green-100 text-green-800 mb-4">Nguồn gốc sản phẩm</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">
-              Nghiên cứu khoa học và công nghệ tiên tiến
+              Nguồn gốc sản phẩm từ Bio Orthotics International
             </h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Sản phẩm NAGEN được phát triển dựa trên nghiên cứu khoa học sâu sắc về cấu trúc bàn chân người Việt Nam và
-              ứng dụng công nghệ hiện đại nhất
+              Sungen, Winagen, Softgen, Endurance, Silhouette, Đệm lót cao su xốp thiên nhiên, do Bio Orthotics International sản xuất là những dòng sản phẩm hỗ trợ vòm bàn chân hiệu quả nhất trên thị trường hiện nay.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                icon: Microscope,
-                title: "Nghiên cứu khoa học",
-                desc: "Hợp tác với các viện nghiên cứu y khoa hàng đầu để phát triển sản phẩm",
-                image: "/placeholder.svg?height=200&width=300&text=Research+Lab",
-              },
-              {
-                icon: Factory,
-                title: "Sản xuất hiện đại",
-                desc: "Nhà máy sản xuất đạt tiêu chuẩn quốc tế với công nghệ tiên tiến",
-                image: "/placeholder.svg?height=200&width=300&text=Modern+Factory",
-              },
-              {
-                icon: Shield,
-                title: "Kiểm tra chất lượng",
-                desc: "Quy trình kiểm tra chất lượng nghiêm ngặt đảm bảo sản phẩm hoàn hảo",
-                image: "/placeholder.svg?height=200&width=300&text=Quality+Control",
-              },
-            ].map((item, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 overflow-hidden">
-                  <Image
-                    src={getImagePath(item.image || "/placeholder.svg")}
-                    alt={item.title}
-                    width={300}
-                    height={200}
-                    className="object-cover w-full h-full"
-                    loading="lazy"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center mb-4">
-                    <item.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <CardTitle className="text-blue-900">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{item.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-blue-900">Câu chuyện Bio Orthotics International</h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Bio Orthotics International, Inc. được thành lập bởi mục sư Trưởng lão đã nghỉ hưu Donald L. Airey cách đây hơn 45 năm vào năm 1980. Airey đã quyết định trở thành đại lý phân phối khi ông trực tiếp trải nghiệm sự giảm đau chân và đau lưng mà sản phẩm hỗ trợ vòm bàn chân do Alzner thiết kế.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Ông đã biến việc giới thiệu sản phẩm tuyệt vời này đến với mọi người trên toàn quốc thành sứ mệnh cá nhân. Ông đã thu hút được một lượng lớn người quan tâm tới sản phẩm là các đại lý từ bờ biển này sang bờ biển khác và phát triển một chương trình quảng cáo để tiếp cận mọi người tại nhà của họ trên khắp cả nước.
+              </p>
+              <blockquote className="border-l-4 border-red-600 pl-4 italic text-gray-700 my-6">
+                "Tôi đã phải chịu đựng những vấn đề về chân, chân và lưng trong nhiều năm... đã tốn một khoản tiền nhỏ và không nhận được sự giúp đỡ thực sự nào. Một người bạn đã kể cho tôi về tấm lót hỗ trợ vòm bàn chân. Tôi nghĩ anh ấy bị điên; rằng bất cứ thứ gì như thế thực sự có thể giúp ích... nhưng anh ấy vẫn kiên trì và tôi đã mua chúng. Chúng không cứu sống tôi, nhưng chúng chắc chắn đã cứu mạng tôi."
+                <footer className="text-sm mt-2 text-gray-600">- Donald L. Airey</footer>
+              </blockquote>
+            </div>
+
+            <div className="space-y-6">
+              <div className="aspect-video rounded-xl overflow-hidden">
+                <Image
+                  src={getImagePath("/images/nguon-goc-san-pham.jpg")}
+                  alt="Bio Orthotics International"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full h-full"
+                  loading="lazy"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <Card className="text-center border-0 shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="text-3xl font-bold text-red-600 mb-2">1980</div>
+                    <div className="text-sm text-gray-600">Năm thành lập</div>
+                  </CardContent>
+                </Card>
+                <Card className="text-center border-0 shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="text-3xl font-bold text-blue-900 mb-2">1987</div>
+                    <div className="text-sm text-gray-600">Trở thành nhà sản xuất độc quyền</div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
 
           {/* Technology Features */}
           <div className="bg-white rounded-xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-blue-900 mb-8 text-center">Công nghệ độc quyền NAGEN</h3>
+            <h3 className="text-2xl font-bold text-blue-900 mb-8 text-center">Đặc điểm nổi bật của sản phẩm</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { icon: Target, title: "Đo 3D chính xác", desc: "Công nghệ đo vòm bàn chân 3D với độ chính xác cao" },
-                { icon: Heart, title: "Vật liệu sinh học", desc: "Sử dụng vật liệu an toàn, thân thiện với da" },
-                { icon: Star, title: "Thiết kế ergonomic", desc: "Thiết kế phù hợp với cấu trúc bàn chân người Việt" },
-                { icon: CheckCircle, title: "Chứng nhận y tế", desc: "Được chứng nhận bởi Bộ Y tế Việt Nam" },
+                { icon: Target, title: "Hỗ trợ 4 vòm", desc: "Hỗ trợ cho cả bốn vòm bàn chân" },
+                { icon: Heart, title: "Thông thoáng", desc: "Cung cấp sự thông thoáng cho bề mặt lòng bàn chân" },
+                { icon: Star, title: "Mát-xa tự nhiên", desc: "Tạo ra động tác mát-xa có lợi khi đi bộ" },
+                { icon: CheckCircle, title: "Công nghệ độc quyền", desc: "Được cấp bằng sáng chế đầu tiên cho loại sản phẩm này" },
               ].map((feature, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -301,20 +305,23 @@ export default function AboutNAGENPage() {
             <div className="space-y-6">
               <Badge className="bg-red-100 text-red-800">Giới thiệu NAGEN</Badge>
               <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">
-                Sứ mệnh chăm sóc sức khỏe bàn chân Việt Nam
+                Lịch sử công ty TNHH NAGEN
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                NAGEN được thành lập với sứ mệnh mang đến sức khỏe và sự thoải mái cho đôi chân của mọi người Việt Nam.
-                Chúng tôi tin rằng một đôi chân khỏe mạnh là nền tảng cho một cuộc sống năng động và hạnh phúc.
+                Công ty TNHH NAGEN là Công ty phân phối Độc quyền Tấm lót hỗ trợ vòm bàn chân tại Lãnh thổ Việt Nam.
+                Với sứ mệnh, mang đến cho người dân Việt Nam tấm lót hỗ trợ vòm bàn chân tốt nhất.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Trở thành sự nuôi dưỡng thiết yếu cho mọi người dân Việt Nam, Những bước chân đầu đời của một đứa trẻ, cho đến khi bạn già đi tôi với bạn là hình với bóng. Chúng tôi cùng hệ thống Đại lý luôn nỗ lực để từ thôn quê đến thành phố, mỗi bước chân bạn đi được nuôi dưỡng bằng tấm lót hỗ trợ vòm bàn chân tốt nhất.
               </p>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-blue-900">Giá trị cốt lõi</h3>
+                <h3 className="text-xl font-semibold text-blue-900">Sứ mệnh của NAGEN</h3>
                 {[
-                  "Chất lượng sản phẩm là ưu tiên hàng đầu",
-                  "Dịch vụ khách hàng tận tâm và chuyên nghiệp",
-                  "Nghiên cứu và đổi mới không ngừng",
-                  "Trách nhiệm xã hội và phát triển bền vững",
+                  "Mang đến cho người dân Việt Nam tấm lót hỗ trợ vòm bàn chân tốt nhất",
+                  "Phát triển hệ thống đại lý trên khắp mọi ngóc ngách Việt Nam",
+                  "Trở thành đối tác tin cậy của các bệnh viện và phòng khám uy tín",
+                  "Nâng cao chất lượng cuộc sống thông qua sức khỏe bàn chân",
                 ].map((value, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
@@ -329,8 +336,8 @@ export default function AboutNAGENPage() {
             <div className="space-y-6">
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                 <Image
-                  src={getImagePath("/placeholder.svg?height=400&width=600&text=NAGEN+Mission")}
-                  alt="Sứ mệnh NAGEN"
+                  src={getImagePath("/images/logo-nagen.jpg")}
+                  alt="NAGEN Việt Nam"
                   width={600}
                   height={400}
                   className="object-cover w-full h-full"
@@ -346,26 +353,25 @@ export default function AboutNAGENPage() {
               <CardHeader>
                 <CardTitle className="text-blue-900 flex items-center">
                   <Users className="w-6 h-6 mr-2 text-red-600" />
-                  Đội ngũ chuyên gia
+                  Mạng lưới phân phối
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-4">
-                  Đội ngũ NAGEN bao gồm các chuyên gia y khoa, kỹ sư công nghệ và nhân viên tư vấn giàu kinh nghiệm,
-                  luôn sẵn sàng mang đến dịch vụ tốt nhất cho khách hàng.
+                  Chúng tôi cùng hệ thống Đại lý luôn nỗ lực để mọi con thôn đến thành phố, mỗi bước chân bạn đi được nuôi dưỡng bằng tấm lót hỗ trợ vòm bàn chân tốt nhất.
                 </p>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-red-600">50+</div>
-                    <div className="text-sm text-gray-600">Nhân viên</div>
+                    <div className="text-2xl font-bold text-red-600">63</div>
+                    <div className="text-sm text-gray-600">Tỉnh thành</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-blue-900">15+</div>
-                    <div className="text-sm text-gray-600">Chuyên gia</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-red-600">100+</div>
+                    <div className="text-2xl font-bold text-blue-900">1000+</div>
                     <div className="text-sm text-gray-600">Đại lý</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-red-600">24/7</div>
+                    <div className="text-sm text-gray-600">Hỗ trợ</div>
                   </div>
                 </div>
               </CardContent>
@@ -375,16 +381,19 @@ export default function AboutNAGENPage() {
               <CardHeader>
                 <CardTitle className="text-blue-900 flex items-center">
                   <Award className="w-6 h-6 mr-2 text-red-600" />
-                  Thành tựu đạt được
+                  Đối tác tin cậy
                 </CardTitle>
               </CardHeader>
               <CardContent>
+                <p className="text-gray-600 mb-4">
+                  Chúng tôi tin tưởng những tấm lót hỗ trợ vòm bàn chân của chúng tôi là giải pháp tốt nhất mà những bệnh viện, phòng khám, phục hồi chức năng,… uy tín tại Việt Nam lựa chọn.
+                </p>
                 <div className="space-y-3">
                   {[
-                    "Giải thưởng Sản phẩm chất lượng cao 2023",
-                    "Top 10 thương hiệu uy tín ngành Y tế",
-                    "Chứng nhận ISO 9001:2015",
-                    "Giải thưởng Doanh nghiệp tiêu biểu 2024",
+                    "Các bệnh viện hàng đầu tại Việt Nam",
+                    "Trung tâm phục hồi chức năng",
+                    "Phòng khám chuyên khoa chỉnh hình",
+                    "Trung tâm y tế cộng đồng",
                   ].map((achievement, index) => (
                     <div key={index} className="flex items-center space-x-2">
                       <Star className="w-4 h-4 text-yellow-500" />
@@ -441,7 +450,7 @@ export default function AboutNAGENPage() {
             <div className="space-y-6">
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                 <Image
-                  src={getImagePath("/placeholder.svg?height=400&width=600&text=Delivery+Network")}
+                  src={getImagePath("/images/gioithieu_giaohang.png")}
                   alt="Mạng lưới giao hàng NAGEN"
                   width={600}
                   height={400}
