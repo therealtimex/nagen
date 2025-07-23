@@ -40,6 +40,8 @@ import Link from "next/link"
 import DealerLocator from "@/components/DealerLocator"
 import NoSSRWrapper from "@/components/NoSSRWrapper"
 import { getImagePath, navigateTo } from "@/lib/utils"
+import ProductDetailModal from "@/components/ProductDetailModal";
+import { Product, productData } from "@/lib/products"
 
 // Type definitions
 interface FormData {
@@ -214,9 +216,8 @@ function EnhancedNavigation() {
 
       {/* Main Navigation */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-        } border-b border-gray-200`}
+        className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+          } border-b border-gray-200`}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -445,9 +446,8 @@ function EnhancedFeedbackSlider() {
         {testimonials.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-red-600 w-8" : "bg-gray-300 hover:bg-gray-400"
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-red-600 w-8" : "bg-gray-300 hover:bg-gray-400"
+              }`}
             onClick={() => {
               setCurrentSlide(index)
               setIsAutoPlaying(false)
@@ -590,9 +590,8 @@ function EnhancedContactForm() {
           {steps.map((step, index) => (
             <div key={step.number} className="flex items-center">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${
-                  currentStep >= step.number ? "bg-red-600 text-white" : "bg-gray-200 text-gray-600"
-                }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${currentStep >= step.number ? "bg-red-600 text-white" : "bg-gray-200 text-gray-600"
+                  }`}
               >
                 {currentStep > step.number ? <CheckCircle className="w-5 h-5" /> : <step.icon className="w-5 h-5" />}
               </div>
@@ -1446,6 +1445,8 @@ function HomePageContent() {
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false)
   const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false)
 
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
   const handleHeroCTA = () => {
     setIsAppointmentModalOpen(true)
   }
@@ -1606,13 +1607,9 @@ function HomePageContent() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {[
-              { name: "Sungeo™", desc: "Tăm lót hỗ trợ vòm bàn chân Sungeo™", popular: true },
-              { name: "Winagen™", desc: "Tăm lót hỗ trợ vòm bàn chân Winagen™", popular: false },
-              { name: "Endurance™", desc: "Tăm lót hỗ trợ vòm bàn chân Endurance™", popular: false },
-            ].map((product, index) => (
+            {productData.slice(0, 3).map((product) => (
               <Card
-                key={index}
+                key={product.id}
                 className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative"
               >
                 {product.popular && (
@@ -1620,8 +1617,8 @@ function HomePageContent() {
                 )}
                 <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center relative overflow-hidden">
                   <Image
-                    src={getImagePath(`/placeholder.svg?height=200&width=300&text=${product.name}`)}
-                    alt={product.desc}
+                    src={getImagePath(product.image)}
+                    alt={product.name}
                     width={300}
                     height={200}
                     className="object-cover transition-transform duration-300 hover:scale-110"
@@ -1629,8 +1626,8 @@ function HomePageContent() {
                   />
                 </div>
                 <CardHeader>
-                  <CardTitle className="text-blue-900">{product.desc}</CardTitle>
-                  <CardDescription>Sản phẩm chất lượng cao, được nghiên cứu khoa học</CardDescription>
+                  <CardTitle className="text-blue-900">{product.name}</CardTitle>
+                  <CardDescription className="line-clamp-2">{product.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-end mb-4">
@@ -1638,10 +1635,10 @@ function HomePageContent() {
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                       ))}
-                      <span className="text-sm text-gray-500 ml-1">(4.9)</span>
+                      <span className="text-sm text-gray-500 ml-1">({product.rating})</span>
                     </div>
                   </div>
-                  <CTAButton variant="secondary" className="w-full group">
+                  <CTAButton variant="secondary" className="w-full group" onClick={() => setSelectedProduct(product)}>
                     Xem chi tiết
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </CTAButton>
@@ -2031,7 +2028,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=sungen")}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     {/*<ArrowRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />*/}
@@ -2041,7 +2038,7 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=winageo")}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=winagen")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Winagen™
@@ -2050,10 +2047,10 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=sohgeo")}
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Sohgeo™
+                    Softgen™
                   </a>
                 </li>
                 <li>
@@ -2182,6 +2179,13 @@ function HomePageContent() {
       {/* Modals */}
       <AppointmentBookingForm isOpen={isAppointmentModalOpen} onClose={() => setIsAppointmentModalOpen(false)} />
       <PartnerRegistrationForm isOpen={isPartnerModalOpen} onClose={() => setIsPartnerModalOpen(false)} />
+      {selectedProduct && (
+        <ProductDetailModal
+          product={selectedProduct}
+          isOpen={!!selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </div>
   )
 }

@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   ArrowLeft,
   Star,
@@ -12,7 +14,6 @@ import {
   Filter,
   ArrowRight,
   Heart,
-  ShoppingCart,
   ChevronDown,
   CheckCircle,
   Microscope,
@@ -24,241 +25,74 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { getImagePath } from "@/lib/utils"
+import { Product, productData } from "@/lib/products"
+import { categoryDisplayNames } from "@/lib/constants";
 
-// Product type definition
-interface Product {
-  id: string
-  name: string
-  description: string
-  price: string
-  originalPrice?: string
-  discount?: string
-  image: string
-  category: string
-  rating: number
-  reviewCount: number
-  popular: boolean
-  new: boolean
-  tags: string[]
-}
 
-// Sample product data
-const productData: Product[] = [
-  {
-    id: "sungen-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Classic",
-    description: "Sungen™ là tấm lót hỗ trợ vòm bàn chân đã khởi đầu một ngành công nghiệp và giúp hàng triệu người nhận ra rằng họ có thể sống mà không bị đau chân.\nĐây là sản phẩm định hình bàn chân lý tưởng cho mục đích sử dụng hàng ngày và cung cấp mức độ hỗ trợ cao nhất trong danh mục sản phẩm đa dạng của chúng tôi.\nSản phẩm này hỗ trợ toàn bộ xương bàn chân, bạn sẽ cần một khoảng thời gian để làm quen, nhưng chúng tôi nghĩ bạn sẽ đồng ý rằng kết quả rất xứng đáng với những nỗ lực của bạn.\nChúng tôi đưa ra một kế hoạch đơn giản cho việc thích nghi và làm quen, và hầu hết người sử dụng có thể thoải mái đeo chúng cả ngày liên tục trong vòng bốn đến sáu tuần.",
-    price: "599.000đ",
-    originalPrice: "699.000đ",
-    discount: "15%",
-    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-sungen.jpg?height=300&width=400&text=Sungeo+Classic",
-    category: "sungen",
-    rating: 4.9,
-    reviewCount: 124,
-    popular: true,
-    new: false,
-    tags: ["bestseller", "orthopedic"],
-  },
-  {
-    id: "sungen-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Sport",
-    description: "Thiết kế đặc biệt cho vận động viên và người chơi thể thao, giảm chấn thương và tăng hiệu suất",
-    price: "649.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Sungeo+Sport",
-    category: "sungen",
-    rating: 4.8,
-    reviewCount: 98,
-    popular: false,
-    new: true,
-    tags: ["sport", "active"],
-  },
-  {
-    id: "winagen-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™",
-    description: "Mặc dù Tấm lót hỗ trợ vòm bàn chân Winagen™ có thiết kế cơ sinh học độc đáo tương tự như tấm lót hỗ trợ vòm bàn chân Sungen, nhưng nó được làm bằng vật liệu mềm hơn nên rất lý tưởng cho các hoạt động thể thao.\nSản phẩm này cũng lý tưởng cho những người lần đầu sử dụng có bàn chân rất phẳng, giúp họ làm quen một cách nhẹ nhàng với tấm lót hỗ trợ vòm bàn chân Nagen.\nChất liệu trong suốt giúp tấm lót hỗ trợ có thể ẩn trong dép xăng đan và giày hở mũi, cũng như có thể kết hợp với hầu hết mọi loại giày dép.",
-    price: "699.000đ",
-    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-winagen.jpg?height=300&width=400&text=Winagen+Premium",
-    category: "winagen",
-    rating: 4.9,
-    reviewCount: 87,
-    popular: true,
-    new: false,
-    tags: ["premium", "comfort"],
-  },
-  {
-    id: "winageo-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™ Slim",
-    description: "Thiết kế mỏng nhẹ, phù hợp với giày công sở và giày thời trang",
-    price: "649.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Winagen+Slim",
-    category: "winageo",
-    rating: 4.7,
-    reviewCount: 65,
-    popular: false,
-    new: false,
-    tags: ["slim", "fashion"],
-  },
-  {
-    id: "softgen-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Softgen™",
-    description: "Tấm lót hỗ trợ vòm bàn chân Softgen™  là sản phẩm dạng gel có khả năng hỗ trợ nhẹ nhàng và tạo cảm giác như đang đi trên không trung.\nSản phẩm vẫn hỗ trợ cả bốn vòm bàn chân và được thiết kế thông khí hoàn toàn cho bề mặt gan bàn chân.\nSản phẩm này đặc biệt có giá trị đối với người cao tuổi vì giúp giảm chấn thương do vấp ngã cũng như những người chưa từng sử dụng tấm lót hỗ trợ vòm bàn chân hoàn toàn.\nĐây cũng là sản phẩm tuyệt vời để sử dụng khi ở nhà vào cuối ngày.",
-    price: "549.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Sohgeo+Comfort",
-    category: "sohgeo",
-    rating: 4.8,
-    reviewCount: 112,
-    popular: true,
-    new: false,
-    tags: ["comfort", "everyday"],
-  },
-  {
-    id: "endurance-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Endurance™ Pro",
-    description: "Tấm lót hỗ trợ vòm bàn chân Endurance™ là sản phẩm siêu mỏng có khả năng hỗ trợ nhẹ.\nVì nó chiếm ít không gian trong giày hơn so với thiết kế hình học của các phiên bản sản phẩm Tấm lót hỗ trợ vòm bàn chân Nagen, nên nó lý tưởng cho những đôi giày không đủ độ sâu cho các thiết bị có cấu hình cao hơn (nhưng hỗ trợ tốt hơn).\nTấm lót hỗ trợ vòm bàn chân Endurance™ cũng có lớp phủ bằng da lộn dễ chịu, kéo dài bằng chiều dài của một tấm lót ba phần tư để tạo lớp đệm nhẹ trên phần hỗ trợ vòm chân và dưới đầu xương bàn chân.",
-    price: "799.000đ",
-    originalPrice: "899.000đ",
-    discount: "11%",
-    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-endurance.jpg?height=300&width=400&text=Endurance+Pro",
-    category: "endurance",
-    rating: 4.9,
-    reviewCount: 76,
-    popular: true,
-    new: true,
-    tags: ["professional", "durable"],
-  },
-  {
-    id: "endurance-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Endurance™ Travel",
-    description: "Thiết kế gấp gọn, lý tưởng cho người thường xuyên di chuyển và du lịch",
-    price: "749.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Endurance+Travel",
-    category: "endurance",
-    rating: 4.7,
-    reviewCount: 54,
-    popular: false,
-    new: true,
-    tags: ["travel", "portable"],
-  },
-  {
-    id: "silhouette-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Silhouette™ Elegance",
-    description: "Tấm lót hỗ trợ vòm bàn chân Silhouette™ giống nhưTấm lót hỗ trợ vòm bàn chân  Endurance™, siêu mỏng nhưng hẹp hơn.\n\nSản phẩm hoàn hảo cho những đôi giày dành cho bàn chân hẹp và vừa khít hoặc có đế giày hẹp như các loại giày của phụ nữ.\n\nGiống như Tấm lót hỗ trợ vòm chân Endurance™, người đeo có mong muốn cảm thấy thoải mái một cách nhanh chóng khi sử dụng mà hầu như không cần thời gian làm quen.\n\nCác sản phẩm thuộc dòng  Endurance™ hoàn hảo để duy trì sự hỗ trợ mà bạn có được khi sử dụng tấm lót hỗ trợ vòm bàn chân Nagen trong hầu hết mọi loại giày dép.",
-    price: "649.000đ",
-    image: "/images/products/tam-lot-ho-tro-vom-ban-chan-silhouette.jpg?height=300&width=400&text=Silhouette+Elegance",
-    category: "silhouette",
-    rating: 4.8,
-    reviewCount: 92,
-    popular: true,
-    new: false,
-    tags: ["fashion", "women"],
-  },
-  {
-    id: "demlotgiay",
-    name: "Đệm lót giày cao su xốp tự nhiên",
-    description: "Đi bộ có thể tạo áp lực gấp đôi trọng lượng cơ thể lên bàn chân, đầu gối và khớp hông. Chạy bộ làm tăng áp lực đó lên gấp tám lần trọng lượng cơ thể. Ngoài các sản phẩm tấm lót hỗ trợ vòm bàn chân có chất lượng hàng đầu, một số đệm hỗ trợ có thể là thứ mà bác sĩ yêu cầu để kiểm soát tất cả áp lực bổ sung đó. Chúng cũng cực kỳ thoải mái khi đeo trong quá trình làm quen tấm lót hỗ trợ vòm bàn chân và có thể giúp trở nên dễ dàng hơn. Chúng tôi cung cấp sản phẩm đệm lót giày cao su xốp thiên nhiên có độ dày 1/8” để tiết kiệm không gian, đế lót giày thể thao có độ dày 3/16” để bảo vệ tối đa khỏi chấn động khi bước chân và đế lót giày có độ dày ba phần tư được thiết kế riêng cho các thiết bị thuộc dòng Endurance. Mỗi dòng sản phẩm có nhiều kích cỡ nên hầu như không cần cắt bớt và mỗi đệm được vát chính xác để phù hợp hoàn hảo với tấm lót hỗ trợ vòm bàn chân của chúng tôi.",
-    price: "699.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Silhouette+Business",
-    category: "silhouette",
-    rating: 4.8,
-    reviewCount: 68,
-    popular: true,
-    new: false,
-    tags: ["business", "formal"],
-  },
-  {
-    id: "sungen-3",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Kids",
-    description: "Thiết kế đặc biệt cho trẻ em, hỗ trợ phát triển bàn chân khỏe mạnh",
-    price: "499.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Sungeo+Kids",
-    category: "sungen",
-    rating: 4.9,
-    reviewCount: 45,
-    popular: false,
-    new: true,
-    tags: ["kids", "growth"],
-  },
-  {
-    id: "winageo-3",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™ Medical",
-    description: "Được phát triển với sự tư vấn của các bác sĩ chuyên khoa, dành cho người có vấn đề về bàn chân",
-    price: "899.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Winagen+Medical",
-    category: "winageo",
-    rating: 5.0,
-    reviewCount: 37,
-    popular: false,
-    new: false,
-    tags: ["medical", "therapeutic"],
-  },
-  {
-    id: "sohgeo-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sohgeo™ Active",
-    description: "Thiết kế năng động cho người trẻ, hỗ trợ vận động và tập luyện hàng ngày",
-    price: "599.000đ",
-    image: "/placeholder.svg?height=300&width=400&text=Sohgeo+Active",
-    category: "sohgeo",
-    rating: 4.7,
-    reviewCount: 83,
-    popular: false,
-    new: false,
-    tags: ["active", "youth"],
-  },
-]
+
+import ProductDetailModal from "@/components/ProductDetailModal";
 
 // Product Card Component
 function ProductCard({ product }: { product: Product }) {
+
+  const displayCategory = categoryDisplayNames[product.category] || product.category;
+  const [showDetail, setShowDetail] = useState(false);
+
   return (
-    <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative h-full flex flex-col">
-      {product.popular && <Badge className="absolute top-4 left-4 z-10 bg-red-600 text-white">Bán chạy nhất</Badge>}
-      {product.new && <Badge className="absolute top-4 left-4 z-10 bg-blue-600 text-white">Mới</Badge>}
-      {product.discount && (
-        <Badge className="absolute top-4 right-4 z-10 bg-green-600 text-white">-{product.discount}</Badge>
-      )}
-      <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center relative overflow-hidden">
-        <Image
-          src={getImagePath(product.image || "/placeholder.svg")}
-          alt={product.name}
-          width={300}
-          height={200}
-          className="object-cover transition-transform duration-300 hover:scale-110"
-          loading="lazy"
-        />
-        <div className="absolute bottom-4 right-4 flex space-x-2">
-          <Button variant="outline" size="icon" className="rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
-            <Heart className="w-4 h-4 text-red-600" />
-          </Button>
-        </div>
-      </div>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200">
-            {product.category === "sungen"
-              ? "Sungeo™"
-              : product.category === "winageo"
-                ? "Winagen™"
-                : product.category === "sohgeo"
-                  ? "Sohgeo™"
-                  : product.category === "endurance"
-                    ? "Endurance™"
-                    : "Silhouette™"}
-          </Badge>
-          <div className="flex items-center space-x-1">
-            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="text-sm font-medium">{product.rating}</span>
-            <span className="text-xs text-gray-500">({product.reviewCount})</span>
+    <>
+      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative h-full flex flex-col">
+        {product.popular && <Badge className="absolute top-4 left-4 z-10 bg-red-600 text-white">Bán chạy nhất</Badge>}
+        {product.new && <Badge className="absolute top-4 left-4 z-10 bg-blue-600 text-white">Mới</Badge>}
+        {/* {product.discount && (
+          <Badge className="absolute top-4 right-4 z-10 bg-green-600 text-white">-{product.discount}</Badge>
+        )} */}
+        <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center relative overflow-hidden">
+          <Image
+            src={getImagePath(product.image || "/placeholder.svg")}
+            alt={product.name}
+            width={300}
+            height={200}
+            className="object-cover transition-transform duration-300 hover:scale-110"
+            loading="lazy"
+          />
+          <div className="absolute bottom-4 right-4 flex space-x-2">
+            <Button variant="outline" size="icon" className="rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
+              <Heart className="w-4 h-4 text-red-600" />
+            </Button>
           </div>
         </div>
-        <CardTitle className="text-blue-900 text-lg mt-2 line-clamp-2">{product.name}</CardTitle>
-        <CardDescription className="line-clamp-2">{product.description}</CardDescription>
-      </CardHeader>
-      <CardContent className="flex-grow flex flex-col justify-end">
-        <Button className="w-full bg-blue-900 hover:bg-blue-800 text-white group">
-          Xem chi tiết
-          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-        </Button>
-      </CardContent>
-    </Card>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200">
+              {displayCategory}
+            </Badge>
+            <div className="flex items-center space-x-1">
+              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              <span className="text-sm font-medium">{product.rating}</span>
+              <span className="text-xs text-gray-500">({product.reviewCount})</span>
+            </div>
+          </div>
+          <CardTitle className="text-blue-900 text-lg mt-2 line-clamp-2">{product.name}</CardTitle>
+          <CardDescription className="line-clamp-2">{product.description}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex-grow flex flex-col justify-end">
+          <Button
+            className="w-full bg-blue-900 hover:bg-blue-800 text-white group"
+            onClick={() => setShowDetail(true)}
+          >
+            Xem chi tiết
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Product Detail Modal */}
+      <ProductDetailModal
+        product={product}
+        isOpen={showDetail}
+        onClose={() => setShowDetail(false)}
+      />
+    </>
   )
 }
 
@@ -341,7 +175,7 @@ function ScientificResearchSection() {
             </div>
             <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
               <Image
-                src={getImagePath("/placeholder.svg?height=400&width=600&text=Research+and+Development")}
+                src={getImagePath("/images/nagen-layout-plan.jpg")}
                 alt="Nghiên cứu và phát triển NAGEN"
                 width={600}
                 height={400}
@@ -433,9 +267,8 @@ export default function AllProductsPage() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-        } border-b border-gray-200`}
+        className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+          } border-b border-gray-200`}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -484,11 +317,11 @@ export default function AllProductsPage() {
                       <Badge variant="secondary" className="bg-blue-100 text-blue-800 border-blue-300">
                         Danh mục:{" "}
                         {selectedCategory === "sungen"
-                          ? "Sungeo™"
-                          : selectedCategory === "winageo"
+                          ? "Sungen™"
+                          : selectedCategory === "winagen"
                             ? "Winagen™"
-                            : selectedCategory === "sohgeo"
-                              ? "Sohgeo™"
+                            : selectedCategory === "softgen"
+                              ? "Softgen™"
                               : selectedCategory === "endurance"
                                 ? "Endurance™"
                                 : "Silhouette™"}
@@ -575,9 +408,9 @@ export default function AllProductsPage() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">Tất cả danh mục</SelectItem>
-                    <SelectItem value="sungen">Sungeo™</SelectItem>
-                    <SelectItem value="winageo">Winagen™</SelectItem>
-                    <SelectItem value="sohgeo">Sohgeo™</SelectItem>
+                    <SelectItem value="sungen">Sungen™</SelectItem>
+                    <SelectItem value="winagen">Winagen™</SelectItem>
+                    <SelectItem value="softgen">Softgen™</SelectItem>
                     <SelectItem value="endurance">Endurance™</SelectItem>
                     <SelectItem value="silhouette">Silhouette™</SelectItem>
                   </SelectContent>
@@ -611,17 +444,16 @@ export default function AllProductsPage() {
             <div>
               <h2 className="text-2xl font-bold text-blue-900">
                 {selectedCategory
-                  ? `Sản phẩm ${
-                      selectedCategory === "sungen"
-                        ? "Sungeo™"
-                        : selectedCategory === "winageo"
-                          ? "Winagen™"
-                          : selectedCategory === "sohgeo"
-                            ? "Sohgeo™"
-                            : selectedCategory === "endurance"
-                              ? "Endurance™"
-                              : "Silhouette™"
-                    }`
+                  ? `Sản phẩm ${selectedCategory === "sungen"
+                    ? "Sungen™"
+                    : selectedCategory === "winagen"
+                      ? "Winagen™"
+                      : selectedCategory === "softgen"
+                        ? "Softgen™"
+                        : selectedCategory === "endurance"
+                          ? "Endurance™"
+                          : "Silhouette™"
+                  }`
                   : searchTerm
                     ? `Kết quả tìm kiếm: "${searchTerm}"`
                     : "Tất cả sản phẩm"}
@@ -630,11 +462,11 @@ export default function AllProductsPage() {
                 <p className="text-gray-500 text-sm mt-1">
                   Khám phá bộ sưu tập{" "}
                   {selectedCategory === "sungen"
-                    ? "Sungeo™"
-                    : selectedCategory === "winageo"
+                    ? "Sungen™"
+                    : selectedCategory === "winagen"
                       ? "Winagen™"
-                      : selectedCategory === "sohgeo"
-                        ? "Sohgeo™"
+                      : selectedCategory === "softgen"
+                        ? "Softgen™"
                         : selectedCategory === "endurance"
                           ? "Endurance™"
                           : "Silhouette™"}{" "}
