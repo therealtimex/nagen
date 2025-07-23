@@ -20,6 +20,9 @@ import {
   Shield,
   Award,
   Zap,
+  Phone,
+  Mail,
+  MapPin,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -175,7 +178,7 @@ function ScientificResearchSection() {
             </div>
             <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
               <Image
-                src={getImagePath("/images/nagen-layout-plan.jpg")}
+                src={getImagePath("/images/quy-trinh-nghien-cuu-phat-trien.png")}
                 alt="Nghiên cứu và phát triển NAGEN"
                 width={600}
                 height={400}
@@ -290,13 +293,13 @@ export default function AllProductsPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-red-600 text-white py-16 lg:py-24">
+      {/* Hero Section - Reduced Height */}
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-red-600 text-white py-8 lg:py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2 mb-6">Sản phẩm NAGEN</Badge>
-            <h1 className="text-3xl lg:text-5xl font-bold mb-6">Tất cả sản phẩm</h1>
-            <p className="text-lg text-blue-100 mb-8">
+            <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2 mb-3">Sản phẩm NAGEN</Badge>
+            <h1 className="text-2xl lg:text-4xl font-bold mb-3">Tất cả sản phẩm</h1>
+            <p className="text-base text-blue-100 mb-2">
               Khám phá bộ sưu tập đầy đủ các sản phẩm chăm sóc bàn chân chất lượng cao của NAGEN
             </p>
           </div>
@@ -516,61 +519,47 @@ export default function AllProductsPage() {
       {/* Scientific Research Section */}
       <ScientificResearchSection />
 
-      {/* Call to Action */}
+      {/* Contact Section */}
       <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-700 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Bạn cần tư vấn thêm?</h2>
-          <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-            Đội ngũ chuyên gia NAGEN luôn sẵn sàng hỗ trợ bạn tìm được sản phẩm phù hợp nhất với nhu cầu của bạn
+          <h2 className="text-3xl font-bold mb-6">Liên hệ với NAGEN</h2>
+          <p className="text-blue-200 text-lg mb-8 max-w-2xl mx-auto">
+            Bạn có câu hỏi về sản phẩm hoặc dịch vụ? Đội ngũ NAGEN luôn sẵn sàng hỗ trợ bạn 24/7
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-              Đặt lịch tư vấn miễn phí
-            </Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold"
-            >
-              Liên hệ hotline
-            </Button>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2">Hotline</h3>
+              <p className="text-blue-200">024 35632008</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2">Email</h3>
+              <p className="text-blue-200">nagen.vn@gmail.com</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2">Địa chỉ</h3>
+              <p className="text-blue-200">Tầng 7, Tòa VP-1, Suntquare Building, Hà Nội</p>
+            </div>
           </div>
+
+          <Link href="/">
+            <Button className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
+              Quay lại trang chủ
+            </Button>
+          </Link>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-100 py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <div className="text-2xl font-bold">
-                <span className="text-blue-900">NA</span>
-                <span className="text-red-600">GE</span>
-                <span className="text-blue-900">N</span>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/" className="text-gray-600 hover:text-blue-900 transition-colors">
-                Trang chủ
-              </Link>
-              <Link href="#" className="text-gray-600 hover:text-blue-900 transition-colors">
-                Về chúng tôi
-              </Link>
-              <Link href="#" className="text-gray-600 hover:text-blue-900 transition-colors">
-                Liên hệ
-              </Link>
-              <Link href="#" className="text-gray-600 hover:text-blue-900 transition-colors">
-                Chính sách bảo mật
-              </Link>
-              <Link href="#" className="text-gray-600 hover:text-blue-900 transition-colors">
-                Điều khoản sử dụng
-              </Link>
-            </div>
-          </div>
-          <div className="border-t border-gray-200 mt-6 pt-6 text-center">
-            <p className="text-gray-500 text-sm">&copy; 2024 NAGEN. Tất cả quyền được bảo lưu.</p>
-          </div>
-        </div>
-      </footer>
+
     </div>
   )
 }

@@ -134,7 +134,7 @@ export default function UsageGuidePage() {
               </div>
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                 <Image
-                  src={getImagePath("/placeholder.svg?height=300&width=400&text=Installation+Guide")}
+                  src={getImagePath("/images/huong-dan-su-dung.png")}
                   alt="Hướng dẫn lắp đặt"
                   width={400}
                   height={300}

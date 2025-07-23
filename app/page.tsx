@@ -223,10 +223,10 @@ function EnhancedNavigation() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
               <Image
-                src="/images/logo nagen.PNG"
+                src={getImagePath("/images/logo-nagen.jpg")}
                 alt="Nagen Logo"
-                width={120}
-                height={40}
+                width={200}
+                height={80}
                 priority
               />
             </Link>
@@ -1705,13 +1705,18 @@ function HomePageContent() {
                 Đặt lịch đo chân
               </CTAButton>
             </div>
-            <div className="aspect-video bg-black/10 rounded-xl flex items-center justify-center relative overflow-hidden">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Play className="w-10 h-10 text-blue-900 ml-1" />
-                </div>
-                <p className="text-gray-700 font-medium">Video dịch vụ đo vòm bàn chân</p>
-              </div>
+            <div className="aspect-video bg-black/10 rounded-xl relative overflow-hidden">
+              <video
+                src="/images/do-vom-ban-chan-tai-nha.mp4"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover rounded-xl"
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
@@ -1905,7 +1910,7 @@ function HomePageContent() {
             </div>
             <div className="aspect-video bg-black/10 rounded-xl flex items-center justify-center relative overflow-hidden">
               <Image
-                src={getImagePath("/placeholder.svg?height=400&width=600&text=About+NAGEN")}
+                src={getImagePath("/images/cham-soc-ban-chan-chuyen-nghiep.png")}
                 alt="About NAGEN"
                 width={600}
                 height={400}
@@ -2165,14 +2170,14 @@ function HomePageContent() {
             </div>
           </div>
 
-          <div className="border-t border-blue-800 mt-8 pt-8">
+          {/* <div className="border-t border-blue-800 mt-8 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-blue-200 text-sm">&copy; 2025 NAGEN. Tất cả quyền được bảo lưu.</p>
               <div className="flex items-center space-x-4 mt-4 md:mt-0">
                 <p className="text-blue-200 text-sm">Được thiết kế với ❤️ tại Việt Nam</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </footer>
 

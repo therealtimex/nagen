@@ -405,7 +405,7 @@ export default function ShippingPolicyPage() {
               <div className="text-center p-6 bg-green-50 rounded-lg border border-green-200">
                 <Mail className="w-8 h-8 text-green-600 mx-auto mb-3" />
                 <h4 className="font-semibold text-green-900 mb-2">Email hỗ trợ</h4>
-                <p className="text-green-700 font-medium">shipping@nagen.vn</p>
+                <p className="text-green-700 font-medium">nagen.vn@gmail.com</p>
                 <p className="text-xs text-gray-500 mt-1">Phản hồi trong 1 giờ</p>
               </div>
               <div className="text-center p-6 bg-red-50 rounded-lg border border-red-200">
