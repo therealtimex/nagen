@@ -202,7 +202,7 @@ function EnhancedNavigation() {
             </span>
             <span className="flex items-center">
               <Mail className="w-4 h-4 mr-2" />
-              nagen.vn@gmail.com
+              nagen@nagen.vn
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-4">
@@ -1864,7 +1864,7 @@ function HomePageContent() {
                   </p>
                   <p className="flex items-center justify-center">
                     <Mail className="w-3 h-3 mr-1 text-blue-600" />
-                    nagen.vn@gmail.com
+                    nagen@nagen.vn
                   </p>
                 </div>
               </CardContent>
@@ -1950,7 +1950,7 @@ function HomePageContent() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-blue-900">Email hỗ trợ</h4>
-                    <p className="text-gray-600">nagen.vn@gmail.com</p>
+                    <p className="text-gray-600">nagen@nagen.vn</p>
                     <p className="text-sm text-gray-500">Phản hồi trong 2h</p>
                   </div>
                 </div>
