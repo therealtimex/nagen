@@ -6,7 +6,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "NAGEN - Chăm sóc bàn chân chuyên nghiệp | Tăm lót hỗ trợ vòm bàn chân",
+  title: "NAGEN",
   description:
     "NAGEN cung cấp sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao. Dịch vụ đo vòm bàn chân miễn phí, tư vấn chuyên nghiệp. Bảo hành 12 tháng, giao hàng toàn quốc.",
   keywords: "tấm lót bàn chân, hỗ trợ vòm bàn chân, NAGEN, chăm sóc bàn chân, sản phẩm y tế",
