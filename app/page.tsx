@@ -2037,7 +2037,7 @@ function HomePageContent() {
                     className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     {/*<ArrowRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />*/}
-                    Sungeo™
+                    Sungen™
                   </a>
                 </li>
                 <li>

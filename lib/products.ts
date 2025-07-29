@@ -17,7 +17,7 @@ export interface Product {
 export const productData: Product[] = [
   {
     id: "sungen-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Classic",
+    name: "Tấm lót hỗ trợ vòm bàn chân Sungen™ Classic",
     description:
       "Sungen™ là tấm lót hỗ trợ vòm bàn chân đã khởi đầu một ngành công nghiệp và giúp hàng triệu người nhận ra rằng họ có thể sống mà không bị đau chân.\n\n" +
       "Đây là sản phẩm định hình bàn chân lý tưởng cho mục đích sử dụng hàng ngày và cung cấp mức độ hỗ trợ cao nhất trong danh mục sản phẩm đa dạng của chúng tôi.\n\n" +
@@ -36,7 +36,7 @@ export const productData: Product[] = [
   },
   {
     id: "sungen-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Sport",
+    name: "Tấm lót hỗ trợ vòm bàn chân Sungen™ Sport",
     description:
       "Thiết kế đặc biệt cho vận động viên và người chơi thể thao.\n\n" +
       "Giảm chấn thương và tăng hiệu suất khi tập luyện và thi đấu.\n\n" +
@@ -170,7 +170,7 @@ export const productData: Product[] = [
   },
   {
     id: "sungen-3",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungeo™ Kids",
+    name: "Tấm lót hỗ trợ vòm bàn chân Sungen™ Kids",
     description:
       "Thiết kế đặc biệt cho trẻ em, hỗ trợ phát triển bàn chân khỏe mạnh.\n\n" +
       "Giúp định hình bàn chân đúng cách trong giai đoạn phát triển.\n\n" +
