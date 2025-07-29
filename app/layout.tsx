@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   authors: [{ name: "NAGEN" }],
   robots: "index, follow",
   openGraph: {
-    title: "NAGEN - Chăm sóc bàn chân chuyên nghiệp",
+    title: "NAGEN",
     description: "Sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao, được tin tưởng bởi hàng nghìn khách hàng",
     type: "website",
     locale: "vi_VN",
