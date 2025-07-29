@@ -1,3 +1,4 @@
+import Head from 'next/head';
 "use client"
 
 import type React from "react"
@@ -2197,9 +2198,14 @@ function HomePageContent() {
 
 // Main HomePage Component with NoSSRWrapper
 const HomePage = () => (
-  <NoSSRWrapper>
-    <HomePageContent />
-  </NoSSRWrapper>
+  <>
+    <Head>
+      <title>NAGEN</title>
+    </Head>
+    <NoSSRWrapper>
+      <HomePageContent />
+    </NoSSRWrapper>
+  </>
 )
 
 export default HomePage
