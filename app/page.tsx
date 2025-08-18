@@ -1994,8 +1994,8 @@ function HomePageContent() {
               {/* Social Media Links */}
               <div className="flex space-x-4">
                 <a
-                  href="#"
-                  onClick={() => window.open("https://facebook.com/nagen", "_blank")}
+                  href="https://www.facebook.com/people/NAGEN/61576197860425/"
+                  onClick={() => window.open("https://www.facebook.com/people/NAGEN/61576197860425/", "_blank")}
                   className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors hover:scale-110 cursor-pointer"
                   aria-label="Facebook"
                 >
@@ -2003,7 +2003,7 @@ function HomePageContent() {
                 </a>
                 <a
                   href="#"
-                  onClick={() => window.open("https://youtube.com/nagen", "_blank")}
+                  onClick={() => window.open("https://www.youtube.com/@nagenvn", "_blank")}
                   className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors hover:scale-110 cursor-pointer"
                   aria-label="YouTube"
                 >
