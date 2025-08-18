@@ -1,8 +1,7 @@
-import Head from 'next/head';
 "use client"
 
+import Head from 'next/head';
 import type React from "react"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
