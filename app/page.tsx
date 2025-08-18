@@ -177,6 +177,7 @@ function EnhancedNavigation() {
     { name: "Đối tác", href: "#partners" },
     { name: "Giới thiệu", href: "#about" },
     { name: "Liên hệ", href: "#contact" },
+    { name: "FAQs", href: "/faqs" },
   ]
 
   const handleNavigation = (href: string) => {
