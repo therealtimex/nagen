@@ -2010,6 +2010,16 @@ function HomePageContent() {
                   <Youtube className="w-5 h-5 text-white" />
                 </a>
                 <a
+                  href="https://www.tiktok.com/@nagenvn"
+                  onClick={() => window.open("https://www.tiktok.com/@nagenvn", "_blank")}
+                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors hover:scale-110 cursor-pointer"
+                  aria-label="TikTok"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+                    <path d="M9 4.58A4.56 4.56 0 0 0 6.43 7.13 4.56 4.56 0 0 0 4 9.71a4.56 4.56 0 0 0 2.43 2.55 4.56 4.56 0 0 0 2.57 1.21v-4.58a4.58 4.58 0 0 1 4.58-4.58h2.29V15a2.29 2.29 0 0 1-2.29 2.29H9v-4.58a2.29 2.29 0 0 0-2.29-2.29h-2.29v-2.29h2.29A2.29 2.29 0 0 1 9 4.58z" />
+                  </svg>
+                </a>
+                <a
                   href="#"
                   onClick={() => window.open("https://instagram.com/nagen", "_blank")}
                   className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors hover:scale-110 cursor-pointer"
