@@ -336,7 +336,7 @@ export default function AboutNAGENPage() {
             <div className="space-y-6">
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                 <Image
-                  src={getImagePath("/images/logo-nagen.jpg")}
+                  src={getImagePath("/images/Logo2.png")}
                   alt="NAGEN Việt Nam"
                   width={600}
                   height={400}
