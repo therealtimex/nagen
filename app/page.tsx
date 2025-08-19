@@ -1545,60 +1545,29 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* Key Features Section */}
+      {/* New Section: Product Image and Research */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Tại sao chọn NAGEN?</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Chúng tôi cam kết mang đến những giá trị tốt nhất cho sức khỏe bàn chân của bạn
+            <Image
+              src={getImagePath("/images/20200624_161136PS.webp")}
+              alt="Product Image"
+              width={800}
+              height={600}
+              className="mx-auto rounded-xl shadow-lg"
+              priority
+            />
+            <p className="text-gray-600 text-lg mt-8">
+              That design supports all four arches of the foot and helps control arch action. Every design element
+              supports the objective of guiding the foot into a more biomechanically efficient posture for maximum
+              performance and efficiency.
+              <br /><br />
+              A properly functioning arch improves balance, distributes pressure correctly over the sole of the foot and
+              allows the muscles, ligaments and tendons used during the gait cycle to work more efficiently.
+              <br /><br />
+              With a family of products like this, you can be sure that we have one that will fit you and your lifestyle
+              perfectly.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Shield,
-                title: "Chất lượng cao",
-                desc: "Sản phẩm được kiểm tra nghiêm ngặt, đảm bảo chất lượng tốt nhất",
-                color: "bg-blue-900",
-              },
-              {
-                icon: Truck,
-                title: "Giao hàng nhanh",
-                desc: "Hệ thống logistics hiện đại, giao hàng toàn quốc trong 24h",
-                color: "bg-red-600",
-              },
-              {
-                icon: Star,
-                title: "Dịch vụ tốt",
-                desc: "Đội ngũ hỗ trợ khách hàng 24/7, tư vấn chuyên nghiệp",
-                color: "bg-blue-900",
-              },
-              {
-                icon: Award,
-                title: "Uy tín hàng đầu",
-                desc: "Được tin tưởng bởi hàng nghìn khách hàng trên toàn quốc",
-                color: "bg-red-600",
-              },
-            ].map((feature, index) => (
-              <Card
-                key={index}
-                className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-              >
-                <CardHeader>
-                  <div
-                    className={`w-16 h-16 ${feature.color} rounded-full flex items-center justify-center mx-auto mb-4`}
-                  >
-                    <feature.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="text-blue-900">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{feature.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
