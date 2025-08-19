@@ -225,11 +225,7 @@ function EnhancedNavigation() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
               <Image
-<<<<<<< HEAD
-                src="/Logo 2.png"
-=======
                 src={getImagePath("/images/Logo 2.png")}
->>>>>>> 64e3eac4c5f6706778d33acc98788d3eec890fba
                 alt="Nagen Logo"
                 width={200}
                 height={40}
@@ -2003,15 +1999,17 @@ function HomePageContent() {
               <div className="flex space-x-4">
                 <a
                   href="https://www.facebook.com/people/NAGEN/61576197860425/"
-                  onClick={() => window.open("https://www.facebook.com/people/NAGEN/61576197860425/", "_blank")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors hover:scale-110 cursor-pointer"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-5 h-5 text-white" />
                 </a>
                 <a
-                  href="#"
-                  onClick={() => window.open("https://www.youtube.com/@nagenvn", "_blank")}
+                  href="https://www.youtube.com/@nagenvn"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors hover:scale-110 cursor-pointer"
                   aria-label="YouTube"
                 >
@@ -2019,7 +2017,8 @@ function HomePageContent() {
                 </a>
                 <a
                   href="https://www.tiktok.com/@nagenvn"
-                  onClick={() => window.open("https://www.tiktok.com/@nagenvn", "_blank")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors hover:scale-110 cursor-pointer"
                   aria-label="TikTok"
                 >
@@ -2028,16 +2027,18 @@ function HomePageContent() {
                   </svg>
                 </a>
                 <a
-                  href="#"
-                  onClick={() => window.open("https://instagram.com/nagen", "_blank")}
+                  href="https://instagram.com/nagen"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors hover:scale-110 cursor-pointer"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5 text-white" />
                 </a>
                 <a
-                  href="#"
-                  onClick={() => window.open("https://zalo.me/nagen", "_blank")}
+                  href="https://zalo.me/nagen"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors hover:scale-110 cursor-pointer"
                   aria-label="Zalo"
                 >
