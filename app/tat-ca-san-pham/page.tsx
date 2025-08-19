@@ -44,37 +44,17 @@ function ProductCard({ product }: { product: Product }) {
   return (
     <>
       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative h-full flex flex-col">
-        {product.popular && <Badge className="absolute top-4 left-4 z-10 bg-red-600 text-white">Bán chạy nhất</Badge>}
-        {product.new && <Badge className="absolute top-4 left-4 z-10 bg-blue-600 text-white">Mới</Badge>}
-        {/* {product.discount && (
-          <Badge className="absolute top-4 right-4 z-10 bg-green-600 text-white">-{product.discount}</Badge>
-        )} */}
-        <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center relative overflow-hidden">
+        <div className="aspect-video flex items-center justify-center relative overflow-hidden">
           <Image
             src={getImagePath(product.image || "/placeholder.svg")}
             alt={product.name}
             width={300}
             height={200}
-            className="object-cover transition-transform duration-300 hover:scale-110"
+            className="object-cover"
             loading="lazy"
           />
-          <div className="absolute bottom-4 right-4 flex space-x-2">
-            <Button variant="outline" size="icon" className="rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
-              <Heart className="w-4 h-4 text-red-600" />
-            </Button>
-          </div>
         </div>
         <CardHeader>
-          <div className="flex items-center justify-between">
-            <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200">
-              {displayCategory}
-            </Badge>
-            <div className="flex items-center space-x-1">
-              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-              <span className="text-sm font-medium">{product.rating}</span>
-              <span className="text-xs text-gray-500">({product.reviewCount})</span>
-            </div>
-          </div>
           <CardTitle className="text-blue-900 text-lg mt-2 line-clamp-2">{product.name}</CardTitle>
           <CardDescription className="line-clamp-2">{product.description}</CardDescription>
         </CardHeader>
