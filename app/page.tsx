@@ -175,8 +175,8 @@ function EnhancedNavigation() {
     { name: "Đại lý", href: "#dealers" },
     { name: "Đối tác", href: "#partners" },
     { name: "Giới thiệu", href: "#about" },
-    { name: "Liên hệ", href: "#contact" },
     { name: "FAQs", href: "/faqs" },
+    { name: "Liên hệ", href: "#contact" },
   ]
 
   const handleNavigation = (href: string) => {
