@@ -226,7 +226,7 @@ function EnhancedNavigation() {
             <Link href="/" className="flex items-center space-x-3">
               <Image
 <<<<<<< HEAD
-                src="/Logo2.png"
+                src="/Logo 2.png"
 =======
                 src={getImagePath("/images/Logo 2.png")}
 >>>>>>> 64e3eac4c5f6706778d33acc98788d3eec890fba
