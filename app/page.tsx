@@ -217,14 +217,15 @@ function EnhancedNavigation() {
 
       {/* Main Navigation */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-          } border-b border-gray-200`}
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+        } border-b border-gray-200 relative`}
       >
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
               <Image
-                src={getImagePath("/images/Logo2.png")}
+                src="/Logo2.png"
                 alt="Nagen Logo"
                 width={200}
                 height={40}
@@ -320,9 +321,12 @@ function EnhancedNavigation() {
             </Sheet>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 w-full h-[8px] flex">
+          <div className="bg-red-600 w-full !h-[8px] md:!h-[12px]"></div>
+        </div>
       </header>
     </>
-  )
+  );
 }
 
 // Enhanced Customer Feedback Slider
@@ -1978,11 +1982,11 @@ function HomePageContent() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-blue-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl font-bold mb-4">
+     <footer className="bg-blue-900 text-white py-12 relative">
+       <div className="container mx-auto px-4">
+         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+           <div>
+             <div className="text-3xl font-bold mb-4">
                 <span className="text-white">NA</span>
                 <span className="text-red-400">GE</span>
                 <span className="text-white">N</span>
