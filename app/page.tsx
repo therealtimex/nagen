@@ -1472,67 +1472,39 @@ function HomePageContent() {
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
 
-      {/* Optimized Hero Section */}
-      <section
-        id="home"
-        className="relative bg-[#21395D] text-white py-20 lg:py-32 overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2">
-                ✨ Thương hiệu uy tín #1 Việt Nam
-              </Badge>
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                Chăm sóc bàn chân
-                <span className="text-red-300 block">chuyên nghiệp</span>
-              </h1>
-              <p className="text-xl text-blue-100 leading-relaxed max-w-lg">
-                Sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao, được nghiên cứu và phát triển bởi các chuyên gia
-                hàng đầu.
-              </p>
-
-              {/* Key Benefits */}
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Chứng nhận y tế</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Bảo hành 12 tháng</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Giao hàng 24h</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Tư vấn miễn phí</span>
-                </div>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="flex items-center space-x-6 text-sm">
-                <div className="flex items-center space-x-2">
-                  <Users className="w-5 h-5 text-blue-300" />
-                  <span className="text-blue-200">10,000+ khách hàng tin tưởng</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Star className="w-5 h-5 text-yellow-400" />
-                  <span className="text-blue-200">4.9/5 đánh giá</span>
-                </div>
-              </div>
-
-              {/*
-              <CTAButton size="lg" onClick={handleHeroCTA}>
-                <Calendar className="w-5 h-5" />
-                Đặt lịch tư vấn miễn phí
-              </CTAButton>
-              */}
-            </div>
-
+  {/* Optimized Hero Section */}
+<section
+  id="home"
+  className="relative bg-[#21395D] text-white py-20 lg:py-32 overflow-hidden"
+>
+  <div className="absolute inset-0 bg-black/20"></div>
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="space-y-8">
+        <p className="text-base text-blue-100 leading-relaxed whitespace-pre-line">
+          Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance,
+          Silhouette, Đệm lót cao su xốp tự nhiên do Bio Orthotics
+          International sản xuất là những dòng sản phẩm hỗ trợ vòm bàn
+          chân hiệu quả nhất trên thị trường hiện nay. Các sản phẩm này
+          được thiết kế với công nghệ tiên tiến, giúp giảm áp lực lên bàn
+          chân, phân bổ lực đồng đều và mang lại sự thoải mái tối đa cho
+          người sử dụng.
+          
+          Với chất liệu cao cấp, độ bền cao và khả năng kháng khuẩn, các
+          dòng tấm lót này không chỉ hỗ trợ điều trị các vấn đề về bàn
+          chân như bàn chân bẹt, đau gót chân, đau vòm chân mà còn phòng
+          ngừa tái phát và bảo vệ sức khỏe bàn chân lâu dài.
+          
+          Bio Orthotics International đã khẳng định được uy tín toàn cầu
+          trong lĩnh vực chỉnh hình bàn chân, mang đến giải pháp tối ưu
+          cho cả người lớn lẫn trẻ em, phù hợp với nhiều nhu cầu sử dụng
+          khác nhau từ đi lại hằng ngày đến vận động thể thao chuyên
+          nghiệp.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
             <div className="relative">
               <div
                 className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group"
