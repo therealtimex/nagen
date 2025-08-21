@@ -194,7 +194,7 @@ function EnhancedNavigation() {
   return (
     <>
       {/* Contact Info Bar */}
-      <div className="bg-blue-900 text-white py-2 text-sm">
+      <div className="bg-[#21395D] text-white py-2 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-6">
             <span className="flex items-center">
@@ -218,7 +218,7 @@ function EnhancedNavigation() {
       {/* Main Navigation */}
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+          isScrolled ? "bg-[#21395D]/95 backdrop-blur-md shadow-lg" : "bg-[#21395D]"
         } border-b border-gray-200 relative`}
       >
       <div className="absolute bottom-0 left-0 w-full h-[8px] flex">
@@ -1954,7 +1954,7 @@ function HomePageContent() {
       </section>
 
       {/* Footer */}
-     <footer className="bg-blue-900 text-white py-12 relative">
+     <footer className="bg-[#21395D] text-white py-12 relative">
        <div className="container mx-auto px-4">
          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
            <div>
