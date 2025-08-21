@@ -1472,7 +1472,7 @@ function HomePageContent() {
       {/* Optimized Hero Section */}
       <section
         id="home"
-        className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-red-600 text-white py-20 lg:py-32 overflow-hidden"
+        className="relative bg-[#21395D] text-white py-20 lg:py-32 overflow-hidden"
       >
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10">
