@@ -218,7 +218,7 @@ function EnhancedNavigation() {
       {/* Main Navigation */}
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-[#21395D]/95 backdrop-blur-md shadow-lg" : "bg-[#21395D]"
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
         } border-b border-gray-200 relative`}
       >
       <div className="absolute bottom-0 left-0 w-full h-[8px] flex">
