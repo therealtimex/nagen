@@ -1472,38 +1472,63 @@ function HomePageContent() {
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
 
-  <section
-  id="home"
-  className="relative bg-[#21395D] text-white py-20 lg:py-32 overflow-hidden"
->
-  <div className="absolute inset-0 bg-black/20"></div>
-  <div className="container mx-auto px-4 relative z-10">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
-      <div className="space-y-8">
-        <p className="text-base text-blue-100 leading-relaxed whitespace-pre-line">
-          Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance,
-          Silhouette, Đệm lót cao su xốp tự nhiên do Bio Orthotics
-          International sản xuất là những dòng sản phẩm hỗ trợ vòm bàn
-          chân hiệu quả nhất trên thị trường hiện nay. Các sản phẩm này
-          được thiết kế với công nghệ tiên tiến, giúp giảm áp lực lên bàn
-          chân, phân bổ lực đồng đều và mang lại sự thoải mái tối đa cho
-          người sử dụng.
-          
-          Với chất liệu cao cấp, độ bền cao và khả năng kháng khuẩn, các
-          dòng tấm lót này không chỉ hỗ trợ điều trị các vấn đề về bàn
-          chân như bàn chân bẹt, đau gót chân, đau vòm chân mà còn phòng
-          ngừa tái phát và bảo vệ sức khỏe bàn chân lâu dài.
-          
-          Bio Orthotics International đã khẳng định được uy tín toàn cầu
-          trong lĩnh vực chỉnh hình bàn chân, mang đến giải pháp tối ưu
-          cho cả người lớn lẫn trẻ em, phù hợp với nhiều nhu cầu sử dụng
-          khác nhau từ đi lại hằng ngày đến vận động thể thao chuyên
-          nghiệp.
-        </p>
-      </div>
+  export default function Page() {
+  return (
+    <div className="min-h-screen bg-white">
+      <EnhancedNavigation />
+
+      <section
+        id="home"
+        className="relative bg-[#21395D] text-white py-20 lg:py-32 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <p className="text-base text-blue-100 leading-relaxed whitespace-pre-line">
+                Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance,
+                Silhouette, Đệm lót cao su xốp tự nhiên do Bio Orthotics
+                International sản xuất là những những dòng sản phẩm hỗ trợ vòm
+                bàn chân hiệu quả nhất trên thị trường hiện nay. Khởi đầu cho
+                những dòng sản phẩm tuyệt vời này đến từ thiết kế của Georg
+                Alzner, một bác sĩ vật lý trị liệu được đào tạo tại Tây Đức và có
+                bằng về thiết kế giày chỉnh hình. Trong hơn 20 năm làm việc với
+                những người bị tật bệnh, ông đã đi đến kết luận rằng hầu hết các
+                cơn đau và sự khó chịu mà khách hàng của ông trải qua đều là do
+                các vấn đề liên quan đến bàn chân của họ. Tuy nhiên, ông thường
+                thấy rằng những đôi giày tùy chỉnh của mình không giúp ích cho
+                tất cả mọi người, vì vậy ông bắt đầu nghiên cứu sản phẩm tấm lót
+                hỗ trợ vòm bàn chân có thể sử dụng trong nhiều loại giày khác
+                nhau.
+                {"\n\n"}
+                Khi di cư đến Canada, ông tin rằng cuối cùng ông đã thiết kế được
+                một sản phẩm hỗ trợ vòm bàn chân có khả năng hỗ trợ tối ưu mà bấy
+                lâu nay mình mong muốn. Thiết kế mới của ông hỗ trợ cả bốn vòm
+                bàn chân và bao gồm các kênh luồng khí cung cấp khả năng thông gió
+                cho bề mặt gan bàn chân, giúp tăng đáng kể sự thoải mái cho người
+                sử dụng. Sau khi thử nghiệm và loại bỏ hàng tá các loại vật liệu
+                trước đó, ông đã tìm kiếm được vật liệu mà ông quyết định sử dụng,
+                cho phép phần hỗ trợ uốn cong, từ đó cho phép vòm di chuyển như
+                bình thường với mỗi bước đi. Sự kết hợp này khuyến khích chức năng
+                bàn chân hoạt động chính xác khi đi đứng và trong suốt chu kỳ đi
+                lại.
+                {"\n\n"}
+                Năm 1969, văn phòng cấp bằng sáng chế Canada đã đồng ý rằng sản
+                phẩm của ông thực sự độc đáo và cấp cho ông bằng sáng chế cho các
+                phần hỗ trợ vòm bàn chân. Tiếp sau đó, văn phòng cấp bằng sáng chế
+                Hoa Kỳ cũng đã công nhận sáng chế này vào năm 1970.
+                {"\n\n"}
+                Trải qua hơn 50 năm, thiết kế của Alzner đã chứng minh được tính
+                hiệu quả trong các nghiên cứu khoa học cũng như trong quá trình sử
+                dụng của hơn 4 triệu người dùng trên toàn thế giới.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
-</section>
+  );
+}
 
             <div className="relative">
               <div
