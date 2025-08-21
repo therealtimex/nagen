@@ -1472,8 +1472,7 @@ function HomePageContent() {
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
 
-  {/* Optimized Hero Section */}
-<section
+  <section
   id="home"
   className="relative bg-[#21395D] text-white py-20 lg:py-32 overflow-hidden"
 >
@@ -1505,6 +1504,7 @@ function HomePageContent() {
     </div>
   </div>
 </section>
+
             <div className="relative">
               <div
                 className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group"
