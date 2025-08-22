@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
-import Head from 'next/head';
+
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -13,47 +13,65 @@ import {
   Menu,
   ChevronDown,
   Zap,
-  Shield,
-  Truck,
-  Award,
-  MessageCircle,
-  Calendar,
-  CheckCircle,
-  Target,
-  Send,
+  ArrowRight,
   Facebook,
   Youtube,
   Instagram,
 } from "lucide-react";
-import { Button as CTAButton } from "@/components/ui/button";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { getImagePath, navigateTo } from "@/lib/utils";
-import FAQAccordion from '@/components/FAQAccordion';
-import NoSSRWrapper from "@/components/NoSSRWrapper";
 
-const FAQPage = () => {
-  const faqs = [
-    {
-      question: 'Hỗ trợ vòm bàn chân là gì?',
-      answer: 'Đệm lót vòm bàn chân là thiết bị hỗ trợ bàn chân được thiết kế đặc biệt, đeo bên trong giày.\n\nĐệm lót vòm bàn chân của chúng tôi được thiết kế theo cơ chế sinh học để định vị chính xác xương, dây chằng, cơ và gân của bàn chân, đồng thời hỗ trợ toàn bộ bốn vòm bàn chân.\n\nTư thế đúng rất quan trọng vì khi cơ thể được đặt đúng vị trí, nó có thể hoạt động hiệu quả hơn, giảm đau và mệt mỏi trong nhiều trường hợp, đồng thời tăng cường hiệu suất thể thao.',
-      image: "https://via.placeholder.com/200x150.png?text=Arch+Support",
-      description: "Thiết bị hỗ trợ bàn chân được thiết kế đặc biệt."
-    },
-    {
-      question: 'How do I use Nagen products?',
-      answer: 'You can use Nagen products by...',
-      image: "https://via.placeholder.com/200x150.png?text=How+to+Use",
-      description: "Learn how to use our products effectively."
-    },
-    {
-      question: 'What is the warranty policy?',
-      answer: 'The warranty policy covers...',
-      image: "https://via.placeholder.com/200x150.png?text=Warranty",
-      description: "Details about our warranty policy."
+// Enhanced Navigation with Submenus
+function EnhancedNavigation() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 50);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
     }
+  }, []);
+
+  const menuItems = [
+    {
+      name: "Sản phẩm",
+      href: "#products",
+      submenu: [
+        { name: "Sungen™", href: "#sungen" },
+        { name: "Winagen™", href: "#winagen" },
+        { name: "Softgen™", href: "#softgen" },
+        { name: "Endurance™", href: "#endurance" },
+        { name: "Silhouette™", href: "#silhouette" },
+        { name: "Đệm lót cao su tự nhiên", href: "#demlotcaosu" },
+      ],
+    },
+    { name: "Dịch vụ", href: "#services" },
+    { name: "Đại lý", href: "#dealers" },
+    { name: "Đối tác", href: "#partners" },
+    { name: "Giới thiệu", href: "#about" },
+    { name: "FAQs", href: "/faqs" },
+    { name: "Liên hệ", href: "#contact" },
   ];
+
+  const handleNavigation = (href: string) => {
+    const targetId = href.substring(1); // Remove the '#'
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   return (
     <>
+      {/* Contact Info Bar */}
       <div className="bg-[#21395D] text-white py-2 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-6">
@@ -75,8 +93,11 @@ const FAQPage = () => {
         </div>
       </div>
 
+      {/* Main Navigation */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 bg-white border-b border-gray-200 relative`}
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+        } border-b border-gray-200 relative`}
       >
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
@@ -89,6 +110,58 @@ const FAQPage = () => {
                 priority
               />
             </Link>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-8">
+              {menuItems.map((item) => (
+                <div
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => setActiveSubmenu(item.submenu ? item.name : null)}
+                  onMouseLeave={() => setActiveSubmenu(null)}
+                >
+                  <a
+                    href={item.href}
+                    className="text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation(item.href);
+                    }}
+                  >
+                    {item.name}
+                    {item.submenu && <ChevronDown className="w-4 h-4 ml-1" />}
+                  </a>
+
+                  {/* Submenu */}
+                  {item.submenu && activeSubmenu === item.name && (
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-2 z-50">
+                      {item.submenu.map((subItem) => (
+                        <a
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleNavigation(subItem.href);
+                          }}
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
+
+            {/* Mobile Navigation */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon" className="lg:hidden">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+            </Sheet>
           </div>
         </div>
         <div className="w-full h-[8px]">
@@ -96,29 +169,33 @@ const FAQPage = () => {
           <div className="bg-[#21395D] w-full !h-[8px] md:!h-[12px]"></div>
         </div>
       </header>
-    <div className="bg-white">
-      <div className="container mx-auto py-10">
-        <h1 className="text-3xl font-semibold text-blue-900 mb-5">Frequently Asked Questions</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <FAQAccordion faqs={faqs} />
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer className="bg-[#21395D] text-white py-12 relative">
+    </>
+  );
+}
+
+interface MainLayoutProps {
+  children: React.ReactNode;
+}
+
+const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+  return (
+    <div>
+      <EnhancedNavigation />
+      <main>{children}</main>
+      <footer className="bg-[#21395D] text-white py-12 relative">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
               <div className="text-3xl font-bold mb-4">
-                 <span className="text-white">NA</span>
-                 <span className="text-red-400">GE</span>
-                 <span className="text-white">N</span>
-               </div>
+                <span className="text-white">NA</span>
+                <span className="text-red-400">GE</span>
+                <span className="text-white">N</span>
+              </div>
               <p className="text-blue-200 mb-6">
                 Đối tác tin cậy trong việc chăm sóc sức khỏe bàn chân của bạn. Chất lượng - Uy tín - Chuyên nghiệp.
               </p>
 
+              {/* Social Media Links */}
               <div className="flex space-x-4">
                 <a
                   href="https://www.facebook.com/people/NAGEN/61576197860425/"
@@ -291,8 +368,8 @@ const FAQPage = () => {
           
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 
-export default FAQPage;
+export default MainLayout;
