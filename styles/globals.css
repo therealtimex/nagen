@@ -84,18 +84,6 @@ body {
   }
 }
 
-.slogan {
-  font-size: 1rem; /* Adjust to match menu item size */
-  text-align: center;
-  margin-top: 0.5rem; /* Add some spacing between logo and slogan */
-}
-
-@media (max-width: 768px) {
-  .slogan {
-    font-size: 0.875rem; /* Slightly smaller on mobile */
-  }
-}
-
 @layer base {
   * {
     @apply border-border;

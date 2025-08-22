@@ -193,7 +193,7 @@ function EnhancedNavigation() {
 
   return (
     <>
-      <!-- Contact Info Bar -->
+      {/* Contact Info Bar */}
       <div className="bg-[#21395D] text-white py-2 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-6">
@@ -215,11 +215,12 @@ function EnhancedNavigation() {
         </div>
       </div>
 
-      <!-- Main Navigation -->
+      {/* Main Navigation */}
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-        } border-b border-gray-200 relative`}>
+        } border-b border-gray-200 relative`}
+      >
       <div className="absolute bottom-0 left-0 w-full h-[8px] flex">
         <div className="bg-red-600 w-full !h-[8px] md:!h-[12px]"></div>
       </div>
@@ -235,7 +236,7 @@ function EnhancedNavigation() {
               />
             </Link>
 
-            <!-- Desktop Navigation -->
+            {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
               {menuItems.map((item) => (
                 <div
@@ -256,7 +257,7 @@ function EnhancedNavigation() {
                     {item.submenu && <ChevronDown className="w-4 h-4 ml-1" />}
                   </a>
 
-                  <!-- Submenu -->
+                  {/* Submenu */}
                   {item.submenu && activeSubmenu === item.name && (
                     <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-2 z-50">
                       {item.submenu.map((subItem) => (
@@ -278,7 +279,7 @@ function EnhancedNavigation() {
               ))}
             </nav>
 
-            <!-- Mobile Navigation -->
+            {/* Mobile Navigation */}
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="lg:hidden">
@@ -509,7 +510,7 @@ function EnhancedContactForm() {
       if (!formData.name.trim()) newErrors.name = "Vui lòng nhập họ tên"
       if (!formData.phone.trim()) newErrors.phone = "Vui lòng nhập số điện thoại"
       if (!formData.email.trim()) newErrors.email = "Vui lòng nhập email"
-      else if (!/\S+@\S+\.\S+/).test(formData.email)) newErrors.email = "Email không hợp lệ"
+      else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Email không hợp lệ"
     }
 
     if (step === 2) {
@@ -729,4 +730,1473 @@ function EnhancedContactForm() {
                   <input
                     type="checkbox"
                     className="rounded"
-                    value
+                    value="email"
+                    checked={formData.contactMethod.includes("email")}
+                    onChange={(e) => {
+                      const value = e.target.value
+                      const isChecked = e.target.checked
+                      setFormData((prev) => ({
+                        ...prev,
+                        contactMethod: isChecked
+                          ? [...prev.contactMethod, value]
+                          : prev.contactMethod.filter((method) => method !== value),
+                      }))
+                    }}
+                  />
+                  <span className="text-sm">Email</span>
+                </label>
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    className="rounded"
+                    value="phone"
+                    checked={formData.contactMethod.includes("phone")}
+                    onChange={(e) => {
+                      const value = e.target.value
+                      const isChecked = e.target.checked
+                      setFormData((prev) => ({
+                        ...prev,
+                        contactMethod: isChecked
+                          ? [...prev.contactMethod, value]
+                          : prev.contactMethod.filter((method) => method !== value),
+                      }))
+                    }}
+                  />
+                  <span className="text-sm">Điện thoại</span>
+                </label>
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    className="rounded"
+                    value="zalo"
+                    checked={formData.contactMethod.includes("zalo")}
+                    onChange={(e) => {
+                      const value = e.target.value
+                      const isChecked = e.target.checked
+                      setFormData((prev) => ({
+                        ...prev,
+                        contactMethod: isChecked
+                          ? [...prev.contactMethod, value]
+                          : prev.contactMethod.filter((method) => method !== value),
+                      }))
+                    }}
+                  />
+                  <span className="text-sm">Zalo</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {currentStep === 3 && (
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-blue-900">Xác nhận thông tin</h3>
+            <div className="bg-gray-50 p-6 rounded-lg space-y-3">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm text-gray-600">Họ tên:</p>
+                  <p className="font-medium">{formData.name}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Điện thoại:</p>
+                  <p className="font-medium">{formData.phone}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Email:</p>
+                  <p className="font-medium">{formData.email}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Dịch vụ:</p>
+                  <p className="font-medium">{formData.service}</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-sm text-gray-600">Tin nhắn:</p>
+                <p className="font-medium">{formData.message}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-600">Cách liên lạc ưu tiên:</p>
+                <p className="font-medium">{formData.contactMethod.join(", ")}</p>
+              </div>
+            </div>
+            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              <p className="text-sm text-blue-800">
+                <CheckCircle className="w-4 h-4 inline mr-2" />
+                Chúng tôi sẽ liên hệ lại trong vòng 24h để tư vấn miễn phí và đặt lịch hẹn phù hợp.
+              </p>
+            </div>
+          </div>
+        )}
+
+        <div className="flex justify-between pt-6 border-t">
+          {currentStep > 1 && (
+            <Button variant="outline" onClick={prevStep} disabled={isSubmitting}>
+              <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
+              Quay lại
+            </Button>
+          )}
+          <div className="ml-auto">
+            {currentStep < 3 ? (
+              <CTAButton onClick={nextStep}>
+                Tiếp tục
+                <ArrowRight className="w-4 h-4" />
+              </CTAButton>
+            ) : (
+              <CTAButton onClick={handleSubmit} disabled={isSubmitting}>
+                {isSubmitting ? "Đang gửi..." : "Gửi thông tin"}
+                {!isSubmitting && <CheckCircle className="w-4 h-4" />}
+              </CTAButton>
+            )}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+// Partner Registration Form Component
+function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
+  const [formData, setFormData] = useState<PartnerFormData>({
+    name: "",
+    phone: "",
+    email: "",
+    address: "",
+    experience: "",
+    investment: "",
+    message: "",
+    contactMethod: [],
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const [ctvValue, setCtvValue] = useState("")
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search)
+      const ctv = urlParams.get("ctv")
+      if (ctv) {
+        setCtvValue(ctv)
+      }
+    }
+  }, [])
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const submissionData = {
+        ...formData,
+        event: "partner",
+        ctv: ctvValue,
+        source_url: typeof window !== "undefined" ? window.location.href : "",
+      }
+
+      const response = await fetch(
+        "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_doitac/input",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submissionData),
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error("Có lỗi khi gửi dữ liệu")
+      }
+
+      const result = await response.json()
+      console.log("Response từ API:", result)
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error("Lỗi khi gửi request:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      address: "",
+      experience: "",
+      investment: "",
+      message: "",
+      contactMethod: [],
+    })
+    setIsSubmitted(false)
+    setIsSubmitting(false)
+  }
+
+  const handleClose = () => {
+    resetForm()
+    onClose()
+  }
+
+  if (!isOpen) return null
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4">
+      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        {isSubmitted ? (
+          <div className="p-8 text-center">
+            <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</h3>
+            <p className="text-gray-600 mb-4">Chúng tôi đã nhận được đăng ký đối tác của bạn.</p>
+            <p className="text-gray-600 mb-6">Đội ngũ NAGEN sẽ liên hệ với bạn trong vòng 24 giờ để tư vấn chi tiết.</p>
+            <CTAButton onClick={handleClose}>Đóng</CTAButton>
+          </div>
+        ) : (
+          <>
+            <div className="bg-red-600 text-white p-6 rounded-t-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-bold">Đăng ký làm đối tác</h3>
+                  <p className="text-red-100 mt-1">Tham gia mạng lưới đại lý NAGEN</p>
+                </div>
+                <Button variant="ghost" size="icon" onClick={handleClose} className="text-white hover:bg-red-700">
+                  ×
+                </Button>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-2 block">
+                    Họ và tên <span className="text-red-500">*</span>
+                  </label>
+                  <Input
+                    placeholder="Nhập họ và tên"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-2 block">
+                    Số điện thoại <span className="text-red-500">*</span>
+                  </label>
+                  <Input
+                    placeholder="Nhập số điện thoại"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <Input
+                  type="email"
+                  placeholder="Nhập địa chỉ email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">
+                  Địa chỉ <span className="text-red-500">*</span>
+                </label>
+                <Input
+                  placeholder="Nhập địa chỉ kinh doanh dự kiến"
+                  value={formData.address}
+                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Kinh nghiệm kinh doanh</label>
+                <select
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  value={formData.experience}
+                  onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                >
+                  <option value="">Chọn mức độ kinh nghiệm</option>
+                  <option value="new">Mới bắt đầu</option>
+                  <option value="1-3">1-3 năm</option>
+                  <option value="3-5">3-5 năm</option>
+                  <option value="5+">Trên 5 năm</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Vốn đầu tư dự kiến</label>
+                <select
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  value={formData.investment}
+                  onChange={(e) => setFormData({ ...formData, investment: e.target.value })}
+                >
+                  <option value="">Chọn mức vốn đầu tư</option>
+                  <option value="50-100">50-100 triệu</option>
+                  <option value="100-200">100-200 triệu</option>
+                  <option value="200-500">200-500 triệu</option>
+                  <option value="500+">Trên 500 triệu</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Tin nhắn</label>
+                <Textarea
+                  placeholder="Chia sẻ về kế hoạch kinh doanh và lý do muốn trở thành đối tác NAGEN"
+                  rows={4}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-3 block">Cách thức liên lạc ưu tiên</label>
+                <div className="flex gap-6">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      className="rounded border-gray-300"
+                      value="email"
+                      checked={formData.contactMethod.includes("email")}
+                      onChange={(e) => {
+                        const value = e.target.value
+                        const isChecked = e.target.checked
+                        setFormData((prev) => ({
+                          ...prev,
+                          contactMethod: isChecked
+                            ? [...prev.contactMethod, value]
+                            : prev.contactMethod.filter((method) => method !== value),
+                        }))
+                      }}
+                    />
+                    <span className="text-sm text-gray-700">Email</span>
+                  </label>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      className="rounded border-gray-300"
+                      value="phone"
+                      checked={formData.contactMethod.includes("phone")}
+                      onChange={(e) => {
+                        const value = e.target.value
+                        const isChecked = e.target.checked
+                        setFormData((prev) => ({
+                          ...prev,
+                          contactMethod: isChecked
+                            ? [...prev.contactMethod, value]
+                            : prev.contactMethod.filter((method) => method !== value),
+                        }))
+                      }}
+                    />
+                    <span className="text-sm text-gray-700">Điện thoại</span>
+                  </label>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <p className="text-xs text-gray-500 mb-4">
+                  Bằng việc gửi đăng ký, bạn đồng ý với{" "}
+                  <Link href="/terms-of-use" className="text-blue-600 hover:underline">
+                    điều khoản sử dụng
+                  </Link>{" "}
+                  và{" "}
+                  <Link href="/privacy-policy" className="text-blue-600 hover:underline">
+                    chính sách bảo mật
+                  </Link>{" "}
+                  của NAGEN.
+                </p>
+              </div>
+
+              <div className="flex gap-4 pt-6 border-t">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleClose}
+                  className="flex-1"
+                  disabled={isSubmitting}
+                >
+                  Hủy
+                </Button>
+                <CTAButton type="submit" className="flex-1" disabled={isSubmitting}>
+                  {isSubmitting ? "Đang gửi..." : "Gửi đăng ký"}
+                  {!isSubmitting && <Send className="w-4 h-4" />}
+                </CTAButton>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// Appointment Booking Form Component
+function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
+  const [formData, setFormData] = useState<AppointmentFormData>({
+    name: "",
+    birthDate: "",
+    phone: "",
+    address: "",
+    appointmentTime: "",
+    email: "",
+    shoeSize: "",
+    problems: "",
+    familyMembers: {
+      grandfather: 0,
+      grandmother: 0,
+      father: 0,
+      mother: 0,
+      children: 0,
+      others: 0,
+    },
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const [ctvValue, setCtvValue] = useState("")
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search)
+      const ctv = urlParams.get("ctv")
+      if (ctv) {
+        setCtvValue(ctv)
+      }
+    }
+  }, [])
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const submissionData = {
+        ...formData,
+        event: "dochan",
+        ctv: ctvValue,
+        source_url: typeof window !== "undefined" ? window.location.href : "",
+      }
+
+      const response = await fetch(
+        "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_datlich/input",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submissionData),
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error("Có lỗi khi gửi dữ liệu")
+      }
+
+      const result = await response.json()
+      console.log("Response từ API:", result)
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error("Lỗi khi gửi request:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleFamilyMemberChange = (member: FamilyMemberKey, value: string) => {
+    setFormData({
+      ...formData,
+      familyMembers: {
+        ...formData.familyMembers,
+        [member]: Math.max(0, Number.parseInt(value) || 0),
+      },
+    })
+  }
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      birthDate: "",
+      phone: "",
+      address: "",
+      appointmentTime: "",
+      email: "",
+      shoeSize: "",
+      problems: "",
+      familyMembers: {
+        grandfather: 0,
+        grandmother: 0,
+        father: 0,
+        mother: 0,
+        children: 0,
+        others: 0,
+      },
+    })
+    setIsSubmitted(false)
+    setIsSubmitting(false)
+  }
+
+  const handleClose = () => {
+    resetForm()
+    onClose()
+  }
+
+  if (!isOpen) return null
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4">
+      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        {isSubmitted ? (
+          <div className="p-8 text-center">
+            <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</h3>
+            <p className="text-gray-600 mb-4">Bạn hãy chuẩn bị trải nghiệm một khía cạnh mới của dịch vụ khách hàng.</p>
+            <p className="text-gray-600 mb-6">Chúng tôi ở đây để giúp đỡ và mong nhận được phản hồi từ bạn.</p>
+            <CTAButton onClick={handleClose}>Đóng</CTAButton>
+          </div>
+        ) : (
+          <>
+            <div className="bg-red-600 text-white p-6 rounded-t-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-bold">Đặt lịch đo chân</h3>
+                  <p className="text-red-100 mt-1">Đo vòm bàn chân chuyên nghiệp tại nhà</p>
+                </div>
+                <Button variant="ghost" size="icon" onClick={handleClose} className="text-white hover:bg-red-700">
+                  ×
+                </Button>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+              {/* Personal Information */}
+              <div className="space-y-4">
+                <h4 className="font-semibold text-blue-900 text-lg border-b pb-2">Thông tin cá nhân</h4>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      Họ và tên <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      placeholder="Nhập họ và tên"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      Ngày tháng năm sinh <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      type="date"
+                      value={formData.birthDate}
+                      onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      Số điện thoại <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      placeholder="Nhập số điện thoại"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      Email <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      type="email"
+                      placeholder="Nhập địa chỉ email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-2 block">
+                    Địa chỉ <span className="text-red-500">*</span>
+                  </label>
+                  <Input
+                    placeholder="Nhập địa chỉ chi tiết"
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    required
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      Thời gian hẹn đo vòm bàn chân <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      type="datetime-local"
+                      value={formData.appointmentTime}
+                      onChange={(e) => setFormData({ ...formData, appointmentTime: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      Size giày <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      value={formData.shoeSize}
+                      onChange={(e) => setFormData({ ...formData, shoeSize: e.target.value })}
+                      required
+                    >
+                      <option value="">Chọn size giày</option>
+                      {Array.from({ length: 20 }, (_, i) => i + 35).map((size) => (
+                        <option key={size} value={size}>
+                          {size}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-2 block">
+                    Hãy chia sẻ vấn đề bạn đang gặp phải (nếu có)
+                  </label>
+                  <Textarea
+                    placeholder="Mô tả chi tiết tình trạng bàn chân, cảm giác đau nhức, khó chịu..."
+                    rows={3}
+                    value={formData.problems}
+                    onChange={(e) => setFormData({ ...formData, problems: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              {/* Family Members Section */}
+              <div className="space-y-4">
+                <h4 className="font-semibold text-blue-900 text-lg border-b pb-2">Dịch vụ cho người thân</h4>
+                <p className="text-gray-600 text-sm">
+                  Chúng tôi rất vui, khi bạn cho phép chúng tôi hỗ trợ miễn phí đo vòm bàn chân cho người thân của bạn
+                  trong lịch hẹn lần này, vui lòng chọn mong muốn của bạn:
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  {(
+                    [
+                      { key: "grandfather", label: "Ông" },
+                      { key: "grandmother", label: "Bà" },
+                      { key: "father", label: "Bố" },
+                      { key: "mother", label: "Mẹ" },
+                      { key: "children", label: "Con" },
+                      { key: "others", label: "Khác" },
+                    ] as FamilyMemberItem[]
+                  ).map((member) => (
+                    <div key={member.key} className="flex items-center space-x-3">
+                      <label className="text-sm font-medium text-gray-700 min-w-[60px]">{member.label}:</label>
+                      <Input
+                        type="number"
+                        min="0"
+                        max="10"
+                        placeholder="0"
+                        value={formData.familyMembers[member.key] || ""}
+                        onChange={(e) => handleFamilyMemberChange(member.key, e.target.value)}
+                        className="w-20"
+                      />
+                      <span className="text-sm text-gray-500">người</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex gap-4 pt-6 border-t">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleClose}
+                  className="flex-1"
+                  disabled={isSubmitting}
+                >
+                  Hủy
+                </Button>
+                <CTAButton type="submit" className="flex-1" disabled={isSubmitting}>
+                  {isSubmitting ? "Đang gửi..." : "Đặt lịch hẹn"}
+                  {!isSubmitting && <Calendar className="w-4 h-4" />}
+                </CTAButton>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// Main Homepage Content Component
+function HomePageContent() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false)
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false)
+
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+  const handleHeroCTA = () => {
+    setIsAppointmentModalOpen(true)
+  }
+
+  const handlePlayVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.play()
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      <EnhancedNavigation />
+
+      {/* Optimized Hero Section */}
+      <section
+        id="home"
+        className="relative bg-[#21395D] text-white py-20 lg:py-32 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2">
+                ✨ Thương hiệu uy tín #1 Việt Nam
+              </Badge>
+              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                Chăm sóc bàn chân
+                <span className="text-red-300 block">chuyên nghiệp</span>
+              </h1>
+              <p className="text-xl text-blue-100 leading-relaxed max-w-lg">
+                Sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao, được nghiên cứu và phát triển bởi các chuyên gia
+                hàng đầu.
+              </p>
+
+              {/* Key Benefits */}
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Chứng nhận y tế</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Bảo hành 12 tháng</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Giao hàng 24h</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>Tư vấn miễn phí</span>
+                </div>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="flex items-center space-x-6 text-sm">
+                <div className="flex items-center space-x-2">
+                  <Users className="w-5 h-5 text-blue-300" />
+                  <span className="text-blue-200">10,000+ khách hàng tin tưởng</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Star className="w-5 h-5 text-yellow-400" />
+                  <span className="text-blue-200">4.9/5 đánh giá</span>
+                </div>
+              </div>
+
+              {/*
+              <CTAButton size="lg" onClick={handleHeroCTA}>
+                <Calendar className="w-5 h-5" />
+                Đặt lịch tư vấn miễn phí
+              </CTAButton>
+              */}
+            </div>
+
+            <div className="relative">
+              <div
+                className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group"
+                onClick={handlePlayVideo}
+              >
+                <div className="text-center">
+                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
+                    <Play className="w-10 h-10 text-white ml-1" />
+                  </div>
+                  <p className="text-white/90 font-medium">Video giới thiệu NAGEN</p>
+                  <p className="text-white/70 text-sm mt-1">2 phút • Xem ngay</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New Section: Product Image and Research */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <Image
+              src={getImagePath("/images/20200624_161136PS.webp")}
+              alt="Product Image"
+              width={800}
+              height={600}
+              className="mx-auto rounded-xl shadow-lg"
+              priority
+            />
+            <p className="text-gray-600 text-lg mt-8">
+              That design supports all four arches of the foot and helps control arch action. Every design element
+              supports the objective of guiding the foot into a more biomechanically efficient posture for maximum
+              performance and efficiency.
+              <br /><br />
+              A properly functioning arch improves balance, distributes pressure correctly over the sole of the foot and
+              allows the muscles, ligaments and tendons used during the gait cycle to work more efficiently.
+              <br /><br />
+              With a family of products like this, you can be sure that we have one that will fit you and your lifestyle
+              perfectly.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Highlights Section */}
+      <section id="products" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Sản phẩm nổi bật</h2>
+            <p className="text-gray-600 text-lg">Khám phá dòng sản phẩm chất lượng cao của NAGEN</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {productData.slice(0, 3).map((product) => (
+              <Card
+                key={product.id}
+                className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative"
+              >
+                {product.popular && (
+                  <Badge className="absolute top-4 left-4 z-10 bg-red-600 text-white">Bán chạy nhất</Badge>
+                )}
+                <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center relative overflow-hidden">
+                  <Image
+                    src={getImagePath(product.image)}
+                    alt={product.name}
+                    width={300}
+                    height={200}
+                    className="object-cover transition-transform duration-300 hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-blue-900">{product.name}</CardTitle>
+                  <CardDescription className="line-clamp-2">{product.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center justify-end mb-4">
+                    <div className="flex items-center space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                      <span className="text-sm text-gray-500 ml-1">({product.rating})</span>
+                    </div>
+                  </div>
+                  <CTAButton variant="secondary" className="w-full group" onClick={() => setSelectedProduct(product)}>
+                    Xem chi tiết
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </CTAButton>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-8">
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-bold text-blue-900 mb-2">Khám phá toàn bộ sản phẩm NAGEN</h3>
+              <p className="text-gray-600">Tìm hiểu thêm về các dòng sản phẩm chăm sóc bàn chân chuyên nghiệp</p>
+            </div>
+            <div className="flex justify-center">
+              <CTAButton
+                variant="primary"
+                size="lg"
+                className="w-full max-w-md group transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                onClick={() => navigateTo("/tat-ca-san-pham")}
+              >
+                Xem tất cả sản phẩm
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </CTAButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Testimonials */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <EnhancedFeedbackSlider />
+        </div>
+      </section>
+
+      {/* Services Preview */}
+      <section id="services" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <Badge className="bg-blue-100 text-blue-800">Dịch vụ chuyên nghiệp</Badge>
+              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Đo vòm bàn chân miễn phí tại nhà</h2>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Chúng tôi cung cấp dịch vụ đo vòm bàn chân chuyên nghiệp với công nghệ hiện đại, giúp bạn tìm được sản
+                phẩm phù hợp nhất.
+              </p>
+              <div className="space-y-4">
+                {[
+                  "Đo vòm bàn chân miễn phí",
+                  "Tư vấn sản phẩm phù hợp",
+                  "Dịch vụ tại nhà trong nội thành",
+                  "Hỗ trợ sau bán hàng 24/7",
+                ].map((service, index) => (
+                  <div key={index} className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-gray-700">{service}</span>
+                  </div>
+                ))}
+              </div>
+              <CTAButton size="lg" onClick={() => setIsAppointmentModalOpen(true)}>
+                <Calendar className="w-5 h-5" />
+                Đặt lịch đo chân
+              </CTAButton>
+            </div>
+            <div className="aspect-video bg-black/10 rounded-xl relative overflow-hidden">
+              <video
+                src="/images/do-vom-ban-chan-tai-nha.mp4"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover rounded-xl"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Store Locator Section - Now with Google Maps */}
+      <section id="dealers" className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Hệ thống đại lý NAGEN</h2>
+            <p className="text-gray-600 text-lg">Tìm đại lý gần bạn nhất để được tư vấn và trải nghiệm sản phẩm</p>
+          </div>
+
+          <DealerLocator />
+        </div>
+      </section>
+
+      {/* Partner Registration Section - Updated */}
+      <section id="partners" className="py-12 bg-gradient-to-br from-blue-50 to-red-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <Badge className="bg-red-100 text-red-800 mb-4">Cơ hội kinh doanh</Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Đối tác kinh doanh</h2>
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+              Tham gia mạng lưới đại lý NAGEN và cùng chúng tôi mang đến giải pháp chăm sóc bàn chân chất lượng cao cho
+              khách hàng trên toàn quốc
+            </p>
+          </div>
+
+          {/* 4-block grid layout */}
+          <div className="grid lg:grid-cols-2 gap-6">
+            {/* Top Left: Lợi ích đối tác */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-blue-900 flex items-center text-lg">
+                  <Award className="w-5 h-5 mr-2 text-red-600" />
+                  Lợi ích đối tác
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {[
+                  {
+                    icon: Target,
+                    title: "Thị trường tiềm năng lớn",
+                    desc: "Ngành chăm sóc sức khỏe đang phát triển mạnh mẽ",
+                  },
+                  {
+                    icon: Shield,
+                    title: "Sản phẩm chất lượng cao",
+                    desc: "Được chứng nhận y tế, tin cậy từ hàng nghìn khách hàng",
+                  },
+                  {
+                    icon: Users,
+                    title: "Hỗ trợ toàn diện",
+                    desc: "Đào tạo chuyên nghiệp, marketing và hỗ trợ kinh doanh",
+                  },
+                  {
+                    icon: Zap,
+                    title: "Lợi nhuận hấp dẫn",
+                    desc: "Chính sách chiết khấu cạnh tranh và thưởng doanh số",
+                  },
+                ].map((benefit, index) => (
+                  <div key={index} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0">
+                      <benefit.icon className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-900 mb-1 text-sm">{benefit.title}</h4>
+                      <p className="text-gray-600 text-xs">{benefit.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Top Right: Yêu cầu đối tác */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-blue-900 flex items-center text-lg">
+                  <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
+                  Yêu cầu đối tác
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 gap-3">
+                  {[
+                    "Có kinh nghiệm kinh doanh",
+                    "Vị trí kinh doanh thuận lợi",
+                    "Cam kết dài hạn",
+                    "Đầu tư ban đầu từ 50 triệu",
+                    "Đội ngũ nhân viên tận tâm",
+                    "Tuân thủ tiêu chuẩn NAGEN",
+                  ].map((requirement, index) => (
+                    <div key={index} className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm">{requirement}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Bottom Left: Quy trình */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-blue-900 text-lg">Quy trình trở thành đối tác</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {[
+                    "Đăng ký thông tin và gửi hồ sơ",
+                    "Tư vấn và đánh giá năng lực",
+                    "Ký kết hợp đồng đối tác",
+                    "Đào tạo và hỗ trợ khởi nghiệp",
+                    "Chính thức hoạt động kinh doanh",
+                  ].map((step, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div className="w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
+                        {index + 1}
+                      </div>
+                      <span className="text-gray-700 text-sm">{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Bottom Right: Đăng ký */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-blue-900 text-lg">Đăng ký đối tác</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-gray-600 mb-6 text-sm">
+                  Tham gia cùng NAGEN để xây dựng một tương lai thành công trong ngành chăm sóc sức khỏe bàn chân.
+                </p>
+                <CTAButton size="lg" onClick={() => setIsPartnerModalOpen(true)} className="w-full mb-4">
+                  <Send className="w-5 h-5" />
+                  Đăng ký ngay
+                </CTAButton>
+                <div className="text-xs text-gray-500 space-y-1">
+                  <p className="flex items-center justify-center">
+                    <Phone className="w-3 h-3 mr-1 text-blue-600" />
+                    024 35632008
+                  </p>
+                  <p className="flex items-center justify-center">
+                    <Mail className="w-3 h-3 mr-1 text-blue-600" />
+                    nagen@nagen.vn
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <Badge className="bg-blue-100 text-blue-800">Về chúng tôi</Badge>
+              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">NAGEN - Chăm sóc bàn chân chuyên nghiệp</h2>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Với sứ mệnh mang đến sức khỏe và sự thoải mái cho đôi chân của bạn, NAGEN không ngừng nghiên cứu và phát
+                triển các sản phẩm chất lượng cao, được chứng nhận bởi các chuyên gia hàng đầu.
+              </p>
+              <div className="space-y-4">
+                {[
+                  "Sản phẩm chất lượng cao",
+                  "Đội ngũ chuyên gia giàu kinh nghiệm",
+                  "Dịch vụ tận tâm, chu đáo",
+                  "Giá cả hợp lý",
+                ].map((benefit, index) => (
+                  <div key={index} className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-gray-700">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+              <CTAButton
+                size="lg"
+                className="group transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                onClick={() => navigateTo("/gioi-thieu-nagen")}
+              >
+                Tìm hiểu thêm về NAGEN
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </CTAButton>
+            </div>
+            <div className="aspect-video bg-black/10 rounded-xl flex items-center justify-center relative overflow-hidden">
+              <Image
+                src={getImagePath("/images/cham-soc-ban-chan-chuyen-nghiep.png")}
+                alt="About NAGEN"
+                width={600}
+                height={400}
+                className="object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="contact" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">Liên hệ với chúng tôi</h2>
+              <p className="text-gray-600 text-lg mb-8">
+                Đội ngũ chuyên gia NAGEN luôn sẵn sàng tư vấn và hỗ trợ bạn tìm được giải pháp phù hợp nhất.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-blue-900">Hotline 24/7</h4>
+                    <p className="text-gray-600">024 35632008</p>
+                    <p className="text-sm text-gray-500">Miễn phí cuộc gọi</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-blue-900">Email hỗ trợ</h4>
+                    <p className="text-gray-600">nagen@nagen.vn</p>
+                    <p className="text-sm text-gray-500">Phản hồi trong 2h</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-blue-900">Trụ sở chính</h4>
+                    <p className="text-gray-600">
+                      Tầng 7, Tòa VP-1, Suntquare Building
+                      <br />
+                      Số 21 Lê Đức Thọ, Mỹ Đình 2, Nam Từ Liêm, Hà Nội
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <EnhancedContactForm />
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+     <footer className="bg-[#21395D] text-white py-12 relative">
+       <div className="container mx-auto px-4">
+         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+           <div>
+             <div className="text-3xl font-bold mb-4">
+                <span className="text-white">NA</span>
+                <span className="text-red-400">GE</span>
+                <span className="text-white">N</span>
+              </div>
+              <p className="text-blue-200 mb-6">
+                Đối tác tin cậy trong việc chăm sóc sức khỏe bàn chân của bạn. Chất lượng - Uy tín - Chuyên nghiệp.
+              </p>
+
+              {/* Social Media Links */}
+              <div className="flex space-x-4">
+                <a
+                  href="https://www.facebook.com/people/NAGEN/61576197860425/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors hover:scale-110 cursor-pointer"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5 text-white" />
+                </a>
+                <a
+                  href="https://www.youtube.com/@nagenvn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors hover:scale-110 cursor-pointer"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="w-5 h-5 text-white" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@nagenvn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors hover:scale-110 cursor-pointer"
+                  aria-label="TikTok"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+                    <path d="M9 4.58A4.56 4.56 0 0 0 6.43 7.13 4.56 4.56 0 0 0 4 9.71a4.56 4.56 0 0 0 2.43 2.55 4.56 4.56 0 0 0 2.57 1.21v-4.58a4.58 4.58 0 0 1 4.58-4.58h2.29V15a2.29 2.29 0 0 1-2.29 2.29H9v-4.58a2.29 2.29 0 0 0-2.29-2.29h-2.29v-2.29h2.29A2.29 2.29 0 0 1 9 4.58z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://instagram.com/nagen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors hover:scale-110 cursor-pointer"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5 text-white" />
+                </a>
+                <a
+                  href="https://zalo.me/nagen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors hover:scale-110 cursor-pointer"
+                  aria-label="Zalo"
+                >
+                  <Zap className="w-5 h-5 text-white" />
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Sản phẩm</h3>
+              <ul className="space-y-2 text-blue-200">
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    {/*<ArrowRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />*/}
+                    Sungen™
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=winagen")}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Winagen™
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Softgen™
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=endurance")}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Endurance™
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=silhouette")}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Silhouette™
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Hỗ trợ</h3>
+              <ul className="space-y-2 text-blue-200">
+                {/*
+                 <li>
+                  <a
+                    href="#"
+                    onClick={() => {
+                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                    }}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Tư vấn sản phẩm
+                  </a>
+                </li>
+                */}
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/huong-dan-su-dung")}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Hướng dẫn sử dụng
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => {
+                      navigateTo("/chinh-sach-bao-hanh")
+                    }}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Chính sách bảo hành
+                  </a>
+                </li>
+                {/*
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => setIsAppointmentModalOpen(true)}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Hỗ trợ khách hàng
+                  </a>
+                </li>
+                */}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Pháp lý</h3>
+              <ul className="space-y-2 text-blue-200">
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Chính sách bảo mật
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms-of-use"
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Điều khoản sử dụng
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/chinh-sach-doi-tra")}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Chính sách đổi trả
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/chinh-sach-van-chuyen")}
+                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Chính sách vận chuyển
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* <div className="border-t border-blue-800 mt-8 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-blue-200 text-sm">&copy; 2025 NAGEN. Tất cả quyền được bảo lưu.</p>
+              <div className="flex items-center space-x-4 mt-4 md:mt-0">
+                <p className="text-blue-200 text-sm">Được thiết kế với ❤️ tại Việt Nam</p>
+              </div>
+            </div>
+          </div> */}
+        </div>
+      </footer>
+
+      {/* Modals */}
+      <AppointmentBookingForm isOpen={isAppointmentModalOpen} onClose={() => setIsAppointmentModalOpen(false)} />
+      <PartnerRegistrationForm isOpen={isPartnerModalOpen} onClose={() => setIsPartnerModalOpen(false)} />
+      {selectedProduct && (
+        <ProductDetailModal
+          product={selectedProduct}
+          isOpen={!!selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
+    </div>
+  )
+}
+
+// Main HomePage Component with NoSSRWrapper
+const HomePage = () => (
+  <>
+    <Head>
+      <title>NAGEN</title>
+    </Head>
+    <NoSSRWrapper>
+      <HomePageContent />
+    </NoSSRWrapper>
+  </>
+)
+
+export default HomePage
