@@ -235,9 +235,6 @@ function EnhancedNavigation() {
                 priority
               />
             </Link>
-            <div className="slogan text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center text-red-600 justify-center">
-              NUÔI DƯỠNG BƯỚC CHÂN
-            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
