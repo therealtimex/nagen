@@ -223,6 +223,7 @@ function EnhancedNavigation() {
       >
       <div className="absolute bottom-0 left-0 w-full h-[8px] flex">
         <div className="bg-red-600 w-full !h-[8px] md:!h-[12px]"></div>
+        <div className="bg-[#21395D] w-full !h-[8px] md:!h-[12px]"></div>
       </div>
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
@@ -326,6 +327,7 @@ function EnhancedNavigation() {
         </div>
         <div className="absolute bottom-0 left-0 w-full h-[8px] flex">
           <div className="bg-red-600 w-full !h-[8px] md:!h-[12px]"></div>
+          <div className="bg-[#21395D] w-full !h-[8px] md:!h-[12px]"></div>
         </div>
       </header>
     </>
