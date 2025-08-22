@@ -221,10 +221,6 @@ function EnhancedNavigation() {
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
         } border-b border-gray-200 relative`}
       >
-      <div className="absolute bottom-0 left-0 w-full h-[8px] flex">
-        <div className="bg-red-600 w-full !h-[8px] md:!h-[12px]"></div>
-        <div className="bg-[#21395D] w-full !h-[8px] md:!h-[12px]"></div>
-      </div>
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
@@ -325,7 +321,7 @@ function EnhancedNavigation() {
             </Sheet>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-[8px] flex">
+        <div className="w-full h-[8px]">
           <div className="bg-red-600 w-full !h-[8px] md:!h-[12px]"></div>
           <div className="bg-[#21395D] w-full !h-[8px] md:!h-[12px]"></div>
         </div>
