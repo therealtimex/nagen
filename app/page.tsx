@@ -1478,34 +1478,30 @@ function HomePageContent() {
               <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2">
                 ✨ Thương hiệu uy tín #1 Việt Nam
               </Badge>
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                Chăm sóc bàn chân
-                <span className="text-red-300 block">chuyên nghiệp</span>
-              </h1>
-              <p className="text-xl text-blue-100 leading-relaxed max-w-lg">
-                Sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao, được nghiên cứu và phát triển bởi các chuyên gia
-                hàng đầu.
+              <p className="text-lg text-blue-100 leading-relaxed max-w-md text-justify">
+                Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance, Silhouette, Đệm lót cao
+                su xốp tự nhiên do Bio Orthotics International sản xuất là những những dòng sản phẩm hỗ trợ
+                vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Khởi đầu cho những dòng sản phẩm tuyệt
+                vời này đến từ thiết kế của Georg Alzner, một bác sĩ vật lý trị liệu được đào tạo tại Tây Đức và
+                có bằng về thiết kế giày chỉnh hình. Trong hơn 20 năm làm việc với những người bị tật bệnh,
+                ông đã đi đến kết luận rằng hầu hết các cơn đau và sự khó chịu mà khách hàng của ông trải qua
+                đều là do các vấn đề liên quan đến bàn chân của họ. Tuy nhiên, ông thường thấy rằng những
+                đôi giày tùy chỉnh của mình không giúp ích cho tất cả mọi người, vì vậy ông bắt đầu nghiên
+                cứu sản phẩm tấm lót hỗ trợ vòm bàn chân có thể sử dụng trong nhiều loại giày khác nhau.
+                Khi di cư đến Canada, ông tin rằng cuối cùng ông đã thiết kế được một sản phẩm hỗ trợ vòm
+                bàn chân có khả năng hỗ trợ tối ưu mà bấy lâu nay mình mong muốn. Thiết kế mới của ông hỗ
+                trợ cả bốn vòm bàn chân và bao gồm các kênh luồng khí cung cấp khả năng thông gió cho bề
+                mặt gan bàn chân, giúp tăng đáng kể sự thoải mái cho người sử dụng. Sau khi thử nghiệm và
+                loại bỏ hàng tá các loại vật liệu trước đó, ông đã tìm kiếm được vật liệu mà ông quyết định sử
+                dụng, cho phép phần hỗ trợ uốn cong, từ đó cho phép vòm di chuyển như bình thường với mỗi
+                bước đi. Sự kết hợp này khuyến khích chức năng bàn chân hoạt động chính xác khi đi đứng và
+                trong suốt chu kỳ đi lại. Năm 1969, văn phòng cấp bằng sáng chế Canada đã đồng ý rằng sản
+                phẩm của ông thực sự độc đáo và cấp cho ông bằng sáng chế cho các phần hỗ trợ vòm bàn
+                chân. Tiếp sau đó, văn phòng cấp bằng sáng chế Hoa Kỳ cũng đã công nhận sáng chế này vào
+                năm 1970.
+                Trải qua hơn 50 năm, thiết kế của Alzner đã chứng minh được tính hiệu quả trong các nghiên
+                cứu khoa học cũng như trong quá trình sử dụng của hơn 4 triệu ngươi dùng trên toàn thế giới.
               </p>
-
-              {/* Key Benefits */}
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Chứng nhận y tế</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Bảo hành 12 tháng</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Giao hàng 24h</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Tư vấn miễn phí</span>
-                </div>
-              </div>
 
               {/* Trust Indicators */}
               <div className="flex items-center space-x-6 text-sm">
@@ -1518,18 +1514,11 @@ function HomePageContent() {
                   <span className="text-blue-200">4.9/5 đánh giá</span>
                 </div>
               </div>
-
-              {/*
-              <CTAButton size="lg" onClick={handleHeroCTA}>
-                <Calendar className="w-5 h-5" />
-                Đặt lịch tư vấn miễn phí
-              </CTAButton>
-              */}
             </div>
 
             <div className="relative">
               <div
-                className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group"
+                className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group w-full md:w-auto"
                 onClick={handlePlayVideo}
               >
                 <div className="text-center">
