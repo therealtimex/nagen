@@ -1832,6 +1832,9 @@ function HomePageContent() {
       </section>
 
       {/* Footer */}
+{/* Horizontal Lines */}
+      <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+      <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
      <footer className="bg-[#21395D] text-white py-12 relative">
        <div className="container mx-auto px-4">
          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
