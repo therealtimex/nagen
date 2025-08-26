@@ -1475,30 +1475,35 @@ function HomePageContent() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <p className="text-lg text-blue-100 leading-relaxed max-w-md text-justify">
-                Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance, Silhouette, Đệm lót cao
-                su xốp tự nhiên do Bio Orthotics International sản xuất là những những dòng sản phẩm hỗ trợ
-                vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Khởi đầu cho những dòng sản phẩm tuyệt
-                vời này đến từ thiết kế của Georg Alzner, một bác sĩ vật lý trị liệu được đào tạo tại Tây Đức và
-                có bằng về thiết kế giày chỉnh hình. Trong hơn 20 năm làm việc với những người bị tật bệnh,
-                ông đã đi đến kết luận rằng hầu hết các cơn đau và sự khó chịu mà khách hàng của ông trải qua
-                đều là do các vấn đề liên quan đến bàn chân của họ. Tuy nhiên, ông thường thấy rằng những
-                đôi giày tùy chỉnh của mình không giúp ích cho tất cả mọi người, vì vậy ông bắt đầu nghiên
-                cứu sản phẩm tấm lót hỗ trợ vòm bàn chân có thể sử dụng trong nhiều loại giày khác nhau.
-                Khi di cư đến Canada, ông tin rằng cuối cùng ông đã thiết kế được một sản phẩm hỗ trợ vòm
-                bàn chân có khả năng hỗ trợ tối ưu mà bấy lâu nay mình mong muốn. Thiết kế mới của ông hỗ
-                trợ cả bốn vòm bàn chân và bao gồm các kênh luồng khí cung cấp khả năng thông gió cho bề
-                mặt gan bàn chân, giúp tăng đáng kể sự thoải mái cho người sử dụng. Sau khi thử nghiệm và
-                loại bỏ hàng tá các loại vật liệu trước đó, ông đã tìm kiếm được vật liệu mà ông quyết định sử
-                dụng, cho phép phần hỗ trợ uốn cong, từ đó cho phép vòm di chuyển như bình thường với mỗi
-                bước đi. Sự kết hợp này khuyến khích chức năng bàn chân hoạt động chính xác khi đi đứng và
-                trong suốt chu kỳ đi lại. Năm 1969, văn phòng cấp bằng sáng chế Canada đã đồng ý rằng sản
-                phẩm của ông thực sự độc đáo và cấp cho ông bằng sáng chế cho các phần hỗ trợ vòm bàn
-                chân. Tiếp sau đó, văn phòng cấp bằng sáng chế Hoa Kỳ cũng đã công nhận sáng chế này vào
-                năm 1970.
-                Trải qua hơn 50 năm, thiết kế của Alzner đã chứng minh được tính hiệu quả trong các nghiên
-                cứu khoa học cũng như trong quá trình sử dụng của hơn 4 triệu ngươi dùng trên toàn thế giới.
-              </p>
+                          <p className="text-lg text-blue-100 leading-relaxed max-w-prose text-justify">
+                            Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance, Silhouette, Đệm lót cao
+                            su xốp tự nhiên do Bio Orthotics International sản xuất là những những dòng sản phẩm hỗ trợ
+                            vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Khởi đầu cho những dòng sản phẩm tuyệt
+                            vời này đến từ thiết kế của Georg Alzner, một bác sĩ vật lý trị liệu được đào tạo tại Tây Đức và
+                            có bằng về thiết kế giày chỉnh hình. Trong hơn 20 năm làm việc với những người bị tật bệnh,
+                            ông đã đi đến kết luận rằng hầu hết các cơn đau và sự khó chịu mà khách hàng của ông trải qua
+                            đều là do các vấn đề liên quan đến bàn chân của họ. Tuy nhiên, ông thường thấy rằng những
+                            đôi giày tùy chỉnh của mình không giúp ích cho tất cả mọi người, vì vậy ông bắt đầu nghiên
+                            cứu sản phẩm tấm lót hỗ trợ vòm bàn chân có thể sử dụng trong nhiều loại giày khác nhau.
+                          </p>
+                          <p className="text-lg text-blue-100 leading-relaxed max-w-prose text-justify">
+                            Khi di cư đến Canada, ông tin rằng cuối cùng ông đã thiết kế được một sản phẩm hỗ trợ vòm
+                            bàn chân có khả năng hỗ trợ tối ưu mà bấy lâu nay mình mong muốn. Thiết kế mới của ông hỗ
+                            trợ cả bốn vòm bàn chân và bao gồm các kênh luồng khí cung cấp khả năng thông gió cho bề
+                            mặt gan bàn chân, giúp tăng đáng kể sự thoải mái cho người sử dụng. Sau khi thử nghiệm và
+                            loại bỏ hàng tá các loại vật liệu trước đó, ông đã tìm kiếm được vật liệu mà ông quyết định sử
+                            dụng, cho phép phần hỗ trợ uốn cong, từ đó cho phép vòm di chuyển như bình thường với mỗi
+                            bước đi. Sự kết hợp này khuyến khích chức năng bàn chân hoạt động chính xác khi đi đứng và
+                            trong suốt chu kỳ đi lại.
+                          </p>
+                          <p className="text-lg text-blue-100 leading-relaxed max-w-prose text-justify">
+                            Năm 1969, văn phòng cấp bằng sáng chế Canada đã đồng ý rằng sản
+                            phẩm của ông thực sự độc đáo và cấp cho ông bằng sáng chế cho các phần hỗ trợ vòm bàn
+                            chân. Tiếp sau đó, văn phòng cấp bằng sáng chế Hoa Kỳ cũng đã công nhận sáng chế này vào
+                            năm 1970.
+                            Trải qua hơn 50 năm, thiết kế của Alzner đã chứng minh được tính hiệu quả trong các nghiên
+                            cứu khoa học cũng như trong quá trình sử dụng của hơn 4 triệu ngươi dùng trên toàn thế giới.
+                          </p>
 
               {/* Trust Indicators */}
               <div>
@@ -1904,7 +1909,7 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-[#21395D]">Sản phẩm</h3>
+              <h3 className="font-semibold mb-4 text-red-600">Sản phẩm</h3>
               <ul className="space-y-2 text-[#21395D]">
                 <li>
                   <a
@@ -1956,7 +1961,7 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-[#21395D]">Hỗ trợ</h3>
+              <h3 className="font-semibold mb-4 text-red-600">Hỗ trợ</h3>
               <ul className="space-y-2 text-[#21395D]">
                 {/*
                  <li>
@@ -2006,7 +2011,7 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-[#21395D]">Pháp lý</h3>
+              <h3 className="font-semibold mb-4 text-red-600">Pháp lý</h3>
               <ul className="space-y-2 text-[#21395D]">
                 <li>
                   <Link
