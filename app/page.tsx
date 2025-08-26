@@ -1835,18 +1835,21 @@ function HomePageContent() {
 {/* Horizontal Lines */}
       <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
       <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-     <footer className="bg-[#21395D] text-white py-12 relative">
+     <footer className="bg-[#FFFFFF] text-white py-12 relative">
        <div className="container mx-auto px-4">
          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
            <div>
-             <div className="text-3xl font-bold mb-4">
-                <span className="text-white">NA</span>
-                <span className="text-red-400">GE</span>
-                <span className="text-white">N</span>
-              </div>
-              <p className="text-blue-200 mb-6">
-                Đối tác tin cậy trong việc chăm sóc sức khỏe bàn chân của bạn. Chất lượng - Uy tín - Chuyên nghiệp.
-              </p>
+             <Image
+               src="/images/logo_ngang.png"
+               alt="NAGEN Logo"
+               width={250}
+               height={50}
+               className="mb-4"
+               priority
+             />
+             <p className="text-[#21395D] mb-6">
+               Đối tác tin cậy trong việc chăm sóc sức khỏe bàn chân của bạn. Chất lượng - Uy tín - Chuyên nghiệp.
+             </p>
 
               {/* Social Media Links */}
               <div className="flex space-x-4">
@@ -1901,8 +1904,8 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Sản phẩm</h3>
-              <ul className="space-y-2 text-blue-200">
+              <h3 className="font-semibold mb-4 text-[#21395D]">Sản phẩm</h3>
+              <ul className="space-y-2 text-[#21395D]">
                 <li>
                   <a
                     href="#"
@@ -1953,8 +1956,8 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Hỗ trợ</h3>
-              <ul className="space-y-2 text-blue-200">
+              <h3 className="font-semibold mb-4 text-[#21395D]">Hỗ trợ</h3>
+              <ul className="space-y-2 text-[#21395D]">
                 {/*
                  <li>
                   <a
@@ -2003,8 +2006,8 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Pháp lý</h3>
-              <ul className="space-y-2 text-blue-200">
+              <h3 className="font-semibold mb-4 text-[#21395D]">Pháp lý</h3>
+              <ul className="space-y-2 text-[#21395D]">
                 <li>
                   <Link
                     href="/privacy-policy"
