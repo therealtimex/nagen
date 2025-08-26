@@ -1475,9 +1475,6 @@ function HomePageContent() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2">
-                ✨ Thương hiệu uy tín #1 Việt Nam
-              </Badge>
               <p className="text-lg text-blue-100 leading-relaxed max-w-md text-justify">
                 Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance, Silhouette, Đệm lót cao
                 su xốp tự nhiên do Bio Orthotics International sản xuất là những những dòng sản phẩm hỗ trợ
@@ -1504,15 +1501,7 @@ function HomePageContent() {
               </p>
 
               {/* Trust Indicators */}
-              <div className="flex items-center space-x-6 text-sm">
-                <div className="flex items-center space-x-2">
-                  <Users className="w-5 h-5 text-blue-300" />
-                  <span className="text-blue-200">10,000+ khách hàng tin tưởng</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Star className="w-5 h-5 text-yellow-400" />
-                  <span className="text-blue-200">4.9/5 đánh giá</span>
-                </div>
+              <div>
               </div>
             </div>
 
