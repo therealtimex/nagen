@@ -81,6 +81,10 @@ export default function AboutNAGENPage() {
           </div>
         </div>
       </header>
+      <div className="w-full h-[8px]">
+        <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+        <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+      </div>
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-red-600 text-white py-4 lg:py-8 overflow-hidden">

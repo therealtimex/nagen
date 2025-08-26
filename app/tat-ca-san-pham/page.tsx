@@ -272,7 +272,10 @@ export default function AllProductsPage() {
           </div>
         </div>
       </header>
-
+      <div className="w-full h-[8px]">
+        <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+        <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+      </div>
       {/* Hero Section - Reduced Height */}
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-red-600 text-white py-8 lg:py-12">
         <div className="container mx-auto px-4">

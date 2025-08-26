@@ -321,8 +321,8 @@ function EnhancedNavigation() {
           </div>
         </div>
         <div className="w-full h-[8px]">
-          <div className="bg-red-600 w-full !h-[8px] md:!h-[12px]"></div>
-          <div className="bg-[#21395D] w-full !h-[8px] md:!h-[12px]"></div>
+          <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+          <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
         </div>
       </header>
     </>
