@@ -172,7 +172,6 @@ function EnhancedNavigation() {
       ],
     },
     { name: "Dịch vụ", href: "#services" },
-    { name: "Đại lý", href: "#dealers" },
     { name: "Đối tác", href: "#partners" },
     { name: "Giới thiệu", href: "#about" },
     { name: "FAQs", href: "/faqs" },
@@ -217,7 +216,7 @@ function EnhancedNavigation() {
 
       {/* Main Navigation */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 z-[1001] transition-all duration-300 ${
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
         } border-b border-gray-200 relative`}
       >
@@ -1721,129 +1720,32 @@ function HomePageContent() {
             </p>
           </div>
 
-          {/* 4-block grid layout */}
-          <div className="grid lg:grid-cols-2 gap-6">
-            {/* Top Left: Lợi ích đối tác */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-blue-900 flex items-center text-lg">
-                  <Award className="w-5 h-5 mr-2 text-red-600" />
-                  Lợi ích đối tác
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {[
-                  {
-                    icon: Target,
-                    title: "Thị trường tiềm năng lớn",
-                    desc: "Ngành chăm sóc sức khỏe đang phát triển mạnh mẽ",
-                  },
-                  {
-                    icon: Shield,
-                    title: "Sản phẩm chất lượng cao",
-                    desc: "Được chứng nhận y tế, tin cậy từ hàng nghìn khách hàng",
-                  },
-                  {
-                    icon: Users,
-                    title: "Hỗ trợ toàn diện",
-                    desc: "Đào tạo chuyên nghiệp, marketing và hỗ trợ kinh doanh",
-                  },
-                  {
-                    icon: Zap,
-                    title: "Lợi nhuận hấp dẫn",
-                    desc: "Chính sách chiết khấu cạnh tranh và thưởng doanh số",
-                  },
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0">
-                      <benefit.icon className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-blue-900 mb-1 text-sm">{benefit.title}</h4>
-                      <p className="text-gray-600 text-xs">{benefit.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Top Right: Yêu cầu đối tác */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-blue-900 flex items-center text-lg">
-                  <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
-                  Yêu cầu đối tác
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 gap-3">
-                  {[
-                    "Có kinh nghiệm kinh doanh",
-                    "Vị trí kinh doanh thuận lợi",
-                    "Cam kết dài hạn",
-                    "Đầu tư ban đầu từ 50 triệu",
-                    "Đội ngũ nhân viên tận tâm",
-                    "Tuân thủ tiêu chuẩn NAGEN",
-                  ].map((requirement, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">{requirement}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Bottom Left: Quy trình */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-blue-900 text-lg">Quy trình trở thành đối tác</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {[
-                    "Đăng ký thông tin và gửi hồ sơ",
-                    "Tư vấn và đánh giá năng lực",
-                    "Ký kết hợp đồng đối tác",
-                    "Đào tạo và hỗ trợ khởi nghiệp",
-                    "Chính thức hoạt động kinh doanh",
-                  ].map((step, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <div className="w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
-                        {index + 1}
-                      </div>
-                      <span className="text-gray-700 text-sm">{step}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Bottom Right: Đăng ký */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-blue-900 text-lg">Đăng ký đối tác</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-gray-600 mb-6 text-sm">
-                  Tham gia cùng NAGEN để xây dựng một tương lai thành công trong ngành chăm sóc sức khỏe bàn chân.
-                </p>
-                <CTAButton size="lg" onClick={() => setIsPartnerModalOpen(true)} className="w-full mb-4">
-                  <Send className="w-5 h-5" />
-                  Đăng ký ngay
-                </CTAButton>
-                <div className="text-xs text-gray-500 space-y-1">
-                  <p className="flex items-center justify-center">
-                    <Phone className="w-3 h-3 mr-1 text-blue-600" />
-                    024 35632008
-                  </p>
-                  <p className="flex items-center justify-center">
-                    <Mail className="w-3 h-3 mr-1 text-blue-600" />
-                    nagen@nagen.vn
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="mt-8 text-center">
+            <div className="flex justify-center">
+              <CTAButton
+                size="lg"
+                onClick={() => setIsPartnerModalOpen(true)}
+                className="w-full max-w-md mb-4"
+              >
+                <Send className="w-5 h-5" />
+                Đăng ký ngay
+              </CTAButton>
+            </div>
+            <div className="text-sm text-gray-600 space-y-2">
+              <p>Hoặc liên hệ trực tiếp:</p>
+              <p className="flex items-center justify-center">
+                <Phone className="w-4 h-4 mr-2 text-blue-600" />
+                <a href="tel:02435632008" className="hover:underline">
+                  024 35632008
+                </a>
+              </p>
+              <p className="flex items-center justify-center">
+                <Mail className="w-4 h-4 mr-2 text-blue-600" />
+                <a href="mailto:nagen@nagen.vn" className="hover:underline">
+                  nagen@nagen.vn
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
