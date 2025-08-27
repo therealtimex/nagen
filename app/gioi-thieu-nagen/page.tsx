@@ -87,7 +87,7 @@ export default function AboutNAGENPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-red-600 text-white py-4 lg:py-8 overflow-hidden">
+      <section className="relative bg-[#21395D] text-white py-4 lg:py-8 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
@@ -288,13 +288,17 @@ export default function AboutNAGENPage() {
 
 
 
-      {/* Contact Section */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Liên hệ với NAGEN</h2>
-          <p className="text-blue-200 text-lg mb-8 max-w-2xl mx-auto">
-            Bạn có câu hỏi về sản phẩm hoặc dịch vụ? Đội ngũ NAGEN luôn sẵn sàng hỗ trợ bạn 24/7
-          </p>
+     {/* Contact Section */}
+    <section className="py-16 bg-white text-blue-900">
+      <div className="w-full h-[8px]">
+        <div className="bg-red-600 w-full !h-[calc(6px/1.5)] md:!h-[calc(10px/1.5)]"></div>
+        <div className="bg-[#21395D] w-full !h-[calc(6px/1.5)] md:!h-[calc(10px/1.5)]"></div>
+      </div>
+      <div className="container mx-auto px-4 text-center">
+         <h2 className="text-3xl font-bold mb-6">Liên hệ với NAGEN</h2>
+         <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+          Bạn có câu hỏi về sản phẩm hoặc dịch vụ? Đội ngũ NAGEN luôn sẵn sàng hỗ trợ bạn 24/7
+        </p>
 
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div className="text-center">
@@ -302,21 +306,21 @@ export default function AboutNAGENPage() {
                 <Phone className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Hotline</h3>
-              <p className="text-blue-200">024 35632008</p>
+              <p className="text-gray-600 text-sm">024 35632008</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-blue-200">nagen.vn@gmail.com</p>
+              <p className="text-gray-600 text-sm">nagen.vn@gmail.com</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Địa chỉ</h3>
-              <p className="text-blue-200">Tầng 7, Tòa VP-1, Suntquare Building, Hà Nội</p>
+              <p className="text-gray-600 text-sm">Tầng 7, Tòa VP-1, Suntquare Building, Hà Nội</p>
             </div>
           </div>
 
