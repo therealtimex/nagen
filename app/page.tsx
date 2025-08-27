@@ -487,7 +487,7 @@ function HeroContent() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <p className="text-lg text-blue-100 leading-relaxed text-justify whitespace-pre-line">
+      <p className="text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
         {isExpanded ? fullText : shortText}
       </p>
 
@@ -1515,10 +1515,10 @@ function HomePageContent() {
       {/* Enhanced Hero Section */}
       <section
         id="home"
-        className="relative bg-[#21395D] text-white py-10 lg:py-18 overflow-hidden"
+        className="relative bg-[#FFFFFF] text-[#21395D] py-10 lg:py-18 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto px-2 relative z-10">
+        <div className="absolute inset-0"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <HeroContent />
 
@@ -1561,16 +1561,16 @@ function HomePageContent() {
             <div className="grid lg:grid-cols-3 gap-8 items-start">
               {/* Text Content - Left (2/3 width) */}
               <div className="lg:col-span-2 space-y-4">
-                <p className="text-gray-600 text-lg leading-relaxed">
+                <p className="text-[#21395D] text-lg leading-relaxed">
                   That design supports all four arches of the foot and helps control arch action. Every design element
                   supports the objective of guiding the foot into a more biomechanically efficient posture for maximum
                   performance and efficiency.
                 </p>
-                <p className="text-gray-600 text-lg leading-relaxed">
+                <p className="text-[#21395D] text-lg leading-relaxed">
                   A properly functioning arch improves balance, distributes pressure correctly over the sole of the foot and
                   allows the muscles, ligaments and tendons used during the gait cycle to work more efficiently.
                 </p>
-                <p className="text-gray-600 text-lg leading-relaxed">
+                <p className="text-[#21395D] text-lg leading-relaxed">
                   With a family of products like this, you can be sure that we have one that will fit you and your lifestyle
                   perfectly.
                 </p>
@@ -1623,7 +1623,7 @@ function HomePageContent() {
                   {/* Product Info */}
                   <div className="order-1 md:order-2 space-y-4">
                     <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
-                    <p className="text-gray-600 text-lg leading-relaxed">{product.description}</p>
+                    <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
                     <CTAButton
                       variant="secondary"
                       className="group"
@@ -1674,7 +1674,7 @@ function HomePageContent() {
             <div className="space-y-6">
               <Badge className="bg-blue-100 text-blue-800">Dịch vụ chuyên nghiệp</Badge>
               <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Đo vòm bàn chân miễn phí tại nhà</h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-[#21395D] text-lg leading-relaxed">
                 Chúng tôi cung cấp dịch vụ đo vòm bàn chân chuyên nghiệp với công nghệ hiện đại, giúp bạn tìm được sản
                 phẩm phù hợp nhất.
               </p>
@@ -1776,7 +1776,7 @@ function HomePageContent() {
             <div className="space-y-6">
               <Badge className="bg-blue-100 text-blue-800">Về chúng tôi</Badge>
               <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">NAGEN - Chăm sóc bàn chân chuyên nghiệp</h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-[#21395D] text-lg leading-relaxed">
                 Với sứ mệnh mang đến sức khỏe và sự thoải mái cho đôi chân của bạn, NAGEN không ngừng nghiên cứu và phát
                 triển các sản phẩm chất lượng cao, được chứng nhận bởi các chuyên gia hàng đầu.
               </p>
