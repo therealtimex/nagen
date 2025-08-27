@@ -220,20 +220,22 @@ function EnhancedNavigation() {
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
         } border-b border-gray-200 relative`}
       >
-        <div className="container mx-auto px-4 py-2">
+        <div className="container mx-auto px-4 py-1">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
-              <Image
-                src={getImagePath("/images/logo_ngang.png")}
-                alt="Nagen Logo"
-                width={200}
-                height={40}
-                priority
-              />
+              <div style={{position: 'relative', width: '150px', height: '30px'}}>
+                <Image
+                  src="/images/logo_ngang.png"
+                  alt="Nagen Logo"
+                  priority
+                  fill
+                  style={{objectFit: 'contain'}}
+                />
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-4">
               {menuItems.map((item) => (
                 <div
                   key={item.name}
@@ -1540,7 +1542,7 @@ function HomePageContent() {
               className="mx-auto rounded-xl shadow-lg"
               priority
             />
-            <p className="text-gray-600 text-lg mt-8">
+            <p className="text-gray-600 text-lg mt-8 text-left">
               That design supports all four arches of the foot and helps control arch action. Every design element
               supports the objective of guiding the foot into a more biomechanically efficient posture for maximum
               performance and efficiency.
