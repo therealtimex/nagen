@@ -228,17 +228,20 @@ function EnhancedNavigation() {
       >
         <div className="container mx-auto px-4 py-1">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <div style={{ position: 'relative', width: '150px', height: '30px' }}>
+            <div>
+              <Link href="/" className="flex items-center space-x-3">
                 <Image
-                  src="/images/logo_ngang.png"
+                  src={getImagePath("/images/logo_ngang.png")}
                   alt="Nagen Logo"
+                  width={200}
+                  height={40}
                   priority
-                  fill
-                  style={{ objectFit: 'contain' }}
                 />
-              </div>
-            </Link>
+              </Link>
+              <p className="text-center text-red-600 font-medium text-sm mt-1">
+                NUÔI DƯỠNG BƯỚC CHÂN
+              </p>
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-4">
