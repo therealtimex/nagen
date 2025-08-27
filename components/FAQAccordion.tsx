@@ -12,13 +12,15 @@ interface FAQItem {
 
 interface FAQAccordionProps {
   faqs: FAQItem[];
+  onFaqSelect: (index: number) => void;
 }
 
-const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs }) => {
+const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, onFaqSelect }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleAccordionClick = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
+    onFaqSelect(index);
   };
 
   return (
@@ -41,14 +43,8 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs }) => {
             </svg>
           </div>
           {activeIndex === index && (
-            <div className="p-4 bg-gray-50 rounded-md text-blue-800 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                {faq.answer}
-              </div>
-              <div>
-                <Image src={faq.image} alt={faq.question} width={200} height={150} className="rounded-md mb-2" />
-                <p className="text-sm text-gray-600">{faq.description}</p>
-              </div>
+            <div className="p-4 bg-gray-50 rounded-md text-blue-800">
+              {faq.answer}
             </div>
           )}
         </div>

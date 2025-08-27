@@ -59,27 +59,17 @@ export default function ProductDetailModal({ product, isOpen, onClose }: { produ
               {/* {product.discount && (
                 <Badge className="absolute top-4 right-4 z-10 bg-green-600 text-white">-{product.discount}</Badge>
               )} */}
-              {product.popular && (
-                <Badge className="absolute top-4 left-4 z-10 bg-red-600 text-white">Bán chạy nhất</Badge>
-              )}
-              {product.new && (
-                <Badge className="absolute top-4 left-4 z-10 bg-blue-600 text-white">Mới</Badge>
-              )}
+
             </div>
           </div>
 
           {/* Product Info Section */}
           <div className="p-6 overflow-y-auto max-h-[80vh]">
             <DialogHeader>
-              <div className="flex items-center justify-between mb-2">
+              <div className="mb-2">
                 <Badge variant="outline" className="bg-blue-50 text-blue-800 border-blue-200">
                   {displayCategory}
                 </Badge>
-                <div className="flex items-center space-x-1">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm font-medium">{product.rating}</span>
-                  <span className="text-xs text-gray-500">({product.reviewCount} đánh giá)</span>
-                </div>
               </div>
               <DialogTitle className="text-2xl font-bold text-blue-900">{product.name}</DialogTitle>
             </DialogHeader>

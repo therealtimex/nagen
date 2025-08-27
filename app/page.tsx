@@ -172,7 +172,6 @@ function EnhancedNavigation() {
       ],
     },
     { name: "Dịch vụ", href: "#services" },
-    { name: "Đại lý", href: "#dealers" },
     { name: "Đối tác", href: "#partners" },
     { name: "Giới thiệu", href: "#about" },
     { name: "FAQs", href: "/faqs" },
@@ -180,6 +179,13 @@ function EnhancedNavigation() {
   ]
 
   const handleNavigation = (href: string) => {
+    // Check if it's an external link (starts with / or http)
+    if (href.startsWith('/') || href.startsWith('http')) {
+      navigateTo(href)
+      return
+    }
+
+    // Handle anchor links
     const targetId = href.substring(1) // Remove the '#'
     const targetElement = document.getElementById(targetId)
 
@@ -217,24 +223,28 @@ function EnhancedNavigation() {
 
       {/* Main Navigation */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-        } border-b border-gray-200 relative`}
+        className={`sticky top-0 z-[1001] transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+          } border-b border-gray-200 relative`}
       >
-        <div className="container mx-auto px-4 py-2">
+        <div className="container mx-auto px-4 py-1">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <Image
-                src={getImagePath("/images/logo_ngang.png")}
-                alt="Nagen Logo"
-                width={200}
-                height={40}
-                priority
-              />
-            </Link>
+            <div>
+              <Link href="/" className="flex items-center space-x-3">
+                <Image
+                  src={getImagePath("/images/logo_ngang.png")}
+                  alt="Nagen Logo"
+                  width={200}
+                  height={40}
+                  priority
+                />
+              </Link>
+              <p className="text-center text-red-600 font-medium text-sm mt-1">
+                NUÔI DƯỠNG BƯỚC CHÂN
+              </p>
+            </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-4">
               {menuItems.map((item) => (
                 <div
                   key={item.name}
@@ -330,8 +340,8 @@ function EnhancedNavigation() {
           </div>
         </div>
         <div className="w-full h-[8px]">
-          <div className="bg-red-600 w-full !h-[8px] md:!h-[12px]"></div>
-          <div className="bg-[#21395D] w-full !h-[8px] md:!h-[12px]"></div>
+          <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+          <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
         </div>
       </header>
     </>
@@ -470,6 +480,44 @@ function EnhancedFeedbackSlider() {
           />
         ))}
       </div>
+    </div>
+  )
+}
+
+// Hero Content Component with Read More functionality
+function HeroContent() {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  const shortText = `Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance, Silhouette, Đệm lót cao su xốp tự nhiên do Bio Orthotics International sản xuất là những những dòng sản phẩm hỗ trợ vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Khởi đầu cho những dòng sản phẩm tuyệt vời này đến từ thiết kế của Georg Alzner, một bác sĩ vật lý trị liệu được đào tạo tại Tây Đức và có bằng về thiết kế giày chỉnh hình. Trong hơn 20 năm làm việc với những người bị tật bệnh, ông đã đi đến kết luận rằng hầu hết các cơn đau và sự khó chịu mà khách hàng của ông trải qua đều là do các vấn đề liên quan đến bàn chân của họ. Tuy nhiên, ông thường thấy rằng những đôi giày tùy chỉnh của mình không giúp ích cho tất cả mọi người, vì vậy ông bắt đầu nghiên cứu sản phẩm tấm lót hỗ trợ vòm bàn chân có thể sử dụng trong nhiều loại giày khác nhau.`
+
+  const fullText = `${shortText}
+
+  Khi di cư đến Canada, ông tin rằng cuối cùng ông đã thiết kế được một sản phẩm hỗ trợ vòm bàn chân có khả năng hỗ trợ tối ưu mà bấy lâu nay mình mong muốn. Thiết kế mới của ông hỗ trợ cả bốn vòm bàn chân và bao gồm các kênh luồng khí cung cấp khả năng thông gió cho bề mặt gan bàn chân, giúp tăng đáng kể sự thoải mái cho người sử dụng. Sau khi thử nghiệm và loại bỏ hàng tá các loại vật liệu trước đó, ông đã tìm kiếm được vật liệu mà ông quyết định sử dụng, cho phép phần hỗ trợ uốn cong, từ đó cho phép vòm di chuyển như bình thường với mỗi bước đi. Sự kết hợp này khuyến khích chức năng bàn chân hoạt động chính xác khi đi đứng và trong suốt chu kỳ đi lại.
+  
+  Năm 1969, văn phòng cấp bằng sáng chế Canada đã đồng ý rằng sản phẩm của ông thực sự độc đáo và cấp cho ông bằng sáng chế cho các phần hỗ trợ vòm bàn chân. Tiếp sau đó, văn phòng cấp bằng sáng chế Hoa Kỳ cũng đã công nhận sáng chế này vào năm 1970. Trải qua hơn 50 năm, thiết kế của Alzner đã chứng minh được tính hiệu quả trong các nghiên cứu khoa học cũng như trong quá trình sử dụng của hơn 4 triệu người dùng trên toàn thế giới.`
+
+  return (
+    <div className="max-w-6xl mx-auto">
+      <p className="text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
+        {isExpanded ? fullText : shortText}
+      </p>
+
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="mt-4 inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors font-medium"
+      >
+        {isExpanded ? (
+          <>
+            Thu gọn
+            <ChevronDown className="w-4 h-4 rotate-180 transition-transform" />
+          </>
+        ) : (
+          <>
+            Xem thêm
+            <ChevronDown className="w-4 h-4 transition-transform" />
+          </>
+        )}
+      </button>
     </div>
   )
 }
@@ -1475,70 +1523,20 @@ function HomePageContent() {
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
 
-      {/* Optimized Hero Section */}
+      {/* Enhanced Hero Section */}
       <section
         id="home"
-        className="relative bg-[#21395D] text-white py-20 lg:py-32 overflow-hidden"
+        className="relative bg-[#FFFFFF] text-[#21395D] py-10 lg:py-18 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2">
-                ✨ Thương hiệu uy tín #1 Việt Nam
-              </Badge>
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                Chăm sóc bàn chân
-                <span className="text-red-300 block">chuyên nghiệp</span>
-              </h1>
-              <p className="text-xl text-blue-100 leading-relaxed max-w-lg">
-                Sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao, được nghiên cứu và phát triển bởi các chuyên gia
-                hàng đầu.
-              </p>
+          <div className="max-w-4xl mx-auto text-center">
+            <HeroContent />
 
-              {/* Key Benefits */}
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Chứng nhận y tế</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Bảo hành 12 tháng</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Giao hàng 24h</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Tư vấn miễn phí</span>
-                </div>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="flex items-center space-x-6 text-sm">
-                <div className="flex items-center space-x-2">
-                  <Users className="w-5 h-5 text-blue-300" />
-                  <span className="text-blue-200">10,000+ khách hàng tin tưởng</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Star className="w-5 h-5 text-yellow-400" />
-                  <span className="text-blue-200">4.9/5 đánh giá</span>
-                </div>
-              </div>
-
-              {/*
-              <CTAButton size="lg" onClick={handleHeroCTA}>
-                <Calendar className="w-5 h-5" />
-                Đặt lịch tư vấn miễn phí
-              </CTAButton>
-              */}
-            </div>
-
-            <div className="relative">
+            {/* Video Section */}
+            <div className="mt-12">
               <div
-                className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group"
+                className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group max-w-2xl mx-auto"
                 onClick={handlePlayVideo}
               >
                 <div className="text-center">
@@ -1554,29 +1552,54 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* New Section: Product Image and Research */}
+      {/* Enhanced Product Image and Research Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <Image
-              src={getImagePath("/images/20200624_161136PS.webp")}
-              alt="Product Image"
-              width={800}
-              height={600}
-              className="mx-auto rounded-xl shadow-lg"
-              priority
-            />
-            <p className="text-gray-600 text-lg mt-8">
-              That design supports all four arches of the foot and helps control arch action. Every design element
-              supports the objective of guiding the foot into a more biomechanically efficient posture for maximum
-              performance and efficiency.
-              <br /><br />
-              A properly functioning arch improves balance, distributes pressure correctly over the sole of the foot and
-              allows the muscles, ligaments and tendons used during the gait cycle to work more efficiently.
-              <br /><br />
-              With a family of products like this, you can be sure that we have one that will fit you and your lifestyle
-              perfectly.
-            </p>
+          <div className="max-w-6xl mx-auto">
+            {/* Product Image - Top */}
+            <div className="text-center mb-12">
+              <Image
+                src={getImagePath("/images/20200624_161136PS.webp")}
+                alt="Product Image"
+                width={1200}
+                height={400}
+                className="w-full rounded-xl shadow-lg"
+                priority
+              />
+            </div>
+
+            {/* Text and CTA - Bottom */}
+            <div className="grid lg:grid-cols-3 gap-8 items-start">
+              {/* Text Content - Left (2/3 width) */}
+              <div className="lg:col-span-2 space-y-4">
+                <p className="text-[#21395D] text-lg leading-relaxed">
+                  That design supports all four arches of the foot and helps control arch action. Every design element
+                  supports the objective of guiding the foot into a more biomechanically efficient posture for maximum
+                  performance and efficiency.
+                </p>
+                <p className="text-[#21395D] text-lg leading-relaxed">
+                  A properly functioning arch improves balance, distributes pressure correctly over the sole of the foot and
+                  allows the muscles, ligaments and tendons used during the gait cycle to work more efficiently.
+                </p>
+                <p className="text-[#21395D] text-lg leading-relaxed">
+                  With a family of products like this, you can be sure that we have one that will fit you and your lifestyle
+                  perfectly.
+                </p>
+              </div>
+
+              {/* CTA Button - Right (1/3 width) */}
+              <div className="lg:col-span-1 flex justify-center lg:justify-end items-start">
+                <CTAButton
+                  variant="primary"
+                  size="lg"
+                  onClick={() => navigateTo('/studies')}
+                  className="bg-[#21395D] hover:bg-[#1a2d4a] text-center px-6 py-4"
+                >
+                  Learn More
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </CTAButton>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1589,63 +1612,61 @@ function HomePageContent() {
             <p className="text-gray-600 text-lg">Khám phá dòng sản phẩm chất lượng cao của NAGEN</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {productData.slice(0, 3).map((product) => (
-              <Card
-                key={product.id}
-                className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative"
-              >
-                {product.popular && (
-                  <Badge className="absolute top-4 left-4 z-10 bg-red-600 text-white">Bán chạy nhất</Badge>
-                )}
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center relative overflow-hidden">
-                  <Image
-                    src={getImagePath(product.image)}
-                    alt={product.name}
-                    width={300}
-                    height={200}
-                    className="object-cover transition-transform duration-300 hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-blue-900">{product.name}</CardTitle>
-                  <CardDescription className="line-clamp-2">{product.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-end mb-4">
-                    <div className="flex items-center space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                      <span className="text-sm text-gray-500 ml-1">({product.rating})</span>
+          <div className="space-y-8 mb-12">
+            {productData.slice(0, 3).map((product, index) => (
+              <div key={product.id}>
+                {/* Product Item */}
+                <div className="grid md:grid-cols-2 gap-8 items-center py-8">
+                  {/* Product Image */}
+                  <div className="order-2 md:order-1">
+                    <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
+                      <Image
+                        src={getImagePath(product.image)}
+                        alt={product.name}
+                        width={500}
+                        height={300}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
-                  <CTAButton variant="secondary" className="w-full group" onClick={() => setSelectedProduct(product)}>
-                    Xem chi tiết
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </CTAButton>
-                </CardContent>
-              </Card>
+
+                  {/* Product Info */}
+                  <div className="order-1 md:order-2 space-y-4">
+                    <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
+                    <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
+                    <CTAButton
+                      variant="secondary"
+                      className="group"
+                      onClick={() => setSelectedProduct(product)}
+                    >
+                      Xem chi tiết
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </CTAButton>
+                  </div>
+                </div>
+
+                {/* Brand Color Separator Line - except for last item */}
+                {index < productData.slice(0, 3).length - 1 && (
+                  <div className="flex h-2">
+                    <div className="flex-1 bg-red-600"></div>
+                    <div className="flex-1 bg-[#21395D]"></div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
-          <div className="mt-12 bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-8">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-bold text-blue-900 mb-2">Khám phá toàn bộ sản phẩm NAGEN</h3>
-              <p className="text-gray-600">Tìm hiểu thêm về các dòng sản phẩm chăm sóc bàn chân chuyên nghiệp</p>
-            </div>
-            <div className="flex justify-center">
-              <CTAButton
-                variant="primary"
-                size="lg"
-                className="w-full max-w-md group transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => navigateTo("/tat-ca-san-pham")}
-              >
-                Xem tất cả sản phẩm
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </CTAButton>
-            </div>
+          <div className="text-center mt-12">
+            <CTAButton
+              variant="primary"
+              size="lg"
+              className="group"
+              onClick={() => navigateTo("/tat-ca-san-pham")}
+            >
+              Xem tất cả sản phẩm
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </CTAButton>
           </div>
         </div>
       </section>
@@ -1664,7 +1685,7 @@ function HomePageContent() {
             <div className="space-y-6">
               <Badge className="bg-blue-100 text-blue-800">Dịch vụ chuyên nghiệp</Badge>
               <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Đo vòm bàn chân miễn phí tại nhà</h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-[#21395D] text-lg leading-relaxed">
                 Chúng tôi cung cấp dịch vụ đo vòm bàn chân chuyên nghiệp với công nghệ hiện đại, giúp bạn tìm được sản
                 phẩm phù hợp nhất.
               </p>
@@ -1729,129 +1750,32 @@ function HomePageContent() {
             </p>
           </div>
 
-          {/* 4-block grid layout */}
-          <div className="grid lg:grid-cols-2 gap-6">
-            {/* Top Left: Lợi ích đối tác */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-blue-900 flex items-center text-lg">
-                  <Award className="w-5 h-5 mr-2 text-red-600" />
-                  Lợi ích đối tác
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {[
-                  {
-                    icon: Target,
-                    title: "Thị trường tiềm năng lớn",
-                    desc: "Ngành chăm sóc sức khỏe đang phát triển mạnh mẽ",
-                  },
-                  {
-                    icon: Shield,
-                    title: "Sản phẩm chất lượng cao",
-                    desc: "Được chứng nhận y tế, tin cậy từ hàng nghìn khách hàng",
-                  },
-                  {
-                    icon: Users,
-                    title: "Hỗ trợ toàn diện",
-                    desc: "Đào tạo chuyên nghiệp, marketing và hỗ trợ kinh doanh",
-                  },
-                  {
-                    icon: Zap,
-                    title: "Lợi nhuận hấp dẫn",
-                    desc: "Chính sách chiết khấu cạnh tranh và thưởng doanh số",
-                  },
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0">
-                      <benefit.icon className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-blue-900 mb-1 text-sm">{benefit.title}</h4>
-                      <p className="text-gray-600 text-xs">{benefit.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Top Right: Yêu cầu đối tác */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-blue-900 flex items-center text-lg">
-                  <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
-                  Yêu cầu đối tác
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 gap-3">
-                  {[
-                    "Có kinh nghiệm kinh doanh",
-                    "Vị trí kinh doanh thuận lợi",
-                    "Cam kết dài hạn",
-                    "Đầu tư ban đầu từ 50 triệu",
-                    "Đội ngũ nhân viên tận tâm",
-                    "Tuân thủ tiêu chuẩn NAGEN",
-                  ].map((requirement, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">{requirement}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Bottom Left: Quy trình */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-blue-900 text-lg">Quy trình trở thành đối tác</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {[
-                    "Đăng ký thông tin và gửi hồ sơ",
-                    "Tư vấn và đánh giá năng lực",
-                    "Ký kết hợp đồng đối tác",
-                    "Đào tạo và hỗ trợ khởi nghiệp",
-                    "Chính thức hoạt động kinh doanh",
-                  ].map((step, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <div className="w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
-                        {index + 1}
-                      </div>
-                      <span className="text-gray-700 text-sm">{step}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Bottom Right: Đăng ký */}
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-blue-900 text-lg">Đăng ký đối tác</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-gray-600 mb-6 text-sm">
-                  Tham gia cùng NAGEN để xây dựng một tương lai thành công trong ngành chăm sóc sức khỏe bàn chân.
-                </p>
-                <CTAButton size="lg" onClick={() => setIsPartnerModalOpen(true)} className="w-full mb-4">
-                  <Send className="w-5 h-5" />
-                  Đăng ký ngay
-                </CTAButton>
-                <div className="text-xs text-gray-500 space-y-1">
-                  <p className="flex items-center justify-center">
-                    <Phone className="w-3 h-3 mr-1 text-blue-600" />
-                    024 35632008
-                  </p>
-                  <p className="flex items-center justify-center">
-                    <Mail className="w-3 h-3 mr-1 text-blue-600" />
-                    nagen@nagen.vn
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="mt-8 text-center">
+            <div className="flex justify-center">
+              <CTAButton
+                size="lg"
+                onClick={() => setIsPartnerModalOpen(true)}
+                className="w-full max-w-md mb-4"
+              >
+                <Send className="w-5 h-5" />
+                Đăng ký ngay
+              </CTAButton>
+            </div>
+            <div className="text-sm text-gray-600 space-y-2">
+              <p>Hoặc liên hệ trực tiếp:</p>
+              <p className="flex items-center justify-center">
+                <Phone className="w-4 h-4 mr-2 text-blue-600" />
+                <a href="tel:02435632008" className="hover:underline">
+                  024 35632008
+                </a>
+              </p>
+              <p className="flex items-center justify-center">
+                <Mail className="w-4 h-4 mr-2 text-blue-600" />
+                <a href="mailto:nagen@nagen.vn" className="hover:underline">
+                  nagen@nagen.vn
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -1863,7 +1787,7 @@ function HomePageContent() {
             <div className="space-y-6">
               <Badge className="bg-blue-100 text-blue-800">Về chúng tôi</Badge>
               <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">NAGEN - Chăm sóc bàn chân chuyên nghiệp</h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-[#21395D] text-lg leading-relaxed">
                 Với sứ mệnh mang đến sức khỏe và sự thoải mái cho đôi chân của bạn, NAGEN không ngừng nghiên cứu và phát
                 triển các sản phẩm chất lượng cao, được chứng nhận bởi các chuyên gia hàng đầu.
               </p>
@@ -1901,6 +1825,123 @@ function HomePageContent() {
                 loading="lazy"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <Badge className="bg-red-100 text-red-800 mb-4">Câu hỏi thường gặp</Badge>
+            
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="space-y-16">
+              {/* FAQ Item 1 - Image Left, Content Right */}
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="relative max-w-sm mx-auto">
+                  <div className="aspect-square bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/images/faqs/faq1.png"
+                      alt="Hỗ trợ vòm bàn chân là gì"
+                      width={300}
+                      height={300}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900">
+                    Hỗ trợ vòm bàn chân là gì?
+                  </h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Đệm lót vòm bàn chân là thiết bị hỗ trợ bàn chân được thiết kế đặc biệt, đeo bên trong giày.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    Đệm lót vòm bàn chân của chúng tôi được thiết kế theo cơ chế sinh học để định vị chính xác xương,
+                    dây chằng, cơ và gân của bàn chân, đồng thời hỗ trợ toàn bộ bốn vòm bàn chân.
+                  </p>
+                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                    <p className="text-blue-800 font-medium italic">
+                      "Một thiết bị giúp bạn rời khỏi ghế sofa!"
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* FAQ Item 2 - Content Left, Image Right */}
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-4 lg:order-1">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900">
+                    Sự khác biệt giữa dụng cụ hỗ trợ vòm và các thiết bị được thiết kế riêng là gì?
+                  </h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Một thiết bị được thiết kế riêng, mặc dù hữu ích trong một số trường hợp nhất định, nhưng sẽ không giúp
+                    bàn chân của bạn chịu được toàn bộ trọng lượng cơ thể trên vòm bàn chân như mong muốn.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    Tám mươi phần trăm các vấn đề liên quan đến bàn chân có thể được giải quyết bằng một tấm lót vòm bàn chân
+                    đúc sẵn vừa vặn như của chúng tôi. Tấm lót vòm bàn chân của chúng tôi có thể là một giải pháp thay thế
+                    tiết kiệm chi phí hơn cho nhiều người.
+                  </p>
+                  <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                    <p className="text-green-800 font-medium italic">
+                      "Sự cân bằng rất quan trọng ở đây…"
+                    </p>
+                  </div>
+                </div>
+                <div className="relative max-w-sm mx-auto lg:order-2">
+                  <div className="aspect-square bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/images/faqs/faq2.png"
+                      alt="Sự khác biệt giữa dụng cụ hỗ trợ vòm và các thiết bị được thiết kế riêng"
+                      width={300}
+                      height={300}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* FAQ Item 3 - Image Left, Content Right */}
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="relative max-w-sm mx-auto">
+                  <div className="aspect-square bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/images/faqs/faq3.jpg"
+                      alt="Sản phẩm hỗ trợ vòm chân khác biệt như thế nào"
+                      width={300}
+                      height={300}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900">
+                    Sản phẩm hỗ trợ vòm chân của bạn khác với sản phẩm của các cửa hàng thuốc như thế nào?
+                  </h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Đệm lót vòm bàn chân tại các hiệu thuốc hoặc cửa hàng bách hóa thường được thiết kế để vừa với nhiều kích cỡ
+                    vòm bàn chân, hoặc tệ hơn, nhiều cỡ giày.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    Các kích cỡ của chúng tôi được thiết kế nhỏ hơn một nửa cỡ giày để đảm bảo vừa vặn hoàn hảo và mang lại
+                    hiệu suất tối ưu. Bạn sẽ không bao giờ thấy sản phẩm nào của chúng tôi có kích cỡ dành cho "Nam 8-10".
+                  </p>
+                  <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <p className="text-purple-800 font-medium italic">
+                      "Sự cân bằng rất quan trọng ở đây!"
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -1960,16 +2001,22 @@ function HomePageContent() {
       </section>
 
       {/* Footer */}
-     <footer className="bg-[#21395D] text-white py-12 relative">
-       <div className="container mx-auto px-4">
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-           <div>
-             <div className="text-3xl font-bold mb-4">
-                <span className="text-white">NA</span>
-                <span className="text-red-400">GE</span>
-                <span className="text-white">N</span>
-              </div>
-              <p className="text-blue-200 mb-6">
+      {/* Horizontal Lines */}
+      <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+      <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
+      <footer className="bg-[#FFFFFF] text-white py-12 relative">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+              <Image
+                src="/images/logo_ngang.png"
+                alt="NAGEN Logo"
+                width={250}
+                height={50}
+                className="mb-4"
+                priority
+              />
+              <p className="text-[#21395D] mb-6">
                 Đối tác tin cậy trong việc chăm sóc sức khỏe bàn chân của bạn. Chất lượng - Uy tín - Chuyên nghiệp.
               </p>
 
@@ -2026,8 +2073,8 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Sản phẩm</h3>
-              <ul className="space-y-2 text-blue-200">
+              <h3 className="font-semibold mb-4 text-red-600">Sản phẩm</h3>
+              <ul className="space-y-2 text-[#21395D]">
                 <li>
                   <a
                     href="#"
@@ -2078,8 +2125,8 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Hỗ trợ</h3>
-              <ul className="space-y-2 text-blue-200">
+              <h3 className="font-semibold mb-4 text-red-600">Hỗ trợ</h3>
+              <ul className="space-y-2 text-[#21395D]">
                 {/*
                  <li>
                   <a
@@ -2128,8 +2175,8 @@ function HomePageContent() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Pháp lý</h3>
-              <ul className="space-y-2 text-blue-200">
+              <h3 className="font-semibold mb-4 text-red-600">Pháp lý</h3>
+              <ul className="space-y-2 text-[#21395D]">
                 <li>
                   <Link
                     href="/privacy-policy"
