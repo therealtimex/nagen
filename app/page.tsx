@@ -256,10 +256,8 @@ function EnhancedNavigation() {
                     href={item.href}
                     className="text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center"
                     onClick={(e) => {
-                      if (item.href.startsWith("#")) {
-                        e.preventDefault()
-                        handleNavigation(item.href)
-                      }
+                      e.preventDefault()
+                      handleNavigation(item.href)
                     }}
                   >
                     {item.name}
@@ -275,10 +273,8 @@ function EnhancedNavigation() {
                           href={subItem.href}
                           className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                           onClick={(e) => {
-                            if (subItem.href.startsWith("#")) {
-                              e.preventDefault()
-                              handleNavigation(subItem.href)
-                            }
+                            e.preventDefault()
+                            handleNavigation(subItem.href)
                           }}
                         >
                           {subItem.name}
@@ -305,10 +301,8 @@ function EnhancedNavigation() {
                         href={item.href}
                         className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
                         onClick={(e) => {
-                          if (item.href.startsWith("#")) {
-                            e.preventDefault()
-                            handleNavigation(item.href)
-                          }
+                          e.preventDefault()
+                          handleNavigation(item.href)
                         }}
                       >
                         {item.name}
@@ -321,10 +315,8 @@ function EnhancedNavigation() {
                               href={subItem.href}
                               className="block text-sm text-gray-600 hover:text-blue-900"
                               onClick={(e) => {
-                                if (subItem.href.startsWith("#")) {
-                                  e.preventDefault()
-                                  handleNavigation(subItem.href)
-                                }
+                                e.preventDefault()
+                                handleNavigation(subItem.href)
                               }}
                             >
                               {subItem.name}
