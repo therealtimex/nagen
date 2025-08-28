@@ -2004,12 +2004,12 @@ function HomePageContent() {
       {/* Horizontal Lines */}
       <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
       <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-      <footer className="bg-[#FFFFFF] text-white py-12 relative">
+      <footer className="bg-white text-[#21395D] py-12 relative">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
               <Image
-                src="/images/logo_ngang.png"
+                src={getImagePath("/images/logo_ngang.png")}
                 alt="NAGEN Logo"
                 width={250}
                 height={50}
@@ -2026,7 +2026,7 @@ function HomePageContent() {
                   href="https://www.facebook.com/people/NAGEN/61576197860425/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors hover:scale-110 cursor-pointer"
+                  className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-5 h-5 text-white" />
@@ -2035,7 +2035,7 @@ function HomePageContent() {
                   href="https://www.youtube.com/@nagenvn"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors hover:scale-110 cursor-pointer"
+                  className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="YouTube"
                 >
                   <Youtube className="w-5 h-5 text-white" />
@@ -2044,7 +2044,7 @@ function HomePageContent() {
                   href="https://www.tiktok.com/@nagenvn"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors hover:scale-110 cursor-pointer"
+                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="TikTok"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
@@ -2055,7 +2055,7 @@ function HomePageContent() {
                   href="https://instagram.com/nagen"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors hover:scale-110 cursor-pointer"
+                  className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5 text-white" />
@@ -2064,7 +2064,7 @@ function HomePageContent() {
                   href="https://zalo.me/nagen"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors hover:scale-110 cursor-pointer"
+                  className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="Zalo"
                 >
                   <Zap className="w-5 h-5 text-white" />
@@ -2078,10 +2078,9 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=sungen")}
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    {/*<ArrowRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />*/}
                     Sungen™
                   </a>
                 </li>
@@ -2089,7 +2088,7 @@ function HomePageContent() {
                   <a
                     href="#"
                     onClick={() => navigateTo("/tat-ca-san-pham?category=winagen")}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Winagen™
                   </a>
@@ -2098,7 +2097,7 @@ function HomePageContent() {
                   <a
                     href="#"
                     onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Softgen™
                   </a>
@@ -2107,7 +2106,7 @@ function HomePageContent() {
                   <a
                     href="#"
                     onClick={() => navigateTo("/tat-ca-san-pham?category=endurance")}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Endurance™
                   </a>
@@ -2116,7 +2115,7 @@ function HomePageContent() {
                   <a
                     href="#"
                     onClick={() => navigateTo("/tat-ca-san-pham?category=silhouette")}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Silhouette™
                   </a>
@@ -2127,24 +2126,11 @@ function HomePageContent() {
             <div>
               <h3 className="font-semibold mb-4 text-red-600">Hỗ trợ</h3>
               <ul className="space-y-2 text-[#21395D]">
-                {/*
-                 <li>
-                  <a
-                    href="#"
-                    onClick={() => {
-                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-                    }}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Tư vấn sản phẩm
-                  </a>
-                </li>
-                */}
                 <li>
                   <a
                     href="#"
                     onClick={() => navigateTo("/huong-dan-su-dung")}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Hướng dẫn sử dụng
                   </a>
@@ -2152,25 +2138,12 @@ function HomePageContent() {
                 <li>
                   <a
                     href="#"
-                    onClick={() => {
-                      navigateTo("/chinh-sach-bao-hanh")
-                    }}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    onClick={() => navigateTo("/chinh-sach-bao-hanh")}
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách bảo hành
                   </a>
                 </li>
-                {/*
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => setIsAppointmentModalOpen(true)}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Hỗ trợ khách hàng
-                  </a>
-                </li>
-                */}
               </ul>
             </div>
 
@@ -2178,26 +2151,27 @@ function HomePageContent() {
               <h3 className="font-semibold mb-4 text-red-600">Pháp lý</h3>
               <ul className="space-y-2 text-[#21395D]">
                 <li>
-                  <Link
-                    href="/privacy-policy"
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/privacy-policy")}
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách bảo mật
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    href="/terms-of-use"
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  <a
+                    href="#" onClick={() => navigateTo("/terms-of-use")}
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Điều khoản sử dụng
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <a
                     href="#"
                     onClick={() => navigateTo("/chinh-sach-doi-tra")}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách đổi trả
                   </a>
@@ -2206,7 +2180,7 @@ function HomePageContent() {
                   <a
                     href="#"
                     onClick={() => navigateTo("/chinh-sach-van-chuyen")}
-                    className="hover:text-white transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                    className="hover:text-red-600 transition--colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Chính sách vận chuyển
                   </a>
@@ -2214,15 +2188,6 @@ function HomePageContent() {
               </ul>
             </div>
           </div>
-
-          {/* <div className="border-t border-blue-800 mt-8 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-blue-200 text-sm">&copy; 2025 NAGEN. Tất cả quyền được bảo lưu.</p>
-              <div className="flex items-center space-x-4 mt-4 md:mt-0">
-                <p className="text-blue-200 text-sm">Được thiết kế với ❤️ tại Việt Nam</p>
-              </div>
-            </div>
-          </div> */}
         </div>
       </footer>
 
