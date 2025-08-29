@@ -1,11 +1,11 @@
 "use client"
 
-import Head from 'next/head';
+import Head from "next/head"
 import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
@@ -19,9 +19,6 @@ import {
   Youtube,
   Instagram,
   Zap,
-  Shield,
-  Truck,
-  Award,
   ChevronLeft,
   ChevronRight,
   MessageCircle,
@@ -31,7 +28,6 @@ import {
   ChevronDown,
   Clock,
   Users,
-  Target,
   Send,
 } from "lucide-react"
 import Image from "next/image"
@@ -40,8 +36,9 @@ import Link from "next/link"
 import DealerLocator from "@/components/DealerLocator"
 import NoSSRWrapper from "@/components/NoSSRWrapper"
 import { getImagePath, navigateTo } from "@/lib/utils"
-import ProductDetailModal from "@/components/ProductDetailModal";
-import { Product, productData } from "@/lib/products"
+import ProductDetailModal from "@/components/ProductDetailModal"
+import { type Product, productData } from "@/lib/products"
+import FloatingActionButtons from "@/components/FloatingActionButtons"
 
 // Type definitions
 interface FormData {
@@ -168,7 +165,6 @@ function EnhancedNavigation() {
         { name: "Endurance™", href: "#endurance" },
         { name: "Silhouette™", href: "#silhouette" },
         { name: "Đệm lót cao su tự nhiên", href: "#demlotcaosu" },
-
       ],
     },
     { name: "Dịch vụ", href: "#services" },
@@ -180,7 +176,7 @@ function EnhancedNavigation() {
 
   const handleNavigation = (href: string) => {
     // Check if it's an external link (starts with / or http)
-    if (href.startsWith('/') || href.startsWith('http')) {
+    if (href.startsWith("/") || href.startsWith("http")) {
       navigateTo(href)
       return
     }
@@ -223,8 +219,9 @@ function EnhancedNavigation() {
 
       {/* Main Navigation */}
       <header
-        className={`sticky top-0 z-[1001] transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-          } border-b border-gray-200 relative`}
+        className={`sticky top-0 z-[1001] transition-all duration-300 ${
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+        } border-b border-gray-200 relative`}
       >
         <div className="container mx-auto px-4 py-1">
           <div className="flex items-center justify-between">
@@ -238,9 +235,7 @@ function EnhancedNavigation() {
                   priority
                 />
               </Link>
-              <p className="text-center text-red-600 font-medium text-sm mt-1">
-                NUÔI DƯỠNG BƯỚC CHÂN
-              </p>
+              <p className="text-center text-red-600 font-medium text-sm mt-1">NUÔI DƯỠNG BƯỚC CHÂN</p>
             </div>
 
             {/* Desktop Navigation */}
@@ -289,7 +284,7 @@ function EnhancedNavigation() {
             {/* Mobile Navigation */}
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="lg:hidden">
+                <Button variant="outline" size="icon" className="lg:hidden bg-transparent">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
@@ -337,7 +332,7 @@ function EnhancedNavigation() {
         </div>
       </header>
     </>
-  );
+  )
 }
 
 // Enhanced Customer Feedback Slider
@@ -462,8 +457,9 @@ function EnhancedFeedbackSlider() {
         {testimonials.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-red-600 w-8" : "bg-gray-300 hover:bg-gray-400"
-              }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "bg-red-600 w-8" : "bg-gray-300 hover:bg-gray-400"
+            }`}
             onClick={() => {
               setCurrentSlide(index)
               setIsAutoPlaying(false)
@@ -644,8 +640,9 @@ function EnhancedContactForm() {
           {steps.map((step, index) => (
             <div key={step.number} className="flex items-center">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${currentStep >= step.number ? "bg-red-600 text-white" : "bg-gray-200 text-gray-600"
-                  }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${
+                  currentStep >= step.number ? "bg-red-600 text-white" : "bg-gray-200 text-gray-600"
+                }`}
               >
                 {currentStep > step.number ? <CheckCircle className="w-5 h-5" /> : <step.icon className="w-5 h-5" />}
               </div>
@@ -1166,7 +1163,7 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                   type="button"
                   variant="outline"
                   onClick={handleClose}
-                  className="flex-1"
+                  className="flex-1 bg-transparent"
                   disabled={isSubmitting}
                 >
                   Hủy
@@ -1475,7 +1472,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
                   type="button"
                   variant="outline"
                   onClick={handleClose}
-                  className="flex-1"
+                  className="flex-1 bg-transparent"
                   disabled={isSubmitting}
                 >
                   Hủy
@@ -1511,15 +1508,16 @@ function HomePageContent() {
     }
   }
 
+  const handleScheduleClick = () => {
+    setIsAppointmentModalOpen(true)
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
 
       {/* Enhanced Hero Section */}
-      <section
-        id="home"
-        className="relative bg-[#FFFFFF] text-[#21395D] py-10 lg:py-18 overflow-hidden"
-      >
+      <section id="home" className="relative bg-[#FFFFFF] text-[#21395D] py-10 lg:py-18 overflow-hidden">
         <div className="absolute inset-0"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -1570,12 +1568,12 @@ function HomePageContent() {
                   performance and efficiency.
                 </p>
                 <p className="text-[#21395D] text-lg leading-relaxed">
-                  A properly functioning arch improves balance, distributes pressure correctly over the sole of the foot and
-                  allows the muscles, ligaments and tendons used during the gait cycle to work more efficiently.
+                  A properly functioning arch improves balance, distributes pressure correctly over the sole of the foot
+                  and allows the muscles, ligaments and tendons used during the gait cycle to work more efficiently.
                 </p>
                 <p className="text-[#21395D] text-lg leading-relaxed">
-                  With a family of products like this, you can be sure that we have one that will fit you and your lifestyle
-                  perfectly.
+                  With a family of products like this, you can be sure that we have one that will fit you and your
+                  lifestyle perfectly.
                 </p>
               </div>
 
@@ -1584,7 +1582,7 @@ function HomePageContent() {
                 <CTAButton
                   variant="primary"
                   size="lg"
-                  onClick={() => navigateTo('/studies')}
+                  onClick={() => navigateTo("/studies")}
                   className="bg-[#21395D] hover:bg-[#1a2d4a] text-center px-6 py-4"
                 >
                   Learn More
@@ -1627,11 +1625,7 @@ function HomePageContent() {
                   <div className="order-1 md:order-2 space-y-4">
                     <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
                     <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
-                    <CTAButton
-                      variant="secondary"
-                      className="group"
-                      onClick={() => setSelectedProduct(product)}
-                    >
+                    <CTAButton variant="secondary" className="group" onClick={() => setSelectedProduct(product)}>
                       Xem chi tiết
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </CTAButton>
@@ -1650,12 +1644,7 @@ function HomePageContent() {
           </div>
 
           <div className="text-center mt-12">
-            <CTAButton
-              variant="primary"
-              size="lg"
-              className="group"
-              onClick={() => navigateTo("/tat-ca-san-pham")}
-            >
+            <CTAButton variant="primary" size="lg" className="group" onClick={() => navigateTo("/tat-ca-san-pham")}>
               Xem tất cả sản phẩm
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </CTAButton>
@@ -1744,11 +1733,7 @@ function HomePageContent() {
 
           <div className="mt-8 text-center">
             <div className="flex justify-center">
-              <CTAButton
-                size="lg"
-                onClick={() => setIsPartnerModalOpen(true)}
-                className="w-full max-w-md mb-4"
-              >
+              <CTAButton size="lg" onClick={() => setIsPartnerModalOpen(true)} className="w-full max-w-md mb-4">
                 <Send className="w-5 h-5" />
                 Đăng ký ngay
               </CTAButton>
@@ -1826,7 +1811,6 @@ function HomePageContent() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Badge className="bg-red-100 text-red-800 mb-4">Câu hỏi thường gặp</Badge>
-            
           </div>
 
           <div className="max-w-6xl mx-auto">
@@ -1846,9 +1830,7 @@ function HomePageContent() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900">
-                    Hỗ trợ vòm bàn chân là gì?
-                  </h3>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-blue-900">Hỗ trợ vòm bàn chân là gì?</h3>
                   <p className="text-gray-700 text-lg leading-relaxed">
                     Đệm lót vòm bàn chân là thiết bị hỗ trợ bàn chân được thiết kế đặc biệt, đeo bên trong giày.
                   </p>
@@ -1857,9 +1839,7 @@ function HomePageContent() {
                     dây chằng, cơ và gân của bàn chân, đồng thời hỗ trợ toàn bộ bốn vòm bàn chân.
                   </p>
                   <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="text-blue-800 font-medium italic">
-                      "Một thiết bị giúp bạn rời khỏi ghế sofa!"
-                    </p>
+                    <p className="text-blue-800 font-medium italic">"Một thiết bị giúp bạn rời khỏi ghế sofa!"</p>
                   </div>
                 </div>
               </div>
@@ -1871,18 +1851,16 @@ function HomePageContent() {
                     Sự khác biệt giữa dụng cụ hỗ trợ vòm và các thiết bị được thiết kế riêng là gì?
                   </h3>
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    Một thiết bị được thiết kế riêng, mặc dù hữu ích trong một số trường hợp nhất định, nhưng sẽ không giúp
-                    bàn chân của bạn chịu được toàn bộ trọng lượng cơ thể trên vòm bàn chân như mong muốn.
+                    Một thiết bị được thiết kế riêng, mặc dù hữu ích trong một số trường hợp nhất định, nhưng sẽ không
+                    giúp bàn chân của bạn chịu được toàn bộ trọng lượng cơ thể trên vòm bàn chân như mong muốn.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    Tám mươi phần trăm các vấn đề liên quan đến bàn chân có thể được giải quyết bằng một tấm lót vòm bàn chân
-                    đúc sẵn vừa vặn như của chúng tôi. Tấm lót vòm bàn chân của chúng tôi có thể là một giải pháp thay thế
-                    tiết kiệm chi phí hơn cho nhiều người.
+                    Tám mươi phần trăm các vấn đề liên quan đến bàn chân có thể được giải quyết bằng một tấm lót vòm bàn
+                    chân đúc sẵn vừa vặn như của chúng tôi. Tấm lót vòm bàn chân của chúng tôi có thể là một giải pháp
+                    thay thế tiết kiệm chi phí hơn cho nhiều người.
                   </p>
                   <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                    <p className="text-green-800 font-medium italic">
-                      "Sự cân bằng rất quan trọng ở đây…"
-                    </p>
+                    <p className="text-green-800 font-medium italic">"Sự cân bằng rất quan trọng ở đây…"</p>
                   </div>
                 </div>
                 <div className="relative max-w-sm mx-auto lg:order-2">
@@ -1918,22 +1896,20 @@ function HomePageContent() {
                     Sản phẩm hỗ trợ vòm chân của bạn khác với sản phẩm của các cửa hàng thuốc như thế nào?
                   </h3>
                   <p className="text-gray-700 text-lg leading-relaxed">
-                    Đệm lót vòm bàn chân tại các hiệu thuốc hoặc cửa hàng bách hóa thường được thiết kế để vừa với nhiều kích cỡ
-                    vòm bàn chân, hoặc tệ hơn, nhiều cỡ giày.
+                    Đệm lót vòm bàn chân tại các hiệu thuốc hoặc cửa hàng bách hóa thường được thiết kế để vừa với nhiều
+                    kích cỡ vòm bàn chân, hoặc tệ hơn, nhiều cỡ giày.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    Các kích cỡ của chúng tôi được thiết kế nhỏ hơn một nửa cỡ giày để đảm bảo vừa vặn hoàn hảo và mang lại
-                    hiệu suất tối ưu. Bạn sẽ không bao giờ thấy sản phẩm nào của chúng tôi có kích cỡ dành cho "Nam 8-10".
+                    Các kích cỡ của chúng tôi được thiết kế nhỏ hơn một nửa cỡ giày để đảm bảo vừa vặn hoàn hảo và mang
+                    lại hiệu suất tối ưu. Bạn sẽ không bao giờ thấy sản phẩm nào của chúng tôi có kích cỡ dành cho "Nam
+                    8-10".
                   </p>
                   <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-                    <p className="text-purple-800 font-medium italic">
-                      "Sự cân bằng rất quan trọng ở đây!"
-                    </p>
+                    <p className="text-purple-800 font-medium italic">"Sự cân bằng rất quan trọng ở đây!"</p>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -2039,27 +2015,14 @@ function HomePageContent() {
                   className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="TikTok"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5 text-white"
+                  >
                     <path d="M9 4.58A4.56 4.56 0 0 0 6.43 7.13 4.56 4.56 0 0 0 4 9.71a4.56 4.56 0 0 0 2.43 2.55 4.56 4.56 0 0 0 2.57 1.21v-4.58a4.58 4.58 0 0 1 4.58-4.58h2.29V15a2.29 2.29 0 0 1-2.29 2.29H9v-4.58a2.29 2.29 0 0 0-2.29-2.29h-2.29v-2.29h2.29A2.29 2.29 0 0 1 9 4.58z" />
                   </svg>
-                </a>
-                <a
-                  href="https://instagram.com/nagen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-all duration-300 hover:scale-110 cursor-pointer"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5 text-white" />
-                </a>
-                <a
-                  href="https://zalo.me/nagen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:scale-110 cursor-pointer"
-                  aria-label="Zalo"
-                >
-                  <Zap className="w-5 h-5 text-white" />
                 </a>
               </div>
             </div>
@@ -2153,7 +2116,8 @@ function HomePageContent() {
                 </li>
                 <li>
                   <a
-                    href="#" onClick={() => navigateTo("/terms-of-use")}
+                    href="#"
+                    onClick={() => navigateTo("/terms-of-use")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     Điều khoản sử dụng
@@ -2193,6 +2157,8 @@ function HomePageContent() {
           onClose={() => setSelectedProduct(null)}
         />
       )}
+
+      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
     </div>
   )
 }
