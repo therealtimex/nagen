@@ -95,7 +95,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-gray-600">Nếu bạn có câu hỏi về chính sách bảo mật này, vui lòng liên hệ:</p>
             <div className="mt-4 space-y-2">
               <p>
-                <strong>Email:</strong> nagen.vn@gmail.com
+                <strong>Email:</strong> nagen@nagen.vn
               </p>
               <p>
                 <strong>Điện thoại:</strong> 024 35632008

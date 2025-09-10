@@ -313,7 +313,7 @@ export default function AboutNAGENPage() {
                 <Mail className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-gray-600 text-sm">nagen.vn@gmail.com</p>
+              <p className="text-gray-600 text-sm">nagen@nagen.vn</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">

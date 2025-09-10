@@ -295,7 +295,7 @@ export default function UsageGuidePage() {
               </div>
               <div className="text-center p-4 bg-green-50 rounded-lg">
                 <h4 className="font-semibold text-green-900 mb-2">Email</h4>
-                <p className="text-green-700">nagen.vn@gmail.com</p>
+                <p className="text-green-700">nagen@nagen.vn</p>
                 <p className="text-xs text-gray-500">Phản hồi trong 2h</p>
               </div>
               <div className="text-center p-4 bg-red-50 rounded-lg">
