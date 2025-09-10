@@ -235,7 +235,7 @@ function EnhancedNavigation() {
                   priority
                 />
               </Link>
-              <p className="text-center text-red-600 font-medium text-sm mt-1">NUÔI DƯỠNG BƯỚC CHÂN</p>
+              <p className="text-center text-red-600 font-medium text-sm mt-1">NUÔI DƯỠNG TỪNG BƯỚC CHÂN</p>
             </div>
 
             {/* Desktop Navigation */}
