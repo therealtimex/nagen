@@ -1578,7 +1578,7 @@ function HomePageContent() {
   </div>
 
   {/* CTA Button - Right (1/3 width) */}
-  <div className="lg:col-span-1 flex justify-end items-start">
+  <div className="lg:col-span-1 flex justify-end items-start ml-4">
     <CTAButton
       variant="primary"
       size="lg"
@@ -1586,8 +1586,8 @@ function HomePageContent() {
       className="
         bg-[#21395D] hover:bg-[#1a2d4a] text-white
         inline-flex items-center justify-center
-        px-6 py-4 rounded-xl
-        whitespace-nowrap text-base
+        px-8 py-3 rounded-xl
+        text-base
       "
     >
       <span className="text-left">
