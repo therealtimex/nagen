@@ -1541,6 +1541,7 @@ function HomePageContent() {
           </div>
         </div>
       </section>
+       </div>
 
       {/* Enhanced Product Image and Research Section */}
       <section className="py-16 bg-gray-50">
@@ -2164,17 +2165,20 @@ function HomePageContent() {
     </div>
   )
 }
+// Main HomePage Component with NoSSRWrapper
 
 // Main HomePage Component with NoSSRWrapper
-const HomePage = () => (
-  <>
-    <Head>
-      <title>NAGEN</title>
-    </Head>
-    <NoSSRWrapper>
-      <HomePageContent />
-    </NoSSRWrapper>
-  </>
-)
+const HomePage = () => {
+  return (
+    <>
+      <Head>
+        <title>NAGEN</title>
+      </Head>
+      <NoSSRWrapper>
+        <HomePageContent />
+      </NoSSRWrapper>
+    </>
+  )
+}
 
 export default HomePage
