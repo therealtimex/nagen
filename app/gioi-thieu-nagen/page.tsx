@@ -234,9 +234,9 @@ export default function AboutNAGENPage() {
       </section>
 
       {/* Section 3: Introduction to NAGEN */}
-      <section id="introduction" className="py-20 bg-white">
+      <section id="introduction" className="py-8 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-red-100 text-red-800">Giới thiệu NAGEN</Badge>
               <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">
@@ -289,18 +289,18 @@ export default function AboutNAGENPage() {
 
 
      {/* Contact Section */}
-    <section className="py-16 bg-white text-blue-900">
+      <section className="py-8 bg-white text-blue-900">
       <div className="w-full h-[8px]">
         <div className="bg-red-600 w-full !h-[calc(6px/1.5)] md:!h-[calc(10px/1.5)]"></div>
         <div className="bg-[#21395D] w-full !h-[calc(6px/1.5)] md:!h-[calc(10px/1.5)]"></div>
       </div>
       <div className="container mx-auto px-4 text-center">
-         <h2 className="text-3xl font-bold mb-6">Liên hệ với NAGEN</h2>
-         <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+         <h2 className="text-3xl font-bold mb-6 mt-6">Liên hệ với NAGEN</h2>
+         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
           Bạn có câu hỏi về sản phẩm hoặc dịch vụ? Đội ngũ NAGEN luôn sẵn sàng hỗ trợ bạn 24/7
         </p>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="w-8 h-8 text-white" />
