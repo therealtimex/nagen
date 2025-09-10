@@ -1570,27 +1570,28 @@ function HomePageContent() {
                 </p>
                 <p className="text-[#21395D] text-lg leading-relaxed">
                   Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm phù hợp hoàn hảo với bạn và lối sống của bạn.
-                  lifestyle perfectly.
                 </p>
               </div>
 
               {/* CTA Button - Right (1/3 width) */}
-              <div className="lg:col-span-1 flex justify-center lg:justify-end items-start">
-                <CTAButton
-                  variant="primary"
-                  size="lg"
-                  onClick={() => navigateTo("/studies")}
-                  className="bg-[#21395D] hover:bg-[#1a2d4a] text-center px-6 py-4"
-                >
-                  Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </CTAButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+<div className="lg:col-span-1 flex justify-center lg:justify-end items-start w-full">
+  <CTAButton
+    variant="primary"
+    size="lg"
+    onClick={() => navigateTo("/studies")}
+    className="
+      bg-[#21395D] hover:bg-[#1a2d4a] text-white
+      inline-flex items-center justify-center
+      px-6 py-3 lg:px-7 lg:py-4
+      text-sm sm:text-base lg:text-lg
+      rounded-xl whitespace-nowrap
+    "
+  >
+    Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
+    <ArrowRight className="w-5 h-5 ml-2" />
+  </CTAButton>
+</div>
+              
       {/* Product Highlights Section */}
       <section id="products" className="py-16">
         <div className="container mx-auto px-4">
