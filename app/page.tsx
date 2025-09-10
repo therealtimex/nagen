@@ -393,7 +393,7 @@ function EnhancedFeedbackSlider() {
     <div className="relative bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-8">
       <div className="text-center mb-8">
         <h3 className="text-2xl font-bold text-blue-900 mb-2">Khách hàng nói gì về NAGEN?</h3>
-        <p className="text-gray-600">Hơn 10,000+ khách hàng tin tưởng</p>
+        <p className="text-gray-600">Hơn 4 triệu người tin dùng trên toàn thế giới</p>
       </div>
 
       <div className="overflow-hidden rounded-lg">
@@ -1563,16 +1563,13 @@ function HomePageContent() {
               {/* Text Content - Left (2/3 width) */}
               <div className="lg:col-span-2 space-y-4">
                 <p className="text-[#21395D] text-lg leading-relaxed">
-                  That design supports all four arches of the foot and helps control arch action. Every design element
-                  supports the objective of guiding the foot into a more biomechanically efficient posture for maximum
-                  performance and efficiency.
+                  Thiết kế này hỗ trợ cả bốn vòm bàn chân và giúp kiểm soát chuyển động của vòm. Mỗi yếu tố thiết kế đều hướng đến mục tiêu hướng dẫn bàn chân vào tư thế cơ sinh học hiệu quả hơn để đạt hiệu suất và hiệu quả tối đa.
                 </p>
                 <p className="text-[#21395D] text-lg leading-relaxed">
-                  A properly functioning arch improves balance, distributes pressure correctly over the sole of the foot
-                  and allows the muscles, ligaments and tendons used during the gait cycle to work more efficiently.
+                  Một vòm bàn chân hoạt động tốt sẽ cải thiện sự cân bằng, phân bổ áp lực chính xác lên lòng bàn chân và cho phép các cơ, dây chằng và gân được sử dụng trong chu kỳ dáng đi hoạt động hiệu quả hơn.
                 </p>
                 <p className="text-[#21395D] text-lg leading-relaxed">
-                  With a family of products like this, you can be sure that we have one that will fit you and your
+                  Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm phù hợp hoàn hảo với bạn và lối sống của bạn.
                   lifestyle perfectly.
                 </p>
               </div>
@@ -1585,7 +1582,7 @@ function HomePageContent() {
                   onClick={() => navigateTo("/studies")}
                   className="bg-[#21395D] hover:bg-[#1a2d4a] text-center px-6 py-4"
                 >
-                  Learn More
+                  Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </CTAButton>
               </div>
@@ -1598,8 +1595,6 @@ function HomePageContent() {
       <section id="products" className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Sản phẩm nổi bật</h2>
-            <p className="text-gray-600 text-lg">Khám phá dòng sản phẩm chất lượng cao của NAGEN</p>
           </div>
 
           <div className="space-y-8 mb-12">
