@@ -17,7 +17,7 @@ export interface Product {
 export const productData: Product[] = [
   {
     id: "sungen-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungen™ Classic",
+    name: "Tấm lót hỗ trợ vòm bàn chân Sungen™",
     description:
       "Sungen™ là tấm lót hỗ trợ vòm bàn chân đã khởi đầu một ngành công nghiệp và giúp hàng triệu người nhận ra rằng họ có thể sống mà không bị đau chân.\n\n" +
       "Đây là sản phẩm định hình bàn chân lý tưởng cho mục đích sử dụng hàng ngày và cung cấp mức độ hỗ trợ cao nhất trong danh mục sản phẩm đa dạng của chúng tôi.\n\n" +
@@ -33,22 +33,6 @@ export const productData: Product[] = [
     popular: true,
     new: false,
     tags: ["bestseller", "orthopedic"],
-  },
-  {
-    id: "sungen-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungen™ Sport",
-    description:
-      "Thiết kế đặc biệt cho vận động viên và người chơi thể thao.\n\n" +
-      "Giảm chấn thương và tăng hiệu suất khi tập luyện và thi đấu.\n\n" +
-      "Phù hợp với nhiều loại giày thể thao khác nhau.",
-    price: "649.000đ",
-    image: "/images/products/Sungen.jpg",
-    category: "sungen",
-    rating: 4.8,
-    reviewCount: 98,
-    popular: false,
-    new: true,
-    tags: ["sport", "active"],
   },
   {
     id: "winagen-1",
@@ -68,7 +52,7 @@ export const productData: Product[] = [
   },
   {
     id: "winagen-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™ Slim",
+    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™",
     description:
       "Thiết kế mỏng nhẹ, phù hợp với giày công sở và giày thời trang.\n\n" +
       "Tạo cảm giác thoải mái khi đi cả ngày dài.\n\n" +
@@ -119,7 +103,7 @@ export const productData: Product[] = [
   },
   {
     id: "endurance-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Endurance™ Travel",
+    name: "Tấm lót hỗ trợ vòm bàn chân Endurance™",
     description:
       "Thiết kế gấp gọn, lý tưởng cho người thường xuyên di chuyển và du lịch.\n\n" +
       "Dễ dàng mang theo trong hành lý mà không chiếm nhiều không gian.\n\n" +
@@ -135,7 +119,7 @@ export const productData: Product[] = [
   },
   {
     id: "silhouette-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Silhouette™ Elegance",
+    name: "Tấm lót hỗ trợ vòm bàn chân Silhouette™",
     description:
       "Tấm lót hỗ trợ vòm bàn chân Silhouette™ giống như Tấm lót hỗ trợ vòm bàn chân Endurance™, siêu mỏng nhưng hẹp hơn.\n\n" +
       "Sản phẩm hoàn hảo cho những đôi giày dành cho bàn chân hẹp và vừa khít hoặc có đế giày hẹp như các loại giày của phụ nữ.\n\n" +
