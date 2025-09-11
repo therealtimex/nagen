@@ -35,7 +35,7 @@ export const navigateTo = (
     if (replace) {
       window.location.replace(path);
     } else {
-      window.location.href = path;
+      window.open(path, "_blank");
     }
     return;
   }
