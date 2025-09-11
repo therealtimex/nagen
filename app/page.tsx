@@ -1541,7 +1541,6 @@ function HomePageContent() {
           </div>
         </div>
       </section>
-       </div>
 
       {/* Enhanced Product Image and Research Section */}
       <section className="py-16 bg-gray-50">
@@ -1559,45 +1558,48 @@ function HomePageContent() {
               />
             </div>
 
-           {/* Text and CTA - Bottom */}
-<div className="grid lg:grid-cols-3 gap-8 items-start">
-  {/* Text Content - Left (2/3 width) */}
-  <div className="lg:col-span-2 space-y-4">
-    <p className="text-[#21395D] text-lg leading-relaxed">
-      Thiết kế này hỗ trợ cả bốn vòm bàn chân và giúp kiểm soát chuyển động của vòm. 
-      Mỗi yếu tố thiết kế đều hướng đến mục tiêu hướng dẫn bàn chân vào tư thế cơ sinh học 
-      hiệu quả hơn để đạt hiệu suất và hiệu quả tối đa.
-    </p>
-    <p className="text-[#21395D] text-lg leading-relaxed">
-      Một vòm bàn chân hoạt động tốt sẽ cải thiện sự cân bằng, phân bổ áp lực chính xác lên lòng bàn chân 
-      và cho phép các cơ, dây chằng và gân được sử dụng trong chu kỳ dáng đi hoạt động hiệu quả hơn.
-    </p>
-    <p className="text-[#21395D] text-lg leading-relaxed">
-      Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm 
-      phù hợp hoàn hảo với bạn và lối sống của bạn.
-    </p>
-  </div>
+            {/* Text and CTA - Bottom */}
+            <div className="grid lg:grid-cols-3 gap-8 items-start">
+              {/* Text Content - Left (2/3 width) */}
+              <div className="lg:col-span-2 space-y-4">
+                <p className="text-[#21395D] text-lg leading-relaxed">
+                  Thiết kế này hỗ trợ cả bốn vòm bàn chân và giúp kiểm soát chuyển động của vòm. 
+                  Mỗi yếu tố thiết kế đều hướng đến mục tiêu hướng dẫn bàn chân vào tư thế cơ sinh học 
+                  hiệu quả hơn để đạt hiệu suất và hiệu quả tối đa.
+                </p>
+                <p className="text-[#21395D] text-lg leading-relaxed">
+                  Một vòm bàn chân hoạt động tốt sẽ cải thiện sự cân bằng, phân bổ áp lực chính xác lên lòng bàn chân 
+                  và cho phép các cơ, dây chằng và gân được sử dụng trong chu kỳ dáng đi hoạt động hiệu quả hơn.
+                </p>
+                <p className="text-[#21395D] text-lg leading-relaxed">
+                  Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm 
+                  phù hợp hoàn hảo với bạn và lối sống của bạn.
+                </p>
+              </div>
 
-  {/* CTA Button - Right (1/3 width) */}
-  <div className="lg:col-span-1 flex justify-end items-start ml-4">
-    <CTAButton
-      variant="primary"
-      size="lg"
-      onClick={() => navigateTo("/studies")}
-      className="
-        bg-[#21395D] hover:bg-[#1a2d4a] text-white
-        inline-flex items-center justify-center
-        px-8 py-3 rounded-xl
-        text-base
-      "
-    >
-      <span className="text-left">
-        Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
-      </span>
-      <ArrowRight className="w-5 h-5 ml-2 flex-shrink-0" />
-    </CTAButton>
-  </div>
-</div>
+              {/* CTA Button - Right (1/3 width) */}
+              <div className="lg:col-span-1 flex justify-end items-start ml-4">
+                <CTAButton
+                  variant="primary"
+                  size="lg"
+                  onClick={() => navigateTo("/studies")}
+                  className="
+                    bg-[#21395D] hover:bg-[#1a2d4a] text-white
+                    inline-flex items-center justify-center
+                    px-8 py-3 rounded-xl
+                    text-base
+                  "
+                >
+                  <span className="text-left">
+                    Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
+                  </span>
+                  <ArrowRight className="w-5 h-5 ml-2 flex-shrink-0" />
+                </CTAButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
         
       {/* Product Highlights Section */}
       <section id="products" className="py-16">
@@ -2165,20 +2167,17 @@ function HomePageContent() {
     </div>
   )
 }
-// Main HomePage Component with NoSSRWrapper
 
 // Main HomePage Component with NoSSRWrapper
-const HomePage = () => {
-  return (
-    <>
-      <Head>
-        <title>NAGEN</title>
-      </Head>
-      <NoSSRWrapper>
-        <HomePageContent />
-      </NoSSRWrapper>
-    </>
-  )
-}
+const HomePage = () => (
+  <>
+    <Head>
+      <title>NAGEN</title>
+    </Head>
+    <NoSSRWrapper>
+      <HomePageContent />
+    </NoSSRWrapper>
+  </>
+)
 
 export default HomePage
