@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Calendar, Facebook, Phone, MessageCircle, Youtube } from "lucide-react"
+import { MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
+import { getImagePath, navigateTo } from "@/lib/utils"
 
 interface FloatingActionButtonsProps {
   onScheduleClick: () => void
@@ -26,46 +28,46 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
     return () => window.removeEventListener("resize", checkIsMobile)
   }, [])
 
-  const handlePhoneCall = () => {
-    window.location.href = "tel:02435632008"
-  }
-
   const handleFacebookClick = () => {
-    window.open("https://www.facebook.com/people/NAGEN/61576197860425/", "_blank", "noopener,noreferrer")
+    navigateTo("https://www.facebook.com/people/NAGEN/61576197860425/", { external: true })
   }
 
   const handleYouTubeClick = () => {
-    window.open("https://www.youtube.com/@nagenvn", "_blank", "noopener,noreferrer")
+    navigateTo("https://www.youtube.com/@nagenvn", { external: true })
+  }
+
+  const handleZaloClick = () => {
+    navigateTo("https://zalo.me/2254011402039684095", { external: true })
   }
 
   const buttons = [
     {
-      icon: Calendar,
+      icon: "/images/icons/calendar.png",
       label: "Đặt lịch đo chân",
       onClick: onScheduleClick,
-      className: "bg-red-600 hover:bg-red-700 text-white",
+      className: "bg-red-600 hover:bg-red-700 text-white shadow-red-500/25",
       ariaLabel: "Đặt lịch đo chân miễn phí",
     },
     {
-      icon: Youtube,
+      icon: "/images/icons/youtube.svg",
       label: "YouTube",
       onClick: handleYouTubeClick,
-      className: "bg-[#FF0000] hover:bg-[#CC0000] text-white",
+      className: "bg-[#FF0000] hover:bg-[#CC0000] text-white shadow-red-500/25",
       ariaLabel: "Xem kênh YouTube NAGEN",
     },
     {
-      icon: Facebook,
+      icon: "/images/icons/facebook.svg",
       label: "Facebook",
       onClick: handleFacebookClick,
-      className: "bg-[#1877F2] hover:bg-[#166FE5] text-white",
+      className: "bg-[#1877F2] hover:bg-[#166FE5] text-white shadow-blue-500/25",
       ariaLabel: "Liên hệ qua Facebook",
     },
     {
-      icon: Phone,
-      label: "Gọi điện",
-      onClick: handlePhoneCall,
-      className: "bg-[#10B981] hover:bg-[#059669] text-white",
-      ariaLabel: "Gọi điện tư vấn: 024 35632008",
+      icon: "/images/icons/zalo.svg",
+      label: "Zalo",
+      onClick: handleZaloClick,
+      className: "bg-[#0068FF] hover:bg-[#005ae0] text-white shadow-blue-500/25",
+      ariaLabel: "Chat on Zalo",
     },
   ]
 
@@ -80,7 +82,6 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
           )}
         >
           {buttons.map((button, index) => {
-            const Icon = button.icon
             return (
               <div
                 key={index}
@@ -92,28 +93,36 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
                 {/* Label tooltip */}
                 <div
                   className={cn(
-                    "bg-gray-900 text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap shadow-lg",
-                    "opacity-0 group-hover:opacity-100 transition-opacity duration-200",
+                    "bg-gray-900/95 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap shadow-lg border border-gray-700/30",
+                    "opacity-0 group-hover:opacity-100 transition-all duration-200 ease-out",
                     "pointer-events-none relative",
                   )}
                 >
                   {button.label}
-                  <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-900 border-t-4 border-t-transparent border-b-4 border-b-transparent" />
+                  <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-900/95 border-t-4 border-t-transparent border-b-4 border-b-transparent" />
                 </div>
 
                 {/* Action button */}
                 <Button
                   onClick={button.onClick}
                   className={cn(
-                    "rounded-full shadow-lg transition-all duration-200",
-                    "flex items-center justify-center",
-                    "hover:scale-110 active:scale-95",
+                    "rounded-full shadow-lg transition-all duration-200 ease-out",
+                    "flex items-center justify-center p-0 relative overflow-hidden",
+                    "hover:scale-105 active:scale-95 hover:shadow-xl",
                     "md:w-18 md:h-18 w-14 h-14",
+                    "border border-white/10",
                     button.className,
                   )}
                   aria-label={button.ariaLabel}
                 >
-                  <Icon className="md:w-7 md:h-7 w-6 h-6" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
+                  <Image
+                    src={getImagePath(button.icon)}
+                    alt={button.label}
+                    width={48}
+                    height={48}
+                    className="md:w-9 md:h-9 w-7 h-7 filter relative z-10"
+                  />
                 </Button>
               </div>
             )
@@ -126,14 +135,16 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
             className={cn(
               "rounded-full shadow-lg transition-all duration-300 ease-in-out",
               "bg-[#21395D] hover:bg-[#1a2d4a] text-white",
-              "flex items-center justify-center",
+              "flex items-center justify-center p-0 relative overflow-hidden",
+              "border border-white/10 hover:scale-105 active:scale-95",
               "md:w-18 md:h-18 w-14 h-14",
               isExpanded && "rotate-45",
             )}
             aria-label={isExpanded ? "Đóng menu" : "Mở menu liên hệ"}
             aria-expanded={isExpanded}
           >
-            <MessageCircle className="w-7 h-7" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
+            <MessageCircle className="w-6 h-6 drop-shadow-sm relative z-10" />
           </Button>
         )}
       </div>
