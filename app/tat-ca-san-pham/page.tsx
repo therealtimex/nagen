@@ -257,7 +257,7 @@ export default function AllProductsPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3 ml-4">
               <Image
-                src="/images/logo_slogan.png"
+                src={getImagePath("/images/logo_slogan.png")}
                 alt="NAGEN Logo"
                 className="h-10 max-h-[40px]"
                 width={150}
