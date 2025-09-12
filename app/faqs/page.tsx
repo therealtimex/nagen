@@ -7,7 +7,7 @@ const faqs = [
   {
     question: 'Hỗ trợ vòm bàn chân là gì?',
     answer: 'Đệm lót vòm bàn chân là thiết bị hỗ trợ bàn chân được thiết kế đặc biệt, đeo bên trong giày.\n\nĐệm lót vòm bàn chân của chúng tôi được thiết kế theo cơ chế sinh học để định vị chính xác xương, dây chằng, cơ và gân của bàn chân, đồng thời hỗ trợ toàn bộ bốn vòm bàn chân.\n\nTư thế đúng rất quan trọng vì khi cơ thể được đặt đúng vị trí, nó có thể hoạt động hiệu quả hơn, giảm đau và mệt mỏi trong nhiều trường hợp, đồng thời tăng cường hiệu suất thể thao.',
-    image: getImagePath("/images/faqs/faq1.png"),
+    image: "/images/faqs/faq1.png",
     description: "Một thiết bị giúp bạn rời khỏi ghế sofa!"
   },
   {
