@@ -1309,7 +1309,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xl font-bold">Đặt lịch đo chân</h3>
-                  <p className="text-red-100 mt-1">Đo vòm bàn chân chuyên nghiệp tại nhà</p>
+                  <p className="text-red-100 mt-1">Đo vòm bàn chân miễn phí tại nhà</p>
                 </div>
                 <Button variant="ghost" size="icon" onClick={handleClose} className="text-white hover:bg-red-700">
                   ×
