@@ -473,38 +473,15 @@ function EnhancedFeedbackSlider() {
 
 // Hero Content Component with Read More functionality
 function HeroContent() {
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  const shortText = `Tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance, Silhouette, Đệm lót cao su xốp tự nhiên do Bio Orthotics International sản xuất là những những dòng sản phẩm hỗ trợ vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Khởi đầu cho những dòng sản phẩm tuyệt vời này đến từ thiết kế của Georg Alzner, một bác sĩ vật lý trị liệu được đào tạo tại Tây Đức và có bằng về thiết kế giày chỉnh hình. Trong hơn 20 năm làm việc với những người bị tật bệnh, ông đã đi đến kết luận rằng hầu hết các cơn đau và sự khó chịu mà khách hàng của ông trải qua đều là do các vấn đề liên quan đến bàn chân của họ. Tuy nhiên, ông thường thấy rằng những đôi giày tùy chỉnh của mình không giúp ích cho tất cả mọi người, vì vậy ông bắt đầu nghiên cứu sản phẩm tấm lót hỗ trợ vòm bàn chân có thể sử dụng trong nhiều loại giày khác nhau.`
-
-  const fullText = `${shortText}
-
-  Khi di cư đến Canada, ông tin rằng cuối cùng ông đã thiết kế được một sản phẩm hỗ trợ vòm bàn chân có khả năng hỗ trợ tối ưu mà bấy lâu nay mình mong muốn. Thiết kế mới của ông hỗ trợ cả bốn vòm bàn chân và bao gồm các kênh luồng khí cung cấp khả năng thông gió cho bề mặt gan bàn chân, giúp tăng đáng kể sự thoải mái cho người sử dụng. Sau khi thử nghiệm và loại bỏ hàng tá các loại vật liệu trước đó, ông đã tìm kiếm được vật liệu mà ông quyết định sử dụng, cho phép phần hỗ trợ uốn cong, từ đó cho phép vòm di chuyển như bình thường với mỗi bước đi. Sự kết hợp này khuyến khích chức năng bàn chân hoạt động chính xác khi đi đứng và trong suốt chu kỳ đi lại.
-  
-  Năm 1969, văn phòng cấp bằng sáng chế Canada đã đồng ý rằng sản phẩm của ông thực sự độc đáo và cấp cho ông bằng sáng chế cho các phần hỗ trợ vòm bàn chân. Tiếp sau đó, văn phòng cấp bằng sáng chế Hoa Kỳ cũng đã công nhận sáng chế này vào năm 1970. Trải qua hơn 50 năm, thiết kế của Alzner đã chứng minh được tính hiệu quả trong các nghiên cứu khoa học cũng như trong quá trình sử dụng của hơn 4 triệu người dùng trên toàn thế giới.`
 
   return (
     <div className="max-w-6xl mx-auto">
-      <p className="text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
-        {isExpanded ? fullText : shortText}
+      <p className="text-xl font-bold text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
+        Tấm lót hỗ trợ vòm bàn chân NAGEN do Bio Orthotics International, Inc sản xuất tại Mỹ có hàng trăm kích cỡ phù hợp cho nhiều lứa tuổi. Chúng tôi cung cấp sản phẩm phù hợp hoàn hảo với bạn và lối sống của bạn.
       </p>
-
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="mt-4 inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors font-medium"
-      >
-        {isExpanded ? (
-          <>
-            Thu gọn
-            <ChevronDown className="w-4 h-4 rotate-180 transition-transform" />
-          </>
-        ) : (
-          <>
-            Xem thêm
-            <ChevronDown className="w-4 h-4 transition-transform" />
-          </>
-        )}
-      </button>
+      <p className="text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
+        Khởi đầu cho tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance, Silhouette của NAGEN đến từ thiết kế của Georg Alzner phát triển và cấp bằng sáng chế.
+      </p>
     </div>
   )
 }
@@ -1519,16 +1496,14 @@ function HomePageContent() {
       <section id="home" className="relative bg-[#FFFFFF] text-[#21395D] py-10 lg:py-18 overflow-hidden">
         <div className="absolute inset-0"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <HeroContent />
-
+          <div className="max-w-6xl mx-auto">
             {/* Video Section */}
-            <div className="mt-12">
+            <div className="mt-4 mb-8">
               <div
                 className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group max-w-2xl mx-auto"
                 onClick={handlePlayVideo}
               >
-                <div className="text-center">
+                <div className="">
                   <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
                     <Play className="w-10 h-10 text-white ml-1" />
                   </div>
@@ -1537,6 +1512,7 @@ function HomePageContent() {
                 </div>
               </div>
             </div>
+            <HeroContent />
           </div>
         </div>
       </section>
@@ -1584,13 +1560,13 @@ function HomePageContent() {
                   onClick={() => navigateTo("/studies")}
                   className="
                     bg-[#21395D] hover:bg-[#1a2d4a] text-white
-                    inline-flex items-center justify-center
+                    inline-flex items-center justify-end
                     px-8 py-3 rounded-xl
                     text-base
                   "
                 >
-                  <span className="text-left">
-                    Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
+                  <span>
+                    Tìm hiểu thêm
                   </span>
                   <ArrowRight className="w-5 h-5 ml-2 flex-shrink-0" />
                 </CTAButton>
