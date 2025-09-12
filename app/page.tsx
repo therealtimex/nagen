@@ -228,14 +228,13 @@ function EnhancedNavigation() {
             <div>
               <Link href="/" className="flex items-center space-x-3">
                 <Image
-                  src={getImagePath("/images/logo_ngang.png")}
+                  src={getImagePath("/images/logo_slogan.png")}
                   alt="Nagen Logo"
                   width={200}
                   height={40}
                   priority
                 />
               </Link>
-              <p className="text-center text-red-600 font-medium text-sm mt-1">NUÔI DƯỠNG TỪNG BƯỚC CHÂN</p>
             </div>
 
             {/* Desktop Navigation */}
