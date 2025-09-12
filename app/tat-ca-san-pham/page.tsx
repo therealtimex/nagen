@@ -48,9 +48,9 @@ function ProductCard({ product }: { product: Product }) {
           <Image
             src={getImagePath(product.image || "/placeholder.svg")}
             alt={product.name}
-            width={300}
-            height={200}
-            className="object-cover"
+            width={250}
+            height={170}
+            className="object-contain"
             loading="lazy"
           />
         </div>
@@ -255,12 +255,15 @@ export default function AllProductsPage() {
       >
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="text-3xl font-bold">
-                <span className="text-blue-900">NA</span>
-                <span className="text-red-600">GE</span>
-                <span className="text-blue-900">N</span>
-              </div>
+            <Link href="/" className="flex items-center space-x-3 ml-4">
+              <Image
+                src="/images/logo_slogan.png"
+                alt="NAGEN Logo"
+                className="h-10 max-h-[40px]"
+                width={150}
+                height={40}
+                style={{ objectFit: 'contain' }}
+              />
             </Link>
             <Link href="/">
               <Button variant="outline" className="flex items-center space-x-2">

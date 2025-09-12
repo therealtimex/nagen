@@ -51,22 +51,6 @@ export const productData: Product[] = [
     tags: ["premium", "comfort"],
   },
   {
-    id: "winagen-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™",
-    description:
-      "Thiết kế mỏng nhẹ, phù hợp với giày công sở và giày thời trang.\n\n" +
-      "Tạo cảm giác thoải mái khi đi cả ngày dài.\n\n" +
-      "Không gây tiếng ồn khi di chuyển, phù hợp với môi trường văn phòng.",
-    price: "649.000đ",
-    image: "/images/products/Winagen.jpg",
-    category: "winagen",
-    rating: 4.7,
-    reviewCount: 65,
-    popular: false,
-    new: false,
-    tags: ["slim", "fashion"],
-  },
-  {
     id: "softgen-1",
     name: "Tấm lót hỗ trợ vòm bàn chân Softgen™",
     description:
@@ -85,7 +69,7 @@ export const productData: Product[] = [
   },
   {
     id: "endurance-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Endurance™ Pro",
+    name: "Tấm lót hỗ trợ vòm bàn chân Endurance™",
     description:
       "Tấm lót hỗ trợ vòm bàn chân Endurance™ là sản phẩm siêu mỏng có khả năng hỗ trợ nhẹ.\n\n" +
       "Vì nó chiếm ít không gian trong giày hơn so với thiết kế hình học của các phiên bản sản phẩm Tấm lót hỗ trợ vòm bàn chân Nagen, nên nó lý tưởng cho những đôi giày không đủ độ sâu cho các thiết bị có cấu hình cao hơn (nhưng hỗ trợ tốt hơn).\n\n" +
@@ -100,22 +84,6 @@ export const productData: Product[] = [
     popular: true,
     new: true,
     tags: ["professional", "durable"],
-  },
-  {
-    id: "endurance-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Endurance™",
-    description:
-      "Thiết kế gấp gọn, lý tưởng cho người thường xuyên di chuyển và du lịch.\n\n" +
-      "Dễ dàng mang theo trong hành lý mà không chiếm nhiều không gian.\n\n" +
-      "Chất liệu bền bỉ, không biến dạng khi gấp nhiều lần.",
-    price: "749.000đ",
-    image: "/images/products/Endurance.jpg",
-    category: "endurance",
-    rating: 4.7,
-    reviewCount: 54,
-    popular: false,
-    new: true,
-    tags: ["travel", "portable"],
   },
   {
     id: "silhouette-1",
@@ -152,52 +120,4 @@ export const productData: Product[] = [
     new: false,
     tags: ["business", "formal"],
   },
-  {
-    id: "sungen-3",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungen™ Kids",
-    description:
-      "Thiết kế đặc biệt cho trẻ em, hỗ trợ phát triển bàn chân khỏe mạnh.\n\n" +
-      "Giúp định hình bàn chân đúng cách trong giai đoạn phát triển.\n\n" +
-      "Vật liệu mềm mại, an toàn cho làn da nhạy cảm của trẻ.",
-    price: "499.000đ",
-    image: "/images/products/Sungen.jpg",
-    category: "sungen",
-    rating: 4.9,
-    reviewCount: 45,
-    popular: false,
-    new: true,
-    tags: ["kids", "growth"],
-  },
-  {
-    id: "winagen-3",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™ Medical",
-    description:
-      "Được phát triển với sự tư vấn của các bác sĩ chuyên khoa, dành cho người có vấn đề về bàn chân.\n\n" +
-      "Hỗ trợ điều trị các bệnh lý về bàn chân như bàn chân bẹt, gai gót chân, viêm cân gan chân.\n\n" +
-      "Thiết kế đặc biệt giúp phân phối đều áp lực và giảm đau hiệu quả.",
-    price: "899.000đ",
-    image: "/images/products/Winagen.jpg",
-    category: "winagen",
-    rating: 5.0,
-    reviewCount: 37,
-    popular: false,
-    new: false,
-    tags: ["medical", "therapeutic"],
-  },
-  {
-    id: "softgen-2",
-    name: "Tấm lót hỗ trợ vòm bàn chân Softgen™ Active",
-    description:
-      "Thiết kế năng động cho người trẻ, hỗ trợ vận động và tập luyện hàng ngày.\n\n" +
-      "Cung cấp sự ổn định và giảm chấn động khi chạy nhảy hoặc tham gia các hoạt động thể thao.\n\n" +
-      "Tăng cường tuần hoàn máu và giảm mệt mỏi cho bàn chân sau thời gian dài hoạt động.",
-    price: "599.000đ",
-    image: "/images/products/Softgen.jpg",
-    category: "softgen",
-    rating: 4.7,
-    reviewCount: 83,
-    popular: false,
-    new: false,
-    tags: ["active", "youth"],
-  },
-]
+];
