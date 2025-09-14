@@ -66,11 +66,14 @@ export default function AboutNAGENPage() {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="text-3xl font-bold">
-                <span className="text-blue-900">NA</span>
-                <span className="text-red-600">GE</span>
-                <span className="text-blue-900">N</span>
-              </div>
+              <Image
+                src={getImagePath("/images/logo_slogan_1.png")}
+                alt="Nagen Logo"
+                width={220}
+                height={44}
+                priority
+                className="h-8 object-contain"
+              />
             </Link>
             <Link href="/">
               <Button variant="outline" className="flex items-center space-x-2 hover:bg-blue-50 transition-colors">
