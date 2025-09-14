@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { MapPin, Phone, Navigation, ChevronLeft, List } from "lucide-react"
+import { MapPin, Phone, Navigation, ChevronLeft, List, Calendar } from "lucide-react"
 import { dealerData, getDealersByDistance, type Dealer } from "@/lib/dealers"
 import dynamic from "next/dynamic"
 
@@ -12,7 +12,7 @@ const LeafletMapComponent = dynamic(
   { ssr: false }
 )
 
-const DealerLocator = () => {
+const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void }) => {
   const [dealers, setDealers] = useState<Dealer[]>(dealerData)
   const [selectedDealer, setSelectedDealer] = useState<Dealer | null>(null)
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null)
@@ -128,10 +128,6 @@ const DealerLocator = () => {
                     </div>
                     <p className="text-gray-600 text-xs leading-relaxed pl-8">{dealer.address}</p>
                     <div className="flex items-center justify-between text-xs pl-8">
-                      <span className="flex items-center text-gray-600">
-                        <Phone className="w-3 h-3 mr-1" />
-                        {dealer.phone}
-                      </span>
                       {dealer.distance && <span className="text-blue-600 font-medium">{dealer.distance}</span>}
                     </div>
                     <div className="flex gap-2 pl-8">
@@ -143,7 +139,7 @@ const DealerLocator = () => {
                           e.stopPropagation()
                           window.open(
                             `https://www.google.com/maps/dir/?api=1&destination=${dealer.lat},${dealer.lng}`,
-                            "_blank",
+                            "_blank"
                           )
                         }}
                       >
@@ -156,11 +152,11 @@ const DealerLocator = () => {
                         className="flex-1 text-xs py-1"
                         onClick={(e) => {
                           e.stopPropagation()
-                          window.open(`tel:${dealer.phone}`, "_blank")
+                          onBookAppointment()
                         }}
                       >
-                        <Phone className="w-3 h-3 mr-1" />
-                        Gọi ngay
+                        <Calendar className="w-3 h-3 mr-1" />
+                        Đặt lịch
                       </Button>
                     </div>
                   </div>

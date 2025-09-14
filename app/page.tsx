@@ -1468,25 +1468,20 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
 
 // Main Homepage Content Component
 function HomePageContent() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false)
-  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false)
-
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-
-  const handleHeroCTA = () => {
-    setIsAppointmentModalOpen(true)
-  }
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const handlePlayVideo = () => {
     if (videoRef.current) {
-      videoRef.current.play()
+      videoRef.current.play();
     }
-  }
+  };
 
   const handleScheduleClick = () => {
-    setIsAppointmentModalOpen(true)
-  }
+    setIsAppointmentModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -1695,7 +1690,7 @@ function HomePageContent() {
             <p className="text-gray-600 text-lg">Tìm đại lý gần bạn nhất để được tư vấn và trải nghiệm sản phẩm</p>
           </div>
 
-          <DealerLocator />
+          <DealerLocator onBookAppointment={setIsAppointmentModalOpen} />
         </div>
       </section>
 
@@ -2144,15 +2139,17 @@ function HomePageContent() {
 }
 
 // Main HomePage Component with NoSSRWrapper
-const HomePage = () => (
-  <>
-    <Head>
-      <title>NAGEN</title>
-    </Head>
-    <NoSSRWrapper>
-      <HomePageContent />
-    </NoSSRWrapper>
-  </>
-)
+const HomePage = () => {
+  return (
+    <>
+      <Head>
+        <title>NAGEN</title>
+      </Head>
+      <NoSSRWrapper>
+        <HomePageContent/>
+      </NoSSRWrapper>
+    </>
+  );
+};
 
-export default HomePage
+export default HomePage;
