@@ -169,9 +169,10 @@ function EnhancedNavigation() {
     },
     { name: "Dịch vụ", href: "#services" },
     { name: "Đối tác", href: "#partners" },
-    { name: "Giới thiệu", href: "#about" },
-    { name: "FAQs", href: "/faqs" },
+    { name: "Giới thiệu", href: "/gioi-thieu-nagen" },
+    { name: "Sự kiện", href: "/su-kien" },
     { name: "Liên hệ", href: "#contact" },
+    { name: "FAQs", href: "/faqs" },
   ]
 
   const handleNavigation = (href: string) => {
@@ -1631,6 +1632,12 @@ function HomePageContent() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <EnhancedFeedbackSlider />
+          <div className="text-center mt-8">
+            <Button variant="primary" size="lg" onClick={() => navigateTo("/su-kien")}>
+              Xem tất cả
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
         </div>
       </section>
 
