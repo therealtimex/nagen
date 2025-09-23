@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { getImagePath } from "@/lib/utils";
 "use client";
 
 import React from "react";
@@ -15,13 +17,13 @@ const SuKienPage = () => {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <a href="/" className="flex items-center space-x-3 ml-4">
-              <img
-                src="/images/logo_slogan_1.png"
+              <Image
+                src={getImagePath("/images/logo_slogan_1.png")}
                 alt="NAGEN Logo"
-                className="h-10 max-h-[40px]"
                 width={150}
                 height={40}
                 style={{ objectFit: 'contain' }}
+                priority
               />
             </a>
             <a href="/">
