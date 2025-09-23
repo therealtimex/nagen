@@ -1647,10 +1647,9 @@ function HomePageContent() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-blue-100 text-blue-800">Dịch vụ chuyên nghiệp</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Đo vòm bàn chân miễn phí tại nhà</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">Dịch vụ tư vấn và kiểm tra vòm bàn chân tại nhà miễn phí toàn quốc</h2>
               <p className="text-[#21395D] text-lg leading-relaxed">
-                Chúng tôi cung cấp dịch vụ đo vòm bàn chân chuyên nghiệp với công nghệ hiện đại, giúp bạn tìm được sản
-                phẩm phù hợp nhất.
+                Đại lý NAGEN đồng hành cùng quý khách mọi nông thôn đến thành phố, tại nhà của bạn. Hãy đặt lịch đăng ký dịch vụ chúng tôi sẽ đến tư vấn tại nơi ở của quý khách
               </p>
               <div className="space-y-4">
                 {[
@@ -1669,7 +1668,7 @@ function HomePageContent() {
               </div>
               <CTAButton size="lg" onClick={() => setIsAppointmentModalOpen(true)}>
                 <Calendar className="w-5 h-5" />
-                Đặt lịch đo chân
+                Hãy đăng ký đặt lịch
               </CTAButton>
             </div>
             <div className="aspect-video bg-black/10 rounded-xl relative overflow-hidden">
