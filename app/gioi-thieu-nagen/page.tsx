@@ -237,57 +237,61 @@ export default function AboutNAGENPage() {
       </section>
 
       {/* Section 3: Introduction to NAGEN */}
-      <section id="introduction" className="py-8 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Badge className="bg-red-100 text-red-800">Giới thiệu NAGEN</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">
-                Lịch sử công ty TNHH NAGEN
-              </h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Công ty TNHH NAGEN là Công ty phân phối Độc quyền Tấm lót hỗ trợ vòm bàn chân tại Lãnh thổ Việt Nam.
-                Với sứ mệnh, mang đến cho người dân Việt Nam tấm lót hỗ trợ vòm bàn chân tốt nhất.
-              </p>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Trở thành sự nuôi dưỡng thiết yếu cho mọi người dân Việt Nam, Những bước chân đầu đời của một đứa trẻ, cho đến khi bạn già đi tôi với bạn là hình với bóng. Chúng tôi cùng hệ thống Đại lý luôn nỗ lực để từ thôn quê đến thành phố, mỗi bước chân bạn đi được nuôi dưỡng bằng tấm lót hỗ trợ vòm bàn chân tốt nhất.
-              </p>
+     <section id="introduction" className="py-8 bg-white">
+       <div className="container mx-auto px-4">
+         <div className="grid lg:grid-cols-2 gap-12 items-center">
+           <div className="space-y-6">
+             <Badge className="bg-red-100 text-red-800">Giới thiệu NAGEN</Badge>
+             <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">
+               NAGEN và SỨ MỆNH NUÔI DƯỠNG TỪNG BƯỚC CHÂN NGƯỜI VIỆT
+             </h2>
+             <h3 className="text-2xl font-semibold text-blue-900">HƠI THỞ và BƯỚC CHÂN</h3>
+             <p className="text-gray-600 text-lg leading-relaxed">
+               Với sứ mệnh “Nuôi dưỡng từng bước chân”, NAGEN khởi nguồn nhân duyên từ một Phương pháp HƠI THỞ,
+             </p>
+             <p className="text-gray-600 text-lg leading-relaxed">
+               Quá trình mang phương pháp thực tập hơi thở RUNA tới cộng đồng, chúng tôi nhận thấy, hầu hết mọi người mất cân bằng cấu trúc & chức năng cơ thể, các vấn đề xương khớp có thể đến từ mất cân bằng bàn chân. Một sự sắp đặt của Vũ trụ, chúng tôi được kết nối và trở thành Nhà phân phối Độc Quyền Tấm lót hỗ trợ vòm bàn chân của công ty Bio Orthotics International - Hoa Kỳ, có gần 60 năm chuyên sâu trong lĩnh vực sức khỏe bàn chân.
+             </p>
+             <h3 className="text-2xl font-semibold text-blue-900">NAGEN</h3>
+             <ul className="list-disc pl-5 text-gray-600 text-lg leading-relaxed">
+               <li>
+                 "Na" khởi nguồn nhân duyên từ Runa, cùng với Runa nuôi dưỡng sức khỏe thân tâm, "Na" cũng là Naturally "Một cách tự nhiên".
+               </li>
+               <li>
+                 "Gen" là DNA - vật chất di truyền, là Generation - nhiều thế hệ.
+               </li>
+             </ul>
+             <p className="text-gray-600 text-lg leading-relaxed">
+               Nagen là một ý niệm, hành động nhất quán giúp con người trở về bản nguyên, thuận tự nhiên, cân bằng cơ thể bằng tấm lót hỗ trợ vòm bàn chân đáng tin cậy. Khi biết sản phẩm tuyệt vời này đã giúp đỡ hàng triệu người trên toàn thế giới, chúng tôi vô cùng ngạc nhiên, quả là một kho tàng trí tuệ có thể giúp ích cho bao thế hệ người Việt một cách tự nhiên.
+             </p>
+             <p className="text-gray-600 text-lg leading-relaxed">
+               Chúng tôi nhận thấy rất nhiều người dân Việt Nam đang gặp vấn đề từ mất cân bằng bàn chân, có quá nhiều trẻ em và người lớn bị bàn chân bẹt, bàn chân kiễng, dáng chân võng kiềng, hình chữ bát, các vấn đề như cong vẹo cột sống, gù lưng, đau nhức các khớp xương, đau cơ, viêm cân gan chân, suy giãn tĩnh mạch, đau lưng, mỏi cổ, mỏi vai, viêm cân Achines… Thể trạng béo phì, mang bầu, đi bộ, chạy bộ hay chơi các môn thể thao đều áp lực lên xương khớp và vòm bàn chân. Đặc biệt sự thay đổi tuổi tác ở người cao tuổi có thể ảnh hưởng đến khả năng giữ thăng bằng nên rất dễ té ngã.
+             </p>
+             <p className="text-gray-600 text-lg leading-relaxed">
+               Và, chúng tôi mong muốn mang lại sức khỏe, hạnh phúc và niềm vui cho người dân Việt Nam. Mang “Tấm lót hỗ trợ vòm bàn chân trở thành sự nuôi dưỡng thiết yếu cho mọi người dân Việt Nam, từ khi bạn lên 6 đến khi bạn già đi, tôi với bạn là Hình với bóng. Mọi con thôn đến thành phố, mỗi bước chân bạn đi được nuôi dưỡng bằng tấm lót hỗ trợ vòm bàn chân tốt nhất”.
+             </p>
+             <p className="text-gray-600 text-lg leading-relaxed">
+               Chúng tôi tin tưởng những tấm lót hỗ trợ vòm bàn chân của chúng tôi là giải pháp tốt nhất để nhiều bệnh viện, phòng khám, phục hồi chức năng uy tín tại Việt Nam lựa chọn. Chúng tôi cùng hệ thống Đại lý luôn nỗ lực đồng hành cùng bạn trên mọi nẻo dải đường hình chữ S."
+             </p>
+           </div>
 
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-blue-900">Sứ mệnh của NAGEN</h3>
-                {[
-                  "Mang đến cho người dân Việt Nam tấm lót hỗ trợ vòm bàn chân tốt nhất",
-                  "Phát triển hệ thống đại lý trên khắp mọi ngóc ngách Việt Nam",
-                  "Trở thành đối tác tin cậy của các bệnh viện và phòng khám uy tín",
-                  "Nâng cao chất lượng cuộc sống thông qua sức khỏe bàn chân",
-                ].map((value, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-gray-700">{value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
-                <Image
-                  src={getImagePath("/images/Logo2.png")}
-                  alt="NAGEN Việt Nam"
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
+           <div className="space-y-6">
+             <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
+               <Image
+                 src={getImagePath("/images/Logo2.png")}
+                 alt="NAGEN Việt Nam"
+                 width={600}
+                 height={400}
+                 className="object-cover w-full h-full"
+                 loading="lazy"
+               />
+             </div>
+           </div>
+         </div>
 
 
-        </div>
-      </section>
+       </div>
+     </section>
 
 
 
