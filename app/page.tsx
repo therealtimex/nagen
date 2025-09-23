@@ -202,7 +202,7 @@ function EnhancedNavigation() {
           <div className="flex items-center space-x-6">
             <span className="flex items-center">
               <Phone className="w-4 h-4 mr-2" />
-              024 35632008
+              0966578008
             </span>
             <span className="flex items-center">
               <Mail className="w-4 h-4 mr-2" />
@@ -1725,7 +1725,7 @@ function HomePageContent() {
               <p className="flex items-center justify-center">
                 <Phone className="w-4 h-4 mr-2 text-blue-600" />
                 <a href="tel:02435632008" className="hover:underline">
-                  024 35632008
+                  0966578008
                 </a>
               </p>
               <p className="flex items-center justify-center">
@@ -1909,7 +1909,7 @@ function HomePageContent() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-blue-900">Hotline 24/7</h4>
-                    <p className="text-gray-600">024 35632008</p>
+                    <p className="text-gray-600">0966578008</p>
                     <p className="text-sm text-gray-500">Miễn phí cuộc gọi</p>
                   </div>
                 </div>
