@@ -1633,7 +1633,7 @@ function HomePageContent() {
         <div className="container mx-auto px-4">
           <EnhancedFeedbackSlider />
           <div className="text-center mt-8">
-            <Button variant="primary" size="lg" onClick={() => navigateTo("/su-kien")}>
+            <Button variant="default" size="lg" onClick={() => navigateTo("/su-kien")}>
               Xem tất cả
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
@@ -1697,7 +1697,7 @@ function HomePageContent() {
             <p className="text-gray-600 text-lg">Tìm đại lý gần bạn nhất để được tư vấn và trải nghiệm sản phẩm</p>
           </div>
 
-          <DealerLocator onBookAppointment={setIsAppointmentModalOpen} />
+          <DealerLocator onBookAppointment={() => {}} />
         </div>
       </section>
 
@@ -1745,17 +1745,13 @@ function HomePageContent() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-blue-100 text-blue-800">Về chúng tôi</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">NAGEN - Chăm sóc bàn chân chuyên nghiệp</h2>
-              <p className="text-[#21395D] text-lg leading-relaxed">
-                Với sứ mệnh mang đến sức khỏe và sự thoải mái cho đôi chân của bạn, NAGEN không ngừng nghiên cứu và phát
-                triển các sản phẩm chất lượng cao, được chứng nhận bởi các chuyên gia hàng đầu.
-              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">NAGEN - Nuôi dưỡng từng bước chân cùng bao thế hệ</h2>
               <div className="space-y-4">
                 {[
-                  "Sản phẩm chất lượng cao",
-                  "Đội ngũ chuyên gia giàu kinh nghiệm",
-                  "Dịch vụ tận tâm, chu đáo",
-                  "Giá cả hợp lý",
+                  "Viện nghiên cứu cơ sinh học đại học Bang Michigan",
+                  "Nghiên cứu cơ sinh học, khoa học thể dục thể thao, trường sức khỏe và hiệu suất con người, Đại học East Carolina",
+                  "Nghiên cứu cải thiện sự cân bằng và giảm đau ở người cao tuổi của Đại học Bang Armstong - Hoa kỳ",
+                  "Nghiên cứu bởi Đại học Chỉnh Hình Bàn Chân California",
                 ].map((benefit, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
