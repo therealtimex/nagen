@@ -1514,11 +1514,11 @@ function HomePageContent() {
       </section>
 
       {/* Enhanced Product Image and Research Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-10 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             {/* Product Image - Top */}
-            <div className="text-center mb-12">
+            <div className="my-6 max-w-5xl mx-auto flex justify-center">
               <Image
                 src={getImagePath("/images/20200624_161136PS.webp")}
                 alt="Product Image"
@@ -1533,39 +1533,34 @@ function HomePageContent() {
             <div className="grid lg:grid-cols-3 gap-8 items-start">
               {/* Text Content - Left (2/3 width) */}
               <div className="lg:col-span-2 space-y-4">
-                <p className="text-[#21395D] text-lg leading-relaxed">
+                <p className="text-xl text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
                   Thiết kế này hỗ trợ cả bốn vòm bàn chân và giúp kiểm soát chuyển động của vòm. 
                   Mỗi yếu tố thiết kế đều hướng đến mục tiêu hướng dẫn bàn chân vào tư thế cơ sinh học 
                   hiệu quả hơn để đạt hiệu suất và hiệu quả tối đa.
                 </p>
-                <p className="text-[#21395D] text-lg leading-relaxed">
+                <p className="text-[#21395D] text-lg leading-relaxed text-justify">
                   Một vòm bàn chân hoạt động tốt sẽ cải thiện sự cân bằng, phân bổ áp lực chính xác lên lòng bàn chân 
                   và cho phép các cơ, dây chằng và gân được sử dụng trong chu kỳ dáng đi hoạt động hiệu quả hơn.
                 </p>
-                <p className="text-[#21395D] text-lg leading-relaxed">
+                <p className="text-[#21395D] text-lg leading-relaxed text-justify">
                   Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm 
                   phù hợp hoàn hảo với bạn và lối sống của bạn.
                 </p>
-              </div>
-
-              {/* CTA Button - Right (1/3 width) */}
-              <div className="lg:col-span-1 flex justify-end items-start ml-4">
-                <CTAButton
-                  variant="primary"
-                  size="lg"
-                  onClick={() => navigateTo("/studies")}
-                  className="
-                    bg-[#21395D] hover:bg-[#1a2d4a] text-white
-                    inline-flex items-center justify-end
-                    px-8 py-3 rounded-xl
-                    text-base
-                  "
-                >
-                  <span>
-                    Tìm hiểu thêm
-                  </span>
-                  <ArrowRight className="w-5 h-5 ml-2 flex-shrink-0" />
-                </CTAButton>
+                <div className="flex justify-center">
+                  <CTAButton
+                    variant="primary"
+                    size="lg"
+                    onClick={() => navigateTo("/studies")}
+                    className="
+                      bg-[#21395D] hover:bg-[#1a2d4a] text-white
+                      items-center
+                      px-16 py-1 rounded-xl
+                      text-sm w-full
+                    "
+                  >
+                    <span>Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây</span>
+                  </CTAButton>
+                </div>
               </div>
             </div>
           </div>
