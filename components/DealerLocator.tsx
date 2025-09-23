@@ -209,7 +209,7 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
           <div className="flex gap-2">
             <Button className="flex-1" size="sm" onClick={() => window.open("tel:02435632008", "_blank")}>
               <Phone className="w-4 h-4 mr-1" />
-              024 35632008
+              0966578008
             </Button>
             <Button variant="outline" size="sm" className="flex-1">
               <MapPin className="w-4 h-4 mr-1" />

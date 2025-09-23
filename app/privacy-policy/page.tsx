@@ -98,7 +98,7 @@ export default function PrivacyPolicyPage() {
                 <strong>Email:</strong> nagen@nagen.vn
               </p>
               <p>
-                <strong>Điện thoại:</strong> 024 35632008
+                <strong>Điện thoại:</strong> 0966578008
               </p>
               <p>
                 <strong>Địa chỉ:</strong> Tầng 7, Tòa VP-1, Suntquare Building, số 21 Lê Đức Thọ, Hà Nội

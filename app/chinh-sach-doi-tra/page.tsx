@@ -141,7 +141,7 @@ export default function ReturnPolicyPage() {
                 {
                   step: "1",
                   title: "Liên hệ yêu cầu đổi trả",
-                  desc: "Gọi hotline 024 35632008 hoặc email để thông báo yêu cầu đổi trả sản phẩm",
+                  desc: "Gọi hotline 0966578008 hoặc email để thông báo yêu cầu đổi trả sản phẩm",
                   time: "Ngay lập tức",
                   color: "bg-blue-600",
                 },
@@ -359,7 +359,7 @@ export default function ReturnPolicyPage() {
               <div className="text-center p-6 bg-blue-50 rounded-lg border border-blue-200">
                 <Phone className="w-8 h-8 text-blue-600 mx-auto mb-3" />
                 <h4 className="font-semibold text-blue-900 mb-2">Hotline đổi trả</h4>
-                <p className="text-blue-700 font-medium">024 35632008</p>
+                <p className="text-blue-700 font-medium">0966578008</p>
                 <p className="text-xs text-gray-500 mt-1">24/7 - Hỗ trợ nhanh chóng</p>
               </div>
               <div className="text-center p-6 bg-green-50 rounded-lg border border-green-200">

@@ -144,7 +144,7 @@ const SuKienPage = () => {
                 <Phone className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold mb-2">Hotline</h3>
-              <p className="text-[#21395D]">024 35632008</p>
+              <p className="text-[#21395D]">0966578008</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">

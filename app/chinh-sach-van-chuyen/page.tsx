@@ -399,7 +399,7 @@ export default function ShippingPolicyPage() {
               <div className="text-center p-6 bg-blue-50 rounded-lg border border-blue-200">
                 <Phone className="w-8 h-8 text-blue-600 mx-auto mb-3" />
                 <h4 className="font-semibold text-blue-900 mb-2">Hotline vận chuyển</h4>
-                <p className="text-blue-700 font-medium">024 35632008</p>
+                <p className="text-blue-700 font-medium">0966578008</p>
                 <p className="text-xs text-gray-500 mt-1">24/7 - Theo dõi đơn hàng</p>
               </div>
               <div className="text-center p-6 bg-green-50 rounded-lg border border-green-200">

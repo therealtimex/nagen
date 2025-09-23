@@ -290,7 +290,7 @@ export default function UsageGuidePage() {
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-blue-50 rounded-lg">
                 <h4 className="font-semibold text-blue-900 mb-2">Hotline</h4>
-                <p className="text-blue-700">024 35632008</p>
+                <p className="text-blue-700">0966578008</p>
                 <p className="text-xs text-gray-500">24/7</p>
               </div>
               <div className="text-center p-4 bg-green-50 rounded-lg">
