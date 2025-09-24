@@ -1854,7 +1854,7 @@ function HomePageContent() {
                 <div className="relative max-w-sm mx-auto">
                   <div className="aspect-square bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl overflow-hidden shadow-lg">
                     <Image
-                      src={getImagePath("/images/faqs/faq3.png")}
+                      src={getImagePath("/images/faqs/faq3.jpg")}
                       alt="Sản phẩm hỗ trợ vòm chân khác biệt như thế nào"
                       width={300}
                       height={300}
