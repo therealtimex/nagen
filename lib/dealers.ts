@@ -16,7 +16,7 @@ export const dealerData: Dealer[] = [
     id: "dealer-1",
     name: "Văn Phòng NAGEN",
     address: "Tầng 7, toà VP1, Sunsquare, 21 Lê Đức Thọ, Từ Liêm, Hà Nội",
-    phone: "024 3563 2008",
+    phone: "",
     status: "Đang mở cửa",
     distance: "",
     lat: 21.0285,
