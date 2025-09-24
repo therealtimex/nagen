@@ -13,7 +13,7 @@ const LeafletMapComponent = dynamic(
 )
 
 const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void }) => {
-  const [dealers, setDealers] = useState<Dealer[]>(dealerData)
+  const [dealers, setDealers] = useState<Dealer[]>(dealerData.filter(dealer => dealer.name !== "NAGEN Thanh Xuân"))
   const [selectedDealer, setSelectedDealer] = useState<Dealer | null>(null)
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null)
   const [isLoading, setIsLoading] = useState(false)

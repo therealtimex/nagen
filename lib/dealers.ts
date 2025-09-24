@@ -14,8 +14,8 @@ export interface Dealer {
 export const dealerData: Dealer[] = [
   {
     id: "dealer-1",
-    name: "NAGEN Cầu Giấy",
-    address: "123 Đường Cầu Giấy, Quận Cầu Giấy, Hà Nội",
+    name: "Văn Phòng NAGEN",
+    address: "Tầng 7, toà VP1, Sunsquare, 21 Lê Đức Thọ, Từ Liêm, Hà Nội",
     phone: "024 3563 2008",
     status: "Đang mở cửa",
     distance: "",
@@ -24,9 +24,9 @@ export const dealerData: Dealer[] = [
   },
   {
     id: "dealer-2",
-    name: "NAGEN Đống Đa",
-    address: "456 Đường Láng, Quận Đống Đa, Hà Nội",
-    phone: "024 3563 2009",
+    name: "NAGEN Mỹ Đình",
+    address: "288 Mỹ Đình, Từ Liêm, Hà Nội",
+    phone: "", // Tạm ẩn số phone
     status: "Đang mở cửa",
     distance: "",
     lat: 21.0245,
@@ -34,18 +34,18 @@ export const dealerData: Dealer[] = [
   },
   {
     id: "dealer-3",
-    name: "NAGEN Nam Từ Liêm",
-    address: "789 Lê Đức Thọ, Quận Nam Từ Liêm, Hà Nội",
+    name: "NAGEN Hải Phòng",
+    address: "Số 67/30 Trần Nguyên Hãn, Cát Dài, Lê Chân, TP Hải Phòng",
     phone: "024 3563 2010",
-    status: "Đóng cửa",
+    status: "Đang mở cửa",
     distance: "4.1 km",
     lat: 21.0378,
     lng: 105.7804,
   },
   {
     id: "dealer-4",
-    name: "NAGEN Hoàn Kiếm",
-    address: "321 Phố Huế, Quận Hoàn Kiếm, Hà Nội",
+    name: "NAGEN Nghệ An 1",
+    address: "61 Ngô Gia Tự, khối 2, phường Vinh Hưng, Tỉnh Nghệ An",
     phone: "024 3563 2011",
     status: "Đang mở cửa",
     distance: "5.2 km",
@@ -54,8 +54,8 @@ export const dealerData: Dealer[] = [
   },
   {
     id: "dealer-5",
-    name: "NAGEN Hai Bà Trưng",
-    address: "654 Bà Triệu, Quận Hai Bà Trưng, Hà Nội",
+    name: "NAGEN Nghệ An 2",
+    address: "Quỳnh Anh, Tỉnh Nghệ An",
     phone: "024 3563 2012",
     status: "Đang mở cửa",
     distance: "6.1 km",
