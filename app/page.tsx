@@ -1668,7 +1668,7 @@ function HomePageContent() {
             </div>
             <div className="aspect-video bg-black/10 rounded-xl relative overflow-hidden">
               <video
-                src="/images/do-vom-ban-chan-tai-nha.mp4"
+                src={getImagePath("/images/do-vom-ban-chan-tai-nha.mp4")}
                 controls
                 autoPlay
                 muted
@@ -1792,7 +1792,7 @@ function HomePageContent() {
                 <div className="relative max-w-sm mx-auto">
                   <div className="aspect-square bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl overflow-hidden shadow-lg">
                     <Image
-                      src="/images/faqs/faq1.png"
+                      src={getImagePath("/images/faqs/faq1.png")}
                       alt="Hỗ trợ vòm bàn chân là gì"
                       width={300}
                       height={300}
@@ -1838,7 +1838,7 @@ function HomePageContent() {
                 <div className="relative max-w-sm mx-auto lg:order-2">
                   <div className="aspect-square bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
                     <Image
-                      src="/images/faqs/faq2.png"
+                      src={getImagePath("/images/faqs/faq2.png")}
                       alt="Sự khác biệt giữa dụng cụ hỗ trợ vòm và các thiết bị được thiết kế riêng"
                       width={300}
                       height={300}
@@ -1854,7 +1854,7 @@ function HomePageContent() {
                 <div className="relative max-w-sm mx-auto">
                   <div className="aspect-square bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl overflow-hidden shadow-lg">
                     <Image
-                      src="/images/faqs/faq3.jpg"
+                      src={getImagePath("/images/faqs/faq3.png")}
                       alt="Sản phẩm hỗ trợ vòm chân khác biệt như thế nào"
                       width={300}
                       height={300}
