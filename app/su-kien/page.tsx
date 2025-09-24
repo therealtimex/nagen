@@ -1,10 +1,10 @@
-import Image from "next/image";
-import { getImagePath } from "@/lib/utils";
 "use client";
 
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { getImagePath } from "@/lib/utils";
 
 const SuKienPage = () => {
   return (
