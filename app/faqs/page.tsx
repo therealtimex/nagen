@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from "next/image";
 import FAQAccordion from '@/components/FAQAccordion';
+import { getImagePath } from "@/lib/utils";
 
 const faqs = [
   {
@@ -90,7 +91,7 @@ const FAQPage = () => {
                 <div className="space-y-4">
                   <div className="relative overflow-hidden rounded-lg">
                     <Image
-                      src={faqs[selectedFaq].image}
+                      src={getImagePath(faqs[selectedFaq].image)}
                       alt={faqs[selectedFaq].question}
                       width={400}
                       height={300}
