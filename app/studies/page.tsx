@@ -1,13 +1,11 @@
 "use client"
 
 import Head from 'next/head';
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Download, ExternalLink, Calendar, Users, Award } from "lucide-react"
-import { getImagePath } from "@/lib/utils"
+import { ArrowLeft } from "lucide-react"
 
 export default function StudiesPage() {
   return (
@@ -33,13 +31,13 @@ export default function StudiesPage() {
           </div>
         </div>
 
-        {/* Studies Content */}
+        {/* Studies Grid */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
               
               {/* Study 1: California College of Podiatry */}
-              <Card className="p-8">
+              <Card className="hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
                   <Badge className="w-fit mb-4 bg-blue-100 text-blue-800">Nghiên cứu sinh cơ học</Badge>
                   <CardTitle className="text-2xl text-blue-900">1. California College of Podiatry</CardTitle>
@@ -73,7 +71,7 @@ export default function StudiesPage() {
               </Card>
 
               {/* Study 2: Michigan State University */}
-              <Card className="p-8">
+              <Card className="hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
                   <Badge className="w-fit mb-4 bg-green-100 text-green-800">Nghiên cứu trọng tâm</Badge>
                   <CardTitle className="text-2xl text-blue-900">2. Michigan State University</CardTitle>
@@ -101,7 +99,7 @@ export default function StudiesPage() {
               </Card>
 
               {/* Study 3: East Carolina University */}
-              <Card className="p-8">
+              <Card className="hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
                   <Badge className="w-fit mb-4 bg-purple-100 text-purple-800">Nghiên cứu cân bằng</Badge>
                   <CardTitle className="text-2xl text-blue-900">3. East Carolina University</CardTitle>
@@ -155,7 +153,7 @@ export default function StudiesPage() {
               </Card>
 
               {/* Study 4: Armstrong Atlantic State University */}
-              <Card className="p-8">
+              <Card className="hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
                   <Badge className="w-fit mb-4 bg-orange-100 text-orange-800">Nghiên cứu người cao tuổi</Badge>
                   <CardTitle className="text-2xl text-blue-900">4. Armstrong Atlantic State University</CardTitle>
@@ -208,8 +206,11 @@ export default function StudiesPage() {
                 </CardContent>
               </Card>
 
-              {/* Study 5: Research Invitation */}
-              <Card className="p-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
+            </div>
+
+            {/* Research Collaboration - Full Width */}
+            <div className="mt-12 max-w-4xl mx-auto">
+              <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
                 <CardHeader>
                   <Badge className="w-fit mb-4 bg-indigo-100 text-indigo-800">Lời mời hợp tác</Badge>
                   <CardTitle className="text-2xl text-blue-900">5. Tổ chức của bạn có quan tâm đến việc tiến hành nghiên cứu với vật liệu hỗ trợ vòm Alzner® không?</CardTitle>
@@ -226,7 +227,6 @@ export default function StudiesPage() {
                   </div>
                 </CardContent>
               </Card>
-
             </div>
           </div>
         </section>
