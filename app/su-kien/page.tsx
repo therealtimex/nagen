@@ -1,22 +1,96 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowRight, ArrowLeft, Phone, Mail, MapPin, Calendar, Eye, Search, Filter } from "lucide-react";
 import Image from "next/image";
 import { getImagePath } from "@/lib/utils";
+import "./events.css";
+
+// Mock data cho sự kiện
+const eventsData = [
+  {
+    id: 1,
+    title: "Ra mắt sản phẩm mới - Tấm lót hỗ trợ vòm bàn chân NAGEN",
+    date: "15/09/2025",
+    views: 1000,
+    category: "Sản phẩm mới",
+    description: "Tấm lót hỗ trợ vòm bàn chân NAGEN chính thức ra mắt với công nghệ tiên tiến.",
+    image: "/images/products/tam-lot-ho-tro-vom-ban-chan.jpg",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "Hội thảo chăm sóc sức khỏe bàn chân",
+    date: "20/08/2025",
+    views: 850,
+    category: "Hội thảo",
+    description: "Tham gia hội thảo để tìm hiểu cách chăm sóc sức khỏe bàn chân hiệu quả.",
+    image: "/images/events/hoi-thao-cham-soc-ban-chan.jpg",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "Tư vấn miễn phí về chỉnh hình bàn chân",
+    date: "15/06/2025",
+    views: 720,
+    category: "Tư vấn",
+    description: "Đội ngũ chuyên gia NAGEN tư vấn miễn phí về các vấn đề chỉnh hình bàn chân.",
+    image: "/images/events/tu-van-mien-phi.jpg",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "Hội thảo khoa học về chỉnh hình bàn chân",
+    date: "10/05/2025",
+    views: 680,
+    category: "Hội thảo",
+    description: "Hội thảo khoa học với sự tham gia của các chuyên gia hàng đầu về chỉnh hình.",
+    image: "/images/events/hoi-thao-khoa-hoc.jpg",
+    featured: false
+  },
+  {
+    id: 5,
+    title: "Giới thiệu công nghệ sản xuất tấm lót NAGEN",
+    date: "25/04/2025",
+    views: 590,
+    category: "Sản phẩm mới",
+    description: "Tìm hiểu về quy trình sản xuất và công nghệ tiên tiến trong sản phẩm NAGEN.",
+    image: "/images/events/cong-nghe-san-xuat.jpg",
+    featured: false
+  }
+];
+
+const categories = ["Tất cả", "Sản phẩm mới", "Hội thảo", "Tư vấn"];
 
 const SuKienPage = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Tất cả");
+  const [currentPage, setCurrentPage] = useState(1);
+  const eventsPerPage = 6;
+
+  // Lọc sự kiện
+  const filteredEvents = eventsData.filter(event => {
+    const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         event.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === "Tất cả" || event.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  // Phân trang
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = filteredEvents.slice(indexOfFirstEvent, indexOfLastEvent);
+  const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
+
   return (
     <>
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header
-        className={`sticky top-0 z-50 transition-all duration-300 bg-white border-b border-gray-200`}
-      >
-        <div className="container mx-auto px-4 py-2">
+      <header className="sticky top-0 z-50 transition-all duration-300 bg-white border-b border-gray-200 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <a href="/" className="flex items-center space-x-3 ml-4">
+            <a href="/" className="flex items-center space-x-3">
               <Image
                 src={getImagePath("/images/logo_slogan_1.png")}
                 alt="NAGEN Logo"
@@ -27,7 +101,7 @@ const SuKienPage = () => {
               />
             </a>
             <a href="/">
-              <Button variant="outline" className="flex items-center space-x-2">
+              <Button variant="outline" className="flex items-center space-x-2 hover:bg-gray-50">
                 <ArrowLeft className="w-4 h-4" />
                 <span className="hidden sm:inline">Quay lại trang chủ</span>
                 <span className="sm:hidden">Quay lại</span>
@@ -36,98 +110,195 @@ const SuKienPage = () => {
           </div>
         </div>
       </header>
-      <div className="w-full h-[8px]">
-        <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-        <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-      </div>
-      <div className="container mx-auto py-8">
-      <div className="mb-4">
-        {/* Header breadcrumb */}
-        <a href="/" className="text-blue-600 hover:underline">
-          Trang chủ
-        </a>
-        <span className="text-gray-500">&gt;</span>
-        <span className="text-gray-700">Sự kiện</span>
+
+      {/* Brand stripe */}
+      <div className="w-full h-2">
+        <div className="bg-red-600 w-full h-1"></div>
+        <div className="bg-[#21395D] w-full h-1"></div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          {/* Tiêu đề sự kiện */}
-          <h1 className="text-3xl font-bold text-blue-900 mb-4">
-            Ra mắt sản phẩm mới - Tấm lót hỗ trợ vòm bàn chân NAGEN
-          </h1>
+      <div className="container mx-auto px-4 py-8">
+        {/* Breadcrumb */}
+        <nav className="mb-6">
+          <a href="/" className="text-blue-600 hover:underline">Trang chủ</a>
+          <span className="text-gray-500 mx-2">›</span>
+          <span className="text-gray-700">Sự kiện</span>
+        </nav>
 
-          {/* Ngày đăng + meta */}
-          <div className="text-gray-500 mb-2">
-            Ngày đăng: 15/09/2025 | Lượt xem: 1000
-          </div>
+        {/* Page Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-[#21395D] mb-4">Sự kiện NAGEN</h1>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Cập nhật những sự kiện mới nhất, hội thảo chuyên môn và thông tin sản phẩm từ NAGEN
+          </p>
+        </div>
 
-          {/* Mô tả ngắn */}
-          <div className="text-gray-700 mb-6">
-            Tấm lót hỗ trợ vòm bàn chân NAGEN chính thức ra mắt với nhiều ưu đãi
-            hấp dẫn.
-          </div>
-
-          {/* Nội dung chi tiết (chia đoạn + heading + ảnh) >*/}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-blue-900">
-              Giới thiệu sản phẩm
-            </h2>
-            <p className="text-gray-700">
-              Tấm lót hỗ trợ vòm bàn chân NAGEN là sản phẩm được nghiên cứu và phát
-              triển bởi các chuyên gia hàng đầu trong lĩnh vực chỉnh hình bàn chân.
-            </p>
-            <img
-              src="/placeholder.png"
-              alt="Sản phẩm NAGEN"
-              className="w-full rounded-lg shadow-md"
-            />
-            <p className="text-gray-700">
-              Sản phẩm được thiết kế đặc biệt để hỗ trợ vòm bàn chân, giúp giảm
-              đau nhức, mỏi chân, đồng thời cải thiện dáng đi và phòng ngừa các bệnh
-              lý về bàn chân.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-blue-900">
-              Ưu đãi đặc biệt
-            </h2>
-            <p className="text-gray-700">
-              Nhân dịp ra mắt sản phẩm mới, NAGEN triển khai chương trình ưu đãi đặc
-              biệt dành cho khách hàng đăng ký mua sản phẩm trong tháng 9.
-            </p>
+        {/* Search and Filter */}
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+          <div className="flex flex-col md:flex-row gap-4">
+            {/* Search */}
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Tìm kiếm sự kiện..."
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            
+            {/* Category Filter */}
+            <div className="flex items-center space-x-2">
+              <Filter className="text-gray-400 w-5 h-5" />
+              <select
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                {categories.map(category => (
+                  <option key={category} value={category}>{category}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
-        <div className="md:col-span-1">
-          {/* Sidebar: sự kiện nổi bật / xem nhiều */}
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <h3 className="text-xl font-semibold text-blue-900 mb-4">
-              Sự kiện nổi bật
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-blue-600 hover:underline">
-                  Sự kiện 1
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-600 hover:underline">
-                  Sự kiện 2
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-600 hover:underline">
-                  Sự kiện 3
-                </a>
-              </li>
-            </ul>
+        {/* Featured Events */}
+        {selectedCategory === "Tất cả" && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-[#21395D] mb-6">Sự kiện nổi bật</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {eventsData.filter(event => event.featured).map(event => (
+                <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="relative h-48">
+                    <Image
+                      src={getImagePath(event.image)}
+                      alt={event.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        {event.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-[#21395D] mb-2 line-clamp-2">
+                      {event.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                    <div className="flex items-center justify-between text-sm text-gray-500">
+                      <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{event.date}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Eye className="w-4 h-4" />
+                          <span>{event.views}</span>
+                        </div>
+                      </div>
+                      <a href={`/su-kien/${event.id}`}>
+                        <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-800">
+                          Xem chi tiết <ArrowRight className="w-4 h-4 ml-1" />
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
+        )}
 
-      {/* Footer: CTA hoặc liên kết sự kiện khác */}
-    
-    </div>
+        {/* All Events Grid */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-[#21395D] mb-6">
+            {selectedCategory === "Tất cả" ? "Tất cả sự kiện" : `Sự kiện ${selectedCategory}`}
+          </h2>
+          
+          {currentEvents.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">Không tìm thấy sự kiện nào phù hợp.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {currentEvents.map(event => (
+                <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="relative h-40">
+                    <Image
+                      src={getImagePath(event.image)}
+                      alt={event.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-red-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                        {event.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold text-[#21395D] mb-2 line-clamp-2">
+                      {event.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">{event.description}</p>
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-1">
+                          <Calendar className="w-3 h-3" />
+                          <span>{event.date}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Eye className="w-3 h-3" />
+                          <span>{event.views}</span>
+                        </div>
+                      </div>
+                      <a href={`/su-kien/${event.id}`}>
+                        <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-800 p-0 h-auto">
+                          Xem chi tiết
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center space-x-2">
+            <Button
+              variant="outline"
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              Trước
+            </Button>
+            {[...Array(totalPages)].map((_, index) => (
+              <Button
+                key={index}
+                variant={currentPage === index + 1 ? "default" : "outline"}
+                onClick={() => setCurrentPage(index + 1)}
+                className="w-10"
+              >
+                {index + 1}
+              </Button>
+            ))}
+            <Button
+              variant="outline"
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+            >
+              Sau
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
       <section className="py-4 bg-white">
         <div className="container mx-auto px-4 text-center mb-4">
