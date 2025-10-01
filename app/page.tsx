@@ -143,6 +143,7 @@ function CTAButton({
 function EnhancedNavigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -150,7 +151,12 @@ function EnhancedNavigation() {
         setIsScrolled(window.scrollY > 50)
       }
       window.addEventListener("scroll", handleScroll)
-      return () => window.removeEventListener("scroll", handleScroll)
+      return () => {
+        window.removeEventListener("scroll", handleScroll)
+        if (hoverTimeoutRef.current) {
+          clearTimeout(hoverTimeoutRef.current)
+        }
+      }
     }
   }, [])
 
@@ -174,6 +180,21 @@ function EnhancedNavigation() {
     { name: "Liên hệ", href: "#contact" },
     { name: "FAQs", href: "/faqs" },
   ]
+
+  const handleMouseEnter = (itemName: string, hasSubmenu: boolean) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+    }
+    if (hasSubmenu) {
+      setActiveSubmenu(itemName)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveSubmenu(null)
+    }, 150) // 150ms delay before hiding
+  }
 
   const handleNavigation = (href: string) => {
     // Check if it's an external link (starts with / or http)
@@ -242,13 +263,13 @@ function EnhancedNavigation() {
               {menuItems.map((item) => (
                 <div
                   key={item.name}
-                  className="relative"
-                  onMouseEnter={() => setActiveSubmenu(item.submenu ? item.name : null)}
-                  onMouseLeave={() => setActiveSubmenu(null)}
+                  className="relative group"
+                  onMouseEnter={() => handleMouseEnter(item.name, !!item.submenu)}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <a
                     href={item.href}
-                    className="text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center"
+                    className="text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center py-4 px-2"
                     onClick={(e) => {
                       e.preventDefault()
                       handleNavigation(item.href)
@@ -258,23 +279,27 @@ function EnhancedNavigation() {
                     {item.submenu && <ChevronDown className="w-4 h-4 ml-1" />}
                   </a>
 
-                  {/* Submenu */}
+                  {/* Submenu with bridge area */}
                   {item.submenu && activeSubmenu === item.name && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-2 z-50">
-                      {item.submenu.map((subItem) => (
-                        <a
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
-                          onClick={(e) => {
-                            e.preventDefault()
-                            handleNavigation(subItem.href)
-                          }}
-                        >
-                          {subItem.name}
-                        </a>
-                      ))}
-                    </div>
+                    <>
+                      {/* Invisible bridge to prevent gap issues */}
+                      <div className="absolute top-full left-0 w-full h-2 bg-transparent z-40"></div>
+                      <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border py-2 z-50">
+                        {item.submenu.map((subItem) => (
+                          <a
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors text-sm"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              handleNavigation(subItem.href)
+                            }}
+                          >
+                            {subItem.name}
+                          </a>
+                        ))}
+                      </div>
+                    </>
                   )}
                 </div>
               ))}
@@ -391,7 +416,7 @@ function EnhancedFeedbackSlider() {
   return (
     <div className="relative bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-8">
       <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-blue-900 mb-2">Khách hàng nói gì về NAGEN?</h3>
+        <h3 className="text-2xl font-bold text-blue-900 mb-2">Khách hàng nói gì về Tấm lót hỗ trợ vòm bàn chân NAGEN?</h3>
         <p className="text-gray-600">Hơn 4 triệu người tin dùng trên toàn thế giới</p>
       </div>
 
