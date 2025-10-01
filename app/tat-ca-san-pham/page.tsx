@@ -9,11 +9,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   ArrowLeft,
-  Star,
   Search,
   Filter,
-  ArrowRight,
-  Heart,
   ChevronDown,
   CheckCircle,
   Microscope,
@@ -27,55 +24,31 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { getImagePath } from "@/lib/utils"
+import { getImagePath, getVideoPath, checkVideoExists } from "@/lib/utils"
 import { Product, productData } from "@/lib/products"
-import { categoryDisplayNames } from "@/lib/constants";
+import ProductMediaViewer from "@/components/ProductMediaViewer";
 
-
-
-import ProductDetailModal from "@/components/ProductDetailModal";
-
-// Product Card Component
-function ProductCard({ product }: { product: Product }) {
-
-  const displayCategory = categoryDisplayNames[product.category] || product.category;
-  const [showDetail, setShowDetail] = useState(false);
+// Product Card Component - Media on left, content on right
+function ProductCard({ product, index }: { product: Product; index: number }) {
 
   return (
-    <>
-      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative h-full flex flex-col">
-        <div className="aspect-video flex items-center justify-center relative overflow-hidden">
-          <Image
-            src={getImagePath(product.image || "/placeholder.svg")}
-            alt={product.name}
-            width={250}
-            height={170}
-            className="object-contain"
-            loading="lazy"
-          />
+    <div key={product.id}>
+      {/* Product Item - Media always on left, content on right */}
+      <div className="grid md:grid-cols-2 gap-8 items-center py-8">
+        {/* Product Media - Always on left */}
+        <div className="order-2 md:order-1">
+          <ProductMediaViewer product={product} />
         </div>
-        <CardHeader>
-          <CardTitle className="text-blue-900 text-lg mt-2 line-clamp-2">{product.name}</CardTitle>
-          <CardDescription className="line-clamp-2">{product.description}</CardDescription>
-        </CardHeader>
-        <CardContent className="flex-grow flex flex-col justify-end">
-          <Button
-            className="w-full bg-blue-900 hover:bg-blue-800 text-white group"
-            onClick={() => setShowDetail(true)}
-          >
-            Xem chi tiết
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </CardContent>
-      </Card>
 
-      {/* Product Detail Modal */}
-      <ProductDetailModal
-        product={product}
-        isOpen={showDetail}
-        onClose={() => setShowDetail(false)}
-      />
-    </>
+        {/* Product Info - Always on right */}
+        <div className="order-1 md:order-2 space-y-4">
+          <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
+          <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
+        </div>
+      </div>
+
+
+    </div>
   )
 }
 
@@ -475,9 +448,18 @@ export default function AllProductsPage() {
           </div>
 
           {products.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+            <div className="space-y-8">
+              {products.map((product, index) => (
+                <div key={product.id}>
+                  <ProductCard product={product} index={index} />
+                  {/* Brand Color Separator Line - except for last item */}
+                  {index < products.length - 1 && (
+                    <div className="flex h-2">
+                      <div className="flex-1 bg-red-600"></div>
+                      <div className="flex-1 bg-[#21395D]"></div>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           ) : (

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAGEN - Video Demo Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .product-showcase {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .product-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-text {
+            font-size: 0.9rem;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .cta {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+            transition: transform 0.3s ease;
+        }
+        .cta:hover {
+            transform: translateY(-2px);
+        }
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #ff5252;
+        }
+        canvas {
+            display: none;
+        }
+        .progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #FFD700);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">NAGEN</div>
+    
+    <div class="container">
+        <h1 class="title">Tấm lót hỗ trợ vòm bàn chân</h1>
+        <p class="subtitle">Giải pháp chăm sóc bàn chân chuyên nghiệp từ Mỹ</p>
+        
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="product-showcase">
+            <div class="product-name" id="productName">SUNGEN™</div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🦶</div>
+                    <div class="feature-text">Hỗ trợ 4 vòm bàn chân</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🇺🇸</div>
+                    <div class="feature-text">Sản xuất tại Mỹ</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚕️</div>
+                    <div class="feature-text">Chứng nhận y tế</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-text">Công nghệ độc quyền</div>
+                </div>
+            </div>
+            
+            <button class="cta">Đặt lịch tư vấn miễn phí</button>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="startRecording()">🎬 Bắt đầu quay</button>
+        <button class="btn" onclick="stopRecording()">⏹️ Dừng quay</button>
+        <button class="btn" onclick="downloadVideo()">💾 Tải video</button>
+        <button class="btn" onclick="changeProduct()">🔄 Đổi sản phẩm</button>
+    </div>
+
+    <canvas id="canvas" width="1920" height="1080"></canvas>
+
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+        let currentProduct = 0;
+        
+        const products = [
+            { name: 'SUNGEN™', color: '#ff6b6b' },
+            { name: 'WINAGEN™', color: '#4ecdc4' },
+            { name: 'SOFTGEN™', color: '#45b7d1' },
+            { name: 'ENDURANCE™', color: '#96ceb4' },
+            { name: 'SILHOUETTE™', color: '#feca57' }
+        ];
+
+        function changeProduct() {
+            currentProduct = (currentProduct + 1) % products.length;
+            const product = products[currentProduct];
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('productName').style.color = product.color;
+            
+            // Update progress bar
+            const progress = ((currentProduct + 1) / products.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    video: { 
+                        mediaSource: 'screen',
+                        width: 1920,
+                        height: 1080,
+                        frameRate: 30
+                    },
+                    audio: false
+                });
+
+                mediaRecorder = new MediaRecorder(stream, {
+                    mimeType: 'video/webm;codecs=vp9'
+                });
+
+                recordedChunks = [];
+
+                mediaRecorder.ondataavailable = (event) => {
+                    if (event.data.size > 0) {
+                        recordedChunks.push(event.data);
+                    }
+                };
+
+                mediaRecorder.onstop = () => {
+                    stream.getTracks().forEach(track => track.stop());
+                };
+
+                mediaRecorder.start();
+                
+                // Auto animate
+                animateDemo();
+                
+                alert('Đã bắt đầu quay! Chọn cửa sổ này để quay video demo.');
+            } catch (err) {
+                console.error('Lỗi khi bắt đầu quay:', err);
+                alert('Không thể bắt đầu quay video. Vui lòng cho phép chia sẻ màn hình.');
+            }
+        }
+
+        function stopRecording() {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+                alert('Đã dừng quay video!');
+            }
+        }
+
+        function downloadVideo() {
+            if (recordedChunks.length === 0) {
+                alert('Chưa có video để tải!');
+                return;
+            }
+
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${products[currentProduct].name.toLowerCase().replace('™', '')}-demo.webm`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function animateDemo() {
+            let step = 0;
+            const interval = setInterval(() => {
+                if (step < products.length) {
+                    changeProduct();
+                    step++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 3000); // Đổi sản phẩm mỗi 3 giây
+        }
+
+        // Auto start animation on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.container').style.animation = 'fadeIn 1s ease-in';
+            }, 500);
+        });
+    </script>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .container {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .feature {
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</body>
+</html>

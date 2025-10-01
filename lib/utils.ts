@@ -70,3 +70,27 @@ export const getFullPath = (path: string): string => {
   // If path doesn't start with /, add base path with /
   return `${BASE_PATH}/${path}`;
 };
+
+/**
+ * Get video path for a product
+ * @param productId - The product ID
+ * @returns Video path or null if not exists
+ */
+export const getVideoPath = (productId: string): string => {
+  return `/videos/products/${productId}.mp4`;
+};
+
+/**
+ * Check if video exists for a product
+ * @param productId - The product ID
+ * @returns Promise<boolean> - Whether video exists
+ */
+export const checkVideoExists = async (productId: string): Promise<boolean> => {
+  try {
+    const videoPath = getVideoPath(productId);
+    const response = await fetch(getImagePath(videoPath), { method: 'HEAD' });
+    return response.ok;
+  } catch {
+    return false;
+  }
+};
