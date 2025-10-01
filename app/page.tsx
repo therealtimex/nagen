@@ -220,9 +220,8 @@ function EnhancedNavigation() {
 
       {/* Main Navigation */}
       <header
-        className={`sticky top-0 z-[1001] transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-        } border-b border-gray-200 relative`}
+        className={`sticky top-0 z-[1001] transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
+          } border-b border-gray-200 relative`}
       >
         <div className="container mx-auto px-4 py-1">
           <div className="flex items-center justify-between">
@@ -457,9 +456,8 @@ function EnhancedFeedbackSlider() {
         {testimonials.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-red-600 w-8" : "bg-gray-300 hover:bg-gray-400"
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-red-600 w-8" : "bg-gray-300 hover:bg-gray-400"
+              }`}
             onClick={() => {
               setCurrentSlide(index)
               setIsAutoPlaying(false)
@@ -617,9 +615,8 @@ function EnhancedContactForm() {
           {steps.map((step, index) => (
             <div key={step.number} className="flex items-center">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${
-                  currentStep >= step.number ? "bg-red-600 text-white" : "bg-gray-200 text-gray-600"
-                }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${currentStep >= step.number ? "bg-red-600 text-white" : "bg-gray-200 text-gray-600"
+                  }`}
               >
                 {currentStep > step.number ? <CheckCircle className="w-5 h-5" /> : <step.icon className="w-5 h-5" />}
               </div>
@@ -1530,35 +1527,33 @@ function HomePageContent() {
             </div>
 
             {/* Text and CTA - Bottom */}
-            <div className="grid lg:grid-cols-3 gap-8 items-start">
-              {/* Text Content - Left (2/3 width) */}
-              <div className="lg:col-span-2 space-y-4">
-                <p className="text-xl text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
-                  Thiết kế này hỗ trợ cả bốn vòm bàn chân và giúp kiểm soát chuyển động của vòm. 
-                  Mỗi yếu tố thiết kế đều hướng đến mục tiêu hướng dẫn bàn chân vào tư thế cơ sinh học 
-                  hiệu quả hơn để đạt hiệu suất và hiệu quả tối đa.
+            <div className="w-full">
+              {/* Text Content - Full width */}
+              <div className="space-y-4">
+                <p className="text-lg text-[#21395D] leading-relaxed text-justify">
+                  Thiết kế này hỗ trợ cả bốn vòm bàn chân và giúp kiểm soát chuyển động của vòm. Mỗi yếu tố thiết kế đều hướng đến mục tiêu hướng dẫn bàn chân vào tư thế cơ sinh học hiệu quả hơn để đạt hiệu suất và hiệu quả tối đa.
                 </p>
-                <p className="text-[#21395D] text-lg leading-relaxed text-justify">
-                  Một vòm bàn chân hoạt động tốt sẽ cải thiện sự cân bằng, phân bổ áp lực chính xác lên lòng bàn chân 
-                  và cho phép các cơ, dây chằng và gân được sử dụng trong chu kỳ dáng đi hoạt động hiệu quả hơn.
+                <p className="text-lg text-[#21395D] leading-relaxed text-justify">
+                  Một vòm bàn chân hoạt động tốt sẽ cải thiện sự cân bằng, phân bổ áp lực chính xác lên lòng bàn chân và cho phép các cơ, dây chằng và gân được sử dụng trong chu kỳ dáng đi hoạt động hiệu quả hơn. Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm phù hợp hoàn hảo với bạn và lối sống của bạn.
                 </p>
-                <p className="text-[#21395D] text-lg leading-relaxed text-justify">
-                  Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm 
-                  phù hợp hoàn hảo với bạn và lối sống của bạn.
-                </p>
-                <div className="flex justify-center">
+                <div className="flex justify-center mt-8">
                   <CTAButton
                     variant="primary"
                     size="lg"
                     onClick={() => navigateTo("/studies")}
                     className="
                       bg-[#21395D] hover:bg-[#1a2d4a] text-white
-                      items-center
-                      px-16 py-1 rounded-xl
-                      text-sm w-full
+                      flex items-center justify-center
+                      px-8 py-4 rounded-xl
+                      text-base font-medium
+                      max-w-2xl w-full
+                      transition-all duration-300
+                      shadow-lg hover:shadow-xl
                     "
                   >
-                    <span>Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây</span>
+                    <span className="text-center leading-relaxed">
+                      Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
+                    </span>
                   </CTAButton>
                 </div>
               </div>
@@ -1566,7 +1561,7 @@ function HomePageContent() {
           </div>
         </div>
       </section>
-        
+
       {/* Product Highlights Section */}
       <section id="products" className="py-16">
         <div className="container mx-auto px-4">
@@ -1691,7 +1686,7 @@ function HomePageContent() {
             <p className="text-gray-600 text-lg">Tìm đại lý gần bạn nhất để được tư vấn và trải nghiệm sản phẩm</p>
           </div>
 
-          <DealerLocator onBookAppointment={() => {}} />
+          <DealerLocator onBookAppointment={() => { }} />
         </div>
       </section>
 
@@ -2143,7 +2138,7 @@ const HomePage = () => {
         <title>NAGEN</title>
       </Head>
       <NoSSRWrapper>
-        <HomePageContent/>
+        <HomePageContent />
       </NoSSRWrapper>
     </>
   );
