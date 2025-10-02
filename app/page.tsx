@@ -39,6 +39,7 @@ import { getImagePath, navigateTo } from "@/lib/utils"
 import ProductDetailModal from "@/components/ProductDetailModal"
 import { type Product, productData } from "@/lib/products"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
+import MobileFloatingTest from "@/components/MobileFloatingTest"
 
 // Type definitions
 interface FormData {
@@ -1739,13 +1740,27 @@ function HomePageContent() {
               <p>Hoặc liên hệ trực tiếp:</p>
               <p className="flex items-center justify-center">
                 <Phone className="w-4 h-4 mr-2 text-blue-600" />
-                <a href="tel:02435632008" className="hover:underline">
+                <a 
+                  href="tel:0966578008" 
+                  className="hover:underline"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = 'tel:0966578008';
+                  }}
+                >
                   0966578008
                 </a>
               </p>
               <p className="flex items-center justify-center">
                 <Mail className="w-4 h-4 mr-2 text-blue-600" />
-                <a href="mailto:nagen@nagen.vn" className="hover:underline">
+                <a 
+                  href="mailto:nagen@nagen.vn" 
+                  className="hover:underline"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = 'mailto:nagen@nagen.vn';
+                  }}
+                >
                   nagen@nagen.vn
                 </a>
               </p>
@@ -1989,6 +2004,10 @@ function HomePageContent() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="Facebook"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open('https://www.facebook.com/people/NAGEN/61576197860425/', '_blank', 'noopener,noreferrer');
+                  }}
                 >
                   <Facebook className="w-5 h-5 text-white" />
                 </a>
@@ -1998,6 +2017,10 @@ function HomePageContent() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="YouTube"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open('https://www.youtube.com/@nagenvn', '_blank', 'noopener,noreferrer');
+                  }}
                 >
                   <Youtube className="w-5 h-5 text-white" />
                 </a>
@@ -2007,6 +2030,10 @@ function HomePageContent() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-300 hover:scale-110 cursor-pointer"
                   aria-label="TikTok"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open('https://www.tiktok.com/@nagenvn', '_blank', 'noopener,noreferrer');
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -2152,6 +2179,7 @@ function HomePageContent() {
       )}
 
       <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      <MobileFloatingTest />
     </div>
   )
 }

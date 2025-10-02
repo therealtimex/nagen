@@ -14,12 +14,19 @@ interface FloatingActionButtonsProps {
 export default function FloatingActionButtons({ onScheduleClick }: FloatingActionButtonsProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true) // Đảm bảo component đã mount trên client
+    
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-      if (window.innerWidth >= 768) {
+      const isMobileDevice = window.innerWidth < 1024 // Thay đổi breakpoint từ 768 thành 1024
+      setIsMobile(isMobileDevice)
+      console.log('FloatingActionButtons - isMobile:', isMobileDevice, 'width:', window.innerWidth) // Debug log
+      if (!isMobileDevice) {
         setIsExpanded(true)
+      } else {
+        setIsExpanded(false) // Đảm bảo mobile bắt đầu với collapsed state
       }
     }
 
@@ -27,6 +34,11 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
     window.addEventListener("resize", checkIsMobile)
     return () => window.removeEventListener("resize", checkIsMobile)
   }, [])
+
+  // Không render gì cho đến khi component mount trên client
+  if (!isClient) {
+    return null
+  }
 
   const handleFacebookClick = () => {
     navigateTo("https://www.facebook.com/people/NAGEN/61576197860425/", { external: true })
@@ -73,12 +85,14 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
 
   return (
     <>
-      <div className="fixed bottom-4 right-4 z-[1000] flex flex-col items-end">
+      <div className="floating-buttons-container fixed bottom-4 right-4 z-[1002] flex flex-col items-end">
         {/* Action buttons - positioned above the toggle button */}
         <div
           className={cn(
             "flex flex-col items-end space-y-3 mb-3 transition-all duration-300 ease-in-out",
-            !isMobile || isExpanded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none",
+            // Fallback: show on desktop by default, hide on mobile unless expanded
+            "lg:opacity-100 lg:translate-y-0 lg:visible", // Always show on desktop
+            !isMobile || isExpanded ? "opacity-100 translate-y-0 visible" : "opacity-0 translate-y-4 pointer-events-none invisible",
           )}
         >
           {buttons.map((button, index) => {
@@ -109,7 +123,7 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
                     "rounded-full shadow-lg transition-all duration-200 ease-out",
                     "flex items-center justify-center p-0 relative overflow-hidden",
                     "hover:scale-105 active:scale-95 hover:shadow-xl",
-                    "md:w-18 md:h-18 w-14 h-14",
+                    "lg:w-16 lg:h-16 md:w-14 md:h-14 w-12 h-12", // Responsive sizes
                     "border border-white/10",
                     button.className,
                   )}
@@ -121,7 +135,7 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
                     alt={button.label}
                     width={48}
                     height={48}
-                    className="md:w-9 md:h-9 w-7 h-7 filter relative z-10"
+                    className="lg:w-8 lg:h-8 md:w-7 md:h-7 w-6 h-6 filter relative z-10"
                   />
                 </Button>
               </div>
@@ -129,30 +143,31 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
           })}
         </div>
 
-        {isMobile && (
-          <Button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className={cn(
-              "rounded-full shadow-lg transition-all duration-300 ease-in-out",
-              "bg-[#21395D] hover:bg-[#1a2d4a] text-white",
-              "flex items-center justify-center p-0 relative overflow-hidden",
-              "border border-white/10 hover:scale-105 active:scale-95",
-              "md:w-18 md:h-18 w-14 h-14",
-              isExpanded && "rotate-45",
-            )}
-            aria-label={isExpanded ? "Đóng menu" : "Mở menu liên hệ"}
-            aria-expanded={isExpanded}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
-            <MessageCircle className="w-6 h-6 drop-shadow-sm relative z-10" />
-          </Button>
-        )}
+        {/* Toggle button - always visible on mobile */}
+        <Button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className={cn(
+            "rounded-full shadow-lg transition-all duration-300 ease-in-out",
+            "bg-[#21395D] hover:bg-[#1a2d4a] text-white",
+            "flex items-center justify-center p-0 relative overflow-hidden",
+            "border border-white/10 hover:scale-105 active:scale-95",
+            "lg:w-16 lg:h-16 md:w-14 md:h-14 w-12 h-12", // Responsive sizes
+            isExpanded && "rotate-45",
+            // Hide on desktop, show on mobile
+            isMobile ? "block" : "hidden"
+          )}
+          aria-label={isExpanded ? "Đóng menu" : "Mở menu liên hệ"}
+          aria-expanded={isExpanded}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
+          <MessageCircle className="lg:w-6 lg:h-6 md:w-5 md:h-5 w-4 h-4 drop-shadow-sm relative z-10" />
+        </Button>
       </div>
 
       {/* Backdrop for mobile */}
       {isMobile && isExpanded && (
         <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[999]"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[1001]"
           onClick={() => setIsExpanded(false)}
           aria-hidden="true"
         />

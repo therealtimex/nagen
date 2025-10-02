@@ -116,3 +116,24 @@ select:focus-visible {
     display: none !important;
   }
 }
+
+/* Floating Action Buttons - Mobile optimization */
+@media (max-width: 1023px) {
+  .floating-buttons-container {
+    position: fixed !important;
+    bottom: 1rem !important;
+    right: 1rem !important;
+    z-index: 1002 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+  }
+}
+
+/* Ensure floating buttons are always visible on mobile */
+@media (max-width: 767px) {
+  .floating-buttons-container {
+    bottom: 0.75rem !important;
+    right: 0.75rem !important;
+  }
+}
