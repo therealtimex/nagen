@@ -22,7 +22,7 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
     const checkIsMobile = () => {
       const isMobileDevice = window.innerWidth < 1024 // Thay đổi breakpoint từ 768 thành 1024
       setIsMobile(isMobileDevice)
-      console.log('FloatingActionButtons - isMobile:', isMobileDevice, 'width:', window.innerWidth) // Debug log
+
       if (!isMobileDevice) {
         setIsExpanded(true)
       } else {
@@ -85,6 +85,16 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
 
   return (
     <>
+      {/* Debug info - only in development */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="fixed top-4 right-4 z-[1003] bg-blue-100 border border-blue-300 p-2 rounded text-xs max-w-[200px] lg:hidden">
+          <div>Width: {typeof window !== 'undefined' ? window.innerWidth : 0}px</div>
+          <div>isMobile: {isMobile ? 'Yes' : 'No'}</div>
+          <div>isExpanded: {isExpanded ? 'Yes' : 'No'}</div>
+          <div>isClient: {isClient ? 'Yes' : 'No'}</div>
+        </div>
+      )}
+      
       <div className="floating-buttons-container fixed bottom-4 right-4 z-[1002] flex flex-col items-end">
         {/* Action buttons - positioned above the toggle button */}
         <div

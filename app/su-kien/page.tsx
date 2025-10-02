@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Phone, Mail, MapPin, Calendar, Eye, Search, Filter } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { getImagePath } from "@/lib/utils";
 import "./events.css";
 
@@ -90,7 +91,7 @@ const SuKienPage = () => {
       <header className="sticky top-0 z-50 transition-all duration-300 bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <a href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
               <Image
                 src={getImagePath("/images/logo_slogan_1.png")}
                 alt="NAGEN Logo"
@@ -99,14 +100,14 @@ const SuKienPage = () => {
                 style={{ objectFit: 'contain' }}
                 priority
               />
-            </a>
-            <a href="/">
+            </Link>
+            <Link href="/">
               <Button variant="outline" className="flex items-center space-x-2 hover:bg-gray-50">
                 <ArrowLeft className="w-4 h-4" />
                 <span className="hidden sm:inline">Quay lại trang chủ</span>
                 <span className="sm:hidden">Quay lại</span>
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -120,7 +121,7 @@ const SuKienPage = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="mb-6">
-          <a href="/" className="text-blue-600 hover:underline">Trang chủ</a>
+          <Link href="/" className="text-blue-600 hover:underline">Trang chủ</Link>
           <span className="text-gray-500 mx-2">›</span>
           <span className="text-gray-700">Sự kiện</span>
         </nav>
@@ -200,11 +201,11 @@ const SuKienPage = () => {
                           <span>{event.views}</span>
                         </div>
                       </div>
-                      <a href={`/su-kien/${event.id}`}>
+                      <Link href={`/su-kien/${event.id}`}>
                         <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-800">
                           Xem chi tiết <ArrowRight className="w-4 h-4 ml-1" />
                         </Button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -256,11 +257,11 @@ const SuKienPage = () => {
                           <span>{event.views}</span>
                         </div>
                       </div>
-                      <a href={`/su-kien/${event.id}`}>
+                      <Link href={`/su-kien/${event.id}`}>
                         <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-800 p-0 h-auto">
                           Xem chi tiết
                         </Button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -335,11 +336,11 @@ const SuKienPage = () => {
             </div>
           </div>
 
-          <a href="/">
+          <Link href="/">
             <Button className="bg-white text-[#21395D] hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
               Quay lại trang chủ
             </Button>
-          </a>
+          </Link>
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Eye, Share2, Facebook, Twitter, Link2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { getImagePath } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import ClientEventDetail from "./ClientEventDetail";
@@ -114,7 +115,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <a href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3">
               <Image
                 src={getImagePath("/images/logo_slogan_1.png")}
                 alt="NAGEN Logo"
@@ -123,15 +124,15 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
                 style={{ objectFit: 'contain' }}
                 priority
               />
-            </a>
+            </Link>
             <div className="flex items-center space-x-3">
-              <a href="/su-kien">
+              <Link href="/su-kien">
                 <Button variant="outline" className="flex items-center space-x-2">
                   <ArrowLeft className="w-4 h-4" />
                   <span className="hidden sm:inline">Quay lại danh sách</span>
                   <span className="sm:hidden">Quay lại</span>
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -146,9 +147,9 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="mb-6">
-          <a href="/" className="text-blue-600 hover:underline">Trang chủ</a>
+          <Link href="/" className="text-blue-600 hover:underline">Trang chủ</Link>
           <span className="text-gray-500 mx-2">›</span>
-          <a href="/su-kien" className="text-blue-600 hover:underline">Sự kiện</a>
+          <Link href="/su-kien" className="text-blue-600 hover:underline">Sự kiện</Link>
           <span className="text-gray-500 mx-2">›</span>
           <span className="text-gray-700">{event.title}</span>
         </nav>
@@ -212,7 +213,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
                 </h3>
                 <div className="space-y-4">
                   {relatedEvents.map(relatedEvent => (
-                    <a
+                    <Link
                       key={relatedEvent.id}
                       href={`/su-kien/${relatedEvent.id}`}
                       className="block group"
@@ -233,7 +234,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
                           <p className="text-xs text-gray-500 mt-1">{relatedEvent.date}</p>
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

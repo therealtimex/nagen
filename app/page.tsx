@@ -39,7 +39,7 @@ import { getImagePath, navigateTo } from "@/lib/utils"
 import ProductDetailModal from "@/components/ProductDetailModal"
 import { type Product, productData } from "@/lib/products"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
-import MobileFloatingTest from "@/components/MobileFloatingTest"
+import MobileTestButtons from "@/components/MobileTestButtons"
 
 // Type definitions
 interface FormData {
@@ -2179,7 +2179,7 @@ function HomePageContent() {
       )}
 
       <FloatingActionButtons onScheduleClick={handleScheduleClick} />
-      <MobileFloatingTest />
+      <MobileTestButtons />
     </div>
   )
 }
