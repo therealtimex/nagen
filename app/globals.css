@@ -1,5 +1,8 @@
+/* stylelint-disable-next-line at-rule-no-unknown */
 @tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
 @tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
 @tailwind utilities;
 
 @layer base {
@@ -51,9 +54,12 @@
 
 @layer base {
   * {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply border-border;
   }
+
   body {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply bg-background text-foreground;
   }
 }
@@ -94,9 +100,12 @@ select:focus-visible {
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   .text-gray-600 {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply text-gray-800;
   }
+
   .text-blue-200 {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply text-blue-100;
   }
 }

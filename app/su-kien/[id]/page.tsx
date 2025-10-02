@@ -1,11 +1,10 @@
-"use client";
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Eye, Share2, Facebook, Twitter, Link2 } from "lucide-react";
 import Image from "next/image";
 import { getImagePath } from "@/lib/utils";
 import { notFound } from "next/navigation";
+import ClientEventDetail from "./ClientEventDetail";
 
 // Mock data cho chi tiết sự kiện
 const eventDetails = {
@@ -93,6 +92,14 @@ const relatedEvents = [
   }
 ];
 
+// Generate static params for static export
+export async function generateStaticParams() {
+  // Return all possible event IDs
+  return Object.keys(eventDetails).map((id) => ({
+    id: id,
+  }));
+}
+
 export default function EventDetailPage({ params }: { params: { id: string } }) {
   const eventId = parseInt(params.id);
   const event = eventDetails[eventId as keyof typeof eventDetails];
@@ -100,24 +107,6 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
   if (!event) {
     notFound();
   }
-
-  const handleShare = (platform: string) => {
-    const url = window.location.href;
-    const title = event.title;
-    
-    switch (platform) {
-      case 'facebook':
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
-        break;
-      case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
-        break;
-      case 'copy':
-        navigator.clipboard.writeText(url);
-        alert('Đã sao chép link!');
-        break;
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -202,36 +191,7 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
                 </div>
 
                 {/* Share buttons */}
-                <div className="flex items-center space-x-3 mb-8 pb-6 border-b">
-                  <span className="text-gray-600 font-medium">Chia sẻ:</span>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleShare('facebook')}
-                    className="flex items-center space-x-2"
-                  >
-                    <Facebook className="w-4 h-4" />
-                    <span>Facebook</span>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleShare('twitter')}
-                    className="flex items-center space-x-2"
-                  >
-                    <Twitter className="w-4 h-4" />
-                    <span>Twitter</span>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleShare('copy')}
-                    className="flex items-center space-x-2"
-                  >
-                    <Link2 className="w-4 h-4" />
-                    <span>Sao chép</span>
-                  </Button>
-                </div>
+                <ClientEventDetail event={event} />
 
                 {/* Content */}
                 <div 

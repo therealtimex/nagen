@@ -1,3 +1,13 @@
 {
-    "typescript.autoClosingTags": false
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+"css.lint.unknownAtRules": "ignore"
 }
