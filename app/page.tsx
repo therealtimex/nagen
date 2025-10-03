@@ -55,8 +55,6 @@ interface FormErrors {
   name?: string
   phone?: string
   email?: string
-  message?: string
-  service?: string
 }
 
 interface PartnerFormData {
@@ -510,9 +508,8 @@ function HeroContent() {
   )
 }
 
-// Enhanced Multi-step Form with Validation
+// Simplified Contact Form with Basic Information Only
 function EnhancedContactForm() {
-  const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
@@ -525,12 +522,6 @@ function EnhancedContactForm() {
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const steps = [
-    { number: 1, title: "Thông tin cơ bản", icon: Users },
-    { number: 2, title: "Chi tiết yêu cầu", icon: MessageCircle },
-    { number: 3, title: "Xác nhận", icon: CheckCircle },
-  ]
 
   const [ctvValue, setCtvValue] = useState("")
 
@@ -545,38 +536,34 @@ function EnhancedContactForm() {
     }
   }, [])
 
-  const validateStep = (step: number): boolean => {
+  const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
 
-    if (step === 1) {
-      if (!formData.name.trim()) newErrors.name = "Vui lòng nhập họ tên"
-      if (!formData.phone.trim()) newErrors.phone = "Vui lòng nhập số điện thoại"
-      if (!formData.email.trim()) newErrors.email = "Vui lòng nhập email"
-      else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Email không hợp lệ"
+    if (!formData.name.trim()) {
+      newErrors.name = "Vui lòng nhập họ tên"
+    }
+    
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Vui lòng nhập số điện thoại"
+    } else if (!/^[0-9+\-\s()]+$/.test(formData.phone)) {
+      newErrors.phone = "Số điện thoại chỉ được chứa số và các ký tự +, -, (), khoảng trắng"
     }
 
-    if (step === 2) {
-      if (!formData.message.trim()) newErrors.message = "Vui lòng nhập tin nhắn"
-      if (!formData.service) newErrors.service = "Vui lòng chọn dịch vụ"
+    if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email không hợp lệ"
     }
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
-  const nextStep = () => {
-    if (validateStep(currentStep)) {
-      setCurrentStep(currentStep + 1)
-    }
-  }
-
-  const prevStep = () => {
-    setCurrentStep(currentStep - 1)
-    setErrors({})
-  }
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    
+    if (!validateForm()) {
+      return
+    }
+
     setIsSubmitting(true)
     try {
       // Tạo object data với thông tin ctv
@@ -616,17 +603,19 @@ function EnhancedContactForm() {
   if (isSubmitted) {
     return (
       <Card className="border-0 shadow-xl bg-gradient-to-br from-green-50 to-blue-50">
-        <CardContent className="p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-green-800 mb-4">Gửi thành công!</h3>
-          <p className="text-gray-600 mb-6">
+        <CardContent className="p-6 sm:p-8 text-center">
+          <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-600 mx-auto mb-4" />
+          <h3 className="text-xl sm:text-2xl font-bold text-green-800 mb-4">Gửi thành công!</h3>
+          <p className="text-gray-600 mb-6 text-sm sm:text-base">
             Cảm ơn bạn đã liên hệ với NAGEN. Chúng tôi sẽ phản hồi trong vòng 24 giờ.
           </p>
-          <div className="bg-white p-4 rounded-lg border-l-4 border-green-500">
-            <p className="text-sm text-gray-700">
-              📧 Email xác nhận đã được gửi đến: <strong>{formData.email}</strong>
-            </p>
-          </div>
+          {formData.email && (
+            <div className="bg-white p-3 sm:p-4 rounded-lg border-l-4 border-green-500">
+              <p className="text-sm text-gray-700">
+                📧 Email xác nhận đã được gửi đến: <strong className="break-all">{formData.email}</strong>
+              </p>
+            </div>
+          )}
         </CardContent>
       </Card>
     )
@@ -634,264 +623,100 @@ function EnhancedContactForm() {
 
   return (
     <Card className="border-0 shadow-xl">
-      <CardHeader>
-        <CardTitle className="text-blue-900 text-xl">Đăng ký tư vấn miễn phí</CardTitle>
-        <div className="flex items-center justify-between mt-6">
-          {steps.map((step, index) => (
-            <div key={step.number} className="flex items-center">
-              <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all ${currentStep >= step.number ? "bg-red-600 text-white" : "bg-gray-200 text-gray-600"
-                  }`}
-              >
-                {currentStep > step.number ? <CheckCircle className="w-5 h-5" /> : <step.icon className="w-5 h-5" />}
-              </div>
-              <div className="ml-3 hidden sm:block">
-                <p className="text-sm font-medium text-gray-900">{step.title}</p>
-              </div>
-              {index < steps.length - 1 && <div className="hidden sm:block w-16 h-0.5 bg-gray-300 mx-4"></div>}
-            </div>
-          ))}
-        </div>
+      <CardHeader className="p-4 sm:p-6">
+        <CardTitle className="text-blue-900 text-lg sm:text-xl">Đăng ký tư vấn miễn phí</CardTitle>
+        <p className="text-gray-600 mt-2 text-sm sm:text-base">Vui lòng điền thông tin để nhận tư vấn miễn phí từ chuyên gia NAGEN</p>
       </CardHeader>
 
-      <CardContent className="space-y-6">
-        {currentStep === 1 && (
-          <div className="space-y-4">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                  Họ và tên <span className="text-red-500">*</span>
-                </label>
-                <Input
-                  placeholder="Nhập họ và tên"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className={errors.name ? "border-red-500" : ""}
-                  aria-describedby={errors.name ? "name-error" : undefined}
-                />
-                {errors.name && (
-                  <p id="name-error" className="text-red-500 text-sm mt-1">
-                    {errors.name}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                  Số điện thoại <span className="text-red-500">*</span>
-                </label>
-                <Input
-                  placeholder="Nhập số điện thoại"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className={errors.phone ? "border-red-500" : ""}
-                  aria-describedby={errors.phone ? "phone-error" : undefined}
-                />
-                {errors.phone && (
-                  <p id="phone-error" className="text-red-500 text-sm mt-1">
-                    {errors.phone}
-                  </p>
-                )}
-              </div>
-            </div>
+      <CardContent className="p-4 sm:p-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-gray-700 mb-2 block">
-                Email <span className="text-red-500">*</span>
+                Họ và tên <span className="text-red-500">*</span>
               </label>
               <Input
-                type="email"
-                placeholder="Nhập địa chỉ email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className={errors.email ? "border-red-500" : ""}
-                aria-describedby={errors.email ? "email-error" : undefined}
+                placeholder="Nhập họ và tên"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className={`h-12 text-base ${errors.name ? "border-red-500" : ""}`}
+                aria-describedby={errors.name ? "name-error" : undefined}
               />
-              {errors.email && (
-                <p id="email-error" className="text-red-500 text-sm mt-1">
-                  {errors.email}
+              {errors.name && (
+                <p id="name-error" className="text-red-500 text-sm mt-1">
+                  {errors.name}
                 </p>
               )}
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700 mb-2 block">Địa chỉ</label>
+              <label className="text-sm font-medium text-gray-700 mb-2 block">
+                Số điện thoại <span className="text-red-500">*</span>
+              </label>
               <Input
-                placeholder="Nhập địa chỉ (tùy chọn)"
-                value={formData.address}
-                onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                type="tel"
+                inputMode="numeric"
+                placeholder="Nhập số điện thoại"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className={`h-12 text-base ${errors.phone ? "border-red-500" : ""}`}
+                aria-describedby={errors.phone ? "phone-error" : undefined}
               />
-            </div>
-          </div>
-        )}
-
-        {currentStep === 2 && (
-          <div className="space-y-4">
-            <div>
-              <label className="text-sm font-medium text-gray-700 mb-2 block">
-                Dịch vụ quan tâm <span className="text-red-500">*</span>
-              </label>
-              <select
-                className={`w-full p-3 border rounded-lg ${errors.service ? "border-red-500" : "border-gray-300"}`}
-                value={formData.service}
-                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                aria-describedby={errors.service ? "service-error" : undefined}
-              >
-                <option value="">Chọn dịch vụ</option>
-                <option value="consultation">Tư vấn sản phẩm</option>
-                <option value="measurement">Đo vòm bàn chân</option>
-                <option value="home-service">Dịch vụ tại nhà</option>
-                <option value="product-info">Thông tin sản phẩm</option>
-              </select>
-              {errors.service && (
-                <p id="service-error" className="text-red-500 text-sm mt-1">
-                  {errors.service}
+              {errors.phone && (
+                <p id="phone-error" className="text-red-500 text-sm mt-1">
+                  {errors.phone}
                 </p>
               )}
             </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700 mb-2 block">
-                Tin nhắn <span className="text-red-500">*</span>
-              </label>
-              <Textarea
-                placeholder="Mô tả chi tiết tình trạng bàn chân và nhu cầu của bạn"
-                rows={4}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className={errors.message ? "border-red-500" : ""}
-                aria-describedby={errors.message ? "message-error" : undefined}
-              />
-              {errors.message && (
-                <p id="message-error" className="text-red-500 text-sm mt-1">
-                  {errors.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="text-sm font-medium text-gray-700 mb-2 block">Cách thức liên lạc ưu tiên</label>
-              <div className="flex gap-4">
-                <label className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    className="rounded"
-                    value="email"
-                    checked={formData.contactMethod.includes("email")}
-                    onChange={(e) => {
-                      const value = e.target.value
-                      const isChecked = e.target.checked
-                      setFormData((prev) => ({
-                        ...prev,
-                        contactMethod: isChecked
-                          ? [...prev.contactMethod, value]
-                          : prev.contactMethod.filter((method) => method !== value),
-                      }))
-                    }}
-                  />
-                  <span className="text-sm">Email</span>
-                </label>
-                <label className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    className="rounded"
-                    value="phone"
-                    checked={formData.contactMethod.includes("phone")}
-                    onChange={(e) => {
-                      const value = e.target.value
-                      const isChecked = e.target.checked
-                      setFormData((prev) => ({
-                        ...prev,
-                        contactMethod: isChecked
-                          ? [...prev.contactMethod, value]
-                          : prev.contactMethod.filter((method) => method !== value),
-                      }))
-                    }}
-                  />
-                  <span className="text-sm">Điện thoại</span>
-                </label>
-                <label className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    className="rounded"
-                    value="zalo"
-                    checked={formData.contactMethod.includes("zalo")}
-                    onChange={(e) => {
-                      const value = e.target.value
-                      const isChecked = e.target.checked
-                      setFormData((prev) => ({
-                        ...prev,
-                        contactMethod: isChecked
-                          ? [...prev.contactMethod, value]
-                          : prev.contactMethod.filter((method) => method !== value),
-                      }))
-                    }}
-                  />
-                  <span className="text-sm">Zalo</span>
-                </label>
-              </div>
-            </div>
           </div>
-        )}
-
-        {currentStep === 3 && (
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-blue-900">Xác nhận thông tin</h3>
-            <div className="bg-gray-50 p-6 rounded-lg space-y-3">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-gray-600">Họ tên:</p>
-                  <p className="font-medium">{formData.name}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Điện thoại:</p>
-                  <p className="font-medium">{formData.phone}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Email:</p>
-                  <p className="font-medium">{formData.email}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Dịch vụ:</p>
-                  <p className="font-medium">{formData.service}</p>
-                </div>
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">Tin nhắn:</p>
-                <p className="font-medium">{formData.message}</p>
-              </div>
-
-              <div>
-                <p className="text-sm text-gray-600">Cách liên lạc ưu tiên:</p>
-                <p className="font-medium">{formData.contactMethod.join(", ")}</p>
-              </div>
-            </div>
-            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-              <p className="text-sm text-blue-800">
-                <CheckCircle className="w-4 h-4 inline mr-2" />
-                Chúng tôi sẽ liên hệ lại trong vòng 24h để tư vấn miễn phí và đặt lịch hẹn phù hợp.
+          
+          <div>
+            <label className="text-sm font-medium text-gray-700 mb-2 block">
+              Email
+            </label>
+            <Input
+              type="email"
+              inputMode="email"
+              placeholder="Nhập địa chỉ email (không bắt buộc)"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className={`h-12 text-base ${errors.email ? "border-red-500" : ""}`}
+              aria-describedby={errors.email ? "email-error" : undefined}
+            />
+            {errors.email && (
+              <p id="email-error" className="text-red-500 text-sm mt-1">
+                {errors.email}
               </p>
-            </div>
-          </div>
-        )}
-
-        <div className="flex justify-between pt-6 border-t">
-          {currentStep > 1 && (
-            <Button variant="outline" onClick={prevStep} disabled={isSubmitting}>
-              <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
-              Quay lại
-            </Button>
-          )}
-          <div className="ml-auto">
-            {currentStep < 3 ? (
-              <CTAButton onClick={nextStep}>
-                Tiếp tục
-                <ArrowRight className="w-4 h-4" />
-              </CTAButton>
-            ) : (
-              <CTAButton onClick={handleSubmit} disabled={isSubmitting}>
-                {isSubmitting ? "Đang gửi..." : "Gửi thông tin"}
-                {!isSubmitting && <CheckCircle className="w-4 h-4" />}
-              </CTAButton>
             )}
           </div>
-        </div>
+          
+          <div>
+            <label className="text-sm font-medium text-gray-700 mb-2 block">Địa chỉ</label>
+            <Input
+              placeholder="Nhập địa chỉ (không bắt buộc)"
+              value={formData.address}
+              onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+              className="h-12 text-base"
+            />
+          </div>
+
+          <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border-l-4 border-blue-500">
+            <p className="text-sm text-blue-800 flex items-start">
+              <CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+              <span>Chúng tôi sẽ liên hệ lại trong vòng 24h để tư vấn miễn phí và đặt lịch hẹn phù hợp.</span>
+            </p>
+          </div>
+
+          <div className="pt-4">
+            <CTAButton 
+              type="submit" 
+              disabled={isSubmitting} 
+              className="w-full h-12 text-base font-semibold"
+            >
+              {isSubmitting ? "Đang gửi..." : "Gửi thông tin"}
+              {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
+            </CTAButton>
+          </div>
+        </form>
       </CardContent>
     </Card>
   )
