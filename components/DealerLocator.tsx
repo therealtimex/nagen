@@ -207,7 +207,7 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
             Gọi hotline để được hỗ trợ tìm đại lý gần nhất và đặt lịch hẹn tư vấn
           </p>
           <div className="flex gap-2">
-            <Button className="flex-1" size="sm" onClick={() => window.open("tel:02435632008", "_blank")}>
+            <Button className="flex-1" size="sm" onClick={() => window.open("tel:0966578008", "_blank")}>
               <Phone className="w-4 h-4 mr-1" />
               0966578008
             </Button>

@@ -290,7 +290,7 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
 
                     <div className="mb-3">
                       <p className="text-sm text-gray-600">
-                        <span className="font-medium">Điện thoại:</span> {dealer.phone}
+                        <span className="font-medium">Điện thoại:</span> 0966578008
                       </p>
                     </div>
 
@@ -305,11 +305,11 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
                         🧭 Chỉ đường
                       </a>
                       <a
-                        href={`tel:${dealer.phone}`}
+                        href={`tel:0966578008`}
                         className="flex-1 px-3 py-2 text-sm bg-green-600 text-white hover:bg-green-700 rounded-lg text-center font-medium transition-colors"
                         style={{ color: "white" }}
                       >
-                        📞 Gọi ngay
+                        📅 Đặt lịch
                       </a>
                     </div>
                   </div>
