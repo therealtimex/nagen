@@ -142,7 +142,7 @@
         </div>
         
         <div class="product-showcase">
-            <div class="product-name" id="productName">SUNGEN™</div>
+            <div class="product-name" id="productName">SUNGEN</div>
             
             <div class="features">
                 <div class="feature">
@@ -182,11 +182,11 @@
         let currentProduct = 0;
         
         const products = [
-            { name: 'SUNGEN™', color: '#ff6b6b' },
-            { name: 'WINAGEN™', color: '#4ecdc4' },
-            { name: 'SOFTGEN™', color: '#45b7d1' },
-            { name: 'ENDURANCE™', color: '#96ceb4' },
-            { name: 'SILHOUETTE™', color: '#feca57' }
+            { name: 'SUNGEN', color: '#ff6b6b' },
+            { name: 'WINAGEN', color: '#4ecdc4' },
+            { name: 'SOFTGEN', color: '#45b7d1' },
+            { name: 'ENDURANCE', color: '#96ceb4' },
+            { name: 'SILHOUETTE', color: '#feca57' }
         ];
 
         function changeProduct() {
@@ -257,7 +257,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${products[currentProduct].name.toLowerCase().replace('™', '')}-demo.webm`;
+            a.download = `${products[currentProduct].name.toLowerCase()}-demo.webm`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

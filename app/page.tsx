@@ -165,11 +165,11 @@ function EnhancedNavigation() {
       name: "Sản phẩm",
       href: "#products",
       submenu: [
-        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen™", href: "/tat-ca-san-pham?category=sungen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen™", href: "/tat-ca-san-pham?category=winagen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen™", href: "/tat-ca-san-pham?category=softgen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance™", href: "/tat-ca-san-pham?category=endurance" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette™", href: "/tat-ca-san-pham?category=silhouette" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/tat-ca-san-pham?category=sungen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/tat-ca-san-pham?category=winagen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/tat-ca-san-pham?category=softgen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/tat-ca-san-pham?category=endurance" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/tat-ca-san-pham?category=silhouette" },
         { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/tat-ca-san-pham?category=demlotcaosu" },
       ],
     },
@@ -2055,7 +2055,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=sungen")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Sungen™
+                    Sungen
                   </a>
                 </li>
                 <li>
@@ -2064,7 +2064,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=winagen")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Winagen™
+                    Winagen
                   </a>
                 </li>
                 <li>
@@ -2073,7 +2073,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Softgen™
+                    Softgen
                   </a>
                 </li>
                 <li>
@@ -2082,7 +2082,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=endurance")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Endurance™
+                    Endurance
                   </a>
                 </li>
                 <li>
@@ -2091,7 +2091,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=silhouette")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Silhouette™
+                    Silhouette
                   </a>
                 </li>
               </ul>

@@ -279,14 +279,14 @@ export default function AllProductsPage() {
                       <Badge variant="secondary" className="bg-blue-100 text-blue-800 border-blue-300">
                         Danh mục:{" "}
                         {selectedCategory === "sungen"
-                          ? "Sungen™"
+                          ? "Sungen"
                           : selectedCategory === "winagen"
-                            ? "Winagen™"
+                            ? "Winagen"
                             : selectedCategory === "softgen"
-                              ? "Softgen™"
+                              ? "Softgen"
                               : selectedCategory === "endurance"
-                                ? "Endurance™"
-                                : "Silhouette™"}
+                                ? "Endurance"
+                                : "Silhouette"}
                         <button
                           onClick={() => {
                             setSelectedCategory("")
@@ -370,11 +370,11 @@ export default function AllProductsPage() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">Tất cả danh mục</SelectItem>
-                    <SelectItem value="sungen">Sungen™</SelectItem>
-                    <SelectItem value="winagen">Winagen™</SelectItem>
-                    <SelectItem value="softgen">Softgen™</SelectItem>
-                    <SelectItem value="endurance">Endurance™</SelectItem>
-                    <SelectItem value="silhouette">Silhouette™</SelectItem>
+                    <SelectItem value="sungen">Sungen</SelectItem>
+                    <SelectItem value="winagen">Winagen</SelectItem>
+                    <SelectItem value="softgen">Softgen</SelectItem>
+                    <SelectItem value="endurance">Endurance</SelectItem>
+                    <SelectItem value="silhouette">Silhouette</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -407,14 +407,14 @@ export default function AllProductsPage() {
               <h2 className="text-2xl font-bold text-blue-900">
                 {selectedCategory
                   ? `Sản phẩm ${selectedCategory === "sungen"
-                    ? "Sungen™"
+                    ? "Sungen"
                     : selectedCategory === "winagen"
-                      ? "Winagen™"
+                      ? "Winagen"
                       : selectedCategory === "softgen"
-                        ? "Softgen™"
+                        ? "Softgen"
                         : selectedCategory === "endurance"
-                          ? "Endurance™"
-                          : "Silhouette™"
+                          ? "Endurance"
+                          : "Silhouette"
                   }`
                   : searchTerm
                     ? `Kết quả tìm kiếm: "${searchTerm}"`
@@ -424,14 +424,14 @@ export default function AllProductsPage() {
                 <p className="text-gray-500 text-sm mt-1">
                   Khám phá bộ sưu tập{" "}
                   {selectedCategory === "sungen"
-                    ? "Sungen™"
+                    ? "Sungen"
                     : selectedCategory === "winagen"
-                      ? "Winagen™"
+                      ? "Winagen"
                       : selectedCategory === "softgen"
-                        ? "Softgen™"
+                        ? "Softgen"
                         : selectedCategory === "endurance"
-                          ? "Endurance™"
-                          : "Silhouette™"}{" "}
+                          ? "Endurance"
+                          : "Silhouette"}{" "}
                   chất lượng cao
                 </p>
               )}

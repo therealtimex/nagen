@@ -35,9 +35,9 @@ const createDemoVideo = async () => {
       
       // Thay vào đó, tạo một file text hướng dẫn
       const instructionContent = `
-# Video Demo Sungen™
+# Video Demo Sungen
 
-Đây là placeholder cho video demo sản phẩm Sungen™.
+Đây là placeholder cho video demo sản phẩm Sungen.
 
 ## Cách tạo video thực:
 

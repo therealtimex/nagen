@@ -59,11 +59,11 @@ const createVideoHTML = (productName) => `
 
 // Tạo thông tin cho từng sản phẩm
 const productInfo = {
-  'sungen-1': 'Tấm lót hỗ trợ vòm bàn chân Sungen™',
-  'winagen-1': 'Tấm lót hỗ trợ vòm bàn chân Winagen™',
-  'softgen-1': 'Tấm lót hỗ trợ vòm bàn chân Softgen™', 
-  'endurance-1': 'Tấm lót hỗ trợ vòm bàn chân Endurance™',
-  'silhouette-1': 'Tấm lót hỗ trợ vòm bàn chân Silhouette™',
+  'sungen-1': 'Tấm lót hỗ trợ vòm bàn chân Sungen',
+  'winagen-1': 'Tấm lót hỗ trợ vòm bàn chân Winagen',
+  'softgen-1': 'Tấm lót hỗ trợ vòm bàn chân Softgen', 
+  'endurance-1': 'Tấm lót hỗ trợ vòm bàn chân Endurance',
+  'silhouette-1': 'Tấm lót hỗ trợ vòm bàn chân Silhouette',
   'demlotgiay': 'Đệm lót giày cao su xốp tự nhiên'
 };
 

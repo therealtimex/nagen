@@ -138,7 +138,7 @@ const createVideoContent = () => `
     <div class="video-container">
         <div class="logo">NAGEN</div>
         
-        <div class="main-title">SUNGEN™</div>
+        <div class="main-title">SUNGEN</div>
         <div class="subtitle">Tấm lót hỗ trợ vòm bàn chân</div>
         
         <div class="features">
@@ -197,7 +197,7 @@ console.log(`
 🎯 Hoặc sử dụng FFmpeg (nếu đã cài):
 ffmpeg -f gdigrab -framerate 30 -i desktop -t 10 -vf "scale=1280:720" sungen-1.mp4
 
-⚡ Video sẽ tự động loop và hiển thị các tính năng của sản phẩm Sungen™
+⚡ Video sẽ tự động loop và hiển thị các tính năng của sản phẩm Sungen
 `);
 
 // Tạo script PowerShell để mở file

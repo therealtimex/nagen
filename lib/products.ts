@@ -17,9 +17,9 @@ export interface Product {
 export const productData: Product[] = [
   {
     id: "sungen-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Sungen™",
+    name: "Tấm lót hỗ trợ vòm bàn chân Sungen",
     description:
-      "Sungen™ là tấm lót hỗ trợ vòm bàn chân đã khởi đầu một ngành công nghiệp và giúp hàng triệu người nhận ra rằng họ có thể sống mà không bị đau chân.\n\n" +
+      "Sungen là tấm lót hỗ trợ vòm bàn chân đã khởi đầu một ngành công nghiệp và giúp hàng triệu người nhận ra rằng họ có thể sống mà không bị đau chân.\n\n" +
       "Đây là sản phẩm định hình bàn chân lý tưởng cho mục đích sử dụng hàng ngày và cung cấp mức độ hỗ trợ cao nhất trong danh mục sản phẩm đa dạng của chúng tôi.\n\n" +
       "Sản phẩm này hỗ trợ toàn bộ xương bàn chân, bạn sẽ cần một khoảng thời gian để làm quen, nhưng chúng tôi nghĩ bạn sẽ đồng ý rằng kết quả rất xứng đáng với những nỗ lực của bạn.\n\n" +
       "Chúng tôi đưa ra một kế hoạch đơn giản cho việc thích nghi và làm quen, và hầu hết người sử dụng có thể thoải mái đeo chúng cả ngày liên tục trong vòng bốn đến sáu tuần.",
@@ -36,9 +36,9 @@ export const productData: Product[] = [
   },
   {
     id: "winagen-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Winagen™",
+    name: "Tấm lót hỗ trợ vòm bàn chân Winagen",
     description:
-      "Mặc dù Tấm lót hỗ trợ vòm bàn chân Winagen™ có thiết kế cơ sinh học độc đáo tương tự như tấm lót hỗ trợ vòm bàn chân Sungen, nhưng nó được làm bằng vật liệu mềm hơn nên rất lý tưởng cho các hoạt động thể thao.\n\n" +
+      "Mặc dù Tấm lót hỗ trợ vòm bàn chân Winagen có thiết kế cơ sinh học độc đáo tương tự như tấm lót hỗ trợ vòm bàn chân Sungen, nhưng nó được làm bằng vật liệu mềm hơn nên rất lý tưởng cho các hoạt động thể thao.\n\n" +
       "Sản phẩm này cũng lý tưởng cho những người lần đầu sử dụng có bàn chân rất phẳng, giúp họ làm quen một cách nhẹ nhàng với tấm lót hỗ trợ vòm bàn chân Nagen.\n\n" +
       "Chất liệu trong suốt giúp tấm lót hỗ trợ có thể ẩn trong dép xăng đan và giày hở mũi, cũng như có thể kết hợp với hầu hết mọi loại giày dép.",
     price: "699.000đ",
@@ -52,9 +52,9 @@ export const productData: Product[] = [
   },
   {
     id: "softgen-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Softgen™",
+    name: "Tấm lót hỗ trợ vòm bàn chân Softgen",
     description:
-      "Tấm lót hỗ trợ vòm bàn chân Softgen™ là sản phẩm dạng gel có khả năng hỗ trợ nhẹ nhàng và tạo cảm giác như đang đi trên không trung.\n\n" +
+      "Tấm lót hỗ trợ vòm bàn chân Softgen là sản phẩm dạng gel có khả năng hỗ trợ nhẹ nhàng và tạo cảm giác như đang đi trên không trung.\n\n" +
       "Sản phẩm vẫn hỗ trợ cả bốn vòm bàn chân và được thiết kế thông khí hoàn toàn cho bề mặt gan bàn chân.\n\n" +
       "Sản phẩm này đặc biệt có giá trị đối với người cao tuổi vì giúp giảm chấn thương do vấp ngã cũng như những người chưa từng sử dụng tấm lót hỗ trợ vòm bàn chân hoàn toàn.\n\n" +
       "Đây cũng là sản phẩm tuyệt vời để sử dụng khi ở nhà vào cuối ngày.",
@@ -69,11 +69,11 @@ export const productData: Product[] = [
   },
   {
     id: "endurance-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Endurance™",
+    name: "Tấm lót hỗ trợ vòm bàn chân Endurance",
     description:
-      "Tấm lót hỗ trợ vòm bàn chân Endurance™ là sản phẩm siêu mỏng có khả năng hỗ trợ nhẹ.\n\n" +
+      "Tấm lót hỗ trợ vòm bàn chân Endurance là sản phẩm siêu mỏng có khả năng hỗ trợ nhẹ.\n\n" +
       "Vì nó chiếm ít không gian trong giày hơn so với thiết kế hình học của các phiên bản sản phẩm Tấm lót hỗ trợ vòm bàn chân Nagen, nên nó lý tưởng cho những đôi giày không đủ độ sâu cho các thiết bị có cấu hình cao hơn (nhưng hỗ trợ tốt hơn).\n\n" +
-      "Tấm lót hỗ trợ vòm bàn chân Endurance™ cũng có lớp phủ bằng da lộn dễ chịu, kéo dài bằng chiều dài của một tấm lót ba phần tư để tạo lớp đệm nhẹ trên phần hỗ trợ vòm chân và dưới đầu xương bàn chân.",
+      "Tấm lót hỗ trợ vòm bàn chân Endurance cũng có lớp phủ bằng da lộn dễ chịu, kéo dài bằng chiều dài của một tấm lót ba phần tư để tạo lớp đệm nhẹ trên phần hỗ trợ vòm chân và dưới đầu xương bàn chân.",
     price: "799.000đ",
     originalPrice: "899.000đ",
     discount: "11%",
@@ -87,12 +87,12 @@ export const productData: Product[] = [
   },
   {
     id: "silhouette-1",
-    name: "Tấm lót hỗ trợ vòm bàn chân Silhouette™",
+    name: "Tấm lót hỗ trợ vòm bàn chân Silhouette",
     description:
-      "Tấm lót hỗ trợ vòm bàn chân Silhouette™ giống như Tấm lót hỗ trợ vòm bàn chân Endurance™, siêu mỏng nhưng hẹp hơn.\n\n" +
+      "Tấm lót hỗ trợ vòm bàn chân Silhouette giống như Tấm lót hỗ trợ vòm bàn chân Endurance, siêu mỏng nhưng hẹp hơn.\n\n" +
       "Sản phẩm hoàn hảo cho những đôi giày dành cho bàn chân hẹp và vừa khít hoặc có đế giày hẹp như các loại giày của phụ nữ.\n\n" +
-      "Giống như Tấm lót hỗ trợ vòm chân Endurance™, người đeo có mong muốn cảm thấy thoải mái một cách nhanh chóng khi sử dụng mà hầu như không cần thời gian làm quen.\n\n" +
-      "Các sản phẩm thuộc dòng Endurance™ hoàn hảo để duy trì sự hỗ trợ mà bạn có được khi sử dụng tấm lót hỗ trợ vòm bàn chân Nagen trong hầu hết mọi loại giày dép.",
+      "Giống như Tấm lót hỗ trợ vòm chân Endurance, người đeo có mong muốn cảm thấy thoải mái một cách nhanh chóng khi sử dụng mà hầu như không cần thời gian làm quen.\n\n" +
+      "Các sản phẩm thuộc dòng Endurance hoàn hảo để duy trì sự hỗ trợ mà bạn có được khi sử dụng tấm lót hỗ trợ vòm bàn chân Nagen trong hầu hết mọi loại giày dép.",
     price: "649.000đ",
     image: "/images/products/Silhouette.jpg",
     category: "silhouette",
