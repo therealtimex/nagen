@@ -1569,15 +1569,16 @@ function HomePageContent() {
                     className="
                       bg-[#21395D] hover:bg-[#1a2d4a] text-white
                       flex items-center justify-center
-                      px-4 sm:px-8 py-4 sm:py-5 rounded-xl
+                      px-4 sm:px-8 py-5 sm:py-5 rounded-xl
                       text-sm sm:text-base font-medium
                       max-w-full sm:max-w-2xl w-full
                       transition-all duration-300
                       shadow-lg hover:shadow-xl
-                      min-h-[60px] sm:min-h-[auto]
+                      h-auto
+                      whitespace-normal
                     "
                   >
-                    <span className="text-center leading-relaxed px-2 py-1 break-words hyphens-auto">
+                    <span className="text-center leading-6 px-1 py-2 block w-full overflow-wrap-anywhere">
                       Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
                     </span>
                   </CTAButton>

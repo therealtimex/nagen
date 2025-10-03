@@ -53,7 +53,7 @@
   .container {
     @apply px-3;
   }
-  
+
   .event-grid {
     @apply grid-cols-1;
   }
