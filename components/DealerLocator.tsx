@@ -7,6 +7,7 @@ import { MapPin, Phone, Navigation, ChevronLeft, List, Calendar } from "lucide-r
 import { dealerData, getDealersByDistance, type Dealer } from "@/lib/dealers"
 import dynamic from "next/dynamic"
 
+
 const LeafletMapComponent = dynamic(
   () => import("@/components/LeafletMapComponent"),
   { ssr: false }
@@ -19,6 +20,7 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [isPanelCollapsed, setIsPanelCollapsed] = useState(false)
+
 
   // Get user's location
   const getUserLocation = () => {
@@ -52,6 +54,11 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
   // Handle dealer selection
   const handleSelectDealer = (dealer: Dealer) => {
     setSelectedDealer(dealer)
+  }
+
+  // Handle booking appointment
+  const handleBookAppointment = (dealer?: Dealer) => {
+    onBookAppointment()
   }
 
   return (
@@ -137,10 +144,8 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
                         className="flex-1 text-xs py-1"
                         onClick={(e) => {
                           e.stopPropagation()
-                          window.open(
-                            `https://www.google.com/maps/dir/?api=1&destination=${dealer.lat},${dealer.lng}`,
-                            "_blank"
-                          )
+                          const mapsUrl = `https://maps.google.com/maps?q=${dealer.lat},${dealer.lng}&hl=vi&z=15`
+                          window.open(mapsUrl, "_blank")
                         }}
                       >
                         <Navigation className="w-3 h-3 mr-1" />
@@ -152,7 +157,7 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
                         className="flex-1 text-xs py-1"
                         onClick={(e) => {
                           e.stopPropagation()
-                          onBookAppointment()
+                          handleBookAppointment(dealer)
                         }}
                       >
                         <Calendar className="w-3 h-3 mr-1" />
@@ -187,6 +192,7 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
             onSelectDealer={handleSelectDealer}
             selectedDealer={selectedDealer}
             userLocation={userLocation}
+            onBookAppointment={handleBookAppointment}
           />
 
           {/* Map Instructions */}
@@ -218,6 +224,8 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
           </div>
         </div>
       </div>
+
+
     </div>
   )
 }

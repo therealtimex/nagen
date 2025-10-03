@@ -1712,7 +1712,7 @@ function HomePageContent() {
             <p className="text-gray-600 text-lg">Tìm đại lý gần bạn nhất để được tư vấn và trải nghiệm sản phẩm</p>
           </div>
 
-          <DealerLocator onBookAppointment={() => { }} />
+          <DealerLocator onBookAppointment={() => setIsAppointmentModalOpen(true)} />
         </div>
       </section>
 

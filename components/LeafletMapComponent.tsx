@@ -23,6 +23,7 @@ interface LeafletMapComponentProps {
   onSelectDealer?: (dealer: Dealer) => void
   selectedDealer?: Dealer | null
   userLocation?: { lat: number; lng: number } | null
+  onBookAppointment?: (dealer?: Dealer) => void
 }
 
 // Component to handle map events and ensure proper loading
@@ -120,7 +121,7 @@ function ChangeMapView({ center, zoom }: { center: [number, number]; zoom: numbe
   return null
 }
 
-const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLocation }: LeafletMapComponentProps) => {
+const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLocation, onBookAppointment }: LeafletMapComponentProps) => {
   const [mapCenter, setMapCenter] = useState<[number, number]>([21.0285, 105.8542]) // Default to Hanoi
   const [mapZoom, setMapZoom] = useState(12)
   const [isMapReady, setIsMapReady] = useState(false)
@@ -295,22 +296,25 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
                     </div>
 
                     <div className="flex gap-2">
-                      <a
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${dealer.lat},${dealer.lng}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        onClick={() => {
+                          const mapsUrl = `https://maps.google.com/maps?q=${dealer.lat},${dealer.lng}&hl=vi&z=15`
+                          window.open(mapsUrl, '_blank')
+                        }}
                         className="flex-1 px-3 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-center font-medium transition-colors"
-                        style={{ color: "white" }}
                       >
                         🧭 Chỉ đường
-                      </a>
-                      <a
-                        href={`tel:0966578008`}
+                      </button>
+                      <button
+                        onClick={() => {
+                          if (onBookAppointment) {
+                            onBookAppointment(dealer)
+                          }
+                        }}
                         className="flex-1 px-3 py-2 text-sm bg-green-600 text-white hover:bg-green-700 rounded-lg text-center font-medium transition-colors"
-                        style={{ color: "white" }}
                       >
                         📅 Đặt lịch
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </Popup>
