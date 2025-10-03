@@ -62,8 +62,6 @@ interface PartnerFormData {
   phone: string
   email: string
   address: string
-  experience: string
-  investment: string
   message: string
   contactMethod: string[]
 }
@@ -729,8 +727,6 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
     phone: "",
     email: "",
     address: "",
-    experience: "",
-    investment: "",
     message: "",
     contactMethod: [],
   })
@@ -792,8 +788,6 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
       phone: "",
       email: "",
       address: "",
-      experience: "",
-      investment: "",
       message: "",
       contactMethod: [],
     })
@@ -809,32 +803,37 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-2 sm:p-4">
+      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
         {isSubmitted ? (
-          <div className="p-8 text-center">
-            <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</h3>
-            <p className="text-gray-600 mb-4">Chúng tôi đã nhận được đăng ký đối tác của bạn.</p>
-            <p className="text-gray-600 mb-6">Đội ngũ NAGEN sẽ liên hệ với bạn trong vòng 24 giờ để tư vấn chi tiết.</p>
-            <CTAButton onClick={handleClose}>Đóng</CTAButton>
+          <div className="p-6 sm:p-8 text-center">
+            <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-600 mx-auto mb-4" />
+            <h3 className="text-xl sm:text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</h3>
+            <p className="text-gray-600 mb-4 text-sm sm:text-base">Chúng tôi đã nhận được đăng ký đối tác của bạn.</p>
+            <p className="text-gray-600 mb-6 text-sm sm:text-base">Đội ngũ NAGEN sẽ liên hệ với bạn trong vòng 24 giờ để tư vấn chi tiết.</p>
+            <CTAButton onClick={handleClose} className="w-full sm:w-auto">Đóng</CTAButton>
           </div>
         ) : (
           <>
-            <div className="bg-red-600 text-white p-6 rounded-t-lg">
+            <div className="bg-red-600 text-white p-4 sm:p-6 rounded-t-lg">
               <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-bold">Đăng ký làm đối tác</h3>
-                  <p className="text-red-100 mt-1">Tham gia mạng lưới đại lý NAGEN</p>
+                <div className="flex-1 pr-4">
+                  <h3 className="text-lg sm:text-xl font-bold">Đăng ký làm đối tác</h3>
+                  <p className="text-red-100 mt-1 text-sm sm:text-base">Tham gia mạng lưới đại lý NAGEN</p>
                 </div>
-                <Button variant="ghost" size="icon" onClick={handleClose} className="text-white hover:bg-red-700">
-                  ×
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={handleClose} 
+                  className="text-white hover:bg-red-700 flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10"
+                >
+                  <span className="text-xl">×</span>
                 </Button>
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm font-medium text-gray-700 mb-2 block">
                     Họ và tên <span className="text-red-500">*</span>
@@ -844,6 +843,7 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
+                    className="h-12 text-base"
                   />
                 </div>
                 <div>
@@ -851,10 +851,13 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                     Số điện thoại <span className="text-red-500">*</span>
                   </label>
                   <Input
+                    type="tel"
+                    inputMode="numeric"
                     placeholder="Nhập số điện thoại"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     required
+                    className="h-12 text-base"
                   />
                 </div>
               </div>
@@ -865,10 +868,12 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                 </label>
                 <Input
                   type="email"
+                  inputMode="email"
                   placeholder="Nhập địa chỉ email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
+                  className="h-12 text-base"
                 />
               </div>
 
@@ -881,37 +886,8 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   required
+                  className="h-12 text-base"
                 />
-              </div>
-
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Kinh nghiệm kinh doanh</label>
-                <select
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  value={formData.experience}
-                  onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                >
-                  <option value="">Chọn mức độ kinh nghiệm</option>
-                  <option value="new">Mới bắt đầu</option>
-                  <option value="1-3">1-3 năm</option>
-                  <option value="3-5">3-5 năm</option>
-                  <option value="5+">Trên 5 năm</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Vốn đầu tư dự kiến</label>
-                <select
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  value={formData.investment}
-                  onChange={(e) => setFormData({ ...formData, investment: e.target.value })}
-                >
-                  <option value="">Chọn mức vốn đầu tư</option>
-                  <option value="50-100">50-100 triệu</option>
-                  <option value="100-200">100-200 triệu</option>
-                  <option value="200-500">200-500 triệu</option>
-                  <option value="500+">Trên 500 triệu</option>
-                </select>
               </div>
 
               <div>
@@ -921,16 +897,17 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="text-base resize-none"
                 />
               </div>
 
               <div>
                 <label className="text-sm font-medium text-gray-700 mb-3 block">Cách thức liên lạc ưu tiên</label>
-                <div className="flex gap-6">
-                  <label className="flex items-center space-x-2">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                  <label className="flex items-center space-x-3 cursor-pointer">
                     <input
                       type="checkbox"
-                      className="rounded border-gray-300"
+                      className="rounded border-gray-300 h-4 w-4 text-red-600 focus:ring-red-500"
                       value="email"
                       checked={formData.contactMethod.includes("email")}
                       onChange={(e) => {
@@ -944,12 +921,12 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                         }))
                       }}
                     />
-                    <span className="text-sm text-gray-700">Email</span>
+                    <span className="text-sm text-gray-700 select-none">Email</span>
                   </label>
-                  <label className="flex items-center space-x-2">
+                  <label className="flex items-center space-x-3 cursor-pointer">
                     <input
                       type="checkbox"
-                      className="rounded border-gray-300"
+                      className="rounded border-gray-300 h-4 w-4 text-red-600 focus:ring-red-500"
                       value="phone"
                       checked={formData.contactMethod.includes("phone")}
                       onChange={(e) => {
@@ -963,38 +940,42 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                         }))
                       }}
                     />
-                    <span className="text-sm text-gray-700">Điện thoại</span>
+                    <span className="text-sm text-gray-700 select-none">Điện thoại</span>
                   </label>
                 </div>
               </div>
 
-              <div className="text-center">
-                <p className="text-xs text-gray-500 mb-4">
+              <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border-l-4 border-blue-500">
+                <p className="text-xs sm:text-sm text-blue-800 leading-relaxed">
                   Bằng việc gửi đăng ký, bạn đồng ý với{" "}
-                  <Link href="/terms-of-use" className="text-blue-600 hover:underline">
+                  <Link href="/terms-of-use" className="text-blue-600 hover:underline font-medium">
                     điều khoản sử dụng
                   </Link>{" "}
                   và{" "}
-                  <Link href="/privacy-policy" className="text-blue-600 hover:underline">
+                  <Link href="/privacy-policy" className="text-blue-600 hover:underline font-medium">
                     chính sách bảo mật
                   </Link>{" "}
                   của NAGEN.
                 </p>
               </div>
 
-              <div className="flex gap-4 pt-6 border-t">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6 border-t">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={handleClose}
-                  className="flex-1 bg-transparent"
+                  className="flex-1 bg-transparent h-12 text-base font-medium order-2 sm:order-1"
                   disabled={isSubmitting}
                 >
                   Hủy
                 </Button>
-                <CTAButton type="submit" className="flex-1" disabled={isSubmitting}>
+                <CTAButton 
+                  type="submit" 
+                  className="flex-1 h-12 text-base font-semibold order-1 sm:order-2" 
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? "Đang gửi..." : "Gửi đăng ký"}
-                  {!isSubmitting && <Send className="w-4 h-4" />}
+                  {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
                 </CTAButton>
               </div>
             </form>
@@ -1475,7 +1456,7 @@ function HomePageContent() {
         <div className="container mx-auto px-4">
           <EnhancedFeedbackSlider />
           <div className="text-center mt-8">
-            <Button variant="default" size="lg" onClick={() => navigateTo("/su-kien")}>
+            <Button variant="default" size="lg" onClick={() => navigateTo("/feedback")}>
               Xem tất cả
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
