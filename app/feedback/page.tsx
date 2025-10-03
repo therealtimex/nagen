@@ -28,37 +28,104 @@ interface CustomerFeedback {
 const feedbackData: CustomerFeedback[] = [
     {
         id: 1,
-        name: "Nguyễn Văn Minh",
-        age: 45,
+        name: "Nguyễn Văn A",
         location: "Hà Nội",
-        occupation: "Kỹ sư",
+        occupation: "Khách hàng thân thiết",
         rating: 5,
-        content: "Tôi đã sử dụng tấm lót NAGEN được 6 tháng và cảm thấy rất hài lòng. Đau chân của tôi đã giảm đáng kể, đặc biệt là sau những ngày làm việc dài. Chất lượng sản phẩm rất tốt, bền và thoải mái.",
-        image: "/placeholder.svg?height=80&width=80&text=Minh",
+        content: "Sản phẩm NAGEN đã giúp tôi giảm đau chân hiệu quả. Chất lượng tuyệt vời, dịch vụ chuyên nghiệp.",
+        image: "/placeholder.svg?height=80&width=80&text=Avatar1",
         videoUrl: "/videos/feedback/customer1.mp4",
         additionalImages: [
             "/placeholder.svg?height=200&width=300&text=Before",
             "/placeholder.svg?height=200&width=300&text=After"
         ],
         date: "2024-01-15",
-        productUsed: "Tấm lót Sungen",
+        productUsed: "Tấm lót NAGEN",
         verified: true
     },
     {
         id: 2,
-        name: "Trần Thị Lan",
-        age: 38,
+        name: "Trần Thị B",
         location: "TP.HCM",
-        occupation: "Giáo viên",
+        occupation: "Khách hàng",
         rating: 5,
-        content: "Sau khi sinh con, tôi bị đau chân rất nhiều. Sử dụng tấm lót NAGEN được 3 tháng, tôi cảm thấy đi lại nhẹ nhàng hơn rất nhiều. Sản phẩm thực sự hiệu quả và đáng tin cậy.",
-        image: "/placeholder.svg?height=80&width=80&text=Lan",
+        content: "Đội ngũ tư vấn nhiệt tình, sản phẩm chất lượng cao. Tôi rất hài lòng với dịch vụ của NAGEN.",
+        image: "/placeholder.svg?height=80&width=80&text=Avatar2",
         additionalImages: [
             "/placeholder.svg?height=200&width=300&text=Product",
             "/placeholder.svg?height=200&width=300&text=Usage"
         ],
         date: "2024-02-20",
-        productUsed: "Tấm lót Winagen",
+        productUsed: "Tấm lót NAGEN",
+        verified: true
+    },
+    {
+        id: 3,
+        name: "Lê Văn C",
+        location: "Đà Nẵng",
+        occupation: "Khách hàng",
+        rating: 5,
+        content: "Giao hàng nhanh, đóng gói cẩn thận. Sản phẩm đúng như mô tả, hiệu quả rõ rệt.",
+        image: "/placeholder.svg?height=80&width=80&text=Avatar3",
+        videoUrl: "/videos/feedback/customer3.mp4",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Doctor",
+            "/placeholder.svg?height=200&width=300&text=Hospital"
+        ],
+        date: "2024-03-10",
+        productUsed: "Tấm lót NAGEN",
+        verified: true
+    },
+    {
+        id: 4,
+        name: "Phạm Thị Mai",
+        age: 29,
+        location: "Hải Phòng",
+        occupation: "Nhân viên văn phòng",
+        rating: 4,
+        content: "Tôi làm việc văn phòng nhưng thường xuyên phải đi lại. Tấm lót NAGEN giúp tôi cảm thấy thoải mái hơn khi đi giày cao gót. Chất lượng tốt, giá cả hợp lý.",
+        image: "/placeholder.svg?height=80&width=80&text=Mai",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Office",
+            "/placeholder.svg?height=200&width=300&text=Heels"
+        ],
+        date: "2024-03-25",
+        productUsed: "Tấm lót Silhouette",
+        verified: true
+    },
+    {
+        id: 5,
+        name: "Hoàng Văn Tùng",
+        age: 41,
+        location: "Cần Thơ",
+        occupation: "Tài xế",
+        rating: 5,
+        content: "Nghề tài xế phải ngồi lái xe nhiều giờ, chân tôi thường bị tê và đau. Từ khi dùng tấm lót NAGEN, tình trạng này đã cải thiện rõ rệt. Sản phẩm rất đáng đầu tư.",
+        image: "/placeholder.svg?height=80&width=80&text=Tung",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Driver",
+            "/placeholder.svg?height=200&width=300&text=Truck"
+        ],
+        date: "2024-04-05",
+        productUsed: "Tấm lót Endurance",
+        verified: true
+    },
+    {
+        id: 6,
+        name: "Nguyễn Thị Hương",
+        age: 35,
+        location: "Huế",
+        occupation: "Y tá",
+        rating: 5,
+        content: "Công việc y tá đòi hỏi phải đứng và đi lại liên tục. Tấm lót NAGEN đã giúp tôi giảm đau chân và cải thiện tư thế đứng. Tôi rất khuyên dùng cho những người cùng nghề.",
+        image: "/placeholder.svg?height=80&width=80&text=Huong",
+        videoUrl: "/videos/feedback/customer6.mp4",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Nurse",
+            "/placeholder.svg?height=200&width=300&text=Medical"
+        ],
+        date: "2024-04-18",
+        productUsed: "Tấm lót Sungen",
         verified: true
     }
 ]
