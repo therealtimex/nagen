@@ -2055,7 +2055,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=sungen")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Sungen
+                    Tấm lót hỗ trợ vòm bàn chân Sungen
                   </a>
                 </li>
                 <li>
@@ -2064,7 +2064,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=winagen")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Winagen
+                    Tấm lót hỗ trợ vòm bàn chân Winagen
                   </a>
                 </li>
                 <li>
@@ -2073,7 +2073,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Softgen
+                    Tấm lót hỗ trợ vòm bàn chân Softgen
                   </a>
                 </li>
                 <li>
@@ -2082,7 +2082,7 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=endurance")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Endurance
+                    Tấm lót hỗ trợ vòm bàn chân Endurance
                   </a>
                 </li>
                 <li>
@@ -2091,7 +2091,16 @@ function HomePageContent() {
                     onClick={() => navigateTo("/tat-ca-san-pham?category=silhouette")}
                     className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
                   >
-                    Silhouette
+                    Tấm lót hỗ trợ vòm bàn chân Silhouette
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => navigateTo("/tat-ca-san-pham?category=demlotcaosu")}
+                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
+                  >
+                    Đệm lót giày cao su xốp tự nhiên
                   </a>
                 </li>
               </ul>

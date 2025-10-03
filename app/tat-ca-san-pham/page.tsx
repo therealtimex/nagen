@@ -286,7 +286,9 @@ export default function AllProductsPage() {
                               ? "Softgen"
                               : selectedCategory === "endurance"
                                 ? "Endurance"
-                                : "Silhouette"}
+                                : selectedCategory === "silhouette"
+                                  ? "Silhouette"
+                                  : "Đệm lót giày cao su xốp tự nhiên"}
                         <button
                           onClick={() => {
                             setSelectedCategory("")
@@ -375,6 +377,7 @@ export default function AllProductsPage() {
                     <SelectItem value="softgen">Softgen</SelectItem>
                     <SelectItem value="endurance">Endurance</SelectItem>
                     <SelectItem value="silhouette">Silhouette</SelectItem>
+                    <SelectItem value="demlotcaosu">Đệm lót giày cao su xốp tự nhiên</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -414,7 +417,9 @@ export default function AllProductsPage() {
                         ? "Softgen"
                         : selectedCategory === "endurance"
                           ? "Endurance"
-                          : "Silhouette"
+                          : selectedCategory === "silhouette"
+                            ? "Silhouette"
+                            : "Đệm lót giày cao su xốp tự nhiên"
                   }`
                   : searchTerm
                     ? `Kết quả tìm kiếm: "${searchTerm}"`
@@ -431,7 +436,9 @@ export default function AllProductsPage() {
                         ? "Softgen"
                         : selectedCategory === "endurance"
                           ? "Endurance"
-                          : "Silhouette"}{" "}
+                          : selectedCategory === "silhouette"
+                            ? "Silhouette"
+                            : "Đệm lót giày cao su xốp tự nhiên"}{" "}
                   chất lượng cao
                 </p>
               )}

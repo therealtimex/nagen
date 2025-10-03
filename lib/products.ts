@@ -113,7 +113,7 @@ export const productData: Product[] = [
       "Mỗi dòng sản phẩm có nhiều kích cỡ nên hầu như không cần cắt bớt và mỗi đệm được vát chính xác để phù hợp hoàn hảo với tấm lót hỗ trợ vòm bàn chân của chúng tôi.",
     price: "699.000đ",
     image: "/images/products/Cushion.jpg",
-    category: "endurance",
+    category: "demlotcaosu",
     rating: 4.8,
     reviewCount: 68,
     popular: true,

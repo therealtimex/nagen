@@ -5,5 +5,6 @@ export const categoryDisplayNames: Record<string, string> = {
   "winagen": "Winagen",
   "softgen": "Softgen",
   "endurance": "Endurance",
-  "silhouette": "Silhouette"
+  "silhouette": "Silhouette",
+  "demlotcaosu": "Đệm lót giày cao su xốp tự nhiên"
 };
