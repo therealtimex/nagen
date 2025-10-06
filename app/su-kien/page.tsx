@@ -6,6 +6,7 @@ import { ArrowRight, ArrowLeft, Phone, Mail, MapPin, Calendar, Eye, Search, Filt
 import Image from "next/image";
 import Link from "next/link";
 import { getImagePath } from "@/lib/utils";
+import Footer from "@/components/Footer";
 import "./events.css";
 
 // Mock data cho sự kiện
@@ -300,52 +301,10 @@ const SuKienPage = () => {
           </div>
         )}
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
-      <section className="py-4 bg-white">
-        <div className="container mx-auto px-4 text-center mb-4">
-                <div className="w-full h-[8px]">
-                  <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-                  <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-                </div>
-          <h2 className="text-3xl font-bold mb-2 mt-4 text-[#21395D]">Liên hệ với NAGEN</h2>
-          <p className="text-[#21395D] text-lg mb-3 max-w-2xl mx-auto">
-            Bạn có câu hỏi về sản phẩm hoặc dịch vụ? Đội ngũ NAGEN luôn sẵn sàng hỗ trợ bạn 24/7
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-4 items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="font-semibold mb-2">Hotline</h3>
-              <p className="text-[#21395D]">0966578008</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-[#21395D]">nagen@nagen.vn</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="font-semibold mb-2">Địa chỉ</h3>
-              <p className="text-[#21395D]">Tầng 7, Tòa VP-1, Suntquare Building, Hà Nội</p>
-            </div>
-          </div>
-
-          <Link href="/">
-            <Button className="bg-white text-[#21395D] hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-              Quay lại trang chủ
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-
-    
   </>
   );
 };
