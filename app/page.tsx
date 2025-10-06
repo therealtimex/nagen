@@ -310,60 +310,80 @@ function EnhancedNavigation() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent>
-                <nav className="flex flex-col space-y-6 mt-8">
-                  {menuItems.map((item) => (
-                    <div key={item.name}>
-                      {item.submenu ? (
-                        <div>
-                          <button
-                            className="text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center justify-between w-full text-left"
-                            onClick={() => {
-                              setMobileActiveSubmenu(
-                                mobileActiveSubmenu === item.name ? null : item.name
-                              )
+              <SheetContent className="w-[280px] sm:w-[350px] p-0">
+                <div className="flex flex-col h-full bg-white">
+                  {/* Header */}
+                  <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-blue-900 to-red-600">
+                    <h2 className="text-lg font-semibold text-white">Menu</h2>
+                  </div>
+                  
+                  {/* Navigation */}
+                  <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+                    {menuItems.map((item) => (
+                      <div key={item.name}>
+                        {item.submenu ? (
+                          <div>
+                            <button
+                              className="w-full text-left py-3 px-4 text-gray-700 hover:text-blue-900 hover:bg-blue-50 transition-all duration-200 font-medium flex items-center justify-between rounded-lg border border-transparent hover:border-blue-200"
+                              onClick={() => {
+                                setMobileActiveSubmenu(
+                                  mobileActiveSubmenu === item.name ? null : item.name
+                                )
+                              }}
+                            >
+                              <span className="text-base">{item.name}</span>
+                              <ChevronDown 
+                                className={`w-5 h-5 transition-transform duration-200 ${
+                                  mobileActiveSubmenu === item.name ? 'rotate-180 text-blue-600' : 'text-gray-400'
+                                }`} 
+                              />
+                            </button>
+                            
+                            {/* Submenu với animation */}
+                            <div className={`overflow-hidden transition-all duration-300 ${
+                              mobileActiveSubmenu === item.name ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                            }`}>
+                              <div className="ml-4 mt-2 space-y-1 border-l-2 border-blue-100 pl-4">
+                                {item.submenu.map((subItem) => (
+                                  <a
+                                    key={subItem.name}
+                                    href={subItem.href}
+                                    className="block text-sm text-gray-600 hover:text-blue-900 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors leading-relaxed"
+                                    onClick={(e) => {
+                                      e.preventDefault()
+                                      handleNavigation(subItem.href)
+                                    }}
+                                  >
+                                    {subItem.name}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <a
+                            href={item.href}
+                            className="block w-full py-3 px-4 text-gray-700 hover:text-blue-900 hover:bg-blue-50 transition-all duration-200 font-medium rounded-lg border border-transparent hover:border-blue-200"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              handleNavigation(item.href)
                             }}
                           >
-                            {item.name}
-                            <ChevronDown 
-                              className={`w-4 h-4 transition-transform duration-200 ${
-                                mobileActiveSubmenu === item.name ? 'rotate-180' : ''
-                              }`} 
-                            />
-                          </button>
-                          {mobileActiveSubmenu === item.name && (
-                            <div className="ml-4 mt-2 space-y-2">
-                              {item.submenu.map((subItem) => (
-                                <a
-                                  key={subItem.name}
-                                  href={subItem.href}
-                                  className="block text-sm text-gray-600 hover:text-blue-900"
-                                  onClick={(e) => {
-                                    e.preventDefault()
-                                    handleNavigation(subItem.href)
-                                  }}
-                                >
-                                  {subItem.name}
-                                </a>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <a
-                          href={item.href}
-                          className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
-                          onClick={(e) => {
-                            e.preventDefault()
-                            handleNavigation(item.href)
-                          }}
-                        >
-                          {item.name}
-                        </a>
-                      )}
+                            <span className="text-base">{item.name}</span>
+                          </a>
+                        )}
+                      </div>
+                    ))}
+                  </nav>
+                  
+                  {/* Footer */}
+                  <div className="p-4 border-t bg-gray-50">
+                    <div className="text-center text-sm text-gray-500">
+                      <p>NAGEN - Tấm lót hỗ trợ vòm bàn chân</p>
+                      <p className="text-xs mt-1">Hotline: 0966578008</p>
                     </div>
-                  ))}
-                </nav>
+                  </div>
+                </div>
               </SheetContent>
             </Sheet>
           </div>
