@@ -242,7 +242,7 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
             className="leaflet-container"
           >
             <TileLayer
-              attribution='RealTimeX &copy; <a href="https://realtimex.ai">realtimex.ai</a>'
+              attribution='Nagen &copy; <a href="https://nagen.vn">nagen.vn</a>'
               url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
               maxZoom={20}
               minZoom={3}
