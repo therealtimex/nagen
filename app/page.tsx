@@ -39,6 +39,7 @@ import { getImagePath, navigateTo } from "@/lib/utils"
 import ProductDetailModal from "@/components/ProductDetailModal"
 import { type Product, productData } from "@/lib/products"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
+import Footer from "@/components/Footer"
 
 // Type definitions
 interface FormData {
@@ -139,6 +140,7 @@ function CTAButton({
 function EnhancedNavigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null)
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
@@ -312,32 +314,52 @@ function EnhancedNavigation() {
                 <nav className="flex flex-col space-y-6 mt-8">
                   {menuItems.map((item) => (
                     <div key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
-                        onClick={(e) => {
-                          e.preventDefault()
-                          handleNavigation(item.href)
-                        }}
-                      >
-                        {item.name}
-                      </a>
-                      {item.submenu && (
-                        <div className="ml-4 mt-2 space-y-2">
-                          {item.submenu.map((subItem) => (
-                            <a
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block text-sm text-gray-600 hover:text-blue-900"
-                              onClick={(e) => {
-                                e.preventDefault()
-                                handleNavigation(subItem.href)
-                              }}
-                            >
-                              {subItem.name}
-                            </a>
-                          ))}
+                      {item.submenu ? (
+                        <div>
+                          <button
+                            className="text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center justify-between w-full text-left"
+                            onClick={() => {
+                              setMobileActiveSubmenu(
+                                mobileActiveSubmenu === item.name ? null : item.name
+                              )
+                            }}
+                          >
+                            {item.name}
+                            <ChevronDown 
+                              className={`w-4 h-4 transition-transform duration-200 ${
+                                mobileActiveSubmenu === item.name ? 'rotate-180' : ''
+                              }`} 
+                            />
+                          </button>
+                          {mobileActiveSubmenu === item.name && (
+                            <div className="ml-4 mt-2 space-y-2">
+                              {item.submenu.map((subItem) => (
+                                <a
+                                  key={subItem.name}
+                                  href={subItem.href}
+                                  className="block text-sm text-gray-600 hover:text-blue-900"
+                                  onClick={(e) => {
+                                    e.preventDefault()
+                                    handleNavigation(subItem.href)
+                                  }}
+                                >
+                                  {subItem.name}
+                                </a>
+                              ))}
+                            </div>
+                          )}
                         </div>
+                      ) : (
+                        <a
+                          href={item.href}
+                          className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            handleNavigation(item.href)
+                          }}
+                        >
+                          {item.name}
+                        </a>
                       )}
                     </div>
                   ))}
@@ -1312,6 +1334,19 @@ function HomePageContent() {
     setIsAppointmentModalOpen(true);
   };
 
+  // Listen for custom events from footer
+  useEffect(() => {
+    const handleOpenAppointmentModal = () => {
+      setIsAppointmentModalOpen(true);
+    };
+
+    window.addEventListener('openAppointmentModal', handleOpenAppointmentModal);
+
+    return () => {
+      window.removeEventListener('openAppointmentModal', handleOpenAppointmentModal);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
@@ -1783,204 +1818,7 @@ function HomePageContent() {
       </section>
 
       {/* Footer */}
-      {/* Horizontal Lines */}
-      <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-      <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-      <footer className="bg-white text-[#21395D] py-12 relative">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <Image
-                src={getImagePath("/images/logo_ngang.png")}
-                alt="NAGEN Logo"
-                width={250}
-                height={50}
-                className="mb-4"
-                priority
-              />
-              <p className="text-[#21395D] mb-6">
-                Đối tác tin cậy trong việc chăm sóc sức khỏe bàn chân của bạn. Chất lượng - Uy tín - Chuyên nghiệp.
-              </p>
-
-              {/* Social Media Links */}
-              <div className="flex space-x-4">
-                <a
-                  href="https://www.facebook.com/people/NAGEN/61576197860425/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all duration-300 hover:scale-110 cursor-pointer"
-                  aria-label="Facebook"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.open('https://www.facebook.com/people/NAGEN/61576197860425/', '_blank', 'noopener,noreferrer');
-                  }}
-                >
-                  <Facebook className="w-5 h-5 text-white" />
-                </a>
-                <a
-                  href="https://www.youtube.com/@nagenvn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-all duration-300 hover:scale-110 cursor-pointer"
-                  aria-label="YouTube"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.open('https://www.youtube.com/@nagenvn', '_blank', 'noopener,noreferrer');
-                  }}
-                >
-                  <Youtube className="w-5 h-5 text-white" />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@nagenvn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-300 hover:scale-110 cursor-pointer"
-                  aria-label="TikTok"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.open('https://www.tiktok.com/@nagenvn', '_blank', 'noopener,noreferrer');
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-5 h-5 text-white"
-                  >
-                    <path d="M9 4.58A4.56 4.56 0 0 0 6.43 7.13 4.56 4.56 0 0 0 4 9.71a4.56 4.56 0 0 0 2.43 2.55 4.56 4.56 0 0 0 2.57 1.21v-4.58a4.58 4.58 0 0 1 4.58-4.58h2.29V15a2.29 2.29 0 0 1-2.29 2.29H9v-4.58a2.29 2.29 0 0 0-2.29-2.29h-2.29v-2.29h2.29A2.29 2.29 0 0 1 9 4.58z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4 text-red-600">Sản phẩm</h3>
-              <ul className="space-y-2 text-[#21395D]">
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=sungen")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Tấm lót hỗ trợ vòm bàn chân Sungen
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=winagen")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Tấm lót hỗ trợ vòm bàn chân Winagen
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=softgen")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Tấm lót hỗ trợ vòm bàn chân Softgen
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=endurance")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Tấm lót hỗ trợ vòm bàn chân Endurance
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=silhouette")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Tấm lót hỗ trợ vòm bàn chân Silhouette
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/tat-ca-san-pham?category=demlotcaosu")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Đệm lót giày cao su xốp tự nhiên
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4 text-red-600">Hỗ trợ</h3>
-              <ul className="space-y-2 text-[#21395D]">
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/huong-dan-su-dung")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Hướng dẫn sử dụng
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/chinh-sach-bao-hanh")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Chính sách bảo hành
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4 text-red-600">Pháp lý</h3>
-              <ul className="space-y-2 text-[#21395D]">
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/privacy-policy")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Chính sách bảo mật
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/terms-of-use")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Điều khoản sử dụng
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/chinh-sach-doi-tra")}
-                    className="hover:text-red-600 transition-colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Chính sách đổi trả
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    onClick={() => navigateTo("/chinh-sach-van-chuyen")}
-                    className="hover:text-red-600 transition--colors flex items-center hover:translate-x-1 duration-200 cursor-pointer"
-                  >
-                    Chính sách vận chuyển
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Modals */}
       <AppointmentBookingForm isOpen={isAppointmentModalOpen} onClose={() => setIsAppointmentModalOpen(false)} />
