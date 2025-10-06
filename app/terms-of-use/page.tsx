@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
+import Footer from "@/components/Footer"
 
 export default function TermsOfUsePage() {
   return (
@@ -128,6 +129,7 @@ export default function TermsOfUsePage() {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   )
 }

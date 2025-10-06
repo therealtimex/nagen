@@ -11,6 +11,7 @@ import { Phone, Mail, Clock, Menu, ChevronDown, Facebook, Youtube, Instagram, Ma
 import FAQAccordion from '@/components/FAQAccordion';
 import { getImagePath, navigateTo } from "@/lib/utils";
 import { useEffect } from "react";
+import Footer from "@/components/Footer";
 
 const faqs = [
   {
@@ -507,90 +508,7 @@ function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
   );
 }
 
-// Footer Component
-function Footer() {
-  return (
-    <footer className="bg-[#21395D] text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <Image
-              src={getImagePath("/images/logo_slogan_1.png")}
-              alt="Nagen Logo"
-              width={150}
-              height={30}
-              className="brightness-0 invert"
-            />
-            <p className="text-gray-300 text-sm leading-relaxed">
-              NAGEN cung cấp sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ, 
-              giúp cải thiện tư thế và giảm đau chân hiệu quả.
-            </p>
-          </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Liên kết nhanh</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/gioi-thieu-nagen" className="text-gray-300 hover:text-white transition-colors">Giới thiệu</Link></li>
-              <li><Link href="/tat-ca-san-pham" className="text-gray-300 hover:text-white transition-colors">Sản phẩm</Link></li>
-              <li><Link href="/faqs" className="text-gray-300 hover:text-white transition-colors">FAQs</Link></li>
-              <li><Link href="/su-kien" className="text-gray-300 hover:text-white transition-colors">Sự kiện</Link></li>
-            </ul>
-          </div>
-
-          {/* Policies */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Chính sách</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/chinh-sach-bao-hanh" className="text-gray-300 hover:text-white transition-colors">Chính sách bảo hành</Link></li>
-              <li><Link href="/chinh-sach-doi-tra" className="text-gray-300 hover:text-white transition-colors">Chính sách đổi trả</Link></li>
-              <li><Link href="/chinh-sach-van-chuyen" className="text-gray-300 hover:text-white transition-colors">Chính sách vận chuyển</Link></li>
-              <li><Link href="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Chính sách bảo mật</Link></li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Liên hệ</h4>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>0966578008</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
-                <span>nagen@nagen.vn</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 mt-0.5" />
-                <span>Tầng 12A, Tòa nhà HDTC, 36 Bùi Thị Xuân, P. Bến Thành, Q.1, TP.HCM</span>
-              </div>
-            </div>
-            
-            {/* Social Media */}
-            <div className="flex space-x-4 pt-2">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Youtube className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-600 mt-8 pt-8 text-center text-sm text-gray-300">
-          <p>&copy; 2024 NAGEN. Tất cả quyền được bảo lưu.</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
 
 const FAQPage = () => {
   const [selectedFaq, setSelectedFaq] = useState(0);

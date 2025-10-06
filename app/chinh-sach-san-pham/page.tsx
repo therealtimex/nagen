@@ -1,5 +1,6 @@
 import React from "react"
 import { Metadata } from "next"
+import Footer from "@/components/Footer"
 
 export const metadata: Metadata = {
   title: "Chính sách sản phẩm | NAGEN",
@@ -27,7 +28,7 @@ export default function ChinhSachSanPhamPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              <h2 className="text-2xl font-bold text-[#21395D] mb-4">
                 Đang nghiên cứu pháp lý
               </h2>
               <p className="text-gray-600 mb-6">
@@ -52,6 +53,7 @@ export default function ChinhSachSanPhamPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

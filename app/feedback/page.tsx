@@ -8,6 +8,7 @@ import { Star, ArrowLeft, Play, Pause, Volume2, VolumeX, CheckCircle, MapPin, Ph
 import Image from "next/image"
 import Link from "next/link"
 import { getImagePath } from "@/lib/utils"
+import Footer from "@/components/Footer"
 
 interface CustomerFeedback {
     id: number
@@ -838,6 +839,7 @@ export default function FeedbackPage() {
                     </Link>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }
