@@ -796,49 +796,7 @@ export default function FeedbackPage() {
                 </div>
             </section>
 
-            <section className="bg-white py-6 md:py-8">
-                <div className="w-full h-[8px]">
-                    <div className="bg-red-600 w-full !h-[calc(6px/1.5)] md:!h-[calc(10px/1.5)]"></div>
-                    <div className="bg-[#21395D] w-full !h-[calc(6px/1.5)] md:!h-[calc(10px/1.5)]"></div>
-                </div>
-                
-                <div className="container mx-auto px-4 text-center">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 mt-4 md:mt-6">Liên hệ với NAGEN</h2>
-                    <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto mb-6 md:mb-8">
-                        Bạn có câu hỏi về sản phẩm hoặc dịch vụ? Đội ngũ NAGEN luôn sẵn sàng hỗ trợ bạn 24/7
-                    </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Phone className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="font-semibold mb-2">Hotline</h3>
-                            <p className="text-gray-600 text-sm">0966578008</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Mail className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="font-semibold mb-2">Email</h3>
-                            <p className="text-gray-600 text-sm">nagen@nagen.vn</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <MapPin className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="font-semibold mb-2">Địa chỉ</h3>
-                            <p className="text-gray-600 text-sm">Tầng 7, Tòa VP-1, Suntquare Building, Hà Nội</p>
-                        </div>
-                    </div>
-
-                    <Link href="/">
-                        <Button className="bg-white text-blue-900 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-                            Quay lại trang chủ
-                        </Button>
-                    </Link>
-                </div>
-            </section>
             <Footer />
         </div>
     )
