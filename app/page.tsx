@@ -306,11 +306,11 @@ function EnhancedNavigation() {
             {/* Mobile Navigation */}
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="lg:hidden bg-transparent">
-                  <Menu className="h-6 w-6" />
+                <Button variant="outline" size="icon" className="lg:hidden bg-transparent border-gray-300 hover:bg-gray-100">
+                  <Menu className="h-6 w-6 text-gray-700" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="w-[280px] sm:w-[350px] p-0">
+              <SheetContent className="w-[280px] sm:w-[350px] p-0 z-[9999]" side="right">
                 <div className="flex flex-col h-full bg-white">
                   {/* Header */}
                   <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-blue-900 to-red-600">
@@ -318,37 +318,36 @@ function EnhancedNavigation() {
                   </div>
                   
                   {/* Navigation */}
-                  <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+                  <nav className="flex-1 overflow-y-auto p-4 space-y-1">
                     {menuItems.map((item) => (
-                      <div key={item.name}>
+                      <div key={item.name} className="mb-1">
                         {item.submenu ? (
                           <div>
                             <button
-                              className="w-full text-left py-3 px-4 text-gray-700 hover:text-blue-900 hover:bg-blue-50 transition-all duration-200 font-medium flex items-center justify-between rounded-lg border border-transparent hover:border-blue-200"
+                              type="button"
+                              className="w-full text-left py-4 px-4 text-gray-800 hover:text-blue-900 hover:bg-blue-50 active:bg-blue-100 transition-all duration-200 font-medium flex items-center justify-between rounded-lg border border-transparent hover:border-blue-200 min-h-[48px] touch-manipulation"
                               onClick={() => {
                                 setMobileActiveSubmenu(
                                   mobileActiveSubmenu === item.name ? null : item.name
                                 )
                               }}
                             >
-                              <span className="text-base">{item.name}</span>
+                              <span className="text-base font-semibold">{item.name}</span>
                               <ChevronDown 
-                                className={`w-5 h-5 transition-transform duration-200 ${
-                                  mobileActiveSubmenu === item.name ? 'rotate-180 text-blue-600' : 'text-gray-400'
+                                className={`w-5 h-5 transition-transform duration-200 flex-shrink-0 ${
+                                  mobileActiveSubmenu === item.name ? 'rotate-180 text-blue-600' : 'text-gray-500'
                                 }`} 
                               />
                             </button>
                             
                             {/* Submenu với animation */}
-                            <div className={`overflow-hidden transition-all duration-300 ${
-                              mobileActiveSubmenu === item.name ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                            }`}>
-                              <div className="ml-4 mt-2 space-y-1 border-l-2 border-blue-100 pl-4">
+                            {mobileActiveSubmenu === item.name && (
+                              <div className="mt-2 ml-4 space-y-1 border-l-2 border-blue-200 pl-4 animate-in slide-in-from-top-2 duration-300">
                                 {item.submenu.map((subItem) => (
                                   <a
                                     key={subItem.name}
                                     href={subItem.href}
-                                    className="block text-sm text-gray-600 hover:text-blue-900 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors leading-relaxed"
+                                    className="block text-sm text-gray-600 hover:text-blue-900 py-3 px-3 rounded-lg hover:bg-blue-50 active:bg-blue-100 transition-colors leading-relaxed min-h-[44px] flex items-center touch-manipulation"
                                     onClick={(e) => {
                                       e.preventDefault()
                                       handleNavigation(subItem.href)
@@ -358,18 +357,18 @@ function EnhancedNavigation() {
                                   </a>
                                 ))}
                               </div>
-                            </div>
+                            )}
                           </div>
                         ) : (
                           <a
                             href={item.href}
-                            className="block w-full py-3 px-4 text-gray-700 hover:text-blue-900 hover:bg-blue-50 transition-all duration-200 font-medium rounded-lg border border-transparent hover:border-blue-200"
+                            className="block w-full py-4 px-4 text-gray-800 hover:text-blue-900 hover:bg-blue-50 active:bg-blue-100 transition-all duration-200 font-medium rounded-lg border border-transparent hover:border-blue-200 min-h-[48px] flex items-center touch-manipulation"
                             onClick={(e) => {
                               e.preventDefault()
                               handleNavigation(item.href)
                             }}
                           >
-                            <span className="text-base">{item.name}</span>
+                            <span className="text-base font-semibold">{item.name}</span>
                           </a>
                         )}
                       </div>
