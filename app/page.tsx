@@ -1800,7 +1800,6 @@ function HomePageContent() {
                   <div>
                     <h4 className="font-semibold text-blue-900">Hotline 24/7</h4>
                     <p className="text-gray-600">0966578008</p>
-                    <p className="text-sm text-gray-500">Miễn phí cuộc gọi</p>
                   </div>
                 </div>
 
@@ -1822,7 +1821,7 @@ function HomePageContent() {
                   <div>
                     <h4 className="font-semibold text-blue-900">Trụ sở chính</h4>
                     <p className="text-gray-600">
-                      Tầng 7, Tòa VP-1, Suntquare Building
+                      Tầng 7, Tòa VP-1, Sunsquare Complex
                       <br />
                       Số 21 Lê Đức Thọ, Mỹ Đình 2, Nam Từ Liêm, Hà Nội
                     </p>
