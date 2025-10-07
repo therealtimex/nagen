@@ -457,6 +457,15 @@ function ContactFormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 ) : (
                     <>
                         <div className="bg-red-600 text-white p-6 rounded-t-xl">
+                            <div className="mb-4">
+                                <Image
+                                    src="/images/logo_slogan_1.png"
+                                    alt="NAGEN Logo"
+                                    width={120}
+                                    height={48}
+                                    className="object-contain brightness-0 invert"
+                                />
+                            </div>
                             <div className="flex items-center justify-between">
                                 <div>
                                     <h3 className="text-xl font-bold">Đăng ký tư vấn miễn phí</h3>

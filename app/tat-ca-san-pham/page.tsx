@@ -206,6 +206,15 @@ function ConsultationForm({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
+          <div className="mb-4">
+            <Image
+              src="/images/logo_slogan_1.png"
+              alt="NAGEN Logo"
+              width={120}
+              height={48}
+              className="object-contain"
+            />
+          </div>
           <DialogTitle className="text-blue-900 text-xl">Đăng ký tư vấn miễn phí</DialogTitle>
           <p className="text-gray-600 mt-2">Vui lòng điền thông tin để nhận tư vấn miễn phí từ chuyên gia NAGEN</p>
         </DialogHeader>

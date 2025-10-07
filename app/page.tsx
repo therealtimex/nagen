@@ -664,6 +664,15 @@ function EnhancedContactForm() {
   return (
     <Card className="border-0 shadow-xl">
       <CardHeader className="p-4 sm:p-6">
+        <div className="mb-4">
+          <Image
+            src="/images/logo_slogan_1.png"
+            alt="NAGEN Logo"
+            width={120}
+            height={48}
+            className="object-contain"
+          />
+        </div>
         <CardTitle className="text-blue-900 text-lg sm:text-xl">Đăng ký tư vấn miễn phí</CardTitle>
         <p className="text-gray-600 mt-2 text-sm sm:text-base">Vui lòng điền thông tin để nhận tư vấn miễn phí từ chuyên gia NAGEN</p>
       </CardHeader>
@@ -858,8 +867,17 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
         ) : (
           <>
             <div className="bg-red-600 text-white p-4 sm:p-6 rounded-t-lg">
+              <div className="mb-4">
+                <Image
+                  src="/images/logo_slogan_1.png"
+                  alt="NAGEN Logo"
+                  width={120}
+                  height={48}
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
               <div className="flex items-center justify-between">
-                <div className="flex-1 pr-4">
+                <div className="flex-1">
                   <h3 className="text-lg sm:text-xl font-bold">Đăng ký làm đối tác</h3>
                   <p className="text-red-100 mt-1 text-sm sm:text-base">Tham gia mạng lưới đại lý NAGEN</p>
                 </div>
@@ -1154,6 +1172,15 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
         ) : (
           <>
             <div className="bg-red-600 text-white p-6 rounded-t-lg">
+              <div className="mb-4">
+                <Image
+                  src="/images/logo_slogan_1.png"
+                  alt="NAGEN Logo"
+                  width={120}
+                  height={48}
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xl font-bold">Đặt lịch đo chân</h3>
