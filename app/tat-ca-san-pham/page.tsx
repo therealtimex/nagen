@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -20,6 +21,9 @@ import {
   Phone,
   Mail,
   MapPin,
+  Calendar,
+  Send,
+  X,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -30,7 +34,7 @@ import ProductMediaViewer from "@/components/ProductMediaViewer"
 import Footer from "@/components/Footer";
 
 // Product Card Component - Media on left, content on right
-function ProductCard({ product, index }: { product: Product; index: number }) {
+function ProductCard({ product, index, onConsultationClick }: { product: Product; index: number; onConsultationClick: () => void }) {
 
   return (
     <div key={product.id}>
@@ -45,11 +49,257 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         <div className="order-1 md:order-2 space-y-4">
           <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
           <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
+          <Button
+            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2"
+            onClick={onConsultationClick}
+          >
+            <Calendar className="w-4 h-4" />
+            Đặt lịch tư vấn miễn phí
+          </Button>
         </div>
       </div>
 
 
     </div>
+  )
+}
+
+// Consultation Form Component
+function ConsultationForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    address: "",
+    message: "",
+  })
+  const [errors, setErrors] = useState<{ [key: string]: string }>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [ctvValue, setCtvValue] = useState("")
+
+  // Thêm useEffect để lấy giá trị ctv từ URL
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search)
+      const ctv = urlParams.get("ctv")
+      if (ctv) {
+        setCtvValue(ctv)
+      }
+    }
+  }, [])
+
+  const validateForm = (): boolean => {
+    const newErrors: { [key: string]: string } = {}
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Vui lòng nhập họ tên"
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Vui lòng nhập số điện thoại"
+    } else if (!/^[0-9+\-\s()]+$/.test(formData.phone)) {
+      newErrors.phone = "Số điện thoại chỉ được chứa số và các ký tự +, -, (), khoảng trắng"
+    }
+
+    if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email không hợp lệ"
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if (!validateForm()) {
+      return
+    }
+
+    setIsSubmitting(true)
+    try {
+      // Tạo object data với thông tin ctv
+      const submissionData = {
+        ...formData,
+        event: "tuvan",
+        ctv: ctvValue,
+        source_url: typeof window !== "undefined" ? window.location.href : "",
+      }
+
+      const response = await fetch(
+        "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_datlich/input",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submissionData),
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error("Có lỗi khi gửi dữ liệu")
+      }
+
+      const result = await response.json()
+      console.log("Response từ API:", result)
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error("Lỗi khi gửi request:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleClose = () => {
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      address: "",
+      message: "",
+    })
+    setErrors({})
+    setIsSubmitting(false)
+    setIsSubmitted(false)
+    onClose()
+  }
+
+  if (isSubmitted) {
+    return (
+      <Dialog open={isOpen} onOpenChange={handleClose}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-center text-green-800">Gửi thành công!</DialogTitle>
+          </DialogHeader>
+          <div className="text-center py-6">
+            <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+            <p className="text-gray-600 mb-6">
+              Cảm ơn bạn đã đăng ký tư vấn với NAGEN. Chúng tôi sẽ liên hệ lại trong vòng 24 giờ.
+            </p>
+            {formData.email && (
+              <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                <p className="text-sm text-gray-700">
+                  📧 Email xác nhận đã được gửi đến: <strong className="break-all">{formData.email}</strong>
+                </p>
+              </div>
+            )}
+            <Button onClick={handleClose} className="mt-4 bg-green-600 hover:bg-green-700">
+              Đóng
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
+  return (
+    <Dialog open={isOpen} onOpenChange={handleClose}>
+      <DialogContent className="sm:max-w-lg">
+        <DialogHeader>
+          <DialogTitle className="text-blue-900 text-xl">Đăng ký tư vấn miễn phí</DialogTitle>
+          <p className="text-gray-600 mt-2">Vui lòng điền thông tin để nhận tư vấn miễn phí từ chuyên gia NAGEN</p>
+        </DialogHeader>
+
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-2 block">
+                Họ và tên <span className="text-red-500">*</span>
+              </label>
+              <Input
+                placeholder="Nhập họ và tên"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className={`h-12 text-base ${errors.name ? "border-red-500" : ""}`}
+              />
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+              )}
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-2 block">
+                Số điện thoại <span className="text-red-500">*</span>
+              </label>
+              <Input
+                type="tel"
+                placeholder="Nhập số điện thoại"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className={`h-12 text-base ${errors.phone ? "border-red-500" : ""}`}
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-gray-700 mb-2 block">
+              Email
+            </label>
+            <Input
+              type="email"
+              placeholder="Nhập địa chỉ email (không bắt buộc)"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className={`h-12 text-base ${errors.email ? "border-red-500" : ""}`}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-gray-700 mb-2 block">Địa chỉ</label>
+            <Input
+              placeholder="Nhập địa chỉ (không bắt buộc)"
+              value={formData.address}
+              onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+              className="h-12 text-base"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-gray-700 mb-2 block">Ghi chú</label>
+            <Textarea
+              placeholder="Mô tả tình trạng bàn chân hoặc yêu cầu đặc biệt (không bắt buộc)"
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="text-base"
+              rows={3}
+            />
+          </div>
+
+          <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+            <p className="text-sm text-blue-800 flex items-start">
+              <CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+              <span>Chúng tôi sẽ liên hệ lại trong vòng 24h để tư vấn miễn phí và đặt lịch hẹn phù hợp.</span>
+            </p>
+          </div>
+
+          <div className="flex gap-3 pt-4">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleClose}
+              className="flex-1"
+            >
+              Hủy
+            </Button>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="flex-1 bg-red-600 hover:bg-red-700"
+            >
+              {isSubmitting ? "Đang gửi..." : "Gửi thông tin"}
+              {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
+            </Button>
+          </div>
+        </form>
+      </DialogContent>
+    </Dialog>
   )
 }
 
@@ -154,6 +404,7 @@ export default function AllProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("")
   const [sortBy, setSortBy] = useState("popular")
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false)
 
   // Filter and sort products
   useEffect(() => {
@@ -461,7 +712,11 @@ export default function AllProductsPage() {
             <div className="space-y-8">
               {products.map((product, index) => (
                 <div key={product.id}>
-                  <ProductCard product={product} index={index} />
+                  <ProductCard
+                    product={product}
+                    index={index}
+                    onConsultationClick={() => setIsConsultationModalOpen(true)}
+                  />
                   {/* Brand Color Separator Line - except for last item */}
                   {index < products.length - 1 && (
                     <div className="flex h-2">
@@ -499,6 +754,12 @@ export default function AllProductsPage() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Consultation Modal */}
+      <ConsultationForm
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
     </div>
   )
 }

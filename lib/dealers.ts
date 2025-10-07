@@ -72,6 +72,26 @@ export const dealerData: Dealer[] = [
     lat: 20.9955,
     lng: 105.8066,
   },
+  {
+    id: "dealer-7",
+    name: "NAGEN Hồ Chí Minh - Đại lý Phạm Thị Hương",
+    address: "TP. Hồ Chí Minh",
+    phone: "0966578008",
+    status: "Đang mở cửa",
+    distance: "",
+    lat: 10.8231,
+    lng: 106.6297,
+  },
+  {
+    id: "dealer-8",
+    name: "NAGEN Hà Nội - Đại lý Lương Văn Nam",
+    address: "Ngõ 106 Cù Chính Lan, Phường Khương Đình, Hà Nội",
+    phone: "0966578008",
+    status: "Đang mở cửa",
+    distance: "",
+    lat: 20.9721,
+    lng: 105.8148,
+  },
 ]
 
 // Function to calculate distance between two coordinates
