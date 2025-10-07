@@ -1462,34 +1462,42 @@ function HomePageContent() {
             {productData.slice(0, 3).map((product, index) => (
               <div key={product.id}>
                 {/* Product Item */}
-                <div className="grid md:grid-cols-2 gap-8 items-center py-8">
-                  {/* Product Image */}
-                  <div className="order-2 md:order-1">
-                    <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
-                      <Image
-                        src={getImagePath(product.image)}
-                        alt={`${product.name} - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ NAGEN`}
-                        width={500}
-                        height={300}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        title={`${product.name} - Giải pháp hỗ trợ bàn chân hiệu quả`}
-                      />
-                    </div>
+                <div className="py-8">
+                  {/* Product Title - Always first on mobile, hidden on desktop (will be shown in info section) */}
+                  <div className="md:hidden mb-6">
+                    <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
                   </div>
 
-                  {/* Product Info */}
-                  <div className="order-1 md:order-2 space-y-4">
-                    <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
-                    <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
-                    <CTAButton 
-                      variant="secondary" 
-                      className="group" 
-                      onClick={() => navigateTo(`/tat-ca-san-pham?category=${product.category}`)}
-                    >
-                      Xem chi tiết
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </CTAButton>
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    {/* Product Image */}
+                    <div className="order-1 md:order-1">
+                      <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
+                        <Image
+                          src={getImagePath(product.image)}
+                          alt={`${product.name} - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ NAGEN`}
+                          width={500}
+                          height={300}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          title={`${product.name} - Giải pháp hỗ trợ bàn chân hiệu quả`}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Product Info */}
+                    <div className="order-2 md:order-2 space-y-4">
+                      {/* Product Title - Only shown on desktop */}
+                      <h3 className="hidden md:block text-2xl font-bold text-blue-900">{product.name}</h3>
+                      <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
+                      <CTAButton 
+                        variant="secondary" 
+                        className="group" 
+                        onClick={() => navigateTo(`/tat-ca-san-pham?category=${product.category}`)}
+                      >
+                        Xem chi tiết
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </CTAButton>
+                    </div>
                   </div>
                 </div>
 
