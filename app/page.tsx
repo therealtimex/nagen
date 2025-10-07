@@ -317,7 +317,7 @@ function EnhancedNavigation() {
                   <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-blue-900 to-red-600">
                     <h2 className="text-lg font-semibold text-white">Menu</h2>
                   </div>
-                  
+
                   {/* Navigation */}
                   <nav className="flex-1 overflow-y-auto p-4 space-y-1">
                     {menuItems.map((item) => (
@@ -334,13 +334,12 @@ function EnhancedNavigation() {
                               }}
                             >
                               <span className="text-base font-semibold">{item.name}</span>
-                              <ChevronDown 
-                                className={`w-5 h-5 transition-transform duration-200 flex-shrink-0 ${
-                                  mobileActiveSubmenu === item.name ? 'rotate-180 text-blue-600' : 'text-gray-500'
-                                }`} 
+                              <ChevronDown
+                                className={`w-5 h-5 transition-transform duration-200 flex-shrink-0 ${mobileActiveSubmenu === item.name ? 'rotate-180 text-blue-600' : 'text-gray-500'
+                                  }`}
                               />
                             </button>
-                            
+
                             {/* Submenu với animation */}
                             {mobileActiveSubmenu === item.name && (
                               <div className="mt-2 ml-4 space-y-1 border-l-2 border-blue-200 pl-4 animate-in slide-in-from-top-2 duration-300">
@@ -375,7 +374,7 @@ function EnhancedNavigation() {
                       </div>
                     ))}
                   </nav>
-                  
+
                   {/* Footer */}
                   <div className="p-4 border-t bg-gray-50">
                     <div className="text-center text-sm text-gray-500">
@@ -583,7 +582,7 @@ function EnhancedContactForm() {
     if (!formData.name.trim()) {
       newErrors.name = "Vui lòng nhập họ tên"
     }
-    
+
     if (!formData.phone.trim()) {
       newErrors.phone = "Vui lòng nhập số điện thoại"
     } else if (!/^[0-9+\-\s()]+$/.test(formData.phone)) {
@@ -600,7 +599,7 @@ function EnhancedContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    
+
     if (!validateForm()) {
       return
     }
@@ -709,7 +708,7 @@ function EnhancedContactForm() {
               )}
             </div>
           </div>
-          
+
           <div>
             <label className="text-sm font-medium text-gray-700 mb-2 block">
               Email
@@ -729,7 +728,7 @@ function EnhancedContactForm() {
               </p>
             )}
           </div>
-          
+
           <div>
             <label className="text-sm font-medium text-gray-700 mb-2 block">Địa chỉ</label>
             <Input
@@ -748,9 +747,9 @@ function EnhancedContactForm() {
           </div>
 
           <div className="pt-4">
-            <CTAButton 
-              type="submit" 
-              disabled={isSubmitting} 
+            <CTAButton
+              type="submit"
+              disabled={isSubmitting}
               className="w-full h-12 text-base font-semibold"
             >
               {isSubmitting ? "Đang gửi..." : "Gửi thông tin"}
@@ -864,10 +863,10 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                   <h3 className="text-lg sm:text-xl font-bold">Đăng ký làm đối tác</h3>
                   <p className="text-red-100 mt-1 text-sm sm:text-base">Tham gia mạng lưới đại lý NAGEN</p>
                 </div>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  onClick={handleClose} 
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={handleClose}
                   className="text-white hover:bg-red-700 flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10"
                 >
                   <span className="text-xl">×</span>
@@ -1012,9 +1011,9 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
                 >
                   Hủy
                 </Button>
-                <CTAButton 
-                  type="submit" 
-                  className="flex-1 h-12 text-base font-semibold order-1 sm:order-2" 
+                <CTAButton
+                  type="submit"
+                  className="flex-1 h-12 text-base font-semibold order-1 sm:order-2"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Đang gửi..." : "Gửi đăng ký"}
@@ -1489,9 +1488,9 @@ function HomePageContent() {
                       {/* Product Title - Only shown on desktop */}
                       <h3 className="hidden md:block text-2xl font-bold text-blue-900">{product.name}</h3>
                       <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
-                      <CTAButton 
-                        variant="secondary" 
-                        className="group" 
+                      <CTAButton
+                        variant="secondary"
+                        className="group"
                         onClick={() => navigateTo(`/tat-ca-san-pham?category=${product.category}`)}
                       >
                         Xem chi tiết
@@ -1616,8 +1615,8 @@ function HomePageContent() {
               <p>Hoặc liên hệ trực tiếp:</p>
               <p className="flex items-center justify-center">
                 <Phone className="w-4 h-4 mr-2 text-blue-600" />
-                <a 
-                  href="tel:0966578008" 
+                <a
+                  href="tel:0966578008"
                   className="hover:underline"
                   onClick={(e) => {
                     e.preventDefault();
@@ -1629,8 +1628,8 @@ function HomePageContent() {
               </p>
               <p className="flex items-center justify-center">
                 <Mail className="w-4 h-4 mr-2 text-blue-600" />
-                <a 
-                  href="mailto:nagen@nagen.vn" 
+                <a
+                  href="mailto:nagen@nagen.vn"
                   className="hover:underline"
                   onClick={(e) => {
                     e.preventDefault();

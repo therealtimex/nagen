@@ -38,24 +38,32 @@ function ProductCard({ product, index, onConsultationClick }: { product: Product
 
   return (
     <div key={product.id}>
-      {/* Product Item - Media always on left, content on right */}
-      <div className="grid md:grid-cols-2 gap-8 items-center py-8">
-        {/* Product Media - Always on left */}
-        <div className="order-2 md:order-1">
-          <ProductMediaViewer product={product} />
+      {/* Product Item */}
+      <div className="py-8">
+        {/* Product Title - Always first on mobile, hidden on desktop (will be shown in info section) */}
+        <div className="md:hidden mb-6">
+          <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
         </div>
 
-        {/* Product Info - Always on right */}
-        <div className="order-1 md:order-2 space-y-4">
-          <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
-          <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
-          <Button
-            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2"
-            onClick={onConsultationClick}
-          >
-            <Calendar className="w-4 h-4" />
-            Đặt lịch tư vấn miễn phí
-          </Button>
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          {/* Product Media */}
+          <div className="order-1 md:order-1">
+            <ProductMediaViewer product={product} />
+          </div>
+
+          {/* Product Info */}
+          <div className="order-2 md:order-2 space-y-4">
+            {/* Product Title - Only shown on desktop */}
+            <h3 className="hidden md:block text-2xl font-bold text-blue-900">{product.name}</h3>
+            <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
+            <Button
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2"
+              onClick={onConsultationClick}
+            >
+              <Calendar className="w-4 h-4" />
+              Đặt lịch tư vấn miễn phí
+            </Button>
+          </div>
         </div>
       </div>
 
