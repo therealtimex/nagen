@@ -133,11 +133,12 @@ function ScientificResearchSection() {
             <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
               <Image
                 src={getImagePath("/images/quy-trinh-nghien-cuu-phat-trien.png")}
-                alt="Nghiên cứu và phát triển NAGEN"
+                alt="Quy trình nghiên cứu và phát triển tấm lót hỗ trợ vòm bàn chân NAGEN - Công nghệ từ Mỹ"
                 width={600}
                 height={400}
                 className="object-cover w-full h-full"
                 loading="lazy"
+                title="Quy trình R&D chuyên nghiệp của NAGEN - Từ nghiên cứu đến sản phẩm hoàn thiện"
               />
             </div>
           </div>
@@ -232,11 +233,12 @@ export default function AllProductsPage() {
             <Link href="/" className="flex items-center space-x-3 ml-4">
               <Image
                 src={getImagePath("/images/logo_slogan_1.png")}
-                alt="NAGEN Logo"
+                alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
                 className="h-10 max-h-[40px]"
                 width={150}
                 height={40}
                 style={{ objectFit: 'contain' }}
+                title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
               />
             </Link>
             <Link href="/">

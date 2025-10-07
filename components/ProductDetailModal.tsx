@@ -50,11 +50,12 @@ export default function ProductDetailModal({ product, isOpen, onClose }: { produ
             <div className="relative w-full aspect-square">
               <Image
                 src={getImagePath(product.image || "/placeholder.svg")}
-                alt={product.name}
+                alt={`${product.name} - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ NAGEN`}
                 fill
                 className="object-contain"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
+                title={`${product.name} - Giải pháp hỗ trợ bàn chân hiệu quả`}
               />
               {/* {product.discount && (
                 <Badge className="absolute top-4 right-4 z-10 bg-green-600 text-white">-{product.discount}</Badge>

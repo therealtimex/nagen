@@ -36,7 +36,7 @@ import Link from "next/link"
 import DealerLocator from "@/components/DealerLocator"
 import NoSSRWrapper from "@/components/NoSSRWrapper"
 import { getImagePath, navigateTo } from "@/lib/utils"
-import ProductDetailModal from "@/components/ProductDetailModal"
+
 import { type Product, productData } from "@/lib/products"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
 import Footer from "@/components/Footer"
@@ -248,10 +248,11 @@ function EnhancedNavigation() {
               <Link href="/" className="flex items-center space-x-3">
                 <Image
                   src={getImagePath("/images/logo_slogan_1.png")}
-                  alt="Nagen Logo"
+                  alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
                   width={200}
                   height={40}
                   priority
+                  title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
                 />
               </Link>
             </div>
@@ -468,11 +469,12 @@ function EnhancedFeedbackSlider() {
                 <CardContent className="p-8 text-center">
                   <Image
                     src={getImagePath(testimonial.image || "/placeholder.svg")}
-                    alt={testimonial.name}
+                    alt={`Ảnh đại diện khách hàng ${testimonial.name} - Đánh giá sản phẩm NAGEN`}
                     width={80}
                     height={80}
                     className="rounded-full mx-auto mb-4 border-4 border-white shadow-lg"
                     loading="lazy"
+                    title={`Khách hàng ${testimonial.name} từ ${testimonial.location}`}
                   />
                   <div className="flex justify-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -1341,7 +1343,7 @@ function HomePageContent() {
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
 
   const handlePlayVideo = () => {
     if (videoRef.current) {
@@ -1403,11 +1405,12 @@ function HomePageContent() {
             <div className="my-6 max-w-5xl mx-auto flex justify-center">
               <Image
                 src={getImagePath("/images/20200624_161136PS.webp")}
-                alt="Product Image"
+                alt="Bộ sưu tập tấm lót hỗ trợ vòm bàn chân NAGEN - Sungen, Winagen, Softgen, Endurance, Silhouette"
                 width={1200}
                 height={400}
                 className="w-full rounded-xl shadow-lg"
                 priority
+                title="Các dòng sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN chất lượng cao"
               />
             </div>
 
@@ -1465,11 +1468,12 @@ function HomePageContent() {
                     <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
                       <Image
                         src={getImagePath(product.image)}
-                        alt={product.name}
+                        alt={`${product.name} - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ NAGEN`}
                         width={500}
                         height={300}
                         className="w-full h-full object-cover"
                         loading="lazy"
+                        title={`${product.name} - Giải pháp hỗ trợ bàn chân hiệu quả`}
                       />
                     </div>
                   </div>
@@ -1478,7 +1482,11 @@ function HomePageContent() {
                   <div className="order-1 md:order-2 space-y-4">
                     <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
                     <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
-                    <CTAButton variant="secondary" className="group" onClick={() => setSelectedProduct(product)}>
+                    <CTAButton 
+                      variant="secondary" 
+                      className="group" 
+                      onClick={() => navigateTo(`/tat-ca-san-pham?category=${product.category}`)}
+                    >
                       Xem chi tiết
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </CTAButton>
@@ -1663,11 +1671,12 @@ function HomePageContent() {
             <div className="aspect-video bg-black/10 rounded-xl flex items-center justify-center relative overflow-hidden">
               <Image
                 src={getImagePath("/images/cham-soc-ban-chan-chuyen-nghiep.png")}
-                alt="About NAGEN"
+                alt="Dịch vụ chăm sóc bàn chân chuyên nghiệp NAGEN - Tư vấn và đo vòm bàn chân 3D"
                 width={600}
                 height={400}
                 className="object-cover"
                 loading="lazy"
+                title="NAGEN - Dịch vụ chăm sóc và tư vấn bàn chân chuyên nghiệp"
               />
             </div>
           </div>
@@ -1689,10 +1698,11 @@ function HomePageContent() {
                   <div className="aspect-square bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl overflow-hidden shadow-lg">
                     <Image
                       src={getImagePath("/images/faqs/faq1.png")}
-                      alt="Hỗ trợ vòm bàn chân là gì"
+                      alt="Hỗ trợ vòm bàn chân là gì - Giải thích về tấm lót hỗ trợ vòm bàn chân NAGEN"
                       width={300}
                       height={300}
                       className="w-full h-full object-cover"
+                      title="Tìm hiểu về tấm lót hỗ trợ vòm bàn chân và lợi ích của nó"
                       loading="lazy"
                     />
                   </div>
@@ -1735,10 +1745,11 @@ function HomePageContent() {
                   <div className="aspect-square bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
                     <Image
                       src={getImagePath("/images/faqs/faq2.png")}
-                      alt="Sự khác biệt giữa dụng cụ hỗ trợ vòm và các thiết bị được thiết kế riêng"
+                      alt="Sự khác biệt giữa dụng cụ hỗ trợ vòm và các thiết bị được thiết kế riêng - So sánh sản phẩm NAGEN"
                       width={300}
                       height={300}
                       className="w-full h-full object-cover"
+                      title="So sánh ưu điểm của tấm lót hỗ trợ vòm bàn chân NAGEN với các sản phẩm khác"
                       loading="lazy"
                     />
                   </div>
@@ -1751,10 +1762,11 @@ function HomePageContent() {
                   <div className="aspect-square bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl overflow-hidden shadow-lg">
                     <Image
                       src={getImagePath("/images/faqs/faq3.jpg")}
-                      alt="Sản phẩm hỗ trợ vòm chân khác biệt như thế nào"
+                      alt="Sản phẩm hỗ trợ vòm chân NAGEN khác biệt như thế nào - Công nghệ độc quyền từ Mỹ"
                       width={300}
                       height={300}
                       className="w-full h-full object-cover"
+                      title="Khám phá công nghệ độc quyền và sự khác biệt của tấm lót NAGEN"
                       loading="lazy"
                     />
                   </div>
@@ -1841,13 +1853,7 @@ function HomePageContent() {
       {/* Modals */}
       <AppointmentBookingForm isOpen={isAppointmentModalOpen} onClose={() => setIsAppointmentModalOpen(false)} />
       <PartnerRegistrationForm isOpen={isPartnerModalOpen} onClose={() => setIsPartnerModalOpen(false)} />
-      {selectedProduct && (
-        <ProductDetailModal
-          product={selectedProduct}
-          isOpen={!!selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-        />
-      )}
+
 
       <FloatingActionButtons onScheduleClick={handleScheduleClick} />
     </div>

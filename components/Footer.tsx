@@ -57,10 +57,11 @@ export default function Footer() {
                 <Link href="/" className="inline-block">
                   <Image
                     src={getImagePath("/images/logo_slogan_1.png")}
-                    alt="Nagen Logo"
+                    alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
                     width={180}
                     height={36}
                     className="h-auto"
+                    title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
                   />
                 </Link>
               </div>

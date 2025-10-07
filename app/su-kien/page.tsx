@@ -95,11 +95,12 @@ const SuKienPage = () => {
             <Link href="/" className="flex items-center space-x-3">
               <Image
                 src={getImagePath("/images/logo_slogan_1.png")}
-                alt="NAGEN Logo"
+                alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
                 width={150}
                 height={40}
                 style={{ objectFit: 'contain' }}
                 priority
+                title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
               />
             </Link>
             <Link href="/">
@@ -176,9 +177,10 @@ const SuKienPage = () => {
                   <div className="relative h-48">
                     <Image
                       src={getImagePath(event.image)}
-                      alt={event.title}
+                      alt={`${event.title} - Sự kiện NAGEN về tấm lót hỗ trợ vòm bàn chân`}
                       fill
                       className="object-cover"
+                      title={`Sự kiện NAGEN: ${event.title}`}
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -232,9 +234,10 @@ const SuKienPage = () => {
                   <div className="relative h-40">
                     <Image
                       src={getImagePath(event.image)}
-                      alt={event.title}
+                      alt={`${event.title} - Sự kiện NAGEN về tấm lót hỗ trợ vòm bàn chân`}
                       fill
                       className="object-cover"
+                      title={`Sự kiện NAGEN: ${event.title}`}
                     />
                     <div className="absolute top-3 left-3">
                       <span className="bg-red-600 text-white px-2 py-1 rounded-full text-xs font-medium">

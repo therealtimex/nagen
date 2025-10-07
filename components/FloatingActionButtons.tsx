@@ -133,10 +133,11 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
                   <Image
                     src={getImagePath(button.icon)}
-                    alt={button.label}
+                    alt={`${button.label} - Liên hệ NAGEN để tư vấn tấm lót hỗ trợ vòm bàn chân`}
                     width={48}
                     height={48}
                     className="lg:w-8 lg:h-8 md:w-7 md:h-7 w-6 h-6 filter relative z-10"
+                    title={`${button.label} - NAGEN`}
                   />
                 </Button>
               </div>

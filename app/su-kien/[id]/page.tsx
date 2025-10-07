@@ -118,11 +118,12 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
             <Link href="/" className="flex items-center space-x-3">
               <Image
                 src={getImagePath("/images/logo_slogan_1.png")}
-                alt="NAGEN Logo"
+                alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
                 width={150}
                 height={40}
                 style={{ objectFit: 'contain' }}
                 priority
+                title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
               />
             </Link>
             <div className="flex items-center space-x-3">
@@ -162,9 +163,10 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
               <div className="relative h-64 md:h-80">
                 <Image
                   src={getImagePath(event.image)}
-                  alt={event.title}
+                  alt={`${event.title} - Sự kiện NAGEN về tấm lót hỗ trợ vòm bàn chân`}
                   fill
                   className="object-cover"
+                  title={`Sự kiện NAGEN: ${event.title}`}
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -222,9 +224,10 @@ export default function EventDetailPage({ params }: { params: { id: string } }) 
                         <div className="relative w-16 h-16 flex-shrink-0">
                           <Image
                             src={getImagePath(relatedEvent.image)}
-                            alt={relatedEvent.title}
+                            alt={`${relatedEvent.title} - Sự kiện NAGEN liên quan`}
                             fill
                             className="object-cover rounded"
+                            title={`Sự kiện NAGEN: ${relatedEvent.title}`}
                           />
                         </div>
                         <div className="flex-1 min-w-0">

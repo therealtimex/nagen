@@ -71,11 +71,12 @@ export default function ProductMediaViewer({ product }: ProductMediaViewerProps)
             {/* Image Display */}
             <Image
               src={getImagePath(product.image || "/placeholder.svg")}
-              alt={product.name}
+              alt={`${product.name} - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ NAGEN`}
               width={500}
               height={300}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
+              title={`${product.name} - Giải pháp hỗ trợ bàn chân hiệu quả`}
             />
             {/* Image Overlay */}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
