@@ -160,7 +160,7 @@ export default function Footer() {
 
             {/* SẢN PHẨM Column */}
             <div>
-              <h3 className="font-bold text-[#21395D] mb-4 text-lg border-b-2 border-[#21395D] pb-2 inline-block">
+              <h3 className="font-bold text-[#21395D] mb-4 text-lg border-b-2 border-red-600 pb-2 inline-block">
                 SẢN PHẨM
               </h3>
               <nav aria-label="Products navigation">
@@ -219,7 +219,7 @@ export default function Footer() {
 
             {/* HỖ TRỢ Column */}
             <div>
-              <h3 className="font-bold text-[#21395D] mb-4 text-lg border-b-2 border-[#21395D] pb-2 inline-block">
+              <h3 className="font-bold text-[#21395D] mb-4 text-lg border-b-2 border-red-600 pb-2 inline-block">
                 HỖ TRỢ
               </h3>
               <nav aria-label="Support navigation">
@@ -291,7 +291,7 @@ export default function Footer() {
 
             {/* PHÁP LÝ Column */}
             <div>
-              <h3 className="font-bold text-[#21395D] mb-4 text-lg border-b-2 border-[#21395D] pb-2 inline-block">
+              <h3 className="font-bold text-[#21395D] mb-4 text-lg border-b-2 border-red-600 pb-2 inline-block">
                 PHÁP LÝ
               </h3>
               <nav aria-label="Legal navigation">

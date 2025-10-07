@@ -1450,7 +1450,7 @@ function HomePageContent() {
                 <p className="text-lg text-[#21395D] leading-relaxed text-justify">
                   Một vòm bàn chân hoạt động tốt sẽ cải thiện sự cân bằng, phân bổ áp lực chính xác lên lòng bàn chân và cho phép các cơ, dây chằng và gân được sử dụng trong chu kỳ dáng đi hoạt động hiệu quả hơn. Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm phù hợp hoàn hảo với bạn và lối sống của bạn.
                 </p>
-                <div className="flex justify-center mt-8">
+                <div className="flex justify-center mt-4">
                   <CTAButton
                     variant="primary"
                     size="lg"
@@ -1458,7 +1458,7 @@ function HomePageContent() {
                     className="
                       bg-[#21395D] hover:bg-[#1a2d4a] text-white
                       flex items-center justify-center
-                      px-4 sm:px-8 py-5 sm:py-5 rounded-xl
+                      px-4 sm:px-6 py-3 sm:py-3 rounded-xl
                       text-sm sm:text-base font-medium
                       max-w-full sm:max-w-2xl w-full
                       transition-all duration-300
@@ -1467,7 +1467,7 @@ function HomePageContent() {
                       whitespace-normal
                     "
                   >
-                    <span className="text-center leading-6 px-1 py-2 block w-full overflow-wrap-anywhere">
+                    <span className="text-center leading-5 px-1 py-1 block w-full overflow-wrap-anywhere">
                       Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
                     </span>
                   </CTAButton>
@@ -1479,22 +1479,22 @@ function HomePageContent() {
       </section>
 
       {/* Product Highlights Section */}
-      <section id="products" className="py-16">
+      <section id="products" className="pt-4 pb-8">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-4">
           </div>
 
-          <div className="space-y-8 mb-12">
+          <div className="space-y-4 mb-6">
             {productData.slice(0, 3).map((product, index) => (
               <div key={product.id}>
                 {/* Product Item */}
-                <div className="py-8">
+                <div className="py-4">
                   {/* Product Title - Always first on mobile, hidden on desktop (will be shown in info section) */}
-                  <div className="md:hidden mb-6">
+                  <div className="md:hidden mb-3">
                     <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="grid md:grid-cols-2 gap-4 items-center">
                     {/* Product Image */}
                     <div className="order-1 md:order-1">
                       <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
@@ -1516,8 +1516,8 @@ function HomePageContent() {
                       <h3 className="hidden md:block text-2xl font-bold text-blue-900">{product.name}</h3>
                       <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
                       <CTAButton
-                        variant="secondary"
-                        className="group"
+                        variant="primary"
+                        className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white"
                         onClick={() => navigateTo(`/tat-ca-san-pham?category=${product.category}`)}
                       >
                         Xem chi tiết
@@ -1538,7 +1538,7 @@ function HomePageContent() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-6">
             <CTAButton variant="primary" size="lg" className="group" onClick={() => navigateTo("/tat-ca-san-pham")}>
               Xem tất cả sản phẩm
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -1551,11 +1551,11 @@ function HomePageContent() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <EnhancedFeedbackSlider />
-          <div className="text-center mt-8">
-            <Button variant="default" size="lg" onClick={() => navigateTo("/feedback")}>
+          <div className="flex justify-center mt-8">
+            <CTAButton variant="primary" size="lg" className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white" onClick={() => navigateTo("/feedback")}>
               Xem tất cả
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </CTAButton>
           </div>
         </div>
       </section>
