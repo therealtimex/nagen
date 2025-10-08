@@ -24,7 +24,7 @@ export default function Footer() {
       "availableLanguage": "Vietnamese"
     },
     "sameAs": [
-      "https://www.facebook.com/people/NAGEN/61576197860425/",
+      "https://facebook.com/people/NAGEN/61576197860425/",
       "https://www.youtube.com/@nagenvn",
       "https://www.tiktok.com/@nagenvn"
     ],
@@ -123,7 +123,7 @@ export default function Footer() {
               <div className="mt-4">
                 <div className="flex space-x-3">
                   <SocialMediaButton
-                    href="https://www.facebook.com/people/NAGEN/61576197860425/"
+                    href="https://facebook.com/people/NAGEN/61576197860425/"
                     className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
                     ariaLabel="Theo dõi NAGEN trên Facebook"
                     platform="facebook"

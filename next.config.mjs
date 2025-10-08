@@ -19,15 +19,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            value: 'no-referrer-when-downgrade',
           },
         ],
       },

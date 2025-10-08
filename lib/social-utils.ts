@@ -2,72 +2,91 @@
  * Utility functions for handling social media links
  */
 
-export function openSocialLink(url: string, platform: string): void {
-  try {
-    // Try to open in new window/tab
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer,width=800,height=600')
-    
-    // Check if popup was blocked
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-      // Popup blocked, show user-friendly message
-      const userConfirmed = window.confirm(
-        `Trình duyệt đã chặn popup. Bạn có muốn mở ${platform} trong tab hiện tại không?`
-      )
-      
-      if (userConfirmed) {
-        window.location.href = url
-      }
-    } else {
-      // Focus the new window
-      newWindow.focus()
-    }
-  } catch (error) {
-    console.warn(`Failed to open ${platform} link:`, error)
-    
-    // Final fallback with user confirmation
-    const userConfirmed = window.confirm(
-      `Không thể mở ${platform}. Bạn có muốn thử lại không?`
-    )
-    
-    if (userConfirmed) {
-      window.location.href = url
-    }
+export const SOCIAL_URLS = {
+  facebook: {
+    primary: "https://facebook.com/people/NAGEN/61576197860425/",
+    fallbacks: [
+      "https://www.facebook.com/people/NAGEN/61576197860425/",
+      "https://m.facebook.com/people/NAGEN/61576197860425/"
+    ]
+  },
+  youtube: {
+    primary: "https://www.youtube.com/@nagenvn",
+    fallbacks: [
+      "https://youtube.com/@nagenvn",
+      "https://m.youtube.com/@nagenvn"
+    ]
+  },
+  tiktok: {
+    primary: "https://www.tiktok.com/@nagenvn",
+    fallbacks: [
+      "https://tiktok.com/@nagenvn",
+      "https://m.tiktok.com/@nagenvn"
+    ]
   }
-}
+} as const
 
-export function isPopupBlocked(): boolean {
+export function openSocialLink(platform: keyof typeof SOCIAL_URLS): void {
+  const urls = SOCIAL_URLS[platform]
+  
+  // Try primary URL first
+  let opened = false
+  
   try {
-    const popup = window.open('', '_blank', 'width=1,height=1')
-    if (popup) {
-      popup.close()
-      return false
-    }
-    return true
-  } catch {
-    return true
-  }
-}
-
-export function detectPopupBlocker(): Promise<boolean> {
-  return new Promise((resolve) => {
-    const popup = window.open('about:blank', '_blank', 'width=1,height=1')
-    
-    if (!popup) {
-      resolve(true)
+    const win = window.open(urls.primary, '_blank', 'noopener,noreferrer')
+    if (win && !win.closed) {
+      opened = true
       return
     }
-    
-    setTimeout(() => {
-      try {
-        if (popup.closed || !popup.location || popup.location.href === 'about:blank') {
-          resolve(true)
-        } else {
-          resolve(false)
-        }
-        popup.close()
-      } catch {
-        resolve(true)
+  } catch (error) {
+    console.warn(`Primary ${platform} URL failed:`, error)
+  }
+  
+  // Try fallback URLs
+  for (const fallbackUrl of urls.fallbacks) {
+    try {
+      const win = window.open(fallbackUrl, '_blank', 'noopener,noreferrer')
+      if (win && !win.closed) {
+        opened = true
+        return
       }
-    }, 100)
-  })
+    } catch (error) {
+      console.warn(`Fallback ${platform} URL failed:`, fallbackUrl, error)
+      continue
+    }
+  }
+  
+  // Final fallback - navigate in same tab
+  if (!opened) {
+    window.location.href = urls.primary
+  }
+}
+
+export function validateSocialUrl(url: string): boolean {
+  try {
+    const urlObj = new URL(url)
+    const validDomains = [
+      'facebook.com', 'www.facebook.com', 'm.facebook.com',
+      'youtube.com', 'www.youtube.com', 'm.youtube.com',
+      'tiktok.com', 'www.tiktok.com', 'm.tiktok.com'
+    ]
+    
+    return validDomains.includes(urlObj.hostname)
+  } catch {
+    return false
+  }
+}
+
+export function getSocialPlatform(url: string): keyof typeof SOCIAL_URLS | null {
+  try {
+    const urlObj = new URL(url)
+    
+    if (urlObj.hostname.includes('facebook')) return 'facebook'
+    if (urlObj.hostname.includes('youtube')) return 'youtube'
+    if (urlObj.hostname.includes('tiktok')) return 'tiktok'
+    
+    return null
+  } catch {
+    return null
+  }
 }

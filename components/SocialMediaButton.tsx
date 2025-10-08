@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-import { openSocialLink } from "@/lib/social-utils"
 
 interface SocialMediaButtonProps {
   href: string
@@ -15,37 +14,51 @@ export default function SocialMediaButton({
   href, 
   className, 
   ariaLabel, 
-  children, 
+  children,
   platform 
 }: SocialMediaButtonProps) {
+  
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    
-    const platformNames = {
-      facebook: 'Facebook',
-      youtube: 'YouTube', 
-      tiktok: 'TikTok'
+    // For problematic platforms, try alternative approaches
+    if (platform === 'facebook') {
+      e.preventDefault()
+      
+      // Try multiple Facebook URL formats
+      const fallbackUrls = [
+        href,
+        "https://www.facebook.com/people/NAGEN/61576197860425/",
+        "https://m.facebook.com/people/NAGEN/61576197860425/"
+      ]
+      
+      let opened = false
+      for (const url of fallbackUrls) {
+        try {
+          const win = window.open(url, '_blank', 'noopener,noreferrer')
+          if (win && !win.closed) {
+            opened = true
+            break
+          }
+        } catch (error) {
+          continue
+        }
+      }
+      
+      if (!opened) {
+        // Final fallback - navigate in same tab
+        window.location.href = href
+      }
     }
-    
-    openSocialLink(href, platformNames[platform])
+    // For YouTube and TikTok, let browser handle normally
   }
 
   return (
     <a
       href={href}
       target="_blank"
-      rel="noopener noreferrer nofollow"
+      rel="noopener noreferrer"
       className={className}
       aria-label={ariaLabel}
       onClick={handleClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          handleClick(e as any)
-        }
-      }}
     >
       {children}
     </a>
