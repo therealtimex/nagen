@@ -57,14 +57,14 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
       icon: "/images/icons/calendar.png",
       label: "Đặt lịch đo chân",
       onClick: onScheduleClick,
-      className: "bg-red-600 hover:bg-red-700 text-white shadow-red-500/25",
+      className: "bg-[#1877F2] hover:bg-[#166FE5] text-white shadow-blue-500/25",
       ariaLabel: "Đặt lịch đo chân miễn phí",
     },
     {
       icon: "/images/icons/youtube.svg",
       label: "YouTube",
       onClick: handleYouTubeClick,
-      className: "bg-[#FF0000] hover:bg-[#CC0000] text-white shadow-red-500/25",
+      className: "bg-[#1877F2] hover:bg-[#166FE5] text-white shadow-blue-500/25",
       ariaLabel: "Xem kênh YouTube NAGEN",
     },
     {
@@ -78,7 +78,7 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
       icon: "/images/icons/zalo.svg",
       label: "Zalo",
       onClick: handleZaloClick,
-      className: "bg-[#0068FF] hover:bg-[#005ae0] text-white shadow-blue-500/25",
+      className: "bg-[#1877F2] hover:bg-[#166FE5] text-white shadow-blue-500/25",
       ariaLabel: "Chat on Zalo",
     },
   ]
