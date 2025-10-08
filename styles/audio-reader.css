@@ -1,0 +1,93 @@
+/* Audio Reader Custom Styles */
+.audio-reader-container {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+    transition: all 0.3s ease;
+}
+
+.audio-reader-container:hover {
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+    transform: translateY(-1px);
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.voice-selector {
+    min-width: 200px;
+}
+
+.audio-settings {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 16px;
+}
+
+.slider-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.slider-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .audio-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .voice-selector {
+        min-width: 100%;
+    }
+
+    .slider-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation for play/pause states */
+.audio-button {
+    transition: all 0.2s ease;
+}
+
+.audio-button:hover {
+    transform: scale(1.05);
+}
+
+.audio-button:active {
+    transform: scale(0.95);
+}
+
+/* Voice indicator */
+.voice-indicator {
+    font-size: 12px;
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Settings toggle */
+.settings-toggle {
+    transition: transform 0.2s ease;
+}
+
+.settings-toggle.active {
+    transform: rotate(45deg);
+}

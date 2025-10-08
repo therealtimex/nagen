@@ -6,13 +6,67 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft } from "lucide-react"
+import Footer from "@/components/Footer"
 
 export default function StudiesPage() {
+  // Structured data for research studies
+  const studiesSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Nghiên cứu khoa học về tấm lót hỗ trợ vòm bàn chân NAGEN",
+    "description": "Khám phá các nghiên cứu khoa học từ California College of Podiatry, Michigan State University về hiệu quả tấm lót hỗ trợ vòm bàn chân NAGEN",
+    "author": {
+      "@type": "Organization",
+      "name": "NAGEN",
+      "url": "https://nagen.vn"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "NAGEN",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nagen.vn/images/logo_slogan_1.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://nagen.vn/studies"
+    },
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-12-01",
+    "articleSection": "Nghiên cứu khoa học",
+    "keywords": "nghiên cứu khoa học, tấm lót hỗ trợ vòm bàn chân, NAGEN, Bio Orthotics International, Alzner",
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Tấm lót hỗ trợ vòm bàn chân",
+        "description": "Sản phẩm hỗ trợ vòm bàn chân được nghiên cứu khoa học"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Nghiên cứu sinh cơ học",
+        "description": "Nghiên cứu về cơ chế hoạt động của tấm lót hỗ trợ vòm bàn chân"
+      }
+    ]
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(studiesSchema) }}
+      />
       <Head>
-        <title>Nghiên cứu khoa học - NAGEN</title>
-        <meta name="description" content="Khám phá các nghiên cứu khoa học toàn diện về hiệu quả của sản phẩm chỉnh hình NAGEN và hệ thống hỗ trợ vòm bàn chân." />
+        <title>Nghiên cứu khoa học về tấm lót hỗ trợ vòm bàn chân NAGEN - Bằng chứng khoa học</title>
+        <meta name="description" content="Khám phá các nghiên cứu khoa học từ California College of Podiatry, Michigan State University về hiệu quả tấm lót hỗ trợ vòm bàn chân NAGEN. Bằng chứng khoa học chứng minh giảm đau, cải thiện cân bằng." />
+        <meta name="keywords" content="nghiên cứu khoa học NAGEN, tấm lót hỗ trợ vòm bàn chân, bằng chứng khoa học, California College of Podiatry, Michigan State University, East Carolina University, Armstrong Atlantic State University, Bio Orthotics International, Alzner" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://nagen.vn/studies" />
+        <meta property="og:title" content="Nghiên cứu khoa học về tấm lót hỗ trợ vòm bàn chân NAGEN" />
+        <meta property="og:description" content="Khám phá các nghiên cứu khoa học từ các trường đại học uy tín về hiệu quả tấm lót hỗ trợ vòm bàn chân NAGEN" />
+        <meta property="og:url" content="https://nagen.vn/studies" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://nagen.vn/images/logo_slogan_1.png" />
       </Head>
 
       <div className="min-h-screen bg-gray-50">
@@ -250,6 +304,9 @@ export default function StudiesPage() {
             </div>
           </div>
         </section>
+
+        {/* Footer */}
+        <Footer />
       </div>
     </>
   )
