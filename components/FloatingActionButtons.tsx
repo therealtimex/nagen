@@ -162,7 +162,9 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
           aria-expanded={isExpanded}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
-          <MessageCircle className="lg:w-6 lg:h-6 md:w-5 md:h-5 w-4 h-4 drop-shadow-sm relative z-10" />
+          <div className="relative z-10 flex h-full w-full items-center justify-center">
+            <MessageCircle className="lg:w-7 lg:h-7 md:w-6 md:h-6 w-6 h-6 drop-shadow-sm" />
+          </div>
         </Button>
       </div>
 
