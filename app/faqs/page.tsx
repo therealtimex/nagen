@@ -257,7 +257,7 @@ function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const [ctvValue, setCtvValue] = useState("");
 
@@ -272,12 +272,12 @@ function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
   }, []);
 
   const validateForm = (): boolean => {
-    const newErrors: {[key: string]: string} = {};
+    const newErrors: { [key: string]: string } = {};
 
     if (!formData.name.trim()) {
       newErrors.name = "Vui lòng nhập họ tên";
     }
-    
+
     if (!formData.phone.trim()) {
       newErrors.phone = "Vui lòng nhập số điện thoại";
     } else if (!/^[0-9+\-\s()]+$/.test(formData.phone)) {
@@ -294,7 +294,7 @@ function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -385,10 +385,10 @@ function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     <p className="text-red-100 mt-1 text-sm sm:text-base">Nhận tư vấn chuyên nghiệp từ đội ngũ NAGEN</p>
                   </div>
                 </div>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  onClick={handleClose} 
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={handleClose}
                   className="text-white hover:bg-red-700 flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10"
                 >
                   <X className="h-5 w-5" />
@@ -428,7 +428,7 @@ function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                   )}
                 </div>
               </div>
-              
+
               <div>
                 <label className="text-sm font-medium text-gray-700 mb-2 block">
                   Email
@@ -444,7 +444,7 @@ function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
                 )}
               </div>
-              
+
               <div>
                 <label className="text-sm font-medium text-gray-700 mb-2 block">Địa chỉ</label>
                 <Input
@@ -483,15 +483,15 @@ function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting} 
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
                   className="flex-1 h-12 text-base font-semibold bg-red-600 hover:bg-red-700"
                 >
                   {isSubmitting ? "Đang gửi..." : "Đặt lịch tư vấn"}
                   {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
                 </Button>
-                <Button 
+                <Button
                   type="button"
                   variant="outline"
                   onClick={handleClose}
@@ -530,92 +530,92 @@ const FAQPage = () => {
     <>
       <EnhancedNavigation />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Câu Hỏi Thường Gặp
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Tìm hiểu thêm về sản phẩm đệm lót vòm bàn chân của chúng tôi qua những câu hỏi phổ biến nhất
-          </p>
-        </div>
+        <div className="max-w-7xl mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Câu Hỏi Thường Gặp
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Tìm hiểu thêm về sản phẩm đệm lót vòm bàn chân của chúng tôi qua những câu hỏi phổ biến nhất
+            </p>
+          </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* FAQ List */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-                Danh sách câu hỏi
-              </h2>
-              <FAQAccordion faqs={faqs} onFaqSelect={handleFaqSelect} />
+          {/* Main Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* FAQ List */}
+            <div className="lg:col-span-2">
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+                  Danh sách câu hỏi
+                </h2>
+                <FAQAccordion faqs={faqs} onFaqSelect={handleFaqSelect} />
+              </div>
+            </div>
+
+            {/* Image Display */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-xl shadow-lg p-6 sticky top-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                  Hình ảnh minh họa
+                </h3>
+                {selectedFaq !== null && (
+                  <div className="space-y-4">
+                    <div className="relative overflow-hidden rounded-lg bg-gray-50">
+                      <Image
+                        src={getImagePath(faqs[selectedFaq].image)}
+                        alt={faqs[selectedFaq].question}
+                        width={400}
+                        height={300}
+                        className="w-full h-auto object-contain transition-transform duration-300 hover:scale-105 max-h-80"
+                      />
+                    </div>
+                    <div className="bg-blue-50 p-4 rounded-lg">
+                      <p className="text-sm text-blue-800 font-medium italic">
+                        "{faqs[selectedFaq].description}"
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Image Display */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Hình ảnh minh họa
-              </h3>
-              {selectedFaq !== null && (
-                <div className="space-y-4">
-                  <div className="relative overflow-hidden rounded-lg bg-gray-50">
-                    <Image
-                      src={getImagePath(faqs[selectedFaq].image)}
-                      alt={faqs[selectedFaq].question}
-                      width={400}
-                      height={300}
-                      className="w-full h-auto object-contain transition-transform duration-300 hover:scale-105 max-h-80"
-                    />
-                  </div>
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <p className="text-sm text-blue-800 font-medium italic">
-                      "{faqs[selectedFaq].description}"
-                    </p>
-                  </div>
-                </div>
-              )}
+          {/* Bottom CTA Section */}
+          <div className="mt-16 bg-white rounded-xl shadow-lg p-8 text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Vẫn còn thắc mắc?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Nếu bạn không tìm thấy câu trả lời cho câu hỏi của mình, đừng ngần ngại liên hệ với chúng tôi.
+              Đội ngũ chuyên gia của chúng tôi luôn sẵn sàng hỗ trợ bạn.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center justify-center"
+                onClick={openConsultationModal}
+              >
+                <Calendar className="w-5 h-5 mr-2" />
+                Đặt lịch tư vấn miễn phí
+              </Button>
+              <Button
+                variant="outline"
+                className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-8 py-3 rounded-lg font-semibold flex items-center justify-center"
+                onClick={() => navigateTo("tel:0966578008")}
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Gọi ngay: 0966578008
+              </Button>
             </div>
           </div>
         </div>
-
-        {/* Bottom CTA Section */}
-        <div className="mt-16 bg-white rounded-xl shadow-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Vẫn còn thắc mắc?
-          </h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Nếu bạn không tìm thấy câu trả lời cho câu hỏi của mình, đừng ngần ngại liên hệ với chúng tôi.
-            Đội ngũ chuyên gia của chúng tôi luôn sẵn sàng hỗ trợ bạn.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center justify-center"
-              onClick={openConsultationModal}
-            >
-              <Calendar className="w-5 h-5 mr-2" />
-              Đặt lịch tư vấn miễn phí
-            </Button>
-            <Button 
-              variant="outline"
-              className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-8 py-3 rounded-lg font-semibold flex items-center justify-center"
-              onClick={() => navigateTo("tel:0966578008")}
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Gọi ngay: 0966578008
-            </Button>
-          </div>
-        </div>
-      </div>
       </div>
       <Footer />
-      
+
       {/* Consultation Modal */}
-      <ConsultationModal 
-        isOpen={isConsultationModalOpen} 
-        onClose={closeConsultationModal} 
+      <ConsultationModal
+        isOpen={isConsultationModalOpen}
+        onClose={closeConsultationModal}
       />
     </>
   );

@@ -315,7 +315,7 @@ function EnhancedNavigation() {
                 <div className="flex flex-col h-full bg-white">
                   {/* Header */}
                   <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-blue-900 to-red-600">
-                    <h2 className="text-lg font-semibold text-white">Menu</h2>
+                    <div className="text-lg font-semibold text-white">Menu</div>
                   </div>
 
                   {/* Navigation */}
@@ -453,7 +453,7 @@ function EnhancedFeedbackSlider() {
   return (
     <div className="relative bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-8">
       <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-blue-900 mb-2">Khách hàng nói gì về Tấm lót hỗ trợ vòm bàn chân NAGEN?</h3>
+        <div className="text-2xl font-bold text-blue-900 mb-2">Khách hàng nói gì về Tấm lót hỗ trợ vòm bàn chân NAGEN?</div>
         <p className="text-gray-600">Hơn 4 triệu người tin dùng trên toàn thế giới</p>
       </div>
 
@@ -538,12 +538,26 @@ function HeroContent() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <p className="text-xl font-bold text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
-        Tấm lót hỗ trợ vòm bàn chân NAGEN do Bio Orthotics International, Inc sản xuất tại Mỹ có hàng trăm kích cỡ phù hợp cho nhiều lứa tuổi. Chúng tôi cung cấp sản phẩm phù hợp hoàn hảo với bạn và lối sống của bạn.
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#21395D] mb-4 sm:mb-6 text-center leading-tight">
+        TẤM LÓT HỖ TRỢ VÒM BÀN CHÂN NAGEN
+      </h1>
+      <p className="text-base sm:text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line px-2 sm:px-0">
+        <strong>Tấm lót hỗ trợ vòm bàn chân Nagen</strong> do <strong>Bio Orthotics International, Inc sản xuất tại Mỹ</strong>, là những dòng sản phẩm hỗ trợ vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Mỗi người có kích thước vòm bàn chân khác nhau, chúng tôi cung cấp đa dạng kích cỡ phù hợp riêng với từng người, cho nhiều lứa tuổi
       </p>
-      <p className="text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
-        Khởi đầu cho tấm lót hỗ trợ vòm bàn chân Sungen, Winagen, Softgen, Endurance, Silhouette của NAGEN đến từ thiết kế của Georg Alzner phát triển và cấp bằng sáng chế.
-      </p>
+
+
+      {/* Product Image */}
+      <div className="my-4 sm:my-6 max-w-5xl mx-auto flex justify-center px-2 sm:px-0">
+        <Image
+          src={getImagePath("/images/20200624_161136PS.webp")}
+          alt="Bộ sưu tập tấm lót hỗ trợ vòm bàn chân NAGEN - Sungen, Winagen, Softgen, Endurance, Silhouette"
+          width={1200}
+          height={400}
+          className="w-full rounded-lg sm:rounded-xl shadow-lg"
+          priority
+          title="Các dòng sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN chất lượng cao"
+        />
+      </div>
     </div>
   )
 }
@@ -645,7 +659,7 @@ function EnhancedContactForm() {
       <Card className="border-0 shadow-xl bg-gradient-to-br from-green-50 to-blue-50">
         <CardContent className="p-6 sm:p-8 text-center">
           <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-600 mx-auto mb-4" />
-          <h3 className="text-xl sm:text-2xl font-bold text-green-800 mb-4">Gửi thành công!</h3>
+          <div className="text-xl sm:text-2xl font-bold text-green-800 mb-4">Gửi thành công!</div>
           <p className="text-gray-600 mb-6 text-sm sm:text-base">
             Cảm ơn bạn đã liên hệ với NAGEN. Chúng tôi sẽ phản hồi trong vòng 24 giờ.
           </p>
@@ -859,7 +873,7 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
         {isSubmitted ? (
           <div className="p-6 sm:p-8 text-center">
             <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-600 mx-auto mb-4" />
-            <h3 className="text-xl sm:text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</h3>
+            <div className="text-xl sm:text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</div>
             <p className="text-gray-600 mb-4 text-sm sm:text-base">Chúng tôi đã nhận được đăng ký đối tác của bạn.</p>
             <p className="text-gray-600 mb-6 text-sm sm:text-base">Đội ngũ NAGEN sẽ liên hệ với bạn trong vòng 24 giờ để tư vấn chi tiết.</p>
             <CTAButton onClick={handleClose} className="w-full sm:w-auto">Đóng</CTAButton>
@@ -878,7 +892,7 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl font-bold">Đăng ký làm đối tác</h3>
+                  <div className="text-lg sm:text-xl font-bold">Đăng ký làm đối tác</div>
                   <p className="text-red-100 mt-1 text-sm sm:text-base">Tham gia mạng lưới đại lý NAGEN</p>
                 </div>
                 <Button
@@ -1164,7 +1178,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
         {isSubmitted ? (
           <div className="p-8 text-center">
             <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</h3>
+            <div className="text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</div>
             <p className="text-gray-600 mb-4">Bạn hãy chuẩn bị trải nghiệm một khía cạnh mới của dịch vụ khách hàng.</p>
             <p className="text-gray-600 mb-6">Chúng tôi ở đây để giúp đỡ và mong nhận được phản hồi từ bạn.</p>
             <CTAButton onClick={handleClose}>Đóng</CTAButton>
@@ -1183,7 +1197,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
               </div>
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold">Đặt lịch đo chân</h3>
+                  <div className="text-xl font-bold">Đặt lịch đo chân</div>
                   <p className="text-red-100 mt-1">Đo vòm bàn chân miễn phí tại nhà</p>
                 </div>
                 <Button variant="ghost" size="icon" onClick={handleClose} className="text-white hover:bg-red-700">
@@ -1427,49 +1441,31 @@ function HomePageContent() {
       <section className="py-10 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            {/* Product Image - Top */}
-            <div className="my-6 max-w-5xl mx-auto flex justify-center">
-              <Image
-                src={getImagePath("/images/20200624_161136PS.webp")}
-                alt="Bộ sưu tập tấm lót hỗ trợ vòm bàn chân NAGEN - Sungen, Winagen, Softgen, Endurance, Silhouette"
-                width={1200}
-                height={400}
-                className="w-full rounded-xl shadow-lg"
-                priority
-                title="Các dòng sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN chất lượng cao"
-              />
-            </div>
-
             {/* Text and CTA - Bottom */}
             <div className="w-full">
               {/* Text Content - Full width */}
               <div className="space-y-4">
                 <p className="text-lg text-[#21395D] leading-relaxed text-justify">
-                  Thiết kế này hỗ trợ cả bốn vòm bàn chân và giúp kiểm soát chuyển động của vòm. Mỗi yếu tố thiết kế đều hướng đến mục tiêu hướng dẫn bàn chân vào tư thế cơ sinh học hiệu quả hơn để đạt hiệu suất và hiệu quả tối đa.
+                  Khởi nguồn từ nghiên cứu của Georg Alzner - TS.BS phẫu thuật chỉnh hình người Đức, người đã nghiên cứu tấm lót hỗ trợ vòm bàn chân và được cấp bằng sáng chế tại Canada (1969) và Hoa Kỳ (1970). Trải qua gần 60 năm, thiết kế của Alzner đã chứng minh được tính hiệu quả trong các nghiên cứu khoa học cũng như trong quá trình sử dụng của hàng triệu khách hàng tại Hoa Kỳ và trên toàn thế giới.
                 </p>
                 <p className="text-lg text-[#21395D] leading-relaxed text-justify">
-                  Một vòm bàn chân hoạt động tốt sẽ cải thiện sự cân bằng, phân bổ áp lực chính xác lên lòng bàn chân và cho phép các cơ, dây chằng và gân được sử dụng trong chu kỳ dáng đi hoạt động hiệu quả hơn. Với một loạt các sản phẩm như thế này, bạn có thể chắc chắn rằng chúng tôi có một sản phẩm phù hợp hoàn hảo với bạn và lối sống của bạn.
+                  Các nhà khoa học đã công bố một loạt các nghiên cứu chứng minh cách tấm lót hỗ trợ vòm bàn chân Nagen cải thiện chức năng của vòm. Đại học Michigan, East Carolina, Armstrong và California
                 </p>
-                <div className="flex justify-center mt-4">
+                <div className="flex justify-center mt-6">
                   <CTAButton
                     variant="primary"
-                    size="lg"
                     onClick={() => navigateTo("/studies")}
                     className="
                       bg-[#21395D] hover:bg-[#1a2d4a] text-white
-                      flex items-center justify-center
-                      px-4 sm:px-6 py-3 sm:py-3 rounded-xl
-                      text-sm sm:text-base font-medium
-                      max-w-full sm:max-w-2xl w-full
+                      px-6 md:px-8 py-3 md:py-4 rounded-lg
+                      text-base md:text-lg font-semibold
+                      min-w-[200px] max-w-[320px]
                       transition-all duration-300
                       shadow-lg hover:shadow-xl
-                      h-auto
-                      whitespace-normal
+                      hover:scale-105
                     "
                   >
-                    <span className="text-center leading-5 px-1 py-1 block w-full overflow-wrap-anywhere">
-                      Tìm hiểu thêm về nghiên cứu khoa học về hiệu quả của sản phẩm của chúng tôi tại đây
-                    </span>
+                    Xem thêm nghiên cứu khoa học
                   </CTAButton>
                 </div>
               </div>
@@ -1481,17 +1477,19 @@ function HomePageContent() {
       {/* Product Highlights Section */}
       <section id="products" className="pt-4 pb-8">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Các dòng sản phẩm của NAGEN</h2>
+            <p className="text-gray-600 text-lg">Khám phá bộ sưu tập tấm lót hỗ trợ vòm bàn chân chất lượng cao</p>
           </div>
 
           <div className="space-y-4 mb-6">
-            {productData.slice(0, 3).map((product, index) => (
+            {productData.map((product, index) => (
               <div key={product.id}>
                 {/* Product Item */}
                 <div className="py-4">
                   {/* Product Title - Always first on mobile, hidden on desktop (will be shown in info section) */}
                   <div className="md:hidden mb-3">
-                    <h3 className="text-2xl font-bold text-blue-900">{product.name}</h3>
+                    <h3 className="text-xl font-bold text-blue-900">{product.name}</h3>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4 items-center">
@@ -1513,7 +1511,7 @@ function HomePageContent() {
                     {/* Product Info */}
                     <div className="order-2 md:order-2 space-y-4">
                       {/* Product Title - Only shown on desktop */}
-                      <h3 className="hidden md:block text-2xl font-bold text-blue-900">{product.name}</h3>
+                      <h3 className="hidden md:block text-xl font-bold text-blue-900">{product.name}</h3>
                       <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
                       <CTAButton
                         variant="primary"
@@ -1528,7 +1526,7 @@ function HomePageContent() {
                 </div>
 
                 {/* Brand Color Separator Line - except for last item */}
-                {index < productData.slice(0, 3).length - 1 && (
+                {index < productData.length - 1 && (
                   <div className="flex h-2">
                     <div className="flex-1 bg-red-600"></div>
                     <div className="flex-1 bg-[#21395D]"></div>
@@ -1550,6 +1548,10 @@ function HomePageContent() {
       {/* Customer Testimonials */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Khách hàng nói gì về NAGEN</h2>
+            <p className="text-gray-600 text-lg">Hơn 4 triệu người tin dùng trên toàn thế giới</p>
+          </div>
           <EnhancedFeedbackSlider />
           <div className="flex justify-center mt-8">
             <CTAButton variant="primary" size="lg" className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white" onClick={() => navigateTo("/feedback")}>
@@ -1677,21 +1679,20 @@ function HomePageContent() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-blue-100 text-blue-800">Về chúng tôi</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900">NAGEN - Nuôi dưỡng từng bước chân cùng bao thế hệ</h2>
-              <div className="space-y-4">
-                {[
-                  "Viện nghiên cứu cơ sinh học đại học Bang Michigan",
-                  "Nghiên cứu cơ sinh học, khoa học thể dục thể thao, trường sức khỏe và hiệu suất con người, Đại học East Carolina",
-                  "Nghiên cứu cải thiện sự cân bằng và giảm đau ở người cao tuổi của Đại học Bang Armstong - Hoa kỳ",
-                  "Nghiên cứu bởi Đại học Chỉnh Hình Bàn Chân California",
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-gray-700">{benefit}</span>
-                  </div>
-                ))}
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-900 leading-tight">NAGEN và sứ mệnh phụng sự khách hàng</h2>
+              <div className="space-y-3 sm:space-y-4">
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
+                  NAGEN với sứ mệnh "Nuôi dưỡng từng bước chân" giúp con người trở về sự cân bằng, được nuôi dưỡng, chăm sóc, điều phục mỗi ngày một cách tự nhiên; Chúng tôi mong muốn mang lại sức khỏe, hạnh phúc và niềm vui cho người dân Việt Nam.
+                </p>
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
+                  Mang Tấm lót hỗ trợ vòm bàn chân trở thành sự nuôi dưỡng thiết yếu cho mọi người dân Việt Nam; Từ khi bạn lên 6 đến khi bạn già đi, tôi với bạn là hình với bóng. Mọi con thôn đến thành phố, mỗi bước chân bạn đi được nuôi dưỡng bằng tấm lót hỗ trợ vòm bàn chân tốt nhất.
+                </p>
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
+                  NAGEN đang hợp tác phân phối sản phẩm đến nhiều bệnh viện và tổ chức y tế; Trung tâm nghiên cứu cân bằng cấu trúc cơ thể Nagen là nơi tiếp nối các công trình nghiên cứu quốc tế, tại Việt Nam, trung tâm ứng dụng giá trị của sản phẩm, nghiên cứu trên sự trải nghiệm của khách hàng về sự cân bằng cấu trúc cơ thể khi sử dụng tấm lót hỗ trợ vòm bàn chân Nagen.
+                </p>
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
+                  NAGEN đang triển khai xây dựng chuỗi cửa hàng trên toàn quốc, cùng Đại lý mang đến cho quý khách dịch vụ đo chân, tư vấn miễn phí tận nhà, trải nghiệm sản phẩm trực tiếp trong môi trường chuyên nghiệp.
+                </p>
               </div>
               <CTAButton
                 size="lg"
@@ -1722,6 +1723,8 @@ function HomePageContent() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Badge className="bg-red-100 text-red-800 mb-4">Câu hỏi thường gặp</Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Câu hỏi thường gặp về tấm lót hỗ trợ vòm bàn chân</h2>
+            <p className="text-gray-600 text-lg">Tìm hiểu thêm về sản phẩm và dịch vụ của NAGEN</p>
           </div>
 
           <div className="max-w-6xl mx-auto">
