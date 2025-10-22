@@ -517,7 +517,7 @@ export default function DaiLyPage() {
               Tại Nagen, chúng tôi quan tâm hành trình đồng hành cùng bạn xây dựng sự nghiệp kinh doanh bền vững, mỗi bước đi vững chãi của bạn là niềm tự hào của Nagen.
             </p>
             <p className="text-gray-700 leading-relaxed mt-4">
-              Chúng tôi chú trọng đến sức khỏe thân tâm của bạn! Chúng tôi rất hãnh hiện, bằng đóng góp nhỏ nhoi, khiêm nhường, xin tri ân tới Quý đại lý chương trình Nuôi Dưỡng _ Chuyển Hóa_ Trị liệu Thân Tâm mỗi năm, thông qua đó bạn được Ứng dụng Phương pháp thực tập Hơi thở giúp thay đổi nhận thức, hành vi, lối sống cân bằng sức khỏe Thân Tâm. Thân khỏe - Tâm an - Trí sáng.
+              Chúng tôi chú trọng đến sức khỏe thân tâm của bạn! Chúng tôi rất hãnh hiện, bằng đóng góp nhỏ nhoi, khiêm nhường, xin tri ân tới Quý đại lý chương trình Nuôi Dưỡng _ Chuyển Hóa_ Trị liệu Thân Tâm mỗi năm, thông qua đó bạn được Ứng dụng Phương pháp thực tập Hơi thở giúp thay đổi nhận thức, hành vi, lối sống cân bằng sức khỏe Thân Tâm. <strong>Thân khỏe - Tâm an - Trí sáng</strong>.
             </p>
           </div>
 
