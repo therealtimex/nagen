@@ -138,7 +138,13 @@ function CTAButton({
 }
 
 // Enhanced Navigation with Submenus
-function EnhancedNavigation() {
+function EnhancedNavigation({ 
+  onConsultationClick, 
+  onAppointmentClick 
+}: { 
+  onConsultationClick: () => void
+  onAppointmentClick: () => void 
+}) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null)
@@ -172,7 +178,14 @@ function EnhancedNavigation() {
         { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/tat-ca-san-pham?category=demlotcaosu" },
       ],
     },
-    { name: "Dịch vụ", href: "#services" },
+    {
+      name: "Dịch vụ",
+      href: "#services",
+      submenu: [
+        { name: "Tư vấn sản phẩm", href: "#consultation", action: "consultation" },
+        { name: "Đăng ký đo chân", href: "#appointment", action: "appointment" },
+      ],
+    },
     { name: "Đối tác", href: "#partners" },
     { name: "Đại lý", href: "/dai-ly" },
     // { name: "Đăng ký", href: "/dang-ky" },
@@ -198,7 +211,17 @@ function EnhancedNavigation() {
     }, 150) // 150ms delay before hiding
   }
 
-  const handleNavigation = (href: string) => {
+  const handleNavigation = (href: string, action?: string) => {
+    // Handle service actions
+    if (action === "consultation") {
+      onConsultationClick()
+      return
+    }
+    if (action === "appointment") {
+      onAppointmentClick()
+      return
+    }
+
     // Check if it's an external link (starts with / or http)
     if (href.startsWith("/") || href.startsWith("http")) {
       navigateTo(href)
@@ -295,7 +318,7 @@ function EnhancedNavigation() {
                             className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors text-sm"
                             onClick={(e) => {
                               e.preventDefault()
-                              handleNavigation(subItem.href)
+                              handleNavigation(subItem.href, (subItem as any).action)
                             }}
                           >
                             {subItem.name}
@@ -354,7 +377,7 @@ function EnhancedNavigation() {
                                     className="block text-sm text-gray-600 hover:text-blue-900 py-3 px-3 rounded-lg hover:bg-blue-50 active:bg-blue-100 transition-colors leading-relaxed min-h-[44px] flex items-center touch-manipulation"
                                     onClick={(e) => {
                                       e.preventDefault()
-                                      handleNavigation(subItem.href)
+                                      handleNavigation(subItem.href, (subItem as any).action)
                                     }}
                                   >
                                     {subItem.name}
@@ -1512,7 +1535,10 @@ function HomePageContent() {
         }}
       />
 
-      <EnhancedNavigation />
+      <EnhancedNavigation 
+        onConsultationClick={() => setIsUnifiedRegistrationOpen(true)}
+        onAppointmentClick={() => setIsAppointmentModalOpen(true)}
+      />
 
       {/* Enhanced Hero Section */}
       <section id="home" className="relative bg-[#FFFFFF] text-[#21395D] py-10 lg:py-18 overflow-hidden">
@@ -1647,19 +1673,6 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* Customer Testimonials */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <EnhancedFeedbackSlider />
-          <div className="flex justify-center mt-8">
-            <CTAButton variant="primary" size="lg" className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white" onClick={() => navigateTo("/feedback")}>
-              Xem tất cả
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </CTAButton>
-          </div>
-        </div>
-      </section>
-
       {/* Services Preview */}
       <section id="services" className="py-16">
         <div className="container mx-auto px-4">
@@ -1703,6 +1716,19 @@ function HomePageContent() {
                 Your browser does not support the video tag.
               </video>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Testimonials */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <EnhancedFeedbackSlider />
+          <div className="flex justify-center mt-8">
+            <CTAButton variant="primary" size="lg" className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white" onClick={() => navigateTo("/feedback")}>
+              Xem tất cả
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </CTAButton>
           </div>
         </div>
       </section>
