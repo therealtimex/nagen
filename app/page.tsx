@@ -174,7 +174,8 @@ function EnhancedNavigation() {
     },
     { name: "Dịch vụ", href: "#services" },
     { name: "Đối tác", href: "#partners" },
-    { name: "Đăng ký", href: "/dang-ky" },
+    { name: "Đại lý", href: "/dai-ly" },
+    // { name: "Đăng ký", href: "/dang-ky" },
     { name: "Giới thiệu", href: "/gioi-thieu-nagen" },
     { name: "Sự kiện", href: "/su-kien" },
     { name: "Nghiên cứu khoa học", href: "/studies" },
@@ -456,7 +457,7 @@ function EnhancedFeedbackSlider() {
   return (
     <div className="relative bg-gradient-to-r from-blue-50 to-red-50 rounded-xl p-8">
       <div className="text-center mb-8">
-        <div className="text-2xl font-bold text-blue-900 mb-2">Khách hàng nói gì về Tấm lót hỗ trợ vòm bàn chân NAGEN?</div>
+        <div className="text-2xl font-bold text-blue-900 mb-2">Trải nghiệm người dùng</div>
         <p className="text-gray-600">Hơn 4 triệu người tin dùng trên toàn thế giới</p>
       </div>
 
@@ -1649,10 +1650,6 @@ function HomePageContent() {
       {/* Customer Testimonials */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Khách hàng nói gì về NAGEN</h2>
-            <p className="text-gray-600 text-lg">Hơn 4 triệu người tin dùng trên toàn thế giới</p>
-          </div>
           <EnhancedFeedbackSlider />
           <div className="flex justify-center mt-8">
             <CTAButton variant="primary" size="lg" className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white" onClick={() => navigateTo("/feedback")}>
@@ -1722,57 +1719,6 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* Partner Registration Section - Updated */}
-      <section id="partners" className="py-12 bg-gradient-to-br from-blue-50 to-red-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <Badge className="bg-red-100 text-red-800 mb-4">Cơ hội kinh doanh</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Đối tác kinh doanh</h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Tham gia mạng lưới đại lý NAGEN và cùng chúng tôi mang đến giải pháp chăm sóc bàn chân chất lượng cao cho
-              khách hàng trên toàn quốc
-            </p>
-          </div>
-
-          <div className="mt-8 text-center">
-            <div className="flex justify-center">
-              <CTAButton size="lg" onClick={() => setIsUnifiedRegistrationOpen(true)} className="w-full max-w-md mb-4">
-                <Send className="w-5 h-5" />
-                Đăng ký ngay
-              </CTAButton>
-            </div>
-            <div className="text-sm text-gray-600 space-y-2">
-              <p>Hoặc liên hệ trực tiếp:</p>
-              <p className="flex items-center justify-center">
-                <Phone className="w-4 h-4 mr-2 text-blue-600" />
-                <a
-                  href="tel:0966578008"
-                  className="hover:underline"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = 'tel:0966578008';
-                  }}
-                >
-                  0966578008
-                </a>
-              </p>
-              <p className="flex items-center justify-center">
-                <Mail className="w-4 h-4 mr-2 text-blue-600" />
-                <a
-                  href="mailto:nagen@nagen.vn"
-                  className="hover:underline"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = 'mailto:nagen@nagen.vn';
-                  }}
-                >
-                  nagen@nagen.vn
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* About Section */}
       <section id="about" className="py-16 bg-gray-50">
@@ -1815,7 +1761,7 @@ function HomePageContent() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Badge className="bg-red-100 text-red-800 mb-4">Câu hỏi thường gặp</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Câu hỏi thường gặp về tấm lót hỗ trợ vòm bàn chân</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Câu hỏi thường gặp</h2>
             <p className="text-gray-600 text-lg">Tìm hiểu thêm về sản phẩm và dịch vụ của NAGEN</p>
           </div>
 
