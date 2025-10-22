@@ -138,12 +138,12 @@ function CTAButton({
 }
 
 // Enhanced Navigation with Submenus
-function EnhancedNavigation({ 
-  onConsultationClick, 
-  onAppointmentClick 
-}: { 
+function EnhancedNavigation({
+  onConsultationClick,
+  onAppointmentClick
+}: {
   onConsultationClick: () => void
-  onAppointmentClick: () => void 
+  onAppointmentClick: () => void
 }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
@@ -180,7 +180,7 @@ function EnhancedNavigation({
     },
     {
       name: "Dịch vụ",
-      href: "#services",
+      href: "#",
       submenu: [
         { name: "Tư vấn sản phẩm", href: "#consultation", action: "consultation" },
         { name: "Đăng ký đo chân", href: "#appointment", action: "appointment" },
@@ -1535,7 +1535,7 @@ function HomePageContent() {
         }}
       />
 
-      <EnhancedNavigation 
+      <EnhancedNavigation
         onConsultationClick={() => setIsUnifiedRegistrationOpen(true)}
         onAppointmentClick={() => setIsAppointmentModalOpen(true)}
       />
