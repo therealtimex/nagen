@@ -18,7 +18,7 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
 
   useEffect(() => {
     setIsClient(true) // Đảm bảo component đã mount trên client
-    
+
     const checkIsMobile = () => {
       const isMobileDevice = window.innerWidth < 1024 // Thay đổi breakpoint từ 768 thành 1024
       setIsMobile(isMobileDevice)

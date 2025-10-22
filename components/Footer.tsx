@@ -119,6 +119,13 @@ export default function Footer() {
                 </p>
               </div>
 
+              {/* Company Address */}
+              <div className="mt-2">
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  <span className="font-bold text-gray-700">Trụ sở chính:</span> Tầng 7, Tòa VP-1, Sunsquare Complex, Số 21 Lê Đức Thọ, Mỹ Đình 2, Nam Từ Liêm, Hà Nội
+                </p>
+              </div>
+
               {/* Social Media */}
               <div className="mt-4">
                 <div className="flex space-x-3">
