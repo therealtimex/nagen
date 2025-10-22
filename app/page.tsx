@@ -177,6 +177,7 @@ function EnhancedNavigation() {
     { name: "Đăng ký", href: "/dang-ky" },
     { name: "Giới thiệu", href: "/gioi-thieu-nagen" },
     { name: "Sự kiện", href: "/su-kien" },
+    { name: "Nghiên cứu khoa học", href: "/studies" },
     { name: "FAQs", href: "/faqs" },
     { name: "Liên hệ", href: "/lien-he" },
   ]
@@ -1778,7 +1779,6 @@ function HomePageContent() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <Badge className="bg-blue-100 text-blue-800">Về chúng tôi</Badge>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-900 leading-tight">NAGEN và sứ mệnh phụng sự khách hàng</h2>
               <div className="space-y-3 sm:space-y-4">
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
@@ -1794,14 +1794,6 @@ function HomePageContent() {
                   NAGEN đang triển khai xây dựng chuỗi cửa hàng trên toàn quốc, cùng Đại lý mang đến cho quý khách dịch vụ đo chân, tư vấn miễn phí tận nhà, trải nghiệm sản phẩm trực tiếp trong môi trường chuyên nghiệp.
                 </p>
               </div>
-              <CTAButton
-                size="lg"
-                className="group transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => navigateTo("/gioi-thieu-nagen")}
-              >
-                Tìm hiểu thêm về NAGEN
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </CTAButton>
             </div>
             <div className="aspect-video bg-black/10 rounded-xl flex items-center justify-center relative overflow-hidden">
               <Image
