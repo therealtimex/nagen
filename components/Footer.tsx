@@ -232,10 +232,8 @@ export default function Footer() {
                   <li>
                     <button
                       onClick={() => {
-                        const contactSection = document.getElementById('contact')
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                        }
+                        // Trigger unified registration modal
+                        window.dispatchEvent(new CustomEvent('openUnifiedRegistration'))
                       }}
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block text-left w-full"
                     >
@@ -256,10 +254,8 @@ export default function Footer() {
                   <li>
                     <button
                       onClick={() => {
-                        const partnersSection = document.getElementById('partners')
-                        if (partnersSection) {
-                          partnersSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                        }
+                        // Trigger unified registration modal
+                        window.dispatchEvent(new CustomEvent('openUnifiedRegistration'))
                       }}
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block text-left w-full"
                     >

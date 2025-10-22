@@ -9,6 +9,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { getImagePath } from "@/lib/utils"
 import Footer from "@/components/Footer"
+import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
 
 interface CustomerFeedback {
     id: number
@@ -222,9 +223,8 @@ function MediaGallery({ feedback }: { feedback: CustomerFeedback }) {
                             <button
                                 key={index}
                                 onClick={() => setCurrentImageIndex(index)}
-                                className={`w-3 h-3 rounded-full transition-all ${
-                                    index === currentImageIndex ? 'bg-red-600 w-6' : 'bg-gray-300'
-                                }`}
+                                className={`w-3 h-3 rounded-full transition-all ${index === currentImageIndex ? 'bg-red-600 w-6' : 'bg-gray-300'
+                                    }`}
                             />
                         ))}
                     </div>
@@ -239,21 +239,19 @@ function MediaGallery({ feedback }: { feedback: CustomerFeedback }) {
                 <div className="flex bg-gray-100 rounded-lg p-1">
                     <button
                         onClick={() => setActiveTab('video')}
-                        className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
-                            activeTab === 'video'
-                                ? 'bg-white text-red-600 shadow-sm'
-                                : 'text-gray-600 hover:text-gray-800'
-                        }`}
+                        className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${activeTab === 'video'
+                            ? 'bg-white text-red-600 shadow-sm'
+                            : 'text-gray-600 hover:text-gray-800'
+                            }`}
                     >
                         🎥 Video
                     </button>
                     <button
                         onClick={() => setActiveTab('images')}
-                        className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
-                            activeTab === 'images'
-                                ? 'bg-white text-red-600 shadow-sm'
-                                : 'text-gray-600 hover:text-gray-800'
-                        }`}
+                        className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${activeTab === 'images'
+                            ? 'bg-white text-red-600 shadow-sm'
+                            : 'text-gray-600 hover:text-gray-800'
+                            }`}
                     >
                         📷 Ảnh ({feedback.additionalImages!.length})
                     </button>
@@ -278,9 +276,8 @@ function MediaGallery({ feedback }: { feedback: CustomerFeedback }) {
                                     <button
                                         key={index}
                                         onClick={() => setCurrentImageIndex(index)}
-                                        className={`w-3 h-3 rounded-full transition-all ${
-                                            index === currentImageIndex ? 'bg-red-600 w-6' : 'bg-gray-300'
-                                        }`}
+                                        className={`w-3 h-3 rounded-full transition-all ${index === currentImageIndex ? 'bg-red-600 w-6' : 'bg-gray-300'
+                                            }`}
                                     />
                                 ))}
                             </div>
@@ -389,190 +386,11 @@ function FeedbackCard({ feedback }: { feedback: CustomerFeedback }) {
     )
 }
 
-// Contact Form Modal Component
-function ContactFormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        address: "",
-        message: "",
-    })
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false)
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-
-        try {
-            const response = await fetch(
-                "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_datlich/input",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        ...formData,
-                        event: "tuvan",
-                        source_url: typeof window !== "undefined" ? window.location.href : "",
-                    }),
-                }
-            )
-
-            if (response.ok) {
-                setIsSubmitted(true)
-            }
-        } catch (error) {
-            console.error("Lỗi khi gửi form:", error)
-        } finally {
-            setIsSubmitting(false)
-        }
-    }
-
-    const resetAndClose = () => {
-        setFormData({ name: "", phone: "", email: "", address: "", message: "" })
-        setIsSubmitted(false)
-        setIsSubmitting(false)
-        onClose()
-    }
-
-    if (!isOpen) return null
-
-    return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4 backdrop-blur-sm">
-            <div className="bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto animate-in fade-in-0 zoom-in-95 duration-300">
-                {isSubmitted ? (
-                    <div className="p-8 text-center">
-                        <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                        <h3 className="text-2xl font-bold text-green-800 mb-4">Cảm ơn bạn!</h3>
-                        <p className="text-gray-600 mb-6">
-                            Chúng tôi đã nhận được thông tin của bạn và sẽ liên hệ lại trong vòng 24 giờ.
-                        </p>
-                        <Button onClick={resetAndClose} className="bg-blue-900 hover:bg-blue-800">
-                            Đóng
-                        </Button>
-                    </div>
-                ) : (
-                    <>
-                        <div className="bg-red-600 text-white p-6 rounded-t-xl">
-                            <div className="mb-4">
-                                <Image
-                                    src="/images/logo_slogan_1.png"
-                                    alt="NAGEN Logo"
-                                    width={120}
-                                    height={48}
-                                    className="object-contain brightness-0 invert"
-                                />
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <h3 className="text-xl font-bold">Đăng ký tư vấn miễn phí</h3>
-                                    <p className="text-red-100 mt-1">Để lại thông tin để chúng tôi liên hệ</p>
-                                </div>
-                                <Button variant="ghost" size="icon" onClick={resetAndClose} className="text-white hover:bg-red-700">
-                                    <X className="w-5 h-5" />
-                                </Button>
-                            </div>
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="p-6 space-y-4">
-                            <div>
-                                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                                    Họ và tên <span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    required
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                                    placeholder="Nhập họ và tên"
-                                    value={formData.name}
-                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                />
-                            </div>
-
-                            <div>
-                                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                                    Số điện thoại <span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="tel"
-                                    required
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                                    placeholder="Nhập số điện thoại"
-                                    value={formData.phone}
-                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                />
-                            </div>
-
-                            <div>
-                                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                                    placeholder="Nhập email (không bắt buộc)"
-                                    value={formData.email}
-                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                />
-                            </div>
-
-                            <div>
-                                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                                    Địa chỉ
-                                </label>
-                                <input
-                                    type="text"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                                    placeholder="Nhập địa chỉ (không bắt buộc)"
-                                    value={formData.address}
-                                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                                />
-                            </div>
-
-                            <div>
-                                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                                    Ghi chú
-                                </label>
-                                <textarea
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                                    placeholder="Nhập ghi chú (không bắt buộc)"
-                                    rows={3}
-                                    value={formData.message}
-                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                />
-                            </div>
-
-                            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                                <p className="text-sm text-blue-800 flex items-start">
-                                    <CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
-                                    <span>Chúng tôi sẽ liên hệ lại trong vòng 24h để tư vấn miễn phí.</span>
-                                </p>
-                            </div>
-
-                            <div className="pt-4">
-                                <Button 
-                                    type="submit" 
-                                    disabled={isSubmitting} 
-                                    className="w-full bg-red-600 hover:bg-red-700 text-white py-3 font-semibold"
-                                >
-                                    {isSubmitting ? "Đang gửi..." : "Gửi thông tin"}
-                                    {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
-                                </Button>
-                            </div>
-                        </form>
-                    </>
-                )}
-            </div>
-        </div>
-    )
-}
 
 export default function FeedbackPage() {
     const [filter, setFilter] = useState<string>("all")
-    const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+    const [isUnifiedRegistrationOpen, setIsUnifiedRegistrationOpen] = useState(false)
 
     const filteredFeedback = feedbackData.filter(feedback => {
         if (filter === "all") return true
@@ -584,7 +402,7 @@ export default function FeedbackPage() {
     useEffect(() => {
         // SEO Meta Tags
         document.title = "Phản hồi khách hàng về Tấm lót hỗ trợ vòm bàn chân NAGEN | Đánh giá thật từ người dùng"
-        
+
         // Meta Description
         const setMetaTag = (name: string, content: string, property = false) => {
             const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`
@@ -607,14 +425,14 @@ export default function FeedbackPage() {
         setMetaTag('keywords', 'phản hồi khách hàng NAGEN, đánh giá tấm lót chân, feedback NAGEN, khách hàng nói gì về NAGEN, review tấm lót vòm bàn chân, testimonial NAGEN')
         setMetaTag('author', 'NAGEN Vietnam')
         setMetaTag('robots', 'index, follow')
-        
+
         // Open Graph Tags
         setMetaTag('og:title', 'Phản hồi khách hàng về Tấm lót NAGEN - Đánh giá thật từ người dùng', true)
         setMetaTag('og:description', 'Hơn 4 triệu người tin dùng NAGEN trên toàn thế giới. Xem video và ảnh phản hồi thật từ khách hàng Việt Nam.', true)
         setMetaTag('og:type', 'website', true)
         setMetaTag('og:url', window.location.href, true)
         setMetaTag('og:site_name', 'NAGEN Vietnam', true)
-        
+
         // Twitter Card Tags
         setMetaTag('twitter:card', 'summary_large_image')
         setMetaTag('twitter:title', 'Phản hồi khách hàng về Tấm lót NAGEN')
@@ -665,7 +483,54 @@ export default function FeedbackPage() {
 
     return (
         <div className="min-h-screen bg-white">
-            <ContactFormModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+            {/* SEO Structured Data - LocalBusiness Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "LocalBusiness",
+                        "name": "NAGEN Vietnam",
+                        "description": "Chuyên cung cấp tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ, dịch vụ tư vấn và đo vòm bàn chân tại nhà miễn phí toàn quốc.",
+                        "url": "https://nagen.vn",
+                        "telephone": "+84966578008",
+                        "email": "nagen@nagen.vn",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Tầng 7, Tòa VP-1, Sunsquare Complex, Số 21 Lê Đức Thọ",
+                            "addressLocality": "Mỹ Đình 2, Nam Từ Liêm",
+                            "addressRegion": "Hà Nội",
+                            "addressCountry": "VN"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": "21.038134",
+                            "longitude": "105.780147"
+                        },
+                        "openingHours": "Mo-Su 00:00-23:59",
+                        "priceRange": "$$",
+                        "image": "https://nagen.vn/images/logo_slogan_1.png",
+                        "logo": "https://nagen.vn/images/logo_slogan_1.png",
+                        "sameAs": [
+                            "https://facebook.com/nagen.vietnam",
+                            "https://instagram.com/nagen.vietnam",
+                            "https://youtube.com/@nagen.vietnam",
+                            "https://tiktok.com/@nagen.vietnam"
+                        ],
+                        "contactPoint": [
+                            {
+                                "@type": "ContactPoint",
+                                "telephone": "+84966578008",
+                                "contactType": "customer service",
+                                "availableLanguage": "Vietnamese",
+                                "areaServed": "VN"
+                            }
+                        ]
+                    })
+                }}
+            />
+
+            <UnifiedRegistrationForm isOpen={isUnifiedRegistrationOpen} onClose={() => setIsUnifiedRegistrationOpen(false)} />
             <header className="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md bg-white/95">
                 <div className="container mx-auto px-4 py-2">
                     <div className="flex items-center justify-between">
@@ -756,28 +621,28 @@ export default function FeedbackPage() {
                     <div className="absolute bottom-20 left-1/4 w-12 h-12 border border-white/20 rounded-full"></div>
                     <div className="absolute bottom-32 right-1/3 w-24 h-24 border border-white/20 rounded-full"></div>
                 </div>
-                
+
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-white/10 rounded-full mb-4 md:mb-6 backdrop-blur-sm">
                             <Star className="w-6 h-6 md:w-8 md:h-8 text-yellow-400" />
                         </div>
-                        
+
                         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 leading-tight px-4">
                             Bạn cũng muốn chia sẻ trải nghiệm của mình?
                         </h2>
-                        
+
                         <p className="text-base md:text-lg lg:text-xl text-blue-100 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-4">
                             Hãy để lại đánh giá và giúp những người khác đưa ra quyết định đúng đắn
                         </p>
-                        
+
                         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center px-4">
                             <div className="w-full sm:w-auto">
                                 <div className="group relative">
                                     <div className="absolute -inset-1 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
-                                    <Button 
-                                        size="lg" 
-                                        onClick={() => setIsContactModalOpen(true)}
+                                    <Button
+                                        size="lg"
+                                        onClick={() => setIsUnifiedRegistrationOpen(true)}
                                         className="relative bg-red-600 hover:bg-red-700 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto"
                                     >
                                         <Mail className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
@@ -785,12 +650,12 @@ export default function FeedbackPage() {
                                     </Button>
                                 </div>
                             </div>
-                            
+
                             <Link href="/tat-ca-san-pham" className="w-full sm:w-auto">
                                 <div className="group relative">
                                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
-                                    <Button 
-                                        size="lg" 
+                                    <Button
+                                        size="lg"
                                         className="relative bg-white/10 hover:bg-white hover:text-blue-900 text-white border-2 border-white/30 hover:border-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm w-full sm:w-auto"
                                     >
                                         <CheckCircle className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
@@ -799,7 +664,7 @@ export default function FeedbackPage() {
                                 </div>
                             </Link>
                         </div>
-                        
+
 
                     </div>
                 </div>

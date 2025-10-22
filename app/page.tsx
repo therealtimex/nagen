@@ -40,6 +40,7 @@ import { getImagePath, navigateTo } from "@/lib/utils"
 import { type Product, productData } from "@/lib/products"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
 import Footer from "@/components/Footer"
+import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
 
 // Type definitions
 interface FormData {
@@ -173,10 +174,11 @@ function EnhancedNavigation() {
     },
     { name: "Dịch vụ", href: "#services" },
     { name: "Đối tác", href: "#partners" },
+    { name: "Đăng ký", href: "/dang-ky" },
     { name: "Giới thiệu", href: "/gioi-thieu-nagen" },
     { name: "Sự kiện", href: "/su-kien" },
-    { name: "Liên hệ", href: "#contact" },
     { name: "FAQs", href: "/faqs" },
+    { name: "Liên hệ", href: "/lien-he" },
   ]
 
   const handleMouseEnter = (itemName: string, hasSubmenu: boolean) => {
@@ -687,7 +689,7 @@ function EnhancedContactForm() {
             className="object-contain"
           />
         </div>
-        <CardTitle className="text-blue-900 text-lg sm:text-xl">Đăng ký tư vấn miễn phí</CardTitle>
+        <CardTitle className="text-blue-900 text-lg sm:text-xl">Tư vấn sản phẩm miễn phí</CardTitle>
         <p className="text-gray-600 mt-2 text-sm sm:text-base">Vui lòng điền thông tin để nhận tư vấn miễn phí từ chuyên gia NAGEN</p>
       </CardHeader>
 
@@ -1382,6 +1384,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
 function HomePageContent() {
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
+  const [isUnifiedRegistrationOpen, setIsUnifiedRegistrationOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
 
@@ -1401,15 +1404,112 @@ function HomePageContent() {
       setIsAppointmentModalOpen(true);
     };
 
+    const handleOpenUnifiedRegistration = () => {
+      setIsUnifiedRegistrationOpen(true);
+    };
+
     window.addEventListener('openAppointmentModal', handleOpenAppointmentModal);
+    window.addEventListener('openUnifiedRegistration', handleOpenUnifiedRegistration);
 
     return () => {
       window.removeEventListener('openAppointmentModal', handleOpenAppointmentModal);
+      window.removeEventListener('openUnifiedRegistration', handleOpenUnifiedRegistration);
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Structured Data - LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "NAGEN Vietnam",
+            "description": "Chuyên cung cấp tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ, dịch vụ tư vấn và đo vòm bàn chân tại nhà miễn phí toàn quốc.",
+            "url": "https://nagen.vn",
+            "telephone": "+84966578008",
+            "email": "nagen@nagen.vn",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Tầng 7, Tòa VP-1, Sunsquare Complex, Số 21 Lê Đức Thọ",
+              "addressLocality": "Mỹ Đình 2, Nam Từ Liêm",
+              "addressRegion": "Hà Nội",
+              "addressCountry": "VN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "21.038134",
+              "longitude": "105.780147"
+            },
+            "openingHours": "Mo-Su 00:00-23:59",
+            "priceRange": "$$",
+            "image": "https://nagen.vn/images/logo_slogan_1.png",
+            "logo": "https://nagen.vn/images/logo_slogan_1.png",
+            "sameAs": [
+              "https://facebook.com/nagen.vietnam",
+              "https://instagram.com/nagen.vietnam",
+              "https://youtube.com/@nagen.vietnam",
+              "https://tiktok.com/@nagen.vietnam"
+            ],
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "telephone": "+84966578008",
+                "contactType": "customer service",
+                "availableLanguage": "Vietnamese",
+                "areaServed": "VN"
+              },
+              {
+                "@type": "ContactPoint",
+                "email": "nagen@nagen.vn",
+                "contactType": "customer service",
+                "availableLanguage": "Vietnamese",
+                "areaServed": "VN"
+              }
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Product",
+                    "name": "Tấm lót hỗ trợ vòm bàn chân Endurance",
+                    "description": "Tấm lót hỗ trợ vòm bàn chân cao cấp cho hoạt động thể thao"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Product",
+                    "name": "Tấm lót hỗ trợ vòm bàn chân Silhouette",
+                    "description": "Tấm lót hỗ trợ vòm bàn chân mỏng nhẹ cho giày công sở"
+                  }
+                }
+              ]
+            },
+            "makesOffer": [
+              {
+                "@type": "Offer",
+                "name": "Dịch vụ tư vấn miễn phí",
+                "description": "Tư vấn miễn phí về sản phẩm tấm lót hỗ trợ vòm bàn chân phù hợp",
+                "price": "0",
+                "priceCurrency": "VND"
+              },
+              {
+                "@type": "Offer",
+                "name": "Dịch vụ đo vòm bàn chân tại nhà",
+                "description": "Dịch vụ đo vòm bàn chân chuyên nghiệp tại nhà khách hàng",
+                "areaServed": "VN"
+              }
+            ]
+          })
+        }}
+      />
+
       <EnhancedNavigation />
 
       {/* Enhanced Hero Section */}
@@ -1635,7 +1735,7 @@ function HomePageContent() {
 
           <div className="mt-8 text-center">
             <div className="flex justify-center">
-              <CTAButton size="lg" onClick={() => setIsPartnerModalOpen(true)} className="w-full max-w-md mb-4">
+              <CTAButton size="lg" onClick={() => setIsUnifiedRegistrationOpen(true)} className="w-full max-w-md mb-4">
                 <Send className="w-5 h-5" />
                 Đăng ký ngay
               </CTAButton>
@@ -1831,65 +1931,14 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section id="contact" className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">Liên hệ với chúng tôi</h2>
-              <p className="text-gray-600 text-lg mb-8">
-                Đội ngũ chuyên gia NAGEN luôn sẵn sàng tư vấn và hỗ trợ bạn tìm được giải pháp phù hợp nhất.
-              </p>
 
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-blue-900">Hotline 24/7</h4>
-                    <p className="text-gray-600">0966578008</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-blue-900">Email hỗ trợ</h4>
-                    <p className="text-gray-600">nagen@nagen.vn</p>
-                    <p className="text-sm text-gray-500">Phản hồi trong 2h</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-blue-900">Trụ sở chính</h4>
-                    <p className="text-gray-600">
-                      Tầng 7, Tòa VP-1, Sunsquare Complex
-                      <br />
-                      Số 21 Lê Đức Thọ, Mỹ Đình 2, Nam Từ Liêm, Hà Nội
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <EnhancedContactForm />
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <Footer />
 
       {/* Modals */}
       <AppointmentBookingForm isOpen={isAppointmentModalOpen} onClose={() => setIsAppointmentModalOpen(false)} />
-      <PartnerRegistrationForm isOpen={isPartnerModalOpen} onClose={() => setIsPartnerModalOpen(false)} />
+      <UnifiedRegistrationForm isOpen={isUnifiedRegistrationOpen} onClose={() => setIsUnifiedRegistrationOpen(false)} />
 
 
       <FloatingActionButtons onScheduleClick={handleScheduleClick} />
