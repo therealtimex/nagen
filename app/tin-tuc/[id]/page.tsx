@@ -126,7 +126,7 @@ const getArticleById = (id: string) => {
       tags: ["Trung tâm nghiên cứu", "Cân bằng cấu trúc", "Y tế cộng đồng", "Sức khỏe", "Nghiên cứu khoa học"]
     },
   ]
-  
+
   return articles.find(article => article.id === id)
 }
 
@@ -140,7 +140,7 @@ const getRelatedArticles = (currentId: string) => {
       category: "Nghiên cứu"
     },
     {
-      id: "3", 
+      id: "3",
       title: "NAGEN hợp tác với các trung tâm y tế toàn quốc",
       image: "/images/news/expansion.jpg",
       publishDate: "2024-03-05",
@@ -219,7 +219,7 @@ export default function NewsDetailPage({ params }: { params: { id: string } }) {
   }
 
   const article = getArticleById(params.id)
-  
+
   if (!article) {
     notFound()
   }
@@ -379,20 +379,20 @@ export default function NewsDetailPage({ params }: { params: { id: string } }) {
                 height={400}
                 className="w-full h-64 md:h-96 object-cover"
               />
-              
+
               <div className="p-8">
                 <Badge className="mb-4 bg-blue-100 text-blue-800">
                   {article.category}
                 </Badge>
-                
+
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
                   {article.title}
                 </h1>
-                
+
                 <p className="text-xl text-gray-600 mb-6 leading-relaxed">
                   {article.excerpt}
                 </p>
-                
+
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b">
                   <div className="flex items-center space-x-6 text-sm text-gray-500">
                     <span className="flex items-center">
@@ -400,7 +400,7 @@ export default function NewsDetailPage({ params }: { params: { id: string } }) {
                       {new Date(article.publishDate).toLocaleDateString('vi-VN')}
                     </span>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2">
                     <Button variant="outline" size="sm">
                       <Share2 className="w-4 h-4 mr-2" />
@@ -413,11 +413,11 @@ export default function NewsDetailPage({ params }: { params: { id: string } }) {
 
             {/* Article Content */}
             <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-              <div 
+              <div
                 className="prose prose-lg max-w-none"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
-              
+
               {/* Tags */}
               <div className="mt-8 pt-6 border-t">
                 <h3 className="text-lg font-semibold mb-3">Thẻ:</h3>
@@ -450,7 +450,7 @@ export default function NewsDetailPage({ params }: { params: { id: string } }) {
                           {relatedArticle.category}
                         </Badge>
                         <h3 className="font-semibold line-clamp-2 mb-2">
-                          <Link 
+                          <Link
                             href={`/tin-tuc/${relatedArticle.id}`}
                             className="hover:text-blue-600 transition-colors"
                           >

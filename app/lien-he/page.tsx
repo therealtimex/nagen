@@ -3,6 +3,7 @@
 import type React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
   Phone,
   Mail,
@@ -18,9 +19,11 @@ import {
   Youtube,
   Music,
   Globe,
+  Menu,
+  ChevronDown,
 } from "lucide-react"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { getImagePath } from "@/lib/utils"
 import Footer from "@/components/Footer"
@@ -63,10 +66,18 @@ function CTAButton({
   )
 }
 
-// Enhanced Navigation
-function EnhancedNavigation() {
+// Enhanced Navigation with Submenus
+function EnhancedNavigation({
+  onConsultationClick,
+  onAppointmentClick
+}: {
+  onConsultationClick: () => void
+  onAppointmentClick: () => void
+}) {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null)
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -76,22 +87,112 @@ function EnhancedNavigation() {
       window.addEventListener("scroll", handleScroll)
       return () => {
         window.removeEventListener("scroll", handleScroll)
+        if (hoverTimeoutRef.current) {
+          clearTimeout(hoverTimeoutRef.current)
+        }
       }
     }
   }, [])
 
+  const menuItems = [
+    {
+      name: "Sản phẩm",
+      href: "#products",
+      submenu: [
+        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/tat-ca-san-pham?category=sungen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/tat-ca-san-pham?category=winagen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/tat-ca-san-pham?category=softgen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/tat-ca-san-pham?category=endurance" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/tat-ca-san-pham?category=silhouette" },
+        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/tat-ca-san-pham?category=demlotcaosu" },
+      ],
+    },
+    {
+      name: "Dịch vụ",
+      href: "#",
+      submenu: [
+        { name: "Tư vấn sản phẩm", href: "#consultation", action: "consultation" },
+        { name: "Đăng ký đo chân", href: "#appointment", action: "appointment" },
+      ],
+    },
+    {
+      name: "Bệnh thường gặp",
+      href: "#",
+      submenu: [
+        { name: "Bàn chân bẹt", href: "/benh-thuong-gap/ban-chan-bet" },
+        { name: "Chân chữ X, O", href: "/benh-thuong-gap/chan-chu-x-o" },
+        { name: "Thoát vị đĩa đệm", href: "/benh-thuong-gap/thoat-vi-dia-dem" },
+        { name: "Cong vẹo cột sống", href: "/benh-thuong-gap/cong-veo-cot-song" },
+        { name: "Suy giãn tĩnh mạch", href: "/benh-thuong-gap/suy-gian-tinh-mach" },
+        { name: "Đau cơ xương khớp", href: "/benh-thuong-gap/dau-co-xuong-khop" },
+        { name: "Mất cân bằng cấu trúc", href: "/benh-thuong-gap/mat-can-bang-cau-truc" },
+      ],
+    },
+    { name: "Đại lý", href: "/dai-ly" },
+    // { name: "Đăng ký", href: "/dang-ky" },
+    { name: "Giới thiệu", href: "/gioi-thieu-nagen" },
+    { name: "Blog kiến thức", href: "/blog-kien-thuc" },
+    { name: "Tin tức", href: "/tin-tuc" },
+    { name: "Nghiên cứu khoa học", href: "/studies" },
+    { name: "FAQs", href: "/faqs" },
+    { name: "Liên hệ", href: "/lien-he" },
+  ]
+
+  const handleMouseEnter = (itemName: string, hasSubmenu: boolean) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+    }
+    if (hasSubmenu) {
+      setActiveSubmenu(itemName)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveSubmenu(null)
+    }, 150) // 150ms delay before hiding
+  }
+
+  const handleNavigation = (href: string, action?: string) => {
+    // Handle service actions
+    if (action === "consultation") {
+      onConsultationClick()
+      return
+    }
+    if (action === "appointment") {
+      onAppointmentClick()
+      return
+    }
+
+    // Check if it's an external link (starts with / or http)
+    if (href.startsWith("/") || href.startsWith("http")) {
+      window.location.href = href
+      return
+    }
+
+    // Handle anchor links
+    const targetId = href.substring(1) // Remove the '#'
+    const targetElement = document.getElementById(targetId)
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+    }
+  }
+
   return (
     <>
       {/* Contact Info Bar */}
-      <div className="bg-[#21395D] text-white py-2 text-xs sm:text-sm">
+      <div className="bg-[#21395D] text-white py-2 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center space-x-3 sm:space-x-6">
+          <div className="flex items-center space-x-6">
             <span className="flex items-center">
-              <Phone className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-              <span className="hidden sm:inline">0966578008</span>
-              <span className="sm:hidden">0966578008</span>
+              <Phone className="w-4 h-4 mr-2" />
+              0966578008
             </span>
-            <span className="hidden sm:flex items-center">
+            <span className="flex items-center">
               <Mail className="w-4 h-4 mr-2" />
               nagen@nagen.vn
             </span>
@@ -117,9 +218,8 @@ function EnhancedNavigation() {
                 <Image
                   src={getImagePath("/images/logo_slogan_1.png")}
                   alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
-                  width={160}
-                  height={32}
-                  className="sm:w-[200px] sm:h-[40px]"
+                  width={200}
+                  height={40}
                   priority
                   title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
                 />
@@ -128,77 +228,137 @@ function EnhancedNavigation() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-4">
-              <Link href="/" className="text-gray-700 hover:text-blue-900 transition-colors font-medium py-4 px-2">
-                Trang chủ
-              </Link>
-              <Link href="/tat-ca-san-pham" className="text-gray-700 hover:text-blue-900 transition-colors font-medium py-4 px-2">
-                Sản phẩm
-              </Link>
-              <Link href="/gioi-thieu-nagen" className="text-gray-700 hover:text-blue-900 transition-colors font-medium py-4 px-2">
-                Giới thiệu
-              </Link>
-              <Link href="/faqs" className="text-gray-700 hover:text-blue-900 transition-colors font-medium py-4 px-2">
-                FAQs
-              </Link>
-              <Link href="/lien-he" className="text-blue-900 font-semibold py-4 px-2 border-b-2 border-blue-900">
-                Liên hệ
-              </Link>
+              {menuItems.map((item) => (
+                <div
+                  key={item.name}
+                  className="relative group"
+                  onMouseEnter={() => handleMouseEnter(item.name, !!item.submenu)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <a
+                    href={item.href}
+                    className={`text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center py-4 px-2 ${
+                      item.name === "Liên hệ" ? "text-blue-900 font-semibold border-b-2 border-blue-900" : ""
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleNavigation(item.href)
+                    }}
+                  >
+                    {item.name}
+                    {item.submenu && <ChevronDown className="w-4 h-4 ml-1" />}
+                  </a>
+
+                  {/* Submenu with bridge area */}
+                  {item.submenu && activeSubmenu === item.name && (
+                    <>
+                      {/* Invisible bridge to prevent gap issues */}
+                      <div className="absolute top-full left-0 w-full h-2 bg-transparent z-40"></div>
+                      <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border py-2 z-50">
+                        {item.submenu.map((subItem) => (
+                          <a
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors text-sm"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              handleNavigation(subItem.href, (subItem as any).action)
+                            }}
+                          >
+                            {subItem.name}
+                          </a>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
             </nav>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 text-gray-700 hover:text-blue-900 transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+            {/* Mobile Navigation */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon" className="lg:hidden bg-transparent border-gray-300 hover:bg-gray-100">
+                  <Menu className="h-6 w-6 text-gray-700" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="w-[280px] sm:w-[350px] p-0 z-[9999]" side="right">
+                <div className="flex flex-col h-full bg-white">
+                  {/* Header */}
+                  <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-blue-900 to-red-600">
+                    <div className="text-lg font-semibold text-white">Menu</div>
+                  </div>
 
-          {/* Mobile Navigation */}
-          {isMobileMenuOpen && (
-            <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
-              <nav className="flex flex-col space-y-2 pt-4">
-                <Link 
-                  href="/" 
-                  className="text-gray-700 hover:text-blue-900 transition-colors font-medium py-2 px-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Trang chủ
-                </Link>
-                <Link 
-                  href="/tat-ca-san-pham" 
-                  className="text-gray-700 hover:text-blue-900 transition-colors font-medium py-2 px-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Sản phẩm
-                </Link>
-                <Link 
-                  href="/gioi-thieu-nagen" 
-                  className="text-gray-700 hover:text-blue-900 transition-colors font-medium py-2 px-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Giới thiệu
-                </Link>
-                <Link 
-                  href="/faqs" 
-                  className="text-gray-700 hover:text-blue-900 transition-colors font-medium py-2 px-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  FAQs
-                </Link>
-                <Link 
-                  href="/lien-he" 
-                  className="text-blue-900 font-semibold py-2 px-2 bg-blue-50 rounded"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Liên hệ
-                </Link>
-              </nav>
-            </div>
-          )}
+                  {/* Navigation */}
+                  <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+                    {menuItems.map((item) => (
+                      <div key={item.name} className="mb-1">
+                        {item.submenu ? (
+                          <div>
+                            <button
+                              type="button"
+                              className="w-full text-left py-4 px-4 text-gray-800 hover:text-blue-900 hover:bg-blue-50 active:bg-blue-100 transition-all duration-200 font-medium flex items-center justify-between rounded-lg border border-transparent hover:border-blue-200 min-h-[48px] touch-manipulation"
+                              onClick={() => {
+                                setMobileActiveSubmenu(
+                                  mobileActiveSubmenu === item.name ? null : item.name
+                                )
+                              }}
+                            >
+                              <span className="text-base font-semibold">{item.name}</span>
+                              <ChevronDown
+                                className={`w-5 h-5 transition-transform duration-200 flex-shrink-0 ${mobileActiveSubmenu === item.name ? 'rotate-180 text-blue-600' : 'text-gray-500'
+                                  }`}
+                              />
+                            </button>
+
+                            {/* Submenu với animation */}
+                            {mobileActiveSubmenu === item.name && (
+                              <div className="mt-2 ml-4 space-y-1 border-l-2 border-blue-200 pl-4 animate-in slide-in-from-top-2 duration-300">
+                                {item.submenu.map((subItem) => (
+                                  <a
+                                    key={subItem.name}
+                                    href={subItem.href}
+                                    className="block text-sm text-gray-600 hover:text-blue-900 py-3 px-3 rounded-lg hover:bg-blue-50 active:bg-blue-100 transition-colors leading-relaxed min-h-[44px] flex items-center touch-manipulation"
+                                    onClick={(e) => {
+                                      e.preventDefault()
+                                      handleNavigation(subItem.href, (subItem as any).action)
+                                    }}
+                                  >
+                                    {subItem.name}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <a
+                            href={item.href}
+                            className={`block w-full py-4 px-4 text-gray-800 hover:text-blue-900 hover:bg-blue-50 active:bg-blue-100 transition-all duration-200 font-medium rounded-lg border border-transparent hover:border-blue-200 min-h-[48px] flex items-center touch-manipulation ${
+                              item.name === "Liên hệ" ? "text-blue-900 font-semibold bg-blue-50 rounded" : ""
+                            }`}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              handleNavigation(item.href)
+                            }}
+                          >
+                            <span className="text-base font-semibold">{item.name}</span>
+                          </a>
+                        )}
+                      </div>
+                    ))}
+                  </nav>
+
+                  {/* Footer */}
+                  <div className="p-4 border-t bg-gray-50">
+                    <div className="text-center text-sm text-gray-500">
+                      <p>NAGEN - Tấm lót hỗ trợ vòm bàn chân</p>
+                      <p className="text-xs mt-1">Hotline: 0966578008</p>
+                    </div>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
         <div className="w-full h-[8px]">
           <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
@@ -321,7 +481,10 @@ export default function ContactPage() {
         }}
       />
 
-      <EnhancedNavigation />
+      <EnhancedNavigation
+        onConsultationClick={() => setIsConsultationModalOpen(true)}
+        onAppointmentClick={() => setIsConsultationModalOpen(true)}
+      />
 
 
 
