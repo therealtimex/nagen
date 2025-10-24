@@ -103,7 +103,7 @@ export const productData: Product[] = [
     tags: ["fashion", "women"],
   },
   {
-    id: "demlotgiay",
+    id: "demlotcaosu",
     name: "Đệm lót giày cao su xốp tự nhiên",
     description:
       "Đi bộ có thể tạo áp lực gấp đôi trọng lượng cơ thể lên bàn chân, đầu gối và khớp hông.\n\n" +

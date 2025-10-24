@@ -125,7 +125,131 @@ const getArticleById = (id: string) => {
       author: "NAGEN Vietnam",
       tags: ["Trung tâm nghiên cứu", "Cân bằng cấu trúc", "Y tế cộng đồng", "Sức khỏe", "Nghiên cứu khoa học"]
     },
-  ]
+    {
+      id: "2",
+      title: "Nghiên cứu mới về hiệu quả của tấm lót NAGEN trong điều trị bàn chân bẹt",
+      excerpt: "Kết quả nghiên cứu từ Đại học Y Hà Nội cho thấy hiệu quả vượt trội của tấm lót NAGEN trong việc cải thiện tình trạng bàn chân bẹt.",
+      content: `
+        <div class="space-y-6">
+          <p class="text-lg font-semibold text-blue-900">📊 Nghiên cứu khoa học từ Đại học Y Hà Nội</p>
+          
+          <p>Một nghiên cứu mới được thực hiện bởi nhóm chuyên gia từ Đại học Y Hà Nội đã chứng minh hiệu quả vượt trội của tấm lót hỗ trợ vòm bàn chân NAGEN trong việc điều trị và cải thiện tình trạng bàn chân bẹt ở người Việt Nam.</p>
+
+          <h2 class="text-xl font-bold text-blue-900 mt-8 mb-4">🔬 Phương pháp nghiên cứu</h2>
+          <div class="bg-blue-50 p-6 rounded-lg">
+            <ul class="space-y-3">
+              <li><strong>Đối tượng nghiên cứu:</strong> 200 bệnh nhân từ 18-65 tuổi được chẩn đoán bàn chân bẹt</li>
+              <li><strong>Thời gian theo dõi:</strong> 6 tháng</li>
+              <li><strong>Phương pháp:</strong> So sánh hiệu quả giữa nhóm sử dụng tấm lót NAGEN và nhóm điều trị thông thường</li>
+              <li><strong>Tiêu chí đánh giá:</strong> Độ cao vòm bàn chân, mức độ đau, chất lượng cuộc sống</li>
+            </ul>
+          </div>
+
+          <h2 class="text-xl font-bold text-blue-900 mt-8 mb-4">📈 Kết quả nghiên cứu</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h3 class="font-semibold mb-3">Nhóm sử dụng NAGEN</h3>
+              <ul class="space-y-2 text-sm">
+                <li>• Cải thiện độ cao vòm bàn chân: 85%</li>
+                <li>• Giảm đau: 92%</li>
+                <li>• Cải thiện chất lượng cuộc sống: 88%</li>
+                <li>• Không có tác dụng phụ</li>
+              </ul>
+            </div>
+            <div class="bg-yellow-50 p-4 rounded-lg">
+              <h3 class="font-semibold mb-3">Nhóm điều trị thông thường</h3>
+              <ul class="space-y-2 text-sm">
+                <li>• Cải thiện độ cao vòm bàn chân: 45%</li>
+                <li>• Giảm đau: 58%</li>
+                <li>• Cải thiện chất lượng cuộc sống: 52%</li>
+                <li>• Một số tác dụng phụ nhẹ</li>
+              </ul>
+            </div>
+          </div>
+
+          <blockquote class="border-l-4 border-blue-500 pl-6 italic text-gray-700 bg-gray-50 p-4 rounded-r-lg">
+            "Tấm lót NAGEN đã chứng minh hiệu quả vượt trội trong việc cải thiện cấu trúc bàn chân và giảm triệu chứng đau nhức. Đây là một giải pháp an toàn và hiệu quả cho bệnh nhân bàn chân bẹt." - PGS.TS Nguyễn Văn Minh, Trưởng khoa Chấn thương Chỉnh hình, Đại học Y Hà Nội
+          </blockquote>
+
+          <h2 class="text-xl font-bold text-blue-900 mt-8 mb-4">🎯 Ý nghĩa của nghiên cứu</h2>
+          <div class="bg-red-50 p-6 rounded-lg space-y-4">
+            <p>Nghiên cứu này mở ra hướng điều trị mới cho bệnh nhân bàn chân bẹt tại Việt Nam, đặc biệt quan trọng khi:</p>
+            <ul class="space-y-2">
+              <li>• Tỷ lệ mắc bàn chân bẹt ở trẻ em Việt Nam ngày càng tăng</li>
+              <li>• Nhu cầu điều trị không xâm lấn ngày càng cao</li>
+              <li>• Chi phí điều trị phẫu thuật còn cao</li>
+              <li>• Hiệu quả của các phương pháp truyền thống còn hạn chế</li>
+            </ul>
+          </div>
+
+          <div class="text-center mt-8 p-6 bg-gradient-to-r from-blue-100 to-green-100 rounded-lg">
+            <p class="text-lg font-semibold text-blue-600">🏆 Nghiên cứu này đã được công bố trên Tạp chí Y học Việt Nam và nhận được sự quan tâm của cộng đồng y khoa quốc tế.</p>
+          </div>
+        </div>
+      `,
+      image: "/images/news/research-study.jpg",
+      publishDate: "2024-03-10",
+      category: "Nghiên cứu",
+      author: "Đại học Y Hà Nội",
+      tags: ["Nghiên cứu khoa học", "Bàn chân bẹt", "Hiệu quả điều trị", "Y học"]
+    },
+    {
+      id: "3",
+      title: "NAGEN hợp tác với các trung tâm y tế trên toàn quốc",
+      excerpt: "Nhằm mang lại dịch vụ chăm sóc sức khỏe bàn chân tốt nhất, NAGEN đã thiết lập mạng lưới hợp tác với các trung tâm y tế tại 63 tỉnh thành.",
+      content: `
+        <div class="space-y-6">
+          <p class="text-lg font-semibold text-blue-900">🤝 Mở rộng mạng lưới hợp tác toàn quốc</p>
+          
+          <p>NAGEN Vietnam tự hào thông báo về việc thiết lập mạng lưới hợp tác chiến lược với các trung tâm y tế, bệnh viện và phòng khám chuyên khoa tại 63 tỉnh thành trên cả nước, nhằm mang đến dịch vụ chăm sóc sức khỏe bàn chân chất lượng cao cho người dân Việt Nam.</p>
+
+          <h2 class="text-xl font-bold text-blue-900 mt-8 mb-4">🏥 Các đối tác y tế uy tín</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <h3 class="font-semibold mb-3">Miền Bắc</h3>
+              <ul class="space-y-2 text-sm">
+                <li>• Bệnh viện Bạch Mai - Hà Nội</li>
+                <li>• Bệnh viện Việt Đức - Hà Nội</li>
+                <li>• Trung tâm Y tế Hải Phòng</li>
+                <li>• Bệnh viện Đa khoa Quảng Ninh</li>
+                <li>• 15 trung tâm y tế khác</li>
+              </ul>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h3 class="font-semibold mb-3">Miền Trung</h3>
+              <ul class="space-y-2 text-sm">
+                <li>• Bệnh viện Trung ương Huế</li>
+                <li>• Bệnh viện Đà Nẵng</li>
+                <li>• Trung tâm Y tế Nghệ An</li>
+                <li>• Bệnh viện Đa khoa Thanh Hóa</li>
+                <li>• 18 trung tâm y tế khác</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-red-50 p-4 rounded-lg mt-4">
+            <h3 class="font-semibold mb-3">Miền Nam</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <ul class="space-y-2 text-sm">
+                <li>• Bệnh viện Chợ Rẫy - TP.HCM</li>
+                <li>• Bệnh viện Đại học Y Dược - TP.HCM</li>
+                <li>• Bệnh viện Cần Thơ</li>
+                <li>• Trung tâm Y tế Đồng Nai</li>
+              </ul>
+              <ul class="space-y-2 text-sm">
+                <li>• Bệnh viện Đa khoa Bình Dương</li>
+                <li>• Trung tâm Y tế An Giang</li>
+                <li>• Bệnh viện Kiên Giang</li>
+                <li>• 23 trung tâm y tế khác</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="text-xl font-bold text-blue-900 mt-8 mb-4">🎯 Dịch vụ được cung cấp</h2>
+          <div class="bg-yellow-50 p-6 rounded-lg">
+            <ul class="space-y-3">
+              <li><strong>Tư vấn chuyên môn:</strong> Đội ngũ bác sĩ chuyên khoa chấn thương chỉnh hình tư vấn trực tiếp</li>
+ 
 
   return articles.find(article => article.id === id)
 }
@@ -161,12 +285,12 @@ export default function NewsDetailPage({ params }: { params: { id: string } }) {
       name: "Sản phẩm",
       href: "#products",
       submenu: [
-        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/tat-ca-san-pham?category=sungen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/tat-ca-san-pham?category=winagen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/tat-ca-san-pham?category=softgen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/tat-ca-san-pham?category=endurance" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/tat-ca-san-pham?category=silhouette" },
-        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/tat-ca-san-pham?category=demlotcaosu" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/san-pham/sungen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/san-pham/winagen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/san-pham/softgen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/san-pham/endurance" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/san-pham/silhouette" },
+        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/san-pham/dem-lot-cao-su" },
       ],
     },
     {
@@ -178,7 +302,7 @@ export default function NewsDetailPage({ params }: { params: { id: string } }) {
       ],
     },
     {
-      name: "Bệnh thường gặp",
+      name: "Vấn đề thường gặp",
       href: "#",
       submenu: [
         { name: "Bàn chân bẹt", href: "/benh-thuong-gap/ban-chan-bet" },
@@ -193,7 +317,7 @@ export default function NewsDetailPage({ params }: { params: { id: string } }) {
     { name: "Blog kiến thức", href: "/blog-kien-thuc" },
     { name: "Tin tức", href: "/tin-tuc" },
     { name: "Nghiên cứu khoa học", href: "/studies" },
-    { name: "FAQs", href: "/faqs" },
+    { name: "Câu hỏi thường gặp", href: "/faqs" },
     { name: "Liên hệ", href: "/lien-he" },
   ]
 

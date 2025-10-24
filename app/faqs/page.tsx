@@ -68,12 +68,12 @@ function EnhancedNavigation() {
       name: "Sản phẩm",
       href: "#products",
       submenu: [
-        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/tat-ca-san-pham?category=sungen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/tat-ca-san-pham?category=winagen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/tat-ca-san-pham?category=softgen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/tat-ca-san-pham?category=endurance" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/tat-ca-san-pham?category=silhouette" },
-        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/tat-ca-san-pham?category=demlotcaosu" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/san-pham/sungen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/san-pham/winagen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/san-pham/softgen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/san-pham/endurance" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/san-pham/silhouette" },
+        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/san-pham/dem-lot-cao-su" },
       ],
     },
     { name: "Dịch vụ", href: "/#services" },
@@ -81,7 +81,7 @@ function EnhancedNavigation() {
     { name: "Giới thiệu", href: "/gioi-thieu-nagen" },
     { name: "Sự kiện", href: "/su-kien" },
     { name: "Liên hệ", href: "/#contact" },
-    { name: "FAQs", href: "/faqs" },
+    { name: "Câu hỏi thường gặp", href: "/faqs" },
   ];
 
   const handleNavigation = (href: string) => {

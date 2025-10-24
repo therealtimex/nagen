@@ -172,7 +172,7 @@ export default function Footer() {
                 <ul className="space-y-3">
                   <li>
                     <Link
-                      href="/tat-ca-san-pham?category=sungen"
+                      href="/san-pham/sungen"
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block"
                     >
                       Tấm lót hỗ trợ vòm bàn chân Sungen
@@ -180,7 +180,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/tat-ca-san-pham?category=winagen"
+                      href="/san-pham/winagen"
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block"
                     >
                       Tấm lót hỗ trợ vòm bàn chân Winagen
@@ -188,7 +188,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/tat-ca-san-pham?category=softgen"
+                      href="/san-pham/softgen"
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block"
                     >
                       Tấm lót hỗ trợ vòm bàn chân Softgen
@@ -196,7 +196,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/tat-ca-san-pham?category=endurance"
+                      href="/san-pham/endurance"
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block"
                     >
                       Tấm lót hỗ trợ vòm bàn chân Endurance
@@ -204,7 +204,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/tat-ca-san-pham?category=silhouette"
+                      href="/san-pham/silhouette"
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block"
                     >
                       Tấm lót hỗ trợ vòm bàn chân Silhouette
@@ -212,7 +212,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/tat-ca-san-pham?category=demlotcaosu"
+                      href="/san-pham/dem-lot-cao-su"
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block"
                     >
                       Đệm lót giày cao su xốp thiên nhiên

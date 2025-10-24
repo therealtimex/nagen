@@ -99,12 +99,12 @@ function EnhancedNavigation({
       name: "Sản phẩm",
       href: "#products",
       submenu: [
-        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/tat-ca-san-pham?category=sungen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/tat-ca-san-pham?category=winagen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/tat-ca-san-pham?category=softgen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/tat-ca-san-pham?category=endurance" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/tat-ca-san-pham?category=silhouette" },
-        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/tat-ca-san-pham?category=demlotcaosu" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/san-pham/sungen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/san-pham/winagen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/san-pham/softgen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/san-pham/endurance" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/san-pham/silhouette" },
+        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/san-pham/dem-lot-cao-su" },
       ],
     },
     {
@@ -116,7 +116,7 @@ function EnhancedNavigation({
       ],
     },
     {
-      name: "Bệnh thường gặp",
+      name: "Vấn đề thường gặp",
       href: "#",
       submenu: [
         { name: "Bàn chân bẹt", href: "/benh-thuong-gap/ban-chan-bet" },
@@ -134,7 +134,7 @@ function EnhancedNavigation({
     { name: "Blog kiến thức", href: "/blog-kien-thuc" },
     { name: "Tin tức", href: "/tin-tuc" },
     { name: "Nghiên cứu khoa học", href: "/studies" },
-    { name: "FAQs", href: "/faqs" },
+    { name: "Câu hỏi thường gặp", href: "/faqs" },
     { name: "Liên hệ", href: "/lien-he" },
   ]
 
@@ -237,9 +237,8 @@ function EnhancedNavigation({
                 >
                   <a
                     href={item.href}
-                    className={`text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center py-4 px-2 ${
-                      item.name === "Liên hệ" ? "text-blue-900 font-semibold border-b-2 border-blue-900" : ""
-                    }`}
+                    className={`text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center py-4 px-2 ${item.name === "Liên hệ" ? "text-blue-900 font-semibold border-b-2 border-blue-900" : ""
+                      }`}
                     onClick={(e) => {
                       e.preventDefault()
                       handleNavigation(item.href)
@@ -333,9 +332,8 @@ function EnhancedNavigation({
                         ) : (
                           <a
                             href={item.href}
-                            className={`block w-full py-4 px-4 text-gray-800 hover:text-blue-900 hover:bg-blue-50 active:bg-blue-100 transition-all duration-200 font-medium rounded-lg border border-transparent hover:border-blue-200 min-h-[48px] flex items-center touch-manipulation ${
-                              item.name === "Liên hệ" ? "text-blue-900 font-semibold bg-blue-50 rounded" : ""
-                            }`}
+                            className={`block w-full py-4 px-4 text-gray-800 hover:text-blue-900 hover:bg-blue-50 active:bg-blue-100 transition-all duration-200 font-medium rounded-lg border border-transparent hover:border-blue-200 min-h-[48px] flex items-center touch-manipulation ${item.name === "Liên hệ" ? "text-blue-900 font-semibold bg-blue-50 rounded" : ""
+                              }`}
                             onClick={(e) => {
                               e.preventDefault()
                               handleNavigation(item.href)
@@ -546,7 +544,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="font-bold text-blue-900 text-base sm:text-lg mb-2">Trụ sở chính</h3>
                 <p className="text-sm text-gray-800 mb-2">Hà Nội</p>
-                <a 
+                <a
                   href="https://maps.google.com/?q=21+Lê+Đức+Thọ,+Mỹ+Đình+2,+Nam+Từ+Liêm,+Hà+Nội"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -570,7 +568,7 @@ export default function ContactPage() {
                 </h2>
                 <p className="text-gray-600 text-sm">Chọn kênh phù hợp để được hỗ trợ ngay lập tức</p>
               </div>
-              
+
               <div className="space-y-3 mb-4 sm:mb-6">
                 <a
                   href="https://zalo.me/0966578008"
@@ -658,7 +656,7 @@ export default function ContactPage() {
               </div>
               <div className="p-3 sm:p-4 bg-gray-50">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                  <a 
+                  <a
                     href="https://maps.google.com/?q=21+Lê+Đức+Thọ,+Mỹ+Đình+2,+Nam+Từ+Liêm,+Hà+Nội"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -668,7 +666,7 @@ export default function ContactPage() {
                     <span className="hidden sm:inline">Mở Google Maps</span>
                     <span className="sm:hidden">Google Maps</span>
                   </a>
-                  <a 
+                  <a
                     href="tel:0966578008"
                     className="inline-flex items-center justify-center px-3 sm:px-4 py-2 sm:py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-xs sm:text-sm font-medium"
                   >
@@ -766,7 +764,7 @@ export default function ContactPage() {
                 <div className="text-center">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-gray-800 transition-colors">
                     <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-.88-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43V7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.43z"/>
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-.88-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43V7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.43z" />
                     </svg>
                   </div>
                   <h4 className="font-bold text-gray-900 text-sm sm:text-lg mb-1 sm:mb-2">TikTok</h4>
@@ -871,9 +869,9 @@ export default function ContactPage() {
       <Footer />
 
       {/* Consultation Modal */}
-      <UnifiedRegistrationForm 
-        isOpen={isConsultationModalOpen} 
-        onClose={() => setIsConsultationModalOpen(false)} 
+      <UnifiedRegistrationForm
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
       />
     </div>
   )
