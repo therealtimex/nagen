@@ -249,8 +249,12 @@ const getArticleById = (id: string) => {
           <div class="bg-yellow-50 p-6 rounded-lg">
             <ul class="space-y-3">
               <li><strong>Tư vấn chuyên môn:</strong> Đội ngũ bác sĩ chuyên khoa chấn thương chỉnh hình tư vấn trực tiếp</li>
- 
-
+            </ul>
+          </div>
+        </div>
+      `,
+    }
+  ];
   return articles.find(article => article.id === id)
 }
 
