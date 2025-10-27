@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Footer from "@/components/Footer"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
+import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
 import { getImagePath, navigateTo } from "@/lib/utils"
 
 // Enhanced Navigation Component
@@ -57,13 +58,13 @@ function EnhancedNavigation() {
       name: "Vấn đề thường gặp",
       href: "#",
       submenu: [
-        { name: "Bàn chân bẹt", href: "/benh-thuong-gap/ban-chan-bet" },
-        { name: "Chân chữ X, O", href: "/benh-thuong-gap/chan-chu-x-o" },
-        { name: "Thoát vị đĩa đệm", href: "/benh-thuong-gap/thoat-vi-dia-dem" },
-        { name: "Cong vẹo cột sống", href: "/benh-thuong-gap/cong-veo-cot-song" },
-        { name: "Suy giãn tĩnh mạch", href: "/benh-thuong-gap/suy-gian-tinh-mach" },
-        { name: "Đau cơ xương khớp", href: "/benh-thuong-gap/dau-co-xuong-khop" },
-        { name: "Mất cân bằng cấu trúc", href: "/benh-thuong-gap/mat-can-bang-cau-truc" },
+        { name: "Bàn chân bẹt", href: "/van-de-thuong-gap/ban-chan-bet" },
+        { name: "Chân chữ X, O", href: "/van-de-thuong-gap/chan-chu-x-o" },
+        { name: "Thoát vị đĩa đệm", href: "/van-de-thuong-gap/thoat-vi-dia-dem" },
+        { name: "Cong vẹo cột sống", href: "/van-de-thuong-gap/cong-veo-cot-song" },
+        { name: "Suy giãn tĩnh mạch", href: "/van-de-thuong-gap/suy-gian-tinh-mach" },
+        { name: "Đau cơ xương khớp", href: "/van-de-thuong-gap/dau-co-xuong-khop" },
+        { name: "Mất cân bằng cấu trúc", href: "/van-de-thuong-gap/mat-can-bang-cau-truc" },
       ],
     },
     { name: "Đối tác", href: "/#partners" },
@@ -284,7 +285,17 @@ function EnhancedNavigation() {
   )
 }
 
-export default function DauCoXuongKhopPage() {
+export default function BanChanBetPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleScheduleClick = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
@@ -293,8 +304,8 @@ export default function DauCoXuongKhopPage() {
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Breadcrumb */}
         <div className="mb-6">
-          <Link
-            href="/"
+          <Link 
+            href="/" 
             className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -304,128 +315,140 @@ export default function DauCoXuongKhopPage() {
 
         {/* Article Content */}
         <article className="prose prose-lg max-w-none">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Đau cơ xương khớp</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">Bàn chân bẹt</h1>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Tổng quan về đau cơ xương khớp</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Giới thiệu về bàn chân bẹt</h2>
           <p className="text-gray-700 leading-relaxed mb-6">
-            Đau cơ xương khớp là tình trạng đau nhức ở hệ thống cơ - xương - khớp, bao gồm cơ, xương,
-            khớp, dây chằng và gân. Đây là một trong những vấn đề sức khỏe phổ biến nhất, ảnh hưởng đến
-            chất lượng cuộc sống và khả năng vận động của hàng triệu người trên thế giới.
+            Bàn chân bẹt là tình trạng vòm bàn chân bị sụp xuống, khiến lòng bàn chân gần như chạm hoàn toàn mặt đất khi đứng. 
+            Điều này làm giảm khả năng đàn hồi, hấp thụ lực của bàn chân, ảnh hưởng trực tiếp đến dáng đi, sự cân bằng và 
+            toàn bộ hệ thống cơ – xương – khớp.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Nhiều tài liệu y khoa trên thế giới chỉ ra rằng bàn chân bẹt là một trong những nguyên nhân phổ biến dẫn đến 
+            đau gối, đau lưng, viêm cân gan chân và lệch trục cơ thể.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Các vùng thường bị đau</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Dấu hiệu nhận biết bàn chân bẹt</h2>
 
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Đau lưng</h3>
-          <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
-            <li>Đau lưng dưới (phổ biến nhất)</li>
-            <li>Đau lưng giữa</li>
-            <li>Đau lưng trên và vai gáy</li>
-          </ul>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Đau khớp</h3>
-          <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
-            <li>Đau khớp gối</li>
-            <li>Đau khớp hông</li>
-            <li>Đau khớp cổ tay</li>
-            <li>Đau khớp mắt cá chân</li>
-          </ul>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Đau cơ</h3>
-          <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Đau cơ cổ vai gáy</li>
-            <li>Đau cơ lưng</li>
-            <li>Đau cơ chân</li>
-            <li>Đau cơ tay</li>
-          </ul>
-
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Nguyên nhân gây đau</h2>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Nguyên nhân cơ học</h3>
-          <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
-            <li>Tư thế không đúng khi ngồi, đứng, nằm</li>
-            <li>Mất cân bằng cơ thể từ bàn chân</li>
-            <li>Hoạt động quá sức</li>
-            <li>Chấn thương thể thao</li>
-          </ul>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Nguyên nhân bệnh lý</h3>
-          <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
-            <li>Viêm khớp dạng thấp</li>
-            <li>Thoái hóa khớp</li>
-            <li>Loãng xương</li>
-            <li>Gout</li>
-            <li>Fibromyalgia</li>
-          </ul>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Yếu tố nguy cơ</h3>
-          <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Tuổi tác</li>
-            <li>Béo phì</li>
-            <li>Thiếu vận động</li>
-            <li>Stress</li>
-            <li>Nghề nghiệp (ngồi lâu, nâng vác)</li>
-          </ul>
-
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Vai trò của bàn chân</h2>
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Mất vòm bàn chân</h3>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Bàn chân là nền tảng của toàn bộ hệ thống cơ xương khớp:
+            Khi đứng, toàn bộ lòng bàn chân chạm sát đất, không còn đường cong (vòm) giữa gan bàn chân.
           </p>
-          <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Hấp thụ lực tác động khi đi bộ, chạy</li>
-            <li>Duy trì cân bằng và ổn định cơ thể</li>
-            <li>Truyền lực từ mặt đất lên toàn thân</li>
-            <li>Ảnh hưởng đến tư thế và căng thẳng cơ</li>
-          </ul>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Quan sát dấu chân ướt trên nền nhà: nếu không thấy khoảng lõm giữa lòng bàn chân → khả năng cao bị bàn chân bẹt.
+          </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Chuỗi phản ứng từ bàn chân</h2>
-          <div className="bg-gray-50 p-6 rounded-lg mb-6">
-            <p className="text-gray-700 leading-relaxed">
-              <strong>Bàn chân bẹt</strong> → <strong>Mất cân bằng</strong> → <strong>Đầu gối xoay vào trong</strong> →
-              <strong>Hông nghiêng</strong> → <strong>Cột sống cong</strong> → <strong>Vai lệch</strong> →
-              <strong>Đau cơ xương khớp toàn thân</strong>
-            </p>
-          </div>
-
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Triệu chứng cần chú ý</h2>
-          <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Đau kéo dài hơn 3 ngày</li>
-            <li>Đau tăng dần theo thời gian</li>
-            <li>Đau kèm sưng, nóng đỏ</li>
-            <li>Hạn chế vận động</li>
-            <li>Tê bì, yếu cơ</li>
-            <li>Đau ảnh hưởng đến giấc ngủ</li>
-          </ul>
-
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Giải pháp hỗ trợ với tấm lót NAGEN</h2>
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Đau hoặc mỏi bàn chân sau khi đứng lâu</h3>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Tấm lót hỗ trợ vòm bàn chân NAGEN giúp:
+            Đau nhiều ở phần giữa bàn chân, gót chân hoặc mu bàn chân.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Cảm giác chân nặng, nóng rát hoặc căng tức khi đi bộ lâu, đứng làm việc, hoặc chơi thể thao.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Đau đầu gối, hông, lưng – do lệch trục cơ thể</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Khi bàn chân bị bẹt, trục cơ thể không còn cân bằng, khiến đầu gối, hông và cột sống bị xoay hoặc nghiêng nhẹ.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Kết quả là người bệnh dễ gặp:
           </p>
           <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Cân bằng lại nền tảng cơ thể</li>
-            <li>Giảm áp lực lên các khớp</li>
-            <li>Cải thiện tư thế tổng thể</li>
-            <li>Giảm căng thẳng cơ</li>
-            <li>Hỗ trợ hấp thụ lực tác động</li>
-            <li>Ngăn ngừa đau mãn tính</li>
+            <li>Đau đầu gối, đau mỏi hông, đau thắt lưng.</li>
+            <li>Mỏi vai gáy, đau cổ do lệch tư thế toàn thân.</li>
           </ul>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Phương pháp điều trị tích hợp</h2>
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">4. Dáng đi sai lệch</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Bàn chân bẹt khiến trọng tâm cơ thể đổ vào trong → bàn chân xoay vào khi bước đi.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Quan sát từ phía sau: gót chân thường nghiêng vào trong, làm dáng đi không vững và kém tự tin.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">5. Giày dép mòn không đều</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Phần gót trong của giày bị mòn nhanh hơn bình thường, là dấu hiệu đặc trưng của lệch trục bàn chân.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">6. Ở trẻ em</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Trẻ đi hay vấp ngã, chạy nhanh bị mỏi hoặc không thích chạy nhảy.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Hay than "mỏi chân", "đi lâu đau chân", dáng đi không thẳng.
+          </p>
+
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Đối tượng thường gặp bàn chân bẹt</h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Bàn chân bẹt có thể gặp ở nhiều lứa tuổi, đặc biệt là các nhóm sau:
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Trẻ em và thanh thiếu niên</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Do yếu tố di truyền hoặc vòm bàn chân chưa phát triển hoàn thiện. Nếu không được phát hiện sớm, 
+            sẽ ảnh hưởng đến dáng đi, khả năng vận động và sự phát triển của hệ cơ – xương - khớp.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Người trưởng thành</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Những người thường xuyên đứng lâu, đi nhiều hoặc chơi thể thao cường độ cao dễ bị sụp vòm bàn chân 
+            do áp lực lặp lại liên tục.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Phụ nữ mang thai</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Trọng lượng cơ thể tăng nhanh khiến dây chằng và gân bàn chân giãn, làm mất độ cong tự nhiên của vòm bàn chân.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">4. Người cao tuổi</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Do quá trình lão hóa, các cơ và dây chằng bàn chân yếu dần, dẫn đến biến dạng bàn chân và giảm khả năng cân bằng.
+          </p>
+
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Hậu quả và nguy cơ của bàn chân bẹt</h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Nếu không phát hiện và hỗ trợ đúng cách, bàn chân bẹt có thể dẫn đến:
+          </p>
           <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Sử dụng tấm lót hỗ trợ</li>
-            <li>Vật lý trị liệu</li>
-            <li>Tập luyện phục hồi chức năng</li>
-            <li>Massage và châm cứu</li>
-            <li>Thay đổi lối sống</li>
-            <li>Kiểm soát cân nặng</li>
+            <li>Đau nhức bàn chân, gót chân, đầu gối và thắt lưng do phân bố lực sai.</li>
+            <li>Mất cân bằng tư thế, tăng nguy cơ té ngã, đặc biệt ở người cao tuổi.</li>
+            <li>Tăng áp lực lên khớp và cột sống, gây thoái hóa sớm.</li>
+            <li>Ảnh hưởng dáng đi, dáng đứng và sự tự tin trong vận động.</li>
           </ul>
 
-          <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
-            <h3 className="text-lg font-semibold text-green-800 mb-2">Phòng ngừa tốt hơn chữa trị</h3>
-            <p className="text-green-700">
-              Việc sử dụng tấm lót hỗ trợ từ sớm có thể ngăn ngừa nhiều vấn đề về cơ xương khớp.
-              Đầu tư cho sức khỏe bàn chân là đầu tư cho sức khỏe toàn thân.
-            </p>
-          </div>
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Giải pháp cho người bị bàn chân bẹt</h2>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Tập luyện phục hồi vòm bàn chân</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Các bài tập co duỗi ngón, nhón gót hoặc đi chân trần trên cát giúp kích hoạt cơ và dây chằng bàn chân, 
+            hỗ trợ phục hồi vòm tự nhiên.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Chọn giày phù hợp</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Nên ưu tiên giày có phần đế hỗ trợ vòm và giảm sốc. Tuy nhiên, giày thông thường không thể điều chỉnh 
+            cấu trúc vòm bàn chân như tấm lót chuyên dụng.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Giải pháp khoa học - Tấm lót hỗ trợ vòm bàn chân NAGEN</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Sản phẩm hỗ trợ cả bốn vòm bàn chân – vòm dọc trong, vòm dọc ngoài, vòm ngang trước và vòm ngang sau – 
+            giúp đưa bàn chân về vị trí sinh học chuẩn, cân bằng toàn cơ thể và giảm áp lực lên hệ cơ – xương – khớp.
+          </p>
+          <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
+            <li>Giảm đau nhức và mỏi cơ thể</li>
+            <li>Cải thiện dáng đi – dáng đứng</li>
+            <li>Hỗ trợ cân bằng và phân bổ lực chính xác</li>
+            <li>Ngăn ngừa chấn thương về cơ - xương - khớp</li>
+          </ul>
+
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Tìm hiểu thêm về các sản phẩm tấm lót vòm bàn chân bẹt{" "}
+            <Link href="/tat-ca-san-pham" className="text-blue-600 hover:text-blue-800 underline font-semibold">
+              tại đây
+            </Link>
+          </p>
 
           <div className="text-center mt-12">
             <Link href="/#consultation">
@@ -438,7 +461,13 @@ export default function DauCoXuongKhopPage() {
       </main>
 
       <Footer />
-      <FloatingActionButtons />
+      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      
+      {/* Registration Modal */}
+      <UnifiedRegistrationForm
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </div>
   )
 }

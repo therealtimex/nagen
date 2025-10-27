@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Footer from "@/components/Footer"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
+import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
 import { getImagePath, navigateTo } from "@/lib/utils"
 
 // Enhanced Navigation Component
@@ -57,13 +58,13 @@ function EnhancedNavigation() {
       name: "Vấn đề thường gặp",
       href: "#",
       submenu: [
-        { name: "Bàn chân bẹt", href: "/benh-thuong-gap/ban-chan-bet" },
-        { name: "Chân chữ X, O", href: "/benh-thuong-gap/chan-chu-x-o" },
-        { name: "Thoát vị đĩa đệm", href: "/benh-thuong-gap/thoat-vi-dia-dem" },
-        { name: "Cong vẹo cột sống", href: "/benh-thuong-gap/cong-veo-cot-song" },
-        { name: "Suy giãn tĩnh mạch", href: "/benh-thuong-gap/suy-gian-tinh-mach" },
-        { name: "Đau cơ xương khớp", href: "/benh-thuong-gap/dau-co-xuong-khop" },
-        { name: "Mất cân bằng cấu trúc", href: "/benh-thuong-gap/mat-can-bang-cau-truc" },
+        { name: "Bàn chân bẹt", href: "/van-de-thuong-gap/ban-chan-bet" },
+        { name: "Chân chữ X, O", href: "/van-de-thuong-gap/chan-chu-x-o" },
+        { name: "Thoát vị đĩa đệm", href: "/van-de-thuong-gap/thoat-vi-dia-dem" },
+        { name: "Cong vẹo cột sống", href: "/van-de-thuong-gap/cong-veo-cot-song" },
+        { name: "Suy giãn tĩnh mạch", href: "/van-de-thuong-gap/suy-gian-tinh-mach" },
+        { name: "Đau cơ xương khớp", href: "/van-de-thuong-gap/dau-co-xuong-khop" },
+        { name: "Mất cân bằng cấu trúc", href: "/van-de-thuong-gap/mat-can-bang-cau-truc" },
       ],
     },
     { name: "Đối tác", href: "/#partners" },
@@ -285,6 +286,16 @@ function EnhancedNavigation() {
 }
 
 export default function ThoatViDiaDemPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleScheduleClick = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
@@ -406,7 +417,13 @@ export default function ThoatViDiaDemPage() {
       </main>
 
       <Footer />
-      <FloatingActionButtons />
+      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      
+      {/* Registration Modal */}
+      <UnifiedRegistrationForm
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </div>
   )
 }

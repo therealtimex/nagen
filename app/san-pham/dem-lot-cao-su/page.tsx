@@ -18,8 +18,15 @@ import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
 const product = {
   id: "demlotcaosu",
   name: "Đệm lót giày cao su thiên nhiên",
+  description: "Đệm lót giày cao su thiên nhiên thân thiện với môi trường, được thiết kế để hấp thụ sốc, làm giảm áp lực lên bàn chân, không gây kích ứng hay tác dụng phụ.",
+  price: "699.000đ",
   image: "/images/products/Cushion.jpg",
   category: "demlotcaosu",
+  rating: 4.8,
+  reviewCount: 68,
+  popular: true,
+  new: false,
+  tags: ["comfort", "natural"],
 }
 
 export default function DemLotCaoSuProductPage() {
@@ -114,7 +121,7 @@ export default function DemLotCaoSuProductPage() {
               {/* Thông tin về sản phẩm */}
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-blue-900 mb-8">Thông tin về sản phẩm</h2>
-                
+
                 <div className="space-y-8">
                   {/* Nguồn gốc, xuất xứ */}
                   <div>
@@ -161,7 +168,7 @@ export default function DemLotCaoSuProductPage() {
               {/* Công dụng sản phẩm */}
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-blue-900 mb-8">Công dụng sản phẩm</h2>
-                
+
                 {/* Media Gallery */}
                 <div className="mb-12">
                   <div className="bg-gradient-to-r from-amber-50 to-gray-50 p-8 rounded-xl border border-amber-200">
@@ -170,7 +177,7 @@ export default function DemLotCaoSuProductPage() {
                         <ProductMediaViewer product={product} />
                       </div>
                     </div>
-                    
+
                     {/* Media Note */}
                     <div className="mt-6 text-center">
                       <p className="text-gray-600 text-sm">
@@ -218,7 +225,7 @@ export default function DemLotCaoSuProductPage() {
               {/* Sử dụng sản phẩm */}
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-blue-900 mb-8">Sử dụng sản phẩm</h2>
-                
+
                 <div className="space-y-8">
                   {/* Dễ dàng sử dụng */}
                   <div>
@@ -246,7 +253,7 @@ export default function DemLotCaoSuProductPage() {
                       <p className="text-gray-700 leading-relaxed">
                         Sử dụng tấm lót như một giải pháp làm quen chân đối với những người có nhu cầu sử dụng các sản phẩm tấm lót hỗ trợ vòm bàn chân.
                       </p>
-                      
+
                       {/* Link to all products */}
                       <div className="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-lg border-2 border-amber-200">
                         <p className="text-gray-700 mb-4">

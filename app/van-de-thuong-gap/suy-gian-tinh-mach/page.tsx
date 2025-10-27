@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Footer from "@/components/Footer"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
+import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
 import { getImagePath, navigateTo } from "@/lib/utils"
 
 // Enhanced Navigation Component
@@ -57,13 +58,13 @@ function EnhancedNavigation() {
       name: "Vấn đề thường gặp",
       href: "#",
       submenu: [
-        { name: "Bàn chân bẹt", href: "/benh-thuong-gap/ban-chan-bet" },
-        { name: "Chân chữ X, O", href: "/benh-thuong-gap/chan-chu-x-o" },
-        { name: "Thoát vị đĩa đệm", href: "/benh-thuong-gap/thoat-vi-dia-dem" },
-        { name: "Cong vẹo cột sống", href: "/benh-thuong-gap/cong-veo-cot-song" },
-        { name: "Suy giãn tĩnh mạch", href: "/benh-thuong-gap/suy-gian-tinh-mach" },
-        { name: "Đau cơ xương khớp", href: "/benh-thuong-gap/dau-co-xuong-khop" },
-        { name: "Mất cân bằng cấu trúc", href: "/benh-thuong-gap/mat-can-bang-cau-truc" },
+        { name: "Bàn chân bẹt", href: "/van-de-thuong-gap/ban-chan-bet" },
+        { name: "Chân chữ X, O", href: "/van-de-thuong-gap/chan-chu-x-o" },
+        { name: "Thoát vị đĩa đệm", href: "/van-de-thuong-gap/thoat-vi-dia-dem" },
+        { name: "Cong vẹo cột sống", href: "/van-de-thuong-gap/cong-veo-cot-song" },
+        { name: "Suy giãn tĩnh mạch", href: "/van-de-thuong-gap/suy-gian-tinh-mach" },
+        { name: "Đau cơ xương khớp", href: "/van-de-thuong-gap/dau-co-xuong-khop" },
+        { name: "Mất cân bằng cấu trúc", href: "/van-de-thuong-gap/mat-can-bang-cau-truc" },
       ],
     },
     { name: "Đối tác", href: "/#partners" },
@@ -284,7 +285,17 @@ function EnhancedNavigation() {
   )
 }
 
-export default function CongVeoCotSongPage() {
+export default function SuyGianTinhMachPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleScheduleClick = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
@@ -304,98 +315,86 @@ export default function CongVeoCotSongPage() {
 
         {/* Article Content */}
         <article className="prose prose-lg max-w-none">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Cong vẹo cột sống: Hiểu đúng để phòng ngừa và cải thiện kịp thời</h1>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Cong vẹo cột sống không chỉ là vấn đề thẩm mỹ mà còn là một bệnh lý cơ – xương – khớp phức tạp, 
-            ảnh hưởng trực tiếp đến hệ thần kinh, hô hấp và tuần hoàn. Tình trạng này đang ngày càng trẻ hóa, 
-            đặc biệt ở trẻ em và người trưởng thành làm việc văn phòng lâu dài.
-          </p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">Suy giãn tĩnh mạch – Hiểu đúng để phòng ngừa hiệu quả</h1>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">I. Cong vẹo cột sống là gì?</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Cột sống bình thường nhìn từ phía sau sẽ thẳng và cân đối. Khi bị cong vẹo cột sống, 
-            cột sống bị lệch khỏi trục giữa cơ thể, cong sang trái hoặc phải, cong về trước hoặc về sau.
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Suy giãn tĩnh mạch là gì?</h2>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Suy giãn tĩnh mạch là tình trạng các tĩnh mạch đặc biệt là ở chân bị giãn ra, phồng lên do dòng máu lưu thông kém. 
+            Khi các van tĩnh mạch suy yếu, máu không thể chảy ngược về tim đúng cách, khiến máu ứ đọng và thành tĩnh mạch giãn nở.
           </p>
           <p className="text-gray-700 leading-relaxed mb-6">
-            Nguyên nhân phổ biến bao gồm: di truyền, sai tư thế khi ngồi – đứng, bàn chân lệch trục, 
-            vận động thể thao sai tư thế, mang vật nặng lệch vai, hoặc do các bệnh lý về cơ – xương – khớp.
+            Đây là vấn đề phổ biến, thường gặp ở người đứng lâu, ngồi nhiều, phụ nữ mang thai, hoặc người lớn tuổi, 
+            nhưng hiện nay đang có xu hướng trẻ hóa nhanh chóng.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">II. Dấu hiệu nhận biết cong vẹo cột sống</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Phát hiện sớm là yếu tố quyết định trong việc điều chỉnh và ngăn ngừa biến dạng nặng hơn.
-          </p>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            <strong>Các dấu hiệu thường gặp:</strong>
-          </p>
-          <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
-            <li>Vai hoặc hông lệch nhau, nhìn nghiêng thấy phần lưng lồi – lõm không đều.</li>
-            <li>Khi cúi người về phía trước, một bên xương bả vai hoặc sườn nhô cao hơn bên còn lại.</li>
-            <li>Cột sống nghiêng hoặc xoắn nhẹ, có thể quan sát khi đứng thẳng trước gương.</li>
-            <li>Thường xuyên đau lưng, mỏi vai gáy, lệch dáng khi đi đứng.</li>
-            <li>Trẻ nhỏ thường ngồi cong lưng, nghiêng người, đi xiêu vẹo.</li>
-          </ul>
-
-          <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-6">
-            <p className="text-yellow-800 font-semibold">
-              ⚠️ Lưu ý: Ở giai đoạn đầu, cong vẹo cột sống thường không gây đau rõ rệt, nên dễ bị bỏ qua.
-            </p>
-          </div>
-
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">III. Hậu quả lâu dài nếu không điều chỉnh</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Cong vẹo cột sống không chỉ làm biến dạng hình thể, mà còn gây ra nhiều hậu quả nghiêm trọng:
-          </p>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Ảnh hưởng hệ cơ – xương – khớp:</h3>
-          <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
-            <li>Mất cân bằng trọng lực cơ thể → tăng áp lực lên khớp gối, hông, bàn chân.</li>
-            <li>Đau lưng mạn tính, thoái hóa sớm cột sống, thoát vị đĩa đệm.</li>
-          </ul>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Ảnh hưởng nội tạng và tuần hoàn:</h3>
-          <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
-            <li>Cong lệch vùng ngực làm giảm dung tích phổi, khó thở khi vận động.</li>
-            <li>Ảnh hưởng đến tuần hoàn máu và tiêu hóa, gây mệt mỏi, mất năng lượng.</li>
-          </ul>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Ảnh hưởng tâm lý và thẩm mỹ:</h3>
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Dấu hiệu nhận biết suy giãn tĩnh mạch</h2>
           <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Dáng đi không tự tin, lưng lệch, vai gù.</li>
-            <li>Dễ dẫn đến mặc cảm, stress, giảm chất lượng cuộc sống.</li>
+            <li>Chân nặng, mỏi, đau âm ỉ sau khi đứng hoặc ngồi lâu.</li>
+            <li>Xuất hiện mạch máu xanh tím nổi rõ dưới da, đặc biệt ở bắp chân.</li>
+            <li>Phù nề nhẹ, nhất là vào buổi tối hoặc sau khi vận động nhiều.</li>
+            <li>Có cảm giác tê, châm chích, nóng rát vùng bắp chân.</li>
+            <li>Trong giai đoạn nặng, da có thể đổi màu sậm, ngứa, hoặc loét ở vùng cẳng chân.</li>
           </ul>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">IV. Giải pháp hỗ trợ và phòng ngừa cong vẹo cột sống</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Phòng bệnh luôn hiệu quả hơn chữa bệnh. Các chuyên gia khuyến nghị can thiệp từ sớm bằng việc 
-            cải thiện cấu trúc cơ thể và tư thế từ bàn chân – nền móng của toàn cơ thể.
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Nguyên nhân gây suy giãn tĩnh mạch</h2>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Do lối sống và nghề nghiệp</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Những người làm việc phải đứng lâu hoặc ngồi nhiều giờ liền (như giáo viên, nhân viên văn phòng, bác sĩ phẫu thuật...) 
+            dễ bị cản trở lưu thông máu ở chân.
           </p>
 
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Chỉnh tư thế và luyện tập:</h3>
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Do yếu tố di truyền</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Nếu trong gia đình có người bị suy giãn tĩnh mạch, nguy cơ mắc bệnh cao hơn 2–3 lần.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Do tuổi tác và thay đổi hormone</h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Càng lớn tuổi, thành tĩnh mạch và van máu yếu đi, làm tăng khả năng máu ứ đọng.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Phụ nữ mang thai hoặc dùng thuốc nội tiết cũng có nguy cơ cao hơn.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">4. Do béo phì và ít vận động</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Trọng lượng cơ thể tăng cao tạo áp lực lớn lên đôi chân, đặc biệt ở vùng cẳng chân và đầu gối.
+          </p>
+
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Hậu quả lâu dài nếu không phòng ngừa sớm</h2>
           <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Tập thể dục đều đặn, các bài tăng cường cơ lưng – cơ bụng.</li>
-            <li>Duy trì tư thế ngồi, đứng, ngủ đúng trục cột sống.</li>
+            <li>Cảm giác nặng chân kéo dài, ảnh hưởng sinh hoạt hằng ngày.</li>
+            <li>Tăng nguy cơ viêm tĩnh mạch, huyết khối tĩnh mạch sâu, ảnh hưởng đến lưu thông máu.</li>
+            <li>Loét chân tĩnh mạch mãn tính — tình trạng khó điều trị, dễ tái phát.</li>
+            <li>Giảm chất lượng sống và khả năng vận động, đặc biệt ở người cao tuổi.</li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Hỗ trợ từ bàn chân:</h3>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Các nghiên cứu tại Đại học Michigan và East Carolina (Hoa Kỳ) chỉ ra rằng:
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Giải pháp chăm sóc và phòng ngừa suy giãn tĩnh mạch</h2>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Duy trì thói quen vận động</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Đi bộ nhẹ nhàng, tập yoga hoặc bơi lội giúp kích hoạt cơ chân và cải thiện tuần hoàn máu.
           </p>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Sai lệch cấu trúc bàn chân là nguyên nhân gốc gây lệch trục cơ thể, ảnh hưởng trực tiếp đến cột sống.
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Duy trì cân nặng hợp lý và chế độ ăn lành mạnh</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Bổ sung rau xanh, trái cây giàu vitamin C và E, giúp tăng độ bền thành mạch và hạn chế ứ trệ tuần hoàn.
           </p>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Giải pháp hiện đại ngày nay là sử dụng tấm lót hỗ trợ vòm bàn chân NAGEN, giúp:
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Nghỉ ngơi đúng tư thế</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Khi nằm, nên gác chân cao hơn tim từ 10–15 cm để máu dễ lưu thông ngược về tim.
           </p>
-          <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Cân bằng 4 vòm bàn chân, cải thiện tư thế đứng và dáng đi.</li>
-            <li>Giảm lệch trục cơ thể, hỗ trợ điều chỉnh cân bằng từ bàn chân lên đến cột sống.</li>
-            <li>Ngăn ngừa thoái hóa xương khớp, đau mỏi lưng và cổ vai gáy.</li>
-          </ul>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">4. Chăm sóc bàn chân đúng cách</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Sử dụng tấm lót hỗ trợ vòm bàn chân giúp phân bổ áp lực đều, hỗ trợ lưu thông máu ở chân dưới và giảm áp lực lên tĩnh mạch chi dưới 
+            — đặc biệt hữu ích cho người phải đứng hoặc ngồi nhiều.
+          </p>
 
           <p className="text-gray-700 leading-relaxed mb-6">
-            Tìm hiểu thêm về các sản phẩm tấm lót hỗ trợ vòm bàn chân cải thiện các vấn đề về cơ xương khớp và cột sống{" "}
+            Tìm hiểu thêm về các sản phẩm tấm lót cải thiện vấn đề về suy giãn tĩnh mạch{" "}
             <Link href="/tat-ca-san-pham" className="text-blue-600 hover:text-blue-800 underline font-semibold">
               tại đây
             </Link>
@@ -412,7 +411,13 @@ export default function CongVeoCotSongPage() {
       </main>
 
       <Footer />
-      <FloatingActionButtons />
+      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      
+      {/* Registration Modal */}
+      <UnifiedRegistrationForm
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </div>
   )
 }

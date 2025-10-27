@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Footer from "@/components/Footer"
 import FloatingActionButtons from "@/components/FloatingActionButtons"
+import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
 import { getImagePath, navigateTo } from "@/lib/utils"
 
 // Enhanced Navigation Component
@@ -57,13 +58,13 @@ function EnhancedNavigation() {
       name: "Vấn đề thường gặp",
       href: "#",
       submenu: [
-        { name: "Bàn chân bẹt", href: "/benh-thuong-gap/ban-chan-bet" },
-        { name: "Chân chữ X, O", href: "/benh-thuong-gap/chan-chu-x-o" },
-        { name: "Thoát vị đĩa đệm", href: "/benh-thuong-gap/thoat-vi-dia-dem" },
-        { name: "Cong vẹo cột sống", href: "/benh-thuong-gap/cong-veo-cot-song" },
-        { name: "Suy giãn tĩnh mạch", href: "/benh-thuong-gap/suy-gian-tinh-mach" },
-        { name: "Đau cơ xương khớp", href: "/benh-thuong-gap/dau-co-xuong-khop" },
-        { name: "Mất cân bằng cấu trúc", href: "/benh-thuong-gap/mat-can-bang-cau-truc" },
+        { name: "Bàn chân bẹt", href: "/van-de-thuong-gap/ban-chan-bet" },
+        { name: "Chân chữ X, O", href: "/van-de-thuong-gap/chan-chu-x-o" },
+        { name: "Thoát vị đĩa đệm", href: "/van-de-thuong-gap/thoat-vi-dia-dem" },
+        { name: "Cong vẹo cột sống", href: "/van-de-thuong-gap/cong-veo-cot-song" },
+        { name: "Suy giãn tĩnh mạch", href: "/van-de-thuong-gap/suy-gian-tinh-mach" },
+        { name: "Đau cơ xương khớp", href: "/van-de-thuong-gap/dau-co-xuong-khop" },
+        { name: "Mất cân bằng cấu trúc", href: "/van-de-thuong-gap/mat-can-bang-cau-truc" },
       ],
     },
     { name: "Đối tác", href: "/#partners" },
@@ -284,7 +285,17 @@ function EnhancedNavigation() {
   )
 }
 
-export default function ChanChuXOPage() {
+export default function MatCanBangCauTrucPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleScheduleClick = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <EnhancedNavigation />
@@ -304,87 +315,91 @@ export default function ChanChuXOPage() {
 
         {/* Article Content */}
         <article className="prose prose-lg max-w-none">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Chân chữ X, chân chữ O</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">Mất Cân Bằng Cấu Trúc Cơ Thể – Gốc Rễ Của Nhiều Vấn Đề Sức Khỏe</h1>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Giới thiệu về chân chữ X và chân chữ O</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Mất cân bằng cấu trúc cơ thể là gì?</h2>
           <p className="text-gray-700 leading-relaxed mb-6">
-            Chân chữ X và chân chữ O là hai dạng biến dạng trục chân phổ biến, xảy ra khi đầu gối hoặc cổ chân 
-            không còn nằm trên cùng một đường thẳng sinh học.
-          </p>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Ở chân chữ X, hai đầu gối chụm lại trong khi cổ chân cách xa nhau.
-          </p>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Ở chân chữ O, hai cổ chân chụm lại nhưng đầu gối lại cách xa nhau.
+            Mất cân bằng cấu trúc cơ thể là hiện tượng khi trục cơ thể không còn thẳng hàng, khiến các bộ phận như bàn chân, 
+            đầu gối, hông, vai và cột sống không còn ở đúng vị trí tự nhiên.
           </p>
           <p className="text-gray-700 leading-relaxed mb-6">
-            Đây là những biểu hiện mất cân bằng cấu trúc cơ thể, có thể xuất phát từ bàn chân, đầu gối hoặc khớp háng, 
-            gây ra nhiều hệ lụy cho dáng đi, khớp và cột sống.
+            Khi đó, trọng lượng và lực di chuyển không được phân bố đồng đều, dẫn đến đau mỏi, mệt mỏi, và giảm hiệu quả vận động.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Tưởng chừng là một thay đổi nhỏ, nhưng thực tế, sự mất cân bằng này là nguồn gốc sâu xa của rất nhiều vấn đề sức khỏe 
+            – đặc biệt trong thời đại ít vận động, làm việc ngồi lâu và căng thẳng kéo dài như ngày nay.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Đối tượng thường gặp chân chữ X và chân chữ O</h2>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Trẻ em và thanh thiếu niên đang phát triển</h3>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Trẻ trong giai đoạn tăng trưởng có cấu trúc xương mềm và dễ bị ảnh hưởng bởi các yếu tố như:
-          </p>
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Dấu hiệu nhận biết cơ thể bị mất cân bằng cấu trúc</h2>
           <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Di truyền từ cha mẹ.</li>
-            <li>Tư thế đi – đứng – ngồi sai trong thời gian dài.</li>
-            <li>Thiếu canxi hoặc rối loạn chuyển hóa xương.</li>
+            <li>Dáng đi lệch, xiêu về một bên, hoặc chân không đều khi đứng.</li>
+            <li>Đau mỏi vai gáy, lưng, hông sau khi ngồi hoặc đứng lâu.</li>
+            <li>Cảm giác mỏi gối, đau bàn chân, hoặc tê chân khi vận động.</li>
+            <li>Cột sống cong, lệch vai hoặc lệch hông nhẹ mà ít người nhận ra.</li>
+            <li>Cảm giác nặng nề, thiếu sức bật khi đi lại hay luyện tập.</li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Người trưởng thành</h3>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Ở người trưởng thành, nguyên nhân thường đến từ:
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Nguyên nhân sâu xa gây mất cân bằng cấu trúc cơ thể</h2>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Mất cân bằng từ đôi bàn chân</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Bàn chân là nền móng của cơ thể. Khi vòm bàn chân bị sụp (bàn chân bẹt), hoặc vòm quá cao (bàn chân kiễng), 
+            trọng tâm cơ thể bị thay đổi, dẫn đến chuỗi sai lệch kéo dài từ chân → gối → hông → cột sống → vai → cổ → đầu.
           </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Thói quen sinh hoạt sai</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Ngồi cong lưng, đứng lệch, mang giày dép không phù hợp, hoặc ít vận động lâu ngày khiến các nhóm cơ bị mất cân đối, 
+            ảnh hưởng đến hệ trục vận động của cơ thể.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Ảnh hưởng của nghề nghiệp</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Những người đứng hoặc ngồi nhiều giờ liên tục (như nhân viên văn phòng, giáo viên, bác sĩ, vận động viên, công nhân) 
+            là nhóm có nguy cơ cao bị mất cân bằng cấu trúc cơ thể.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">4. Tuổi tác và sự thoái hóa tự nhiên</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Khi tuổi càng cao, mật độ xương, độ đàn hồi của cơ và dây chằng giảm dần, khiến cơ thể khó giữ vững trục cân bằng như trước.
+          </p>
+
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Hậu quả của mất cân bằng cấu trúc cơ thể</h2>
           <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Lệch trục bàn chân (bàn chân bẹt hoặc bàn chân kiễng) làm ảnh hưởng lên khớp gối.</li>
-            <li>Tổn thương khớp (chấn thương, thoái hóa sớm, viêm khớp).</li>
-            <li>Tăng cân hoặc béo phì, gây áp lực quá mức lên khớp gối.</li>
-            <li>Nghề nghiệp đứng nhiều, di chuyển liên tục.</li>
+            <li>Gây đau nhức mỏi vai, gáy, hông, đầu gối và lưng.</li>
+            <li>Làm sai dáng đi, dáng đứng, ảnh hưởng đến phong thái và sự tự tin.</li>
+            <li>Giảm khả năng vận động, khiến cơ thể nhanh mệt và thiếu linh hoạt.</li>
+            <li>Lâu dài có thể gây ra mất cân bằng toàn thân, ảnh hưởng đến giấc ngủ, thần kinh và tuần hoàn máu.</li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Người cao tuổi</h3>
+          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Giải pháp phục hồi cân bằng tự nhiên cho cơ thể</h2>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Tập luyện đúng cách</h3>
           <p className="text-gray-700 leading-relaxed mb-6">
-            Quá trình thoái hóa khớp và suy yếu cơ khiến cấu trúc chân dần biến dạng, đặc biệt là ở những người 
-            đã có nền bàn chân lệch trục từ trước.
+            Các bài tập yoga, đi bộ nhẹ hoặc bơi lội giúp kéo giãn cơ, cải thiện linh hoạt và duy trì trục cơ thể cân đối.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Hậu quả và nguy cơ của chân chữ X, chân chữ O</h2>
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Duy trì thói quen sống lành mạnh</h3>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            Giữ cân nặng hợp lý, ngồi đúng tư thế, và dành ít nhất 15 phút mỗi ngày để vận động nhẹ nhàng sẽ giúp duy trì cân bằng cấu trúc cơ thể.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Chăm sóc bàn chân – nền tảng của sự cân bằng</h3>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Nếu không được can thiệp sớm, biến dạng trục chân có thể gây ra nhiều hậu quả nghiêm trọng:
+            Sử dụng tấm lót hỗ trợ vòm bàn chân giúp:
           </p>
-          <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
-            <li>Đau khớp gối và hông: Do phân bố lực không đều lên khớp.</li>
-            <li>Lệch trục cơ thể: Khi trục chân lệch, toàn bộ hệ cơ – xương – cột sống cũng bị kéo lệch theo.</li>
-            <li>Thoái hóa khớp sớm, vẹt mòn sụn và viêm khớp mãn tính.</li>
-            <li>Ảnh hưởng dáng đi và dáng đứng: Khiến người mắc mất tự tin, giảm hiệu suất vận động.</li>
-            <li>Tăng nguy cơ té ngã ở người lớn tuổi.</li>
+          <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
+            <li>Nâng đỡ cả 4 vòm bàn chân,</li>
+            <li>Phân bổ áp lực đều,</li>
+            <li>Cải thiện cân bằng tư thế và dáng đi,</li>
+            <li>Giảm áp lực lên khớp gối, hông và cột sống.</li>
           </ul>
-
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Giải pháp cải thiện và hỗ trợ chân chữ X, chân chữ O</h2>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Tập luyện phục hồi cấu trúc</h3>
           <p className="text-gray-700 leading-relaxed mb-6">
-            Các bài tập tăng cường cơ đùi, cơ hông và chỉnh trục như ngồi xổm đúng tư thế... có thể giúp cải thiện 
-            độ vững chắc và cân bằng của chi dưới.
-          </p>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Kiểm soát cân nặng và tư thế</h3>
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Duy trì trọng lượng cơ thể hợp lý, đứng và đi đúng tư thế giúp giảm tải áp lực lên khớp gối, 
-            ngăn tình trạng nặng hơn.
-          </p>
-
-          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Sử dụng tấm lót hỗ trợ vòm bàn chân NAGEN</h3>
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Tấm lót hỗ trợ vòm bàn chân NAGEN được xem là giải pháp hỗ trợ chỉnh trục sinh học tự nhiên, 
-            giúp đưa bàn chân về vị trí cân bằng và theo đó là toàn bộ trục cơ thể về vị trí cân bằng.
+            Từ đó, cơ thể dần trở lại trục chuẩn sinh học tự nhiên, mang lại cảm giác vững vàng và nhẹ nhõm trên mỗi bước chân.
           </p>
 
           <p className="text-gray-700 leading-relaxed mb-6">
-            Tìm hiểu thêm về các sản phẩm tấm lót hỗ trợ cải thiện chân chữ X, chân chữ O (chân vòng kiềng){" "}
+            Tìm hiểu thêm về các sản phẩm tấm lót bàn chân hỗ trợ phòng ngừa, cải thiện vấn đề về mất cân bằng cấu trúc cơ thể{" "}
             <Link href="/tat-ca-san-pham" className="text-blue-600 hover:text-blue-800 underline font-semibold">
               tại đây
             </Link>
@@ -401,7 +416,13 @@ export default function ChanChuXOPage() {
       </main>
 
       <Footer />
-      <FloatingActionButtons />
+      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      
+      {/* Registration Modal */}
+      <UnifiedRegistrationForm
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </div>
   )
 }

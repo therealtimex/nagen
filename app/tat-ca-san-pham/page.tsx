@@ -1,15 +1,14 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
 import {
   ArrowLeft,
+  ArrowRight,
   Search,
   Filter,
   ChevronDown,
@@ -18,24 +17,20 @@ import {
   Shield,
   Award,
   Zap,
-  Phone,
-  Mail,
-  MapPin,
   Calendar,
-  Send,
-  X,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+
 import { useState, useEffect } from "react"
-import { getImagePath, getVideoPath, checkVideoExists } from "@/lib/utils"
+import { getImagePath, navigateTo } from "@/lib/utils"
 import { Product, productData } from "@/lib/products"
 import ProductMediaViewer from "@/components/ProductMediaViewer"
 import Footer from "@/components/Footer";
 import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm";
 
 // Product Card Component - Media on left, content on right
-function ProductCard({ product, index, onConsultationClick }: { product: Product; index: number; onConsultationClick: () => void }) {
+function ProductCard({ product, onConsultationClick }: { product: Product; onConsultationClick: () => void }) {
 
   return (
     <div key={product.id}>
@@ -57,13 +52,37 @@ function ProductCard({ product, index, onConsultationClick }: { product: Product
             {/* Product Title - Only shown on desktop */}
             <h3 className="hidden md:block text-2xl font-bold text-blue-900">{product.name}</h3>
             <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
-            <Button
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2"
-              onClick={onConsultationClick}
-            >
-              <Calendar className="w-4 h-4" />
-              Tư vấn sản phẩm miễn phí
-            </Button>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group min-h-[48px] touch-manipulation"
+                onClick={() => {
+                  // Map category to correct URL path
+                  const categoryToPath: { [key: string]: string } = {
+                    'sungen': '/san-pham/sungen',
+                    'winagen': '/san-pham/winagen',
+                    'softgen': '/san-pham/softgen',
+                    'endurance': '/san-pham/endurance',
+                    'silhouette': '/san-pham/silhouette',
+                    'demlotcaosu': '/san-pham/dem-lot-cao-su'
+                  }
+                  const targetPath = categoryToPath[product.category] || `/tat-ca-san-pham?category=${product.category}`
+                  navigateTo(targetPath)
+                }}
+              >
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Xem chi tiết
+              </Button>
+
+              <Button
+                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 min-h-[48px] touch-manipulation"
+                onClick={onConsultationClick}
+              >
+                <Calendar className="w-4 h-4" />
+                Tư vấn sản phẩm miễn phí
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -244,6 +263,13 @@ export default function AllProductsPage() {
     }
   }, [])
 
+  // Set document title dynamically
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.title = "Tất cả sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN | Chất lượng cao từ Mỹ"
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       {/* SEO Structured Data - LocalBusiness Schema */}
@@ -293,6 +319,44 @@ export default function AllProductsPage() {
         }}
       />
 
+      {/* SEO Structured Data - Product Catalog */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Tấm lót hỗ trợ vòm bàn chân NAGEN - Tất cả sản phẩm",
+            "description": "Bộ sưu tập đầy đủ các sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN chất lượng cao từ Mỹ",
+            "numberOfItems": productData.length,
+            "itemListElement": productData.map((product, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "Product",
+                "name": product.name,
+                "description": product.description,
+                "image": `https://nagen.vn${product.image}`,
+                "url": `https://nagen.vn/san-pham/${product.category === 'demlotcaosu' ? 'dem-lot-cao-su' : product.category}`,
+                "brand": {
+                  "@type": "Brand",
+                  "name": "NAGEN"
+                },
+                "manufacturer": {
+                  "@type": "Organization",
+                  "name": "Bio Orthotics International"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": product.rating,
+                  "reviewCount": product.reviewCount
+                }
+              }
+            }))
+          })
+        }}
+      />
+
       {/* Header */}
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
@@ -330,7 +394,7 @@ export default function AllProductsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <Badge className="bg-white/20 text-white border-white/30 text-sm px-4 py-2 mb-3">Sản phẩm NAGEN</Badge>
-            <h1 className="text-2xl lg:text-4xl font-bold mb-3">Tất cả sản phẩm</h1>
+            <h1 className="text-2xl lg:text-4xl font-bold mb-3" id="main-heading">Tất cả sản phẩm</h1>
             <p className="text-base text-blue-100 mb-2">
               Khám phá bộ sưu tập đầy đủ các sản phẩm chăm sóc bàn chân chất lượng cao của NAGEN
             </p>
@@ -415,6 +479,7 @@ export default function AllProductsPage() {
                   className="pl-10"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  aria-label="Tìm kiếm sản phẩm"
                 />
               </div>
             </div>
@@ -533,7 +598,6 @@ export default function AllProductsPage() {
                 <div key={product.id}>
                   <ProductCard
                     product={product}
-                    index={index}
                     onConsultationClick={() => setIsUnifiedRegistrationOpen(true)}
                   />
                   {/* Brand Color Separator Line - except for last item */}

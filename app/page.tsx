@@ -170,12 +170,12 @@ function EnhancedNavigation({
       name: "Sản phẩm",
       href: "#products",
       submenu: [
-        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/tat-ca-san-pham?category=sungen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/tat-ca-san-pham?category=winagen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/tat-ca-san-pham?category=softgen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/tat-ca-san-pham?category=endurance" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/tat-ca-san-pham?category=silhouette" },
-        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/tat-ca-san-pham?category=demlotcaosu" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/san-pham/sungen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/san-pham/winagen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/san-pham/softgen" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/san-pham/endurance" },
+        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/san-pham/silhouette" },
+        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/san-pham/dem-lot-cao-su" },
       ],
     },
     {
@@ -1657,7 +1657,19 @@ function HomePageContent() {
                       <CTAButton
                         variant="primary"
                         className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white"
-                        onClick={() => navigateTo(`/tat-ca-san-pham?category=${product.category}`)}
+                        onClick={() => {
+                          // Map category to correct URL path
+                          const categoryToPath: { [key: string]: string } = {
+                            'sungen': '/san-pham/sungen',
+                            'winagen': '/san-pham/winagen', 
+                            'softgen': '/san-pham/softgen',
+                            'endurance': '/san-pham/endurance',
+                            'silhouette': '/san-pham/silhouette',
+                            'demlotcaosu': '/san-pham/dem-lot-cao-su'
+                          }
+                          const targetPath = categoryToPath[product.category] || `/tat-ca-san-pham?category=${product.category}`
+                          navigateTo(targetPath)
+                        }}
                       >
                         Xem chi tiết
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
