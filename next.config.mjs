@@ -3,7 +3,6 @@ const nextConfig = {
   output: 'export',
   distDir: 'dist',
   basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-  trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -12,6 +11,19 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Referrer-Policy',
+            value: 'no-referrer-when-downgrade',
+          },
+        ],
+      },
+    ]
   },
 }
 
