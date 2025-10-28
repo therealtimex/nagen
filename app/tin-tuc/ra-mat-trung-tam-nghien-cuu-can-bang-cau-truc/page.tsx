@@ -426,7 +426,7 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
               </div>
 
               <h2>Sự kiện đánh dấu bước tiến quan trọng</h2>
-              <p>Sự kiện đánh dấu bước tiến quan trọng trong lĩnh vực chăm sóc sức khỏe theo hướng khoa học – một cách tự nhiên – không xâm lấn, đặt nền móng cho một hệ thống nghiên cứu cân bằng cấu trúc cơ thể trên ứng dụng Tấm lót hỗ trợ vòm bàn chân NAGEN cho cộng đồng Người Việt.</p>
+              <p> Trong lĩnh vực chăm sóc sức khỏe theo hướng khoa học – một cách tự nhiên – không xâm lấn, đặt nền móng cho một hệ thống nghiên cứu cân bằng cấu trúc cơ thể trên ứng dụng Tấm lót hỗ trợ vòm bàn chân NAGEN cho cộng đồng Người Việt.</p>
 
               <h2>Đội ngũ chuyên gia tham dự</h2>
               <p>Lễ ra mắt có sự tham dự của các chuyên gia đầu ngành trong lĩnh vực y tế và chăm sóc sức khỏe:</p>
