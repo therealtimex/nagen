@@ -573,33 +573,10 @@ function EnhancedFeedbackSlider() {
   )
 }
 
-// Hero Content Component with Read More functionality
+// Hero Content Component - Now simplified since content moved to main section
 function HeroContent() {
-
-  return (
-    <div className="max-w-6xl mx-auto">
-      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#21395D] mb-4 sm:mb-6 text-center leading-tight">
-        TẤM LÓT HỖ TRỢ VÒM BÀN CHÂN NAGEN
-      </h1>
-      <p className="text-base sm:text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line px-2 sm:px-0">
-        <strong>Tấm lót hỗ trợ vòm bàn chân Nagen</strong> do <strong>Bio Orthotics International, Inc sản xuất tại Mỹ</strong>, là những dòng sản phẩm hỗ trợ vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Mỗi người có kích thước vòm bàn chân khác nhau, chúng tôi cung cấp đa dạng kích cỡ phù hợp riêng với từng người, cho nhiều lứa tuổi
-      </p>
-
-
-      {/* Product Image */}
-      <div className="my-4 sm:my-6 max-w-5xl mx-auto flex justify-center px-2 sm:px-0">
-        <Image
-          src={getImagePath("/images/20200624_161136PS.webp")}
-          alt="Bộ sưu tập tấm lót hỗ trợ vòm bàn chân NAGEN - Sungen, Winagen, Softgen, Endurance, Silhouette"
-          width={1200}
-          height={400}
-          className="w-full rounded-lg sm:rounded-xl shadow-lg"
-          priority
-          title="Các dòng sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN chất lượng cao"
-        />
-      </div>
-    </div>
-  )
+  // This component is no longer needed as content has been moved to the main hero section
+  return null
 }
 
 // Simplified Contact Form with Basic Information Only
@@ -1553,27 +1530,67 @@ function HomePageContent() {
         onAppointmentClick={() => setIsAppointmentModalOpen(true)}
       />
 
+      {/* Hero Banner Image Section */}
+      <section className="relative">
+        <div className="w-full">
+          <Image
+            src={getImagePath("/images/banner nagen.png")}
+            alt="NAGEN Vietnam - Tấm lót hỗ trợ vòm bàn chân chính hãng từ Mỹ - Banner chính"
+            width={1920}
+            height={400}
+            className="w-full h-[120px] sm:h-[160px] md:h-[200px] lg:h-[280px] xl:h-[350px] 2xl:h-[400px] object-fill"
+            priority
+            title="NAGEN Vietnam - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu từ Mỹ"
+          />
+        </div>
+      </section>
+
       {/* Enhanced Hero Section */}
       <section id="home" className="relative bg-[#FFFFFF] text-[#21395D] py-10 lg:py-18 overflow-hidden">
         <div className="absolute inset-0"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            {/* Video Section */}
-            <div className="mt-4 mb-8">
-              <div
-                className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group max-w-2xl mx-auto"
-                onClick={handlePlayVideo}
-              >
-                <div className="">
-                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
-                    <Play className="w-10 h-10 text-white ml-1" />
+            {/* Video and Title Layout - Side by Side */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Video Section - Left */}
+              <div className="order-2 lg:order-1">
+                <div
+                  className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group"
+                  onClick={handlePlayVideo}
+                >
+                  <div className="">
+                    <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
+                      <Play className="w-10 h-10 text-white ml-1" />
+                    </div>
+                    <p className="text-white/90 font-medium">Video giới thiệu NAGEN</p>
+                    <p className="text-white/70 text-sm mt-1">2 phút • Xem ngay</p>
                   </div>
-                  <p className="text-white/90 font-medium">Video giới thiệu NAGEN</p>
-                  <p className="text-white/70 text-sm mt-1">2 phút • Xem ngay</p>
                 </div>
               </div>
+
+              {/* Title and Text Section - Right */}
+              <div className="order-1 lg:order-2">
+                <h1 className="text-3xl lg:text-4xl font-bold text-[#21395D] mb-4 sm:mb-6 leading-tight">
+                  TẤM LÓT HỖ TRỢ VÒM BÀN CHÂN NAGEN
+                </h1>
+                <p className="text-base sm:text-lg text-[#21395D] leading-relaxed text-justify whitespace-pre-line">
+                  <strong>Tấm lót hỗ trợ vòm bàn chân Nagen</strong> do <strong>Bio Orthotics International, Inc sản xuất tại Mỹ</strong>, là những dòng sản phẩm hỗ trợ vòm bàn chân hiệu quả nhất trên thị trường hiện nay. Mỗi người có kích thước vòm bàn chân khác nhau, chúng tôi cung cấp đa dạng kích cỡ phù hợp riêng với từng người, cho nhiều lứa tuổi
+                </p>
+              </div>
             </div>
-            <HeroContent />
+
+            {/* Product Image - Full Width Below */}
+            <div className="mt-8 sm:mt-12 max-w-5xl mx-auto flex justify-center px-2 sm:px-0">
+              <Image
+                src={getImagePath("/images/20200624_161136PS.webp")}
+                alt="Bộ sưu tập tấm lót hỗ trợ vòm bàn chân NAGEN - Sungen, Winagen, Softgen, Endurance, Silhouette"
+                width={1200}
+                height={400}
+                className="w-full rounded-lg sm:rounded-xl shadow-lg"
+                priority
+                title="Các dòng sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN chất lượng cao"
+              />
+            </div>
           </div>
         </div>
       </section>
