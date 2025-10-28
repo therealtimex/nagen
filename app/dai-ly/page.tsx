@@ -703,12 +703,20 @@ export default function DaiLyPage() {
         </div>
       </main>
 
-      <FloatingActionButtons onScheduleClick={() => {
-        const formElement = document.querySelector('form');
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      }} />
+      <FloatingActionButtons 
+        onScheduleClick={() => {
+          const formElement = document.querySelector('form');
+          if (formElement) {
+            formElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+        onConsultationClick={() => {
+          const formElement = document.querySelector('form');
+          if (formElement) {
+            formElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      />
       <Footer />
     </div>
   )

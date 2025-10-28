@@ -441,7 +441,10 @@ export default function CongVeoCotSongPage() {
       </main>
 
       <Footer />
-      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      <FloatingActionButtons 
+        onScheduleClick={handleScheduleClick}
+        onConsultationClick={() => setIsModalOpen(true)}
+      />
       
       {/* Registration Modal */}
       <UnifiedRegistrationForm

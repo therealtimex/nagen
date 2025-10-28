@@ -1265,7 +1265,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
                   </div>
                   <div>
                     <label className="text-sm font-medium text-gray-700 mb-2 block">
-                      Ngày tháng năm sinh <span className="text-red-500">*</span>
+                      Ngày tháng năm sinh (người đo chân) <span className="text-red-500">*</span>
                     </label>
                     <Input
                       type="date"
@@ -1328,7 +1328,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
                   </div>
                   <div>
                     <label className="text-sm font-medium text-gray-700 mb-2 block">
-                      Size giày <span className="text-red-500">*</span>
+                      Size giày (người đo chân) <span className="text-red-500">*</span>
                     </label>
                     <select
                       className="w-full p-3 border border-gray-300 rounded-lg"
@@ -1336,7 +1336,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
                       onChange={(e) => setFormData({ ...formData, shoeSize: e.target.value })}
                       required
                     >
-                      <option value="">Chọn size giày</option>
+                      <option value="">Chọn size giày người đo chân</option>
                       {Array.from({ length: 20 }, (_, i) => i + 35).map((size) => (
                         <option key={size} value={size}>
                           {size}
@@ -1930,7 +1930,10 @@ function HomePageContent() {
       <UnifiedRegistrationForm isOpen={isUnifiedRegistrationOpen} onClose={() => setIsUnifiedRegistrationOpen(false)} />
 
 
-      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      <FloatingActionButtons 
+        onScheduleClick={handleScheduleClick} 
+        onConsultationClick={() => setIsUnifiedRegistrationOpen(true)}
+      />
     </div>
   )
 }

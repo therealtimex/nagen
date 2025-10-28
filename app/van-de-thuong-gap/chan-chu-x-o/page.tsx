@@ -351,7 +351,10 @@ export default function ChanChuXOPage() {
       </main>
 
       <Footer />
-      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      <FloatingActionButtons 
+        onScheduleClick={handleScheduleClick}
+        onConsultationClick={() => setIsModalOpen(true)}
+      />
 
       {/* Registration Modal */}
       <UnifiedRegistrationForm

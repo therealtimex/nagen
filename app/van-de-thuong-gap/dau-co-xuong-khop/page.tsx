@@ -412,7 +412,10 @@ export default function DauCoXuongKhopPage() {
       </main>
 
       <Footer />
-      <FloatingActionButtons onScheduleClick={handleScheduleClick} />
+      <FloatingActionButtons 
+        onScheduleClick={handleScheduleClick}
+        onConsultationClick={() => setIsModalOpen(true)}
+      />
       
       {/* Registration Modal */}
       <UnifiedRegistrationForm

@@ -2,16 +2,17 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { MessageCircle } from "lucide-react"
+import { MessageCircle, MessageSquare } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { getImagePath, navigateTo } from "@/lib/utils"
 
 interface FloatingActionButtonsProps {
   onScheduleClick: () => void
+  onConsultationClick?: () => void
 }
 
-export default function FloatingActionButtons({ onScheduleClick }: FloatingActionButtonsProps) {
+export default function FloatingActionButtons({ onScheduleClick, onConsultationClick }: FloatingActionButtonsProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isClient, setIsClient] = useState(false)
@@ -61,11 +62,11 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
       ariaLabel: "Đặt lịch đo chân miễn phí",
     },
     {
-      icon: "/images/icons/youtube.svg",
-      label: "YouTube",
-      onClick: handleYouTubeClick,
+      icon: "consultation",
+      label: "Tư vấn",
+      onClick: onConsultationClick || (() => {}),
       className: "bg-[#1877F2] hover:bg-[#166FE5] text-white shadow-blue-500/25",
-      ariaLabel: "Xem kênh YouTube NAGEN",
+      ariaLabel: "Mở form tư vấn NAGEN",
     },
     {
       icon: "/images/icons/facebook.svg",
@@ -131,14 +132,18 @@ export default function FloatingActionButtons({ onScheduleClick }: FloatingActio
                   aria-label={button.ariaLabel}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
-                  <Image
-                    src={getImagePath(button.icon)}
-                    alt={`${button.label} - Liên hệ NAGEN để tư vấn tấm lót hỗ trợ vòm bàn chân`}
-                    width={48}
-                    height={48}
-                    className="lg:w-8 lg:h-8 md:w-7 md:h-7 w-6 h-6 filter relative z-10"
-                    title={`${button.label} - NAGEN`}
-                  />
+                  {button.icon === "consultation" ? (
+                    <MessageSquare className="lg:w-8 lg:h-8 md:w-7 md:h-7 w-6 h-6 relative z-10" />
+                  ) : (
+                    <Image
+                      src={getImagePath(button.icon)}
+                      alt={`${button.label} - Liên hệ NAGEN để tư vấn tấm lót hỗ trợ vòm bàn chân`}
+                      width={48}
+                      height={48}
+                      className="lg:w-8 lg:h-8 md:w-7 md:h-7 w-6 h-6 filter relative z-10"
+                      title={`${button.label} - NAGEN`}
+                    />
+                  )}
                 </Button>
               </div>
             )
