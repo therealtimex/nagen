@@ -785,7 +785,7 @@ export default function ContactPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
               <a
-                href="https://facebook.com/groups/nagen.community"
+                href="https://zalo.me/g/cwzecr533"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-blue-200"
@@ -810,7 +810,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="https://facebook.com/groups/nagen.support"
+                href="https://zalo.me/g/vtptdj255"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-green-200"
@@ -835,7 +835,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="https://facebook.com/groups/nagen.reviews"
+                href="https://zalo.me/g/laqcoh198"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-yellow-200"
