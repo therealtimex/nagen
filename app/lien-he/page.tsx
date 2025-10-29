@@ -119,10 +119,10 @@ export default function ContactPage() {
             "image": "https://nagen.vn/images/logo_slogan_1.png",
             "logo": "https://nagen.vn/images/logo_slogan_1.png",
             "sameAs": [
-              "https://facebook.com/nagen.vietnam",
-              "https://instagram.com/nagen.vietnam",
-              "https://youtube.com/@nagen.vietnam",
-              "https://tiktok.com/@nagen.vietnam"
+              "https://www.facebook.com/tamlotnagen",
+              "https://www.instagram.com/nagenvn",
+              "https://www.youtube.com/@nagenvn",
+              "https://www.tiktok.com/@nagenvn"
             ],
             "contactPoint": [
               {
@@ -292,7 +292,7 @@ export default function ContactPage() {
                 </a>
 
                 <a
-                  href="https://m.me/nagen.vietnam"
+                  href="https://m.me/tamlotnagen"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-3 sm:p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300 border border-transparent hover:border-blue-200"
@@ -405,7 +405,7 @@ export default function ContactPage() {
             </h3>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <a
-                href="https://facebook.com/nagen.vietnam"
+                href="https://www.facebook.com/tamlotnagen"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-blue-200"
@@ -415,7 +415,7 @@ export default function ContactPage() {
                     <Facebook className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
                   <h4 className="font-bold text-gray-900 text-sm sm:text-lg mb-1 sm:mb-2">Facebook</h4>
-                  <p className="text-gray-600 mb-2 sm:mb-3 text-xs sm:text-sm">@nagen.vietnam</p>
+                  <p className="text-gray-600 mb-2 sm:mb-3 text-xs sm:text-sm">@tamlotnagen</p>
                   <span className="inline-flex items-center text-blue-600 font-medium text-xs sm:text-sm">
                     Theo dõi <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                   </span>
@@ -423,7 +423,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="https://instagram.com/nagen.vietnam"
+                href="https://www.instagram.com/nagenvn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-pink-200"
@@ -433,7 +433,7 @@ export default function ContactPage() {
                     <Instagram className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
                   <h4 className="font-bold text-gray-900 text-sm sm:text-lg mb-1 sm:mb-2">Instagram</h4>
-                  <p className="text-gray-600 mb-2 sm:mb-3 text-xs sm:text-sm">@nagen.vietnam</p>
+                  <p className="text-gray-600 mb-2 sm:mb-3 text-xs sm:text-sm">@nagenvn</p>
                   <span className="inline-flex items-center text-pink-600 font-medium text-xs sm:text-sm">
                     Theo dõi <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                   </span>
@@ -441,7 +441,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="https://youtube.com/@nagen.vietnam"
+                href="https://www.youtube.com/@nagenvn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-red-200"
@@ -451,7 +451,7 @@ export default function ContactPage() {
                     <Youtube className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
                   <h4 className="font-bold text-gray-900 text-sm sm:text-lg mb-1 sm:mb-2">YouTube</h4>
-                  <p className="text-gray-600 mb-2 sm:mb-3 text-xs sm:text-sm">@nagen.vietnam</p>
+                  <p className="text-gray-600 mb-2 sm:mb-3 text-xs sm:text-sm">@nagenvn</p>
                   <span className="inline-flex items-center text-red-600 font-medium text-xs sm:text-sm">
                     Đăng ký <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                   </span>
@@ -459,7 +459,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="https://tiktok.com/@nagen.vietnam"
+                href="https://www.tiktok.com/@nagenvn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-gray-300"
@@ -471,7 +471,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h4 className="font-bold text-gray-900 text-sm sm:text-lg mb-1 sm:mb-2">TikTok</h4>
-                  <p className="text-gray-600 mb-2 sm:mb-3 text-xs sm:text-sm">@nagen.vietnam</p>
+                  <p className="text-gray-600 mb-2 sm:mb-3 text-xs sm:text-sm">@nagenvn</p>
                   <span className="inline-flex items-center text-gray-800 font-medium text-xs sm:text-sm">
                     Theo dõi <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                   </span>
@@ -488,7 +488,7 @@ export default function ContactPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
               <a
-                href="https://zalo.me/g/cwzecr533"
+                href="https://www.facebook.com/groups/nuoiduongbanchannagen"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-blue-200"

@@ -41,8 +41,8 @@ export default function FloatingActionButtons({ onScheduleClick, onConsultationC
     return null
   }
 
-  const handleFacebookClick = () => {
-    navigateTo("https://www.facebook.com/people/NAGEN/61576197860425/", { external: true })
+  const handleMessengerClick = () => {
+    navigateTo("https://www.messenger.com/t/tamlotnagen", { external: true })
   }
 
   const handleYouTubeClick = () => {
@@ -52,6 +52,8 @@ export default function FloatingActionButtons({ onScheduleClick, onConsultationC
   const handleZaloClick = () => {
     navigateTo("https://zalo.me/2254011402039684095", { external: true })
   }
+
+
 
   const buttons = [
     {
@@ -64,16 +66,16 @@ export default function FloatingActionButtons({ onScheduleClick, onConsultationC
     {
       icon: "consultation",
       label: "Tư vấn",
-      onClick: onConsultationClick || (() => {}),
+      onClick: onConsultationClick || (() => { }),
       className: "bg-[#1877F2] hover:bg-[#166FE5] text-white shadow-blue-500/25",
       ariaLabel: "Mở form tư vấn NAGEN",
     },
     {
-      icon: "/images/icons/facebook.svg",
-      label: "Facebook",
-      onClick: handleFacebookClick,
+      icon: "/images/icons/FB mess.png",
+      label: "Messenger",
+      onClick: handleMessengerClick,
       className: "bg-[#1877F2] hover:bg-[#166FE5] text-white shadow-blue-500/25",
-      ariaLabel: "Liên hệ qua Facebook",
+      ariaLabel: "Liên hệ qua Messenger",
     },
     {
       icon: "/images/icons/zalo.svg",
@@ -134,6 +136,8 @@ export default function FloatingActionButtons({ onScheduleClick, onConsultationC
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
                   {button.icon === "consultation" ? (
                     <MessageSquare className="lg:w-8 lg:h-8 md:w-7 md:h-7 w-6 h-6 relative z-10" />
+                  ) : button.icon === "messenger" ? (
+                    <MessageCircle className="lg:w-8 lg:h-8 md:w-7 md:h-7 w-6 h-6 relative z-10" />
                   ) : (
                     <Image
                       src={getImagePath(button.icon)}

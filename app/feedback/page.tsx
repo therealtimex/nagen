@@ -4,12 +4,13 @@ import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Star, ArrowLeft, Play, Pause, Volume2, VolumeX, CheckCircle, MapPin, Phone, Mail, X, Send } from "lucide-react"
+import { Star, Play, Pause, Volume2, VolumeX, CheckCircle } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { getImagePath } from "@/lib/utils"
 import Footer from "@/components/Footer"
 import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
+import Header from "@/components/Header"
 
 interface CustomerFeedback {
     id: number
@@ -30,166 +31,241 @@ interface CustomerFeedback {
 const feedbackData: CustomerFeedback[] = [
     {
         id: 1,
-        name: "Nguyễn Văn A",
+        name: "Mẹ chị Hà",
+        age: 72,
         location: "Hà Nội",
-        occupation: "Khách hàng thân thiết",
+        occupation: "Nghỉ hưu",
         rating: 5,
-        content: "Sản phẩm NAGEN đã giúp tôi giảm đau chân hiệu quả. Chất lượng tuyệt vời, dịch vụ chuyên nghiệp.",
-        image: "/placeholder.svg?height=80&width=80&text=Avatar1",
-        videoUrl: "/videos/feedback/customer1.mp4",
+        content: "Bà đã mổ cột sống, chân kiễng, hai chân không đều nhau, bị tràn dịch khớp gối, không đi lại được. Nhưng khi bỏ tấm lót vào chân, bà đi lại dễ dàng hơn và không còn bị đau mỗi khi đi lại.",
+        image: "/placeholder.svg?height=80&width=80&text=Ha",
+        videoUrl: "https://drive.google.com/uc?export=download&id=1buihmaWwWGC87sIV2f99qEizkwnIx7oG",
         additionalImages: [
-            "/placeholder.svg?height=200&width=300&text=Before",
-            "/placeholder.svg?height=200&width=300&text=After"
+            "/placeholder.svg?height=200&width=300&text=Senior",
+            "/placeholder.svg?height=200&width=300&text=Recovery"
         ],
-        date: "2024-01-15",
+        date: "2024-07-05",
         productUsed: "Tấm lót NAGEN",
         verified: true
     },
     {
         id: 2,
-        name: "Trần Thị B",
+        name: "Anh Chí",
+        age: 38,
         location: "TP.HCM",
-        occupation: "Khách hàng",
+        occupation: "Doanh nhân",
         rating: 5,
-        content: "Đội ngũ tư vấn nhiệt tình, sản phẩm chất lượng cao. Tôi rất hài lòng với dịch vụ của NAGEN.",
-        image: "/placeholder.svg?height=80&width=80&text=Avatar2",
+        content: "Một doanh nhân với đặc thù công việc đi đứng nhiều khi tham gia các triển lãm, đi thăm các nhà máy với trung bình 30.000 bước chân mỗi ngày. Đồng thời, anh cũng tham gia các hoạt động thể thao như chơi golf, chạy bộ, đá bóng. Khi biết đến và sử dụng tấm lót hỗ trợ vòm bàn chân Sungen được 03 tháng, anh Chí chia sẻ những cảm nhận sâu sắc về trải nghiệm của bản thân.",
+        image: "/placeholder.svg?height=80&width=80&text=Chi",
+        videoUrl: "https://drive.google.com/uc?export=download&id=1uKfwhlsPQX8cdEujkhyutmz8XnxTjFa6",
         additionalImages: [
-            "/placeholder.svg?height=200&width=300&text=Product",
-            "/placeholder.svg?height=200&width=300&text=Usage"
+            "/placeholder.svg?height=200&width=300&text=Business",
+            "/placeholder.svg?height=200&width=300&text=Sports"
+        ],
+        date: "2024-07-18",
+        productUsed: "Tấm lót Sungen",
+        verified: true
+    },
+    {
+        id: 3,
+        name: "Chị Mai",
+        age: 32,
+        location: "Hà Nội",
+        occupation: "Nhân viên văn phòng",
+        rating: 5,
+        content: "Trước đây cuối ngày là đau gan bàn chân, nhưng dùng tấm lót vòm NAGEN thì đỡ hẳn. Đi lại cả ngày vẫn nhẹ chân, giày ôm hơn và không còn mỏi như trước.",
+        image: "/placeholder.svg?height=80&width=80&text=Mai",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Office",
+            "/placeholder.svg?height=200&width=300&text=Comfort"
+        ],
+        date: "2024-01-15",
+        productUsed: "Tấm lót vòm NAGEN",
+        verified: true
+    },
+    {
+        id: 4,
+        name: "Anh Hùng",
+        age: 28,
+        location: "TP.HCM",
+        occupation: "Nhân viên giao hàng",
+        rating: 5,
+        content: "Đứng – đi liên tục 10–12 tiếng. NAGEN nâng vòm tốt, giảm ê gót rõ rệt. Mang vào đôi giày cũ mà cảm giác như giày mới.",
+        image: "/placeholder.svg?height=80&width=80&text=Hung",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Delivery",
+            "/placeholder.svg?height=200&width=300&text=Walking"
         ],
         date: "2024-02-20",
         productUsed: "Tấm lót NAGEN",
         verified: true
     },
     {
-        id: 3,
-        name: "Lê Văn C",
+        id: 5,
+        name: "Cô Lan",
+        age: 40,
         location: "Đà Nẵng",
-        occupation: "Khách hàng",
+        occupation: "Giáo viên",
         rating: 5,
-        content: "Giao hàng nhanh, đóng gói cẩn thận. Sản phẩm đúng như mô tả, hiệu quả rõ rệt.",
-        image: "/placeholder.svg?height=80&width=80&text=Avatar3",
-        videoUrl: "/videos/feedback/customer3.mp4",
+        content: "Tôi bị bàn chân bẹt nhẹ, hay mỏi cổ chân. Sau 3 tuần dùng NAGEN, dáng đi ổn hơn, hết cảm giác nặng chân khi đứng lớp lâu.",
+        image: "/placeholder.svg?height=80&width=80&text=Lan",
         additionalImages: [
-            "/placeholder.svg?height=200&width=300&text=Doctor",
-            "/placeholder.svg?height=200&width=300&text=Hospital"
+            "/placeholder.svg?height=200&width=300&text=Teacher",
+            "/placeholder.svg?height=200&width=300&text=Classroom"
         ],
         date: "2024-03-10",
         productUsed: "Tấm lót NAGEN",
         verified: true
     },
     {
-        id: 4,
-        name: "Phạm Thị Mai",
-        age: 29,
+        id: 6,
+        name: "Anh Minh",
+        age: 35,
         location: "Hải Phòng",
-        occupation: "Nhân viên văn phòng",
-        rating: 4,
-        content: "Tôi làm việc văn phòng nhưng thường xuyên phải đi lại. Tấm lót NAGEN giúp tôi cảm thấy thoải mái hơn khi đi giày cao gót. Chất lượng tốt, giá cả hợp lý.",
-        image: "/placeholder.svg?height=80&width=80&text=Mai",
+        occupation: "Chạy bộ phong trào",
+        rating: 5,
+        content: "NAGEN cho cảm giác đệm chắc, tiếp đất ổn định, hạn chế xẹp vòm khi chạy dài. Pace ổn định hơn, chân không bị 'đuối' cuối buổi.",
+        image: "/placeholder.svg?height=80&width=80&text=Minh",
         additionalImages: [
-            "/placeholder.svg?height=200&width=300&text=Office",
-            "/placeholder.svg?height=200&width=300&text=Heels"
+            "/placeholder.svg?height=200&width=300&text=Running",
+            "/placeholder.svg?height=200&width=300&text=Sport"
         ],
         date: "2024-03-25",
-        productUsed: "Tấm lót Silhouette",
+        productUsed: "Tấm lót NAGEN",
         verified: true
     },
     {
-        id: 5,
-        name: "Hoàng Văn Tùng",
-        age: 41,
+        id: 7,
+        name: "Chị Hạnh",
+        age: 30,
         location: "Cần Thơ",
-        occupation: "Tài xế",
+        occupation: "Bán hàng retail",
         rating: 5,
-        content: "Nghề tài xế phải ngồi lái xe nhiều giờ, chân tôi thường bị tê và đau. Từ khi dùng tấm lót NAGEN, tình trạng này đã cải thiện rõ rệt. Sản phẩm rất đáng đầu tư.",
-        image: "/placeholder.svg?height=80&width=80&text=Tung",
+        content: "Giày bệt trước đây làm tôi đau lòng bàn chân. Đổi sang lót NAGEN là hết tê mỏi, đứng ca 8 tiếng vẫn ổn.",
+        image: "/placeholder.svg?height=80&width=80&text=Hanh",
         additionalImages: [
-            "/placeholder.svg?height=200&width=300&text=Driver",
-            "/placeholder.svg?height=200&width=300&text=Truck"
+            "/placeholder.svg?height=200&width=300&text=Retail",
+            "/placeholder.svg?height=200&width=300&text=Standing"
         ],
         date: "2024-04-05",
-        productUsed: "Tấm lót Endurance",
+        productUsed: "Tấm lót NAGEN",
         verified: true
     },
     {
-        id: 6,
-        name: "Nguyễn Thị Hương",
-        age: 35,
+        id: 8,
+        name: "Anh Phong",
+        age: 42,
         location: "Huế",
-        occupation: "Y tá",
+        occupation: "Kỹ sư xây dựng",
         rating: 5,
-        content: "Công việc y tá đòi hỏi phải đứng và đi lại liên tục. Tấm lót NAGEN đã giúp tôi giảm đau chân và cải thiện tư thế đứng. Tôi rất khuyên dùng cho những người cùng nghề.",
-        image: "/placeholder.svg?height=80&width=80&text=Huong",
-        videoUrl: "/videos/feedback/customer6.mp4",
+        content: "Mặt bằng gồ ghề dễ đau gót. NAGEN giúp phân bổ lực đều, gót bớt 'chấn' khi di chuyển, cuối ngày vẫn còn sức.",
+        image: "/placeholder.svg?height=80&width=80&text=Phong",
         additionalImages: [
-            "/placeholder.svg?height=200&width=300&text=Nurse",
-            "/placeholder.svg?height=200&width=300&text=Medical"
+            "/placeholder.svg?height=200&width=300&text=Construction",
+            "/placeholder.svg?height=200&width=300&text=Engineer"
         ],
         date: "2024-04-18",
-        productUsed: "Tấm lót Sungen",
+        productUsed: "Tấm lót NAGEN",
+        verified: true
+    },
+    {
+        id: 9,
+        name: "Chị Thu",
+        age: 34,
+        location: "Bình Dương",
+        occupation: "Mẹ bé 7 tuổi",
+        rating: 5,
+        content: "Con có dấu hiệu bàn chân bẹt, bác sĩ khuyên dùng lót hỗ trợ vòm. Chọn NAGEN: đi học về không còn than đau, chạy nhảy thoải mái hơn.",
+        image: "/placeholder.svg?height=80&width=80&text=Thu",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Mother",
+            "/placeholder.svg?height=200&width=300&text=Child"
+        ],
+        date: "2024-05-10",
+        productUsed: "Tấm lót NAGEN",
+        verified: true
+    },
+    {
+        id: 10,
+        name: "Anh Tùng",
+        age: 50,
+        location: "Vũng Tàu",
+        occupation: "Quản lý kho",
+        rating: 5,
+        content: "Tuổi lớn, chân dễ mỏi. NAGEN nâng vòm tốt, giảm áp lực lòng bàn chân. Tôi đã mua thêm 1 đôi cho giày thể thao.",
+        image: "/placeholder.svg?height=80&width=80&text=Tung",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Warehouse",
+            "/placeholder.svg?height=200&width=300&text=Manager"
+        ],
+        date: "2024-05-25",
+        productUsed: "Tấm lót NAGEN",
+        verified: true
+    },
+    {
+        id: 11,
+        name: "Chị My",
+        age: 26,
+        location: "Hà Nội",
+        occupation: "Thiết kế đồ họa",
+        rating: 5,
+        content: "Ngồi nhiều nhưng vẫn đi bộ chuyển phòng liên tục. Lót NAGEN khiến bước chân êm hơn, giày fit, không trượt bàn chân trong giày.",
+        image: "/placeholder.svg?height=80&width=80&text=My",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Designer",
+            "/placeholder.svg?height=200&width=300&text=Office"
+        ],
+        date: "2024-06-08",
+        productUsed: "Tấm lót NAGEN",
+        verified: true
+    },
+    {
+        id: 12,
+        name: "Bác Quang",
+        age: 58,
+        location: "Nha Trang",
+        occupation: "Nghỉ hưu, đi bộ sáng",
+        rating: 5,
+        content: "Trước hay đau gót sau 3 km. Dùng NAGEN vài ngày là êm hơn thấy rõ, nay đi 5 km vẫn thoải mái.",
+        image: "/placeholder.svg?height=80&width=80&text=Quang",
+        additionalImages: [
+            "/placeholder.svg?height=200&width=300&text=Walking",
+            "/placeholder.svg?height=200&width=300&text=Exercise"
+        ],
+        date: "2024-06-20",
+        productUsed: "Tấm lót NAGEN",
         verified: true
     }
 ]
 
 function VideoPlayer({ videoUrl, customerName }: { videoUrl: string; customerName: string }) {
-    const [isPlaying, setIsPlaying] = useState(false)
-    const [isMuted, setIsMuted] = useState(true)
-    const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null)
-
-    const handlePlayPause = () => {
-        if (videoRef) {
-            if (isPlaying) {
-                videoRef.pause()
-            } else {
-                videoRef.play()
+    // Convert Google Drive share URL to embeddable format
+    const getEmbedUrl = (url: string) => {
+        if (url.includes('drive.google.com')) {
+            const fileId = url.match(/\/d\/([a-zA-Z0-9-_]+)/)?.[1] || url.match(/id=([a-zA-Z0-9-_]+)/)?.[1]
+            if (fileId) {
+                return `https://drive.google.com/file/d/${fileId}/preview`
             }
         }
+        return url
     }
+
+    const embedUrl = getEmbedUrl(videoUrl)
 
     return (
         <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden aspect-video shadow-lg border border-gray-200">
-            <video
-                ref={setVideoRef}
-                className="w-full h-full object-cover"
-                muted={isMuted}
-                controls={false}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
-                poster="/placeholder.svg?height=300&width=400&text=Video"
-            >
-                <source src={videoUrl} type="video/mp4" />
-                Video không được hỗ trợ
-            </video>
-
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
-                <Button
-                    size="lg"
-                    className="bg-red-600 hover:bg-red-700 text-white shadow-xl border-2 border-white/20 rounded-full w-16 h-16 p-0"
-                    onClick={handlePlayPause}
-                >
-                    {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
-                </Button>
-            </div>
-
-            <div className="absolute bottom-4 right-4 flex space-x-2">
-                <Button
-                    size="sm"
-                    variant="ghost"
-                    className="bg-black/60 hover:bg-black/80 text-white rounded-full w-10 h-10 p-0"
-                    onClick={() => setIsMuted(!isMuted)}
-                >
-                    {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                </Button>
-            </div>
+            <iframe
+                src={embedUrl}
+                className="w-full h-full"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title={`Video từ ${customerName}`}
+            />
 
             <div className="absolute top-4 left-4">
                 <Badge className="bg-red-600 text-white border-0 shadow-lg">
                     🎥 Video từ {customerName}
                 </Badge>
             </div>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none"></div>
         </div>
     )
 }
@@ -316,10 +392,14 @@ function MediaGallery({ feedback }: { feedback: CustomerFeedback }) {
 }
 
 function FeedbackCard({ feedback }: { feedback: CustomerFeedback }) {
+    const hasVideo = !!feedback.videoUrl
+    const hasImages = !!(feedback.additionalImages && feedback.additionalImages.length > 0)
+    const hasMedia = hasVideo || hasImages
+
     return (
         <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-0 bg-white">
             <CardContent className="p-0">
-                <div className="grid lg:grid-cols-2 gap-0">
+                <div className={hasMedia ? "grid lg:grid-cols-2 gap-0" : "w-full"}>
                     <div className="p-8 space-y-6 bg-white">
                         <div className="flex items-start space-x-4">
                             <div className="relative">
@@ -372,14 +452,13 @@ function FeedbackCard({ feedback }: { feedback: CustomerFeedback }) {
                             "{feedback.content}"
                         </blockquote>
 
-                        <div className="flex items-center text-sm text-gray-500 pt-2 border-t border-gray-100">
-                            <span>📅 Đánh giá ngày: {new Date(feedback.date).toLocaleDateString('vi-VN')}</span>
-                        </div>
                     </div>
 
-                    <div className="bg-gray-50 p-8 flex items-center justify-center">
-                        <MediaGallery feedback={feedback} />
-                    </div>
+                    {hasMedia && (
+                        <div className="bg-gray-50 p-8 flex items-center justify-center">
+                            <MediaGallery feedback={feedback} />
+                        </div>
+                    )}
                 </div>
             </CardContent>
         </Card>
@@ -391,6 +470,7 @@ function FeedbackCard({ feedback }: { feedback: CustomerFeedback }) {
 export default function FeedbackPage() {
     const [filter, setFilter] = useState<string>("all")
     const [isUnifiedRegistrationOpen, setIsUnifiedRegistrationOpen] = useState(false)
+    const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false)
 
     const filteredFeedback = feedbackData.filter(feedback => {
         if (filter === "all") return true
@@ -531,32 +611,11 @@ export default function FeedbackPage() {
             />
 
             <UnifiedRegistrationForm isOpen={isUnifiedRegistrationOpen} onClose={() => setIsUnifiedRegistrationOpen(false)} />
-            <header className="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md bg-white/95">
-                <div className="container mx-auto px-4 py-2">
-                    <div className="flex items-center justify-between">
-                        <Link href="/" className="flex items-center space-x-3">
-                            <Image
-                                src={getImagePath("/images/logo_slogan_1.png")}
-                                alt="Nagen Logo"
-                                width={220}
-                                height={44}
-                                priority
-                                className="h-8 object-contain"
-                            />
-                        </Link>
-                        <Link href="/">
-                            <Button variant="outline" className="flex items-center space-x-2 hover:bg-blue-50 transition-colors">
-                                <ArrowLeft className="w-4 h-4" />
-                                <span>Quay lại trang chủ</span>
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </header>
-            <div className="w-full h-[8px]">
-                <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-                <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-            </div>
+            
+            <Header
+                onConsultationClick={() => setIsUnifiedRegistrationOpen(true)}
+                onAppointmentClick={() => setIsAppointmentModalOpen(true)}
+            />
 
             <section className="relative bg-[#21395D] text-white py-4 lg:py-8 overflow-hidden">
                 <div className="absolute inset-0 bg-black/20"></div>
@@ -645,7 +704,7 @@ export default function FeedbackPage() {
                                         onClick={() => setIsUnifiedRegistrationOpen(true)}
                                         className="relative bg-red-600 hover:bg-red-700 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto"
                                     >
-                                        <Mail className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
+                                        <CheckCircle className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3" />
                                         <span className="whitespace-nowrap">Để lại thông tin liên hệ</span>
                                     </Button>
                                 </div>
