@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Send } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+
 import { getImagePath } from "@/lib/utils"
 
 // Type definitions
@@ -27,7 +27,7 @@ interface FormErrors {
 interface UnifiedRegistrationFormProps {
   isOpen: boolean
   onClose: () => void
-  defaultType?: "product" | "dealer" | "appointment"
+  defaultType?: "product" | "dealer"
 }
 
 // Standardized CTA Button Component
@@ -125,13 +125,10 @@ export default function UnifiedRegistrationForm({ isOpen, onClose, defaultType }
     try {
       let eventType = "tuvan"
       let apiUrl = "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_datlich/input"
-      
+
       if (formData.consultationType === "dealer") {
         eventType = "partner"
         apiUrl = "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_doitac/input"
-      } else if (formData.consultationType === "appointment") {
-        eventType = "datlich_docha"
-        apiUrl = "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_datlich/input"
       }
 
       const submissionData = {
@@ -204,11 +201,6 @@ export default function UnifiedRegistrationForm({ isOpen, onClose, defaultType }
                   </div>
                 )}
               </>
-            ) : formData.consultationType === "appointment" ? (
-              <>
-                <p className="text-gray-600 mb-4 text-sm sm:text-base">Cảm ơn bạn đã đặt lịch đo chân với NAGEN.</p>
-                <p className="text-gray-600 mb-6 text-sm sm:text-base">Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để xác nhận lịch hẹn và địa điểm đo chân.</p>
-              </>
             ) : (
               <>
                 <p className="text-gray-600 mb-4 text-sm sm:text-base">Chúng tôi đã nhận được yêu cầu tư vấn đại lý của bạn.</p>
@@ -267,7 +259,7 @@ export default function UnifiedRegistrationForm({ isOpen, onClose, defaultType }
                       <div className="text-sm text-gray-600">Nhận tư vấn miễn phí về sản phẩm phù hợp với bạn</div>
                     </div>
                   </label>
-                  
+
                   <label className="flex items-center space-x-3 cursor-pointer p-4 border-2 border-gray-200 rounded-lg hover:border-red-500 hover:bg-red-50 transition-all duration-200">
                     <input
                       type="radio"
@@ -283,20 +275,7 @@ export default function UnifiedRegistrationForm({ isOpen, onClose, defaultType }
                     </div>
                   </label>
 
-                  <label className="flex items-center space-x-3 cursor-pointer p-4 border-2 border-gray-200 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all duration-200">
-                    <input
-                      type="radio"
-                      name="consultationType"
-                      value="appointment"
-                      checked={formData.consultationType === "appointment"}
-                      onChange={(e) => setFormData({ ...formData, consultationType: e.target.value })}
-                      className="w-4 h-4 text-green-600 focus:ring-green-500 focus:ring-2"
-                    />
-                    <div className="flex-1">
-                      <div className="font-medium text-gray-900">Đặt lịch đo chân</div>
-                      <div className="text-sm text-gray-600">Đặt lịch hẹn để được đo chân và tư vấn trực tiếp</div>
-                    </div>
-                  </label>
+
                 </div>
                 {errors.consultationType && (
                   <p id="consultation-type-error" className="text-red-500 text-sm mt-2">

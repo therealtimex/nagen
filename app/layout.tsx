@@ -66,6 +66,28 @@ export default function RootLayout({
         <meta name="distribution" content="global" />
         <meta name="rating" content="general" />
         <link rel="alternate" hrefLang="vi" href="https://nagen.vn" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(d,t) {
+                var BASE_URL="https://rtchat.rtworkspace.com";
+                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+                g.src=BASE_URL+"/packs/js/sdk.js";
+                g.defer = true;
+                g.async = true;
+                s.parentNode.insertBefore(g,s);
+                g.onload=function(){
+                  window.chatwootSDK.run({
+                    websiteToken: 'Xgft1pQhMTqqf4us17Vj9jhr',
+                    baseUrl: BASE_URL,
+                    position: 'left',
+                    type: 'standard'
+                  })
+                }
+              })(document,"script");
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
         <StructuredData />

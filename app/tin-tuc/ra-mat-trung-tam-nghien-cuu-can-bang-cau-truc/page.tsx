@@ -777,7 +777,6 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
         <UnifiedRegistrationForm
           isOpen={isAppointmentModalOpen}
           onClose={() => setIsAppointmentModalOpen(false)}
-          defaultType="appointment"
         />
       )}
 
