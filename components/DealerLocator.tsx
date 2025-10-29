@@ -116,21 +116,10 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
                   <div className="space-y-2">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center space-x-2">
-                        <div
-                          className={`w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold ${
-                            dealer.status === "Đang mở cửa" ? "bg-green-500" : "bg-red-500"
-                          }`}
-                        >
+                        <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold bg-green-500">
                           {label}
                         </div>
                         <h4 className="font-semibold text-blue-900 text-sm">{dealer.name}</h4>
-                      </div>
-                      <div
-                        className={`text-xs px-2 py-0.5 rounded-full ${
-                          dealer.status === "Đang mở cửa" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-                        }`}
-                      >
-                        {dealer.status}
                       </div>
                     </div>
                     <p className="text-gray-600 text-xs leading-relaxed pl-8">{dealer.address}</p>

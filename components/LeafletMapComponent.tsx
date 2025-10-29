@@ -12,7 +12,6 @@ export interface Dealer {
   name: string
   address: string
   phone: string
-  status: "Đang mở cửa" | "Đóng cửa"
   distance?: string
   lat: number
   lng: number
@@ -128,17 +127,8 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
   const mapContainerRef = useRef<HTMLDivElement>(null)
 
   // Create custom icons for markers
-  const openDealerIcon = new Icon({
+  const dealerIcon = new Icon({
     iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
-    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41],
-  })
-
-  const closedDealerIcon = new Icon({
-    iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
     shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
@@ -205,9 +195,7 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-xs text-gray-600">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>Mở cửa</span>
-              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-              <span>Đóng cửa</span>
+              <span>Đại lý NAGEN</span>
               {userLocation && (
                 <>
                   <div className="w-2 h-2 bg-blue-500 rounded-full ml-2"></div>
@@ -268,7 +256,7 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
               <Marker
                 key={dealer.id}
                 position={[dealer.lat, dealer.lng]}
-                icon={dealer.status === "Đang mở cửa" ? openDealerIcon : closedDealerIcon}
+                icon={dealerIcon}
                 eventHandlers={{
                   click: () => handleMarkerClick(dealer),
                 }}
@@ -279,13 +267,6 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
                     <p className="text-sm text-gray-600 mb-3 leading-relaxed">{dealer.address}</p>
 
                     <div className="flex items-center justify-between mb-3">
-                      <span
-                        className={`text-sm px-3 py-1 rounded-full font-medium ${
-                          dealer.status === "Đang mở cửa" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-                        }`}
-                      >
-                        {dealer.status}
-                      </span>
                       {dealer.distance && <span className="text-sm text-blue-600 font-medium">{dealer.distance}</span>}
                     </div>
 

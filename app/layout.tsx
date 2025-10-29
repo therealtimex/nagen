@@ -69,6 +69,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              window.chatwootSettings = {"position":"left"};
               (function(d,t) {
                 var BASE_URL="https://rtchat.rtworkspace.com";
                 var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
