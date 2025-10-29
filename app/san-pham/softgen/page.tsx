@@ -13,13 +13,21 @@ import { getImagePath } from "@/lib/utils"
 import ProductMediaViewer from "@/components/ProductMediaViewer"
 import Footer from "@/components/Footer"
 import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
+import Header from "@/components/Header"
 
 // Dữ liệu sản phẩm Softgen
 const product = {
   id: "softgen-1",
   name: "Tấm lót hỗ trợ vòm bàn chân Softgen",
+  description: "Tấm lót hỗ trợ vòm bàn chân Softgen là sản phẩm dạng gel có khả năng hỗ trợ nhẹ nhàng và tạo cảm giác như đang đi trên không trung.",
+  price: "549.000đ",
   image: "/images/products/Softgen.jpg",
   category: "softgen",
+  rating: 4.8,
+  reviewCount: 112,
+  popular: true,
+  new: false,
+  tags: ["comfort", "everyday"],
 }
 
 export default function SoftgenProductPage() {
@@ -49,35 +57,10 @@ export default function SoftgenProductPage() {
         }}
       />
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3 ml-4">
-              <Image
-                src={getImagePath("/images/logo_slogan_1.png")}
-                alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
-                className="h-10 max-h-[40px]"
-                width={150}
-                height={40}
-                style={{ objectFit: 'contain' }}
-                title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
-              />
-            </Link>
-            <Link href="/tat-ca-san-pham">
-              <Button variant="outline" className="flex items-center space-x-2">
-                <ArrowLeft className="w-4 h-4" />
-                <span className="hidden sm:inline">Quay lại tất cả sản phẩm</span>
-                <span className="sm:hidden">Quay lại</span>
-              </Button>
-            </Link>
-          </div>
-        </div>
-        <div className="w-full h-[8px]">
-          <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-          <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-        </div>
-      </header>
+      <Header
+        onConsultationClick={() => setIsUnifiedRegistrationOpen(true)}
+        onAppointmentClick={() => setIsUnifiedRegistrationOpen(true)}
+      />
 
       {/* Product Detail Section */}
       <section className="py-12">

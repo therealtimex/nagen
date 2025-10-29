@@ -27,6 +27,7 @@ interface FormErrors {
 interface UnifiedRegistrationFormProps {
   isOpen: boolean
   onClose: () => void
+  defaultType?: "product" | "dealer" | "appointment"
 }
 
 // Standardized CTA Button Component
@@ -64,9 +65,9 @@ function CTAButton({
   )
 }
 
-export default function UnifiedRegistrationForm({ isOpen, onClose }: UnifiedRegistrationFormProps) {
+export default function UnifiedRegistrationForm({ isOpen, onClose, defaultType }: UnifiedRegistrationFormProps) {
   const [formData, setFormData] = useState<FormData>({
-    consultationType: "",
+    consultationType: defaultType || "",
     name: "",
     phone: "",
     email: "",
@@ -122,16 +123,23 @@ export default function UnifiedRegistrationForm({ isOpen, onClose }: UnifiedRegi
 
     setIsSubmitting(true)
     try {
+      let eventType = "tuvan"
+      let apiUrl = "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_datlich/input"
+      
+      if (formData.consultationType === "dealer") {
+        eventType = "partner"
+        apiUrl = "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_doitac/input"
+      } else if (formData.consultationType === "appointment") {
+        eventType = "datlich_docha"
+        apiUrl = "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_datlich/input"
+      }
+
       const submissionData = {
         ...formData,
-        event: formData.consultationType === "product" ? "tuvan" : "partner",
+        event: eventType,
         ctv: ctvValue,
         source_url: typeof window !== "undefined" ? window.location.href : "",
       }
-
-      const apiUrl = formData.consultationType === "product" 
-        ? "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_datlich/input"
-        : "https://workflow.realtimex.co/api/v1/executions/webhook/flowai/nagen_website_doitac/input"
 
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -157,7 +165,7 @@ export default function UnifiedRegistrationForm({ isOpen, onClose }: UnifiedRegi
 
   const resetForm = () => {
     setFormData({
-      consultationType: "",
+      consultationType: defaultType || "",
       name: "",
       phone: "",
       email: "",
@@ -195,6 +203,11 @@ export default function UnifiedRegistrationForm({ isOpen, onClose }: UnifiedRegi
                     </p>
                   </div>
                 )}
+              </>
+            ) : formData.consultationType === "appointment" ? (
+              <>
+                <p className="text-gray-600 mb-4 text-sm sm:text-base">Cảm ơn bạn đã đặt lịch đo chân với NAGEN.</p>
+                <p className="text-gray-600 mb-6 text-sm sm:text-base">Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để xác nhận lịch hẹn và địa điểm đo chân.</p>
               </>
             ) : (
               <>
@@ -267,6 +280,21 @@ export default function UnifiedRegistrationForm({ isOpen, onClose }: UnifiedRegi
                     <div className="flex-1">
                       <div className="font-medium text-gray-900">Tư vấn trở thành đại lý</div>
                       <div className="text-sm text-gray-600">Tham gia mạng lưới đại lý NAGEN trên toàn quốc</div>
+                    </div>
+                  </label>
+
+                  <label className="flex items-center space-x-3 cursor-pointer p-4 border-2 border-gray-200 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all duration-200">
+                    <input
+                      type="radio"
+                      name="consultationType"
+                      value="appointment"
+                      checked={formData.consultationType === "appointment"}
+                      onChange={(e) => setFormData({ ...formData, consultationType: e.target.value })}
+                      className="w-4 h-4 text-green-600 focus:ring-green-500 focus:ring-2"
+                    />
+                    <div className="flex-1">
+                      <div className="font-medium text-gray-900">Đặt lịch đo chân</div>
+                      <div className="text-sm text-gray-600">Đặt lịch hẹn để được đo chân và tư vấn trực tiếp</div>
                     </div>
                   </label>
                 </div>

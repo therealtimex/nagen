@@ -53,8 +53,8 @@ function EnhancedNavigation({
   const menuItems = [
     {
       name: "Sản phẩm",
-      href: "#products", 
-     submenu: [
+      href: "#products",
+      submenu: [
         { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/san-pham/sungen" },
         { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/san-pham/winagen" },
         { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/san-pham/softgen" },
@@ -223,8 +223,8 @@ function EnhancedNavigation({
                   )}
                 </div>
               ))}
-            </nav> 
-           {/* Mobile Navigation */}
+            </nav>
+            {/* Mobile Navigation */}
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="lg:hidden bg-transparent border-gray-300 hover:bg-gray-100">
@@ -291,8 +291,8 @@ function EnhancedNavigation({
                         )}
                       </div>
                     ))}
-                  </nav>   
-               <div className="p-4 border-t bg-gray-50">
+                  </nav>
+                  <div className="p-4 border-t bg-gray-50">
                     <div className="text-center text-sm text-gray-500">
                       <p>NAGEN - Tấm lót hỗ trợ vòm bàn chân</p>
                       <p className="text-xs mt-1">Hotline: 0966578008</p>
@@ -314,6 +314,7 @@ function EnhancedNavigation({
 
 export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false)
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false)
 
   // Handle custom events from Footer
   useEffect(() => {
@@ -321,10 +322,16 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
       setIsConsultationModalOpen(true)
     }
 
+    const handleOpenAppointmentModal = () => {
+      setIsAppointmentModalOpen(true)
+    }
+
     window.addEventListener('openUnifiedRegistration', handleOpenUnifiedRegistration)
+    window.addEventListener('openAppointmentModal', handleOpenAppointmentModal)
 
     return () => {
       window.removeEventListener('openUnifiedRegistration', handleOpenUnifiedRegistration)
+      window.removeEventListener('openAppointmentModal', handleOpenAppointmentModal)
     }
   }, [])
 
@@ -344,7 +351,7 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
               "name": "Ban biên tập NAGEN"
             },
             "datePublished": "2025-10-09",
-            "image": "https://nagen.vn/images/news/research-center-launch.jpg",
+            "image": "https://nagen.vn/images/tin-tuc/trung-tam-nghien-cuu-cau-truc-co-the.webp",
             "url": "https://nagen.vn/tin-tuc/ra-mat-trung-tam-nghien-cuu-can-bang-cau-truc",
             "publisher": {
               "@type": "Organization",
@@ -358,8 +365,8 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
       <EnhancedNavigation
         onConsultationClick={() => setIsConsultationModalOpen(true)}
         onAppointmentClick={() => setIsConsultationModalOpen(true)}
-      />   
-   {/* Breadcrumb */}
+      />
+      {/* Breadcrumb */}
       <section className="py-4 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex items-center text-sm text-gray-600">
@@ -376,8 +383,8 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
       <section className="py-8">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Link 
-              href="/tin-tuc" 
+            <Link
+              href="/tin-tuc"
               className="inline-flex items-center text-blue-900 hover:text-red-600 mb-6 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -404,7 +411,7 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
             </div>
 
             <Image
-              src={getImagePath("/images/news/research-center-launch.jpg")}
+              src={getImagePath("/images/tin-tuc/trung-tam-nghien-cuu-cau-truc-co-the.webp")}
               alt="Ra mắt Trung tâm Nghiên cứu Ứng dụng Cân bằng Cấu trúc Cơ thể NAGEN"
               width={800}
               height={400}
@@ -418,232 +425,316 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
       <section className="pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="prose prose-xl max-w-none prose-headings:text-blue-900 prose-h2:text-2xl prose-h2:font-bold prose-h2:mb-6 prose-h2:mt-8 prose-h3:text-xl prose-h3:font-semibold prose-h3:mb-4 prose-h3:mt-6 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-li:text-gray-700 prose-strong:text-blue-900 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:text-gray-700">
+            <div className="space-y-8">
               <div className="bg-gradient-to-r from-blue-50 to-red-50 p-6 rounded-lg mb-8 border-l-4 border-blue-500">
                 <p className="text-xl text-gray-800 leading-relaxed font-medium">
                   Ngày 09/10/2025, tại Hà Nội, Trung tâm Nghiên cứu Ứng dụng Cân bằng Cấu trúc Cơ thể Nagen đã chính thức ra mắt dưới sự chứng kiến của các lãnh đạo Viện Nghiên cứu Sức khỏe Người cao tuổi và Y tế Cộng đồng, cùng sự tham dự của nhiều giáo sư, phó giáo sư, Bác sĩ hàng đầu tại Việt Nam.
                 </p>
               </div>
 
-              <h2>Sự kiện đánh dấu bước tiến quan trọng</h2>
-              <p> Trong lĩnh vực chăm sóc sức khỏe theo hướng khoa học – một cách tự nhiên – không xâm lấn, đặt nền móng cho một hệ thống nghiên cứu cân bằng cấu trúc cơ thể trên ứng dụng Tấm lót hỗ trợ vòm bàn chân NAGEN cho cộng đồng Người Việt.</p>
-
-              <h2>Đội ngũ chuyên gia tham dự</h2>
-              <p>Lễ ra mắt có sự tham dự của các chuyên gia đầu ngành trong lĩnh vực y tế và chăm sóc sức khỏe:</p>
-              
-              <div className="bg-white border border-gray-200 rounded-lg p-6 my-6 shadow-sm">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-3">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-blue-900">PGS.TS Nguyễn Huy Nga</p>
-                        <p className="text-sm text-gray-600">Viện trưởng Viện Nghiên cứu Sức khỏe Người cao tuổi và Y tế Cộng đồng - Nguyên Cục trưởng cục y tế dự phòng</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-blue-900">PGS.TS Lê Nguyên Đương</p>
-                        <p className="text-sm text-gray-600">Phó Viện trưởng</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-blue-900">Ông Tạ Duy Quy</p>
-                        <p className="text-sm text-gray-600">Phó Viện trưởng, nguyên Thanh tra Bộ Y tế</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-blue-900">GS.TS.NS.BS.CKII Phạm Vinh Quang</p>
-                        <p className="text-sm text-gray-600">Chuyên gia hàng đầu trong lĩnh vực phẫu thuật lồng ngực, tim mạch và ung bướu - nguyên Giám đốc Trung tâm Huyết học & Truyền máu Bệnh viện Bạch Mai</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-red-900">Ông Nguyễn Cảnh Thi</p>
-                        <p className="text-sm text-gray-600">Giám đốc trung tâm nghiên cứu ứng dụng cân bằng cấu trúc cơ thể, đồng thời là Tổng giám đốc Công ty TNHH Nagen</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-red-900">Bà Nguyễn Thị Yến</p>
-                        <p className="text-sm text-gray-600">Thành viên sáng lập trung tâm, đồng thời là Chủ tịch Công ty TNHH Nagen</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-green-900">Tạp chí sức khỏe cộng đồng</p>
-                        <p className="text-sm text-gray-600">Ấn phẩm uy tín hàng đầu về chăm sóc sức khỏe</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-purple-900">Đại diện các đại lý, đối tác</p>
-                        <p className="text-sm text-gray-600">Khách mời và đối tác chiến lược</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <h2>Lễ trao chứng nhận thành lập</h2>
-              <p>Tại sự kiện, Viện trưởng PGS.TS Nguyễn Huy Nga đã chính thức trao chứng nhận thành lập Trung tâm nghiên cứu ứng dụng cân bằng cấu trúc cơ thể Nagen cho ông Nguyễn Cảnh Thi, đồng thời đánh giá đây là:</p>
-              
-              <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-700 bg-blue-50 p-4 rounded-r-lg">
-                "Cầu nối giữa y học hiện đại và các giải pháp hỗ trợ cân bằng cấu trúc cơ thể theo hướng tự nhiên, an toàn cho cộng đồng - Trung tâm ra đời rất phù hợp với chủ trương của Đảng và Nhà nước hướng đến các giải pháp chăm sóc sức khỏe thuận tự nhiên và không xâm lấn."
-              </blockquote>
-
-              <p>Trung tâm là đơn vị đầu tiên và duy nhất tại Việt Nam nghiên cứu trên ứng dụng Tấm lót hỗ trợ vòm bàn chân từ Mỹ, đánh giá sự cải thiện về các vấn đề mất cân bằng cấu trúc cơ thể liên quan đến sự mất cân bằng của bàn chân. Ứng dụng nghiên cứu được phổ biến rộng rãi cho nhiều thế hệ.</p>  
-            <h2>Định hướng chiến lược và tầm nhìn nghiên cứu</h2>
-              <p>Chia sẻ từ bà Nguyễn Thị Yến - Thành viên sáng lập trung tâm về định hướng chiến lược và tầm nhìn nghiên cứu:</p>
-
-              <h3>Trở thành đơn vị tiên phong</h3>
-              <p>Trung tâm định hướng trở thành đơn vị tiên phong trong nghiên cứu và ứng dụng các giải pháp tối ưu về lĩnh vực bàn chân một cách thuận tự nhiên, cân bằng cấu trúc cơ thể, bắt đầu từ nền tảng bàn chân – gốc rễ của hệ cơ – xương – khớp và tư thế toàn thân.</p>
-
-              <h3>Nền tảng khoa học vững chắc</h3>
-              <p>Dựa trên nền tảng khoa học được phát minh bởi <strong>Georg Alzner</strong> - Tiến sĩ, Bác sĩ phẫu thuật chỉnh hình người Đức – người đã nghiên cứu tấm lót hỗ trợ vòm bàn chân và được cấp bằng sáng chế tại Canada (1969) và Hoa Kỳ (1970). Trung tâm hướng tới kế thừa, khai thác và phát triển các giá trị khoa học này theo hướng phù hợp với đặc điểm cơ thể và thói quen vận động của người Việt Nam.</p>
-
-              <h3>Ứng dụng cho mọi lứa tuổi</h3>
-              <p>Nghiên cứu khoa học được đưa vào ứng dụng cho mọi lứa tuổi và là một giải pháp thiết yếu trong việc chăm sóc sức khỏe bàn chân liên quan đến cân bằng cấu trúc & chức năng cơ thể, là một giải pháp nuôi dưỡng để ngăn ngừa các vấn đề xảy ra trong tương lai.</p>
-
-              <h3>Nghiên cứu thực tiễn</h3>
-              <p>Trong giai đoạn đầu, Trung tâm tập trung nghiên cứu ứng dụng thực tiễn thông qua sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN, được sản xuất tại Hoa Kỳ và đã được nghiên cứu tại nhiều đại học uy tín quốc tế như Michigan, California, East Carolina và Armstrong Atlantic. Mục tiêu là xây dựng cơ sở dữ liệu lâm sàng và thực nghiệm nhằm đánh giá tác động của việc hỗ trợ vòm bàn chân đối với cân bằng cơ – xương – khớp và hiệu quả vận động.</p>
-
-              <h2>Các vấn đề nghiên cứu ứng dụng</h2>
-              <p>Cụ thể, nghiên cứu ứng dụng trên các vấn đề mất cân bằng ảnh hưởng đến cân bằng cấu trúc cơ thể như sau:</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-white font-bold">🦶</span>
-                    </div>
-                    <h4 className="font-bold text-blue-900 text-lg">Vấn đề về bàn chân</h4>
-                  </div>
-                  <ul className="space-y-2">
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Bàn chân bẹt, vòng kiềng</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Chân chữ X</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Viêm cân gân chân</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Đau gót chân, gai gót chân</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Đau xương bàn chân</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl border border-red-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-white font-bold">🏃</span>
-                    </div>
-                    <h4 className="font-bold text-red-900 text-lg">Vấn đề toàn thân</h4>
-                  </div>
-                  <ul className="space-y-2">
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Suy giãn tĩnh mạch</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Đau nhức xương khớp</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Vẹo cột sống</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Mất cân bằng gây té ngã</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Béo phì</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-white font-bold">👥</span>
-                    </div>
-                    <h4 className="font-bold text-green-900 text-lg">Nhóm đối tượng đặc biệt</h4>
-                  </div>
-                  <ul className="space-y-2">
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Nghề nghiệp đi đứng nhiều</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Đi giày cao gót không phù hợp</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Người chơi thể thao</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Phụ nữ mang bầu</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Người cao tuổi</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-white font-bold">⚕️</span>
-                    </div>
-                    <h4 className="font-bold text-purple-900 text-lg">Tình trạng đặc thù</h4>
-                  </div>
-                  <ul className="space-y-2">
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Chiều dài 2 chân không đều</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Viêm/đứt gân chân Achilles</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Thay đổi tuổi tác</li>
-                    <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Và nhiều vấn đề khác...</li>
-                  </ul>
-                </div>
-              </div>       
-       <h2>Chia sẻ từ Giám đốc Trung tâm</h2>
-              <p>Chia sẻ từ Ông Nguyễn Cảnh Thi – Giám đốc Trung tâm:</p>
-              
-              <blockquote className="border-l-4 border-green-500 pl-4 italic text-gray-700 bg-green-50 p-4 rounded-r-lg">
-                "Sự khỏe mạnh là một trạng thái cân bằng, sự cân bằng của bàn chân liên quan mật thiết đến sự cân bằng cấu trúc cơ thể. Mỗi đôi bàn chân khỏe mạnh là nền móng của một cơ thể khỏe mạnh. Trung tâm ra đời với sứ mệnh nghiên cứu, ứng dụng và lan tỏa các giải pháp thuận tự nhiên, mang lại sức khỏe, hạnh phúc và niềm vui cho người dân Việt Nam."
-              </blockquote>
-
-              <h2>Trải nghiệm và phản hồi từ chuyên gia</h2>
-              <p>Sau phần công bố, các Giáo sư, Phó Giáo sư và chuyên gia đầu ngành đã chia sẻ nhiều cảm nhận sâu sắc khi lắng nghe sứ mệnh – tầm nhìn của Trung tâm, đồng thời được trực tiếp trải nghiệm sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN.</p>
-
-              <p>Từ những trải nghiệm đó, các chuyên gia bày tỏ niềm tin và kỳ vọng rằng Trung tâm sẽ lan tỏa những giá trị nhân văn, đóng góp thiết thực cho hành trình nâng cao sức khỏe cộng đồng Việt.</p>
-
-              <h3>Các hoạt động trải nghiệm tại sự kiện</h3>
-              <p>Ngay trong lễ ra mắt, các khách mời cũng đã được trải nghiệm:</p>
-              <ul>
-                <li><strong>Kiểm tra bàn chân & kiểm tra sự cân bằng</strong></li>
-                <li><strong>Trải nghiệm tấm lót hỗ trợ vòm bàn chân NAGEN</strong></li>
-                <li><strong>Cảm nhận thay đổi về sự thăng bằng và giảm nhức mỏi</strong> chỉ sau vài bước di chuyển</li>
-              </ul>
-
-              <p>Nhiều phản hồi tích cực, có thể nói là "không thể diễn tả nổi" về công dụng tuyệt vời của tấm lót hỗ trợ vòm bàn chân Nagen. Tất cả đã được ghi nhận và sẽ trở thành dữ liệu nghiên cứu chuyên sâu của Trung tâm trong thời gian tới.</p>
-
-              <h2>Cam kết lan tỏa giá trị sức khỏe bền vững</h2>
-              <p>Sự kiện ra mắt Trung tâm không chỉ là một dấu mốc, mà còn là cam kết lâu dài trong việc:</p>
-              
-              <div className="bg-gradient-to-r from-blue-50 via-purple-50 to-red-50 p-6 rounded-xl border-l-4 border-blue-500 my-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-lg">📚</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-blue-900 mb-2">Nghiên cứu – Ứng dụng – Phổ cập</h4>
-                      <p className="text-gray-700">Kiến thức về cân bằng cấu trúc cơ thể được nghiên cứu, ứng dụng và phổ cập rộng rãi</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-lg">🤝</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-red-900 mb-2">Đồng hành cùng cộng đồng</h4>
-                      <p className="text-gray-700">Giúp trẻ em, người trưởng thành và người cao tuổi phòng ngừa các vấn đề cơ – xương – khớp ngay từ bước chân đầu tiên</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-center bg-gradient-to-r from-blue-600 to-red-600 text-white p-8 rounded-xl mt-8">
-                <p className="text-xl font-medium mb-2">
-                  ❤️ Hãy theo dõi NAGEN để cùng chúng tôi khám phá những nghiên cứu, ứng dụng và phương pháp giúp cơ thể bạn cân bằng và khỏe mạnh hơn!
+              {/* Section 1 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Sự kiện đánh dấu bước tiến quan trọng</h2>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Trong lĩnh vực chăm sóc sức khỏe theo hướng khoa học – một cách tự nhiên – không xâm lấn, đặt nền móng cho một hệ thống nghiên cứu cân bằng cấu trúc cơ thể trên ứng dụng Tấm lót hỗ trợ vòm bàn chân NAGEN cho cộng đồng Người Việt.
                 </p>
-                <div className="flex justify-center space-x-2 mt-4">
-                  <span className="px-3 py-1 bg-white/20 rounded-full text-sm">#nagen</span>
-                  <span className="px-3 py-1 bg-white/20 rounded-full text-sm">#trungtamnghiencuu</span>
-                  <span className="px-3 py-1 bg-white/20 rounded-full text-sm">#canbangcautruc</span>
+              </section>
+
+              {/* Section 2 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Đội ngũ chuyên gia tham dự</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Lễ ra mắt có sự tham dự của các chuyên gia đầu ngành trong lĩnh vực y tế và chăm sóc sức khỏe:
+                </p>
+
+                <div className="bg-white border border-gray-200 rounded-lg p-6 my-6 shadow-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-blue-900">PGS.TS Nguyễn Huy Nga</p>
+                          <p className="text-sm text-gray-600">Viện trưởng Viện Nghiên cứu Sức khỏe Người cao tuổi và Y tế Cộng đồng - Nguyên Cục trưởng cục y tế dự phòng</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-blue-900">PGS.TS Lê Nguyên Đương</p>
+                          <p className="text-sm text-gray-600">Phó Viện trưởng</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-blue-900">Ông Tạ Duy Quy</p>
+                          <p className="text-sm text-gray-600">Phó Viện trưởng, nguyên Thanh tra Bộ Y tế</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-blue-900">GS.TS.NS.BS.CKII Phạm Vinh Quang</p>
+                          <p className="text-sm text-gray-600">Chuyên gia hàng đầu trong lĩnh vực phẫu thuật lồng ngực, tim mạch và ung bướu - nguyên Giám đốc Trung tâm Huyết học & Truyền máu Bệnh viện Bạch Mai</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-red-900">Ông Nguyễn Cảnh Thi</p>
+                          <p className="text-sm text-gray-600">Giám đốc trung tâm nghiên cứu ứng dụng cân bằng cấu trúc cơ thể, đồng thời là Tổng giám đốc Công ty TNHH Nagen</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-red-900">Bà Nguyễn Thị Yến</p>
+                          <p className="text-sm text-gray-600">Thành viên sáng lập trung tâm, đồng thời là Chủ tịch Công ty TNHH Nagen</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-green-900">Tạp chí sức khỏe cộng đồng</p>
+                          <p className="text-sm text-gray-600">Ấn phẩm uy tín hàng đầu về chăm sóc sức khỏe</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-purple-900">Đại diện các đại lý, đối tác</p>
+                          <p className="text-sm text-gray-600">Khách mời và đối tác chiến lược</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </section>
+
+              {/* Section 3 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Lễ trao chứng nhận thành lập</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Tại sự kiện, Viện trưởng PGS.TS Nguyễn Huy Nga đã chính thức trao chứng nhận thành lập Trung tâm nghiên cứu ứng dụng cân bằng cấu trúc cơ thể Nagen cho ông Nguyễn Cảnh Thi, đồng thời đánh giá đây là:
+                </p>
+
+                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500 my-6">
+                  <p className="text-gray-700 leading-relaxed italic text-lg">
+                    "Cầu nối giữa y học hiện đại và các giải pháp hỗ trợ cân bằng cấu trúc cơ thể theo hướng tự nhiên, an toàn cho cộng đồng - Trung tâm ra đời rất phù hợp với chủ trương của Đảng và Nhà nước hướng đến các giải pháp chăm sóc sức khỏe thuận tự nhiên và không xâm lấn."
+                  </p>
+                </div>
+
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Trung tâm là đơn vị đầu tiên và duy nhất tại Việt Nam nghiên cứu trên ứng dụng Tấm lót hỗ trợ vòm bàn chân từ Mỹ, đánh giá sự cải thiện về các vấn đề mất cân bằng cấu trúc cơ thể liên quan đến sự mất cân bằng của bàn chân. Ứng dụng nghiên cứu được phổ biến rộng rãi cho nhiều thế hệ.
+                </p>
+              </section>
+
+              {/* Section 4 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Định hướng chiến lược và tầm nhìn nghiên cứu</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Chia sẻ từ bà Nguyễn Thị Yến - Thành viên sáng lập trung tâm về định hướng chiến lược và tầm nhìn nghiên cứu:
+                </p>
+
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">Trở thành đơn vị tiên phong</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">
+                      Trung tâm định hướng trở thành đơn vị tiên phong trong nghiên cứu và ứng dụng các giải pháp tối ưu về lĩnh vực bàn chân một cách thuận tự nhiên, cân bằng cấu trúc cơ thể, bắt đầu từ nền tảng bàn chân – gốc rễ của hệ cơ – xương – khớp và tư thế toàn thân.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">Nền tảng khoa học vững chắc</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">
+                      Dựa trên nền tảng khoa học được phát minh bởi <strong className="text-blue-900">Georg Alzner</strong> - Tiến sĩ, Bác sĩ phẫu thuật chỉnh hình người Đức – người đã nghiên cứu tấm lót hỗ trợ vòm bàn chân và được cấp bằng sáng chế tại Canada (1969) và Hoa Kỳ (1970). Trung tâm hướng tới kế thừa, khai thác và phát triển các giá trị khoa học này theo hướng phù hợp với đặc điểm cơ thể và thói quen vận động của người Việt Nam.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">Ứng dụng cho mọi lứa tuổi</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">
+                      Nghiên cứu khoa học được đưa vào ứng dụng cho mọi lứa tuổi và là một giải pháp thiết yếu trong việc chăm sóc sức khỏe bàn chân liên quan đến cân bằng cấu trúc & chức năng cơ thể, là một giải pháp nuôi dưỡng để ngăn ngừa các vấn đề xảy ra trong tương lai.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">Nghiên cứu thực tiễn</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">
+                      Trong giai đoạn đầu, Trung tâm tập trung nghiên cứu ứng dụng thực tiễn thông qua sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN, được sản xuất tại Hoa Kỳ và đã được nghiên cứu tại nhiều đại học uy tín quốc tế như Michigan, California, East Carolina và Armstrong Atlantic. Mục tiêu là xây dựng cơ sở dữ liệu lâm sàng và thực nghiệm nhằm đánh giá tác động của việc hỗ trợ vòm bàn chân đối với cân bằng cơ – xương – khớp và hiệu quả vận động.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Section 5 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Các vấn đề nghiên cứu ứng dụng</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Cụ thể, nghiên cứu ứng dụng trên các vấn đề mất cân bằng ảnh hưởng đến cân bằng cấu trúc cơ thể như sau:
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-white font-bold">🦶</span>
+                      </div>
+                      <h4 className="font-bold text-blue-900 text-lg">Vấn đề về bàn chân</h4>
+                    </div>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Bàn chân bẹt, vòng kiềng</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Chân chữ X</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Viêm cân gân chân</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Đau gót chân, gai gót chân</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Đau xương bàn chân</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl border border-red-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-white font-bold">🏃</span>
+                      </div>
+                      <h4 className="font-bold text-red-900 text-lg">Vấn đề toàn thân</h4>
+                    </div>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Suy giãn tĩnh mạch</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Đau nhức xương khớp</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Vẹo cột sống</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Mất cân bằng gây té ngã</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>Béo phì</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-white font-bold">👥</span>
+                      </div>
+                      <h4 className="font-bold text-green-900 text-lg">Nhóm đối tượng đặc biệt</h4>
+                    </div>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Nghề nghiệp đi đứng nhiều</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Đi giày cao gót không phù hợp</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Người chơi thể thao</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Phụ nữ mang bầu</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Người cao tuổi</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-white font-bold">⚕️</span>
+                      </div>
+                      <h4 className="font-bold text-purple-900 text-lg">Tình trạng đặc thù</h4>
+                    </div>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Chiều dài 2 chân không đều</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Viêm/đứt gân chân Achilles</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Thay đổi tuổi tác</li>
+                      <li className="flex items-center text-gray-700"><span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>Và nhiều vấn đề khác...</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              {/* Section 6 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Chia sẻ từ Giám đốc Trung tâm</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Chia sẻ từ Ông Nguyễn Cảnh Thi – Giám đốc Trung tâm:
+                </p>
+
+                <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                  <p className="text-gray-700 leading-relaxed italic text-lg">
+                    "Sự khỏe mạnh là một trạng thái cân bằng, sự cân bằng của bàn chân liên quan mật thiết đến sự cân bằng cấu trúc cơ thể. Mỗi đôi bàn chân khỏe mạnh là nền móng của một cơ thể khỏe mạnh. Trung tâm ra đời với sứ mệnh nghiên cứu, ứng dụng và lan tỏa các giải pháp thuận tự nhiên, mang lại sức khỏe, hạnh phúc và niềm vui cho người dân Việt Nam."
+                  </p>
+                </div>
+              </section>
+
+              {/* Section 7 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Trải nghiệm và phản hồi từ chuyên gia</h2>
+
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Sau phần công bố, các Giáo sư, Phó Giáo sư và chuyên gia đầu ngành đã chia sẻ nhiều cảm nhận sâu sắc khi lắng nghe sứ mệnh – tầm nhìn của Trung tâm, đồng thời được trực tiếp trải nghiệm sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN.
+                </p>
+
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Từ những trải nghiệm đó, các chuyên gia bày tỏ niềm tin và kỳ vọng rằng Trung tâm sẽ lan tỏa những giá trị nhân văn, đóng góp thiết thực cho hành trình nâng cao sức khỏe cộng đồng Việt.
+                </p>
+
+                <h3 className="text-xl font-bold text-blue-900 mb-4">Các hoạt động trải nghiệm tại sự kiện</h3>
+
+                <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                  Ngay trong lễ ra mắt, các khách mời cũng đã được trải nghiệm:
+                </p>
+
+                <ul className="space-y-3 text-gray-700 mb-6">
+                  <li className="flex items-start">
+                    <span className="text-red-600 mr-3 mt-1">•</span>
+                    <span><strong className="text-blue-900">Kiểm tra bàn chân & kiểm tra sự cân bằng</strong></span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-600 mr-3 mt-1">•</span>
+                    <span><strong className="text-blue-900">Trải nghiệm tấm lót hỗ trợ vòm bàn chân NAGEN</strong></span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-600 mr-3 mt-1">•</span>
+                    <span><strong className="text-blue-900">Cảm nhận thay đổi về sự thăng bằng và giảm nhức mỏi</strong> chỉ sau vài bước di chuyển</span>
+                  </li>
+                </ul>
+
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Nhiều phản hồi tích cực, có thể nói là "không thể diễn tả nổi" về công dụng tuyệt vời của tấm lót hỗ trợ vòm bàn chân Nagen. Tất cả đã được ghi nhận và sẽ trở thành dữ liệu nghiên cứu chuyên sâu của Trung tâm trong thời gian tới.
+                </p>
+              </section>
+
+              {/* Section 8 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Cam kết lan tỏa giá trị sức khỏe bền vững</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Sự kiện ra mắt Trung tâm không chỉ là một dấu mốc, mà còn là cam kết lâu dài trong việc:
+                </p>
+
+                <div className="bg-gradient-to-r from-blue-50 via-purple-50 to-red-50 p-6 rounded-xl border-l-4 border-blue-500 my-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-lg">📚</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-blue-900 mb-2">Nghiên cứu – Ứng dụng – Phổ cập</h4>
+                        <p className="text-gray-700">Kiến thức về cân bằng cấu trúc cơ thể được nghiên cứu, ứng dụng và phổ cập rộng rãi</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-lg">🤝</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-red-900 mb-2">Đồng hành cùng cộng đồng</h4>
+                        <p className="text-gray-700">Giúp trẻ em, người trưởng thành và người cao tuổi phòng ngừa các vấn đề cơ – xương – khớp ngay từ bước chân đầu tiên</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center bg-gradient-to-r from-blue-600 to-red-600 text-white p-8 rounded-xl mt-8">
+                  <p className="text-xl font-medium mb-2">
+                    ❤️ Hãy theo dõi NAGEN để cùng chúng tôi khám phá những nghiên cứu, ứng dụng và phương pháp giúp cơ thể bạn cân bằng và khỏe mạnh hơn!
+                  </p>
+                  <div className="flex justify-center space-x-2 mt-4">
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-sm">#nagen</span>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-sm">#trungtamnghiencuu</span>
+                    <span className="px-3 py-1 bg-white/20 rounded-full text-sm">#canbangcautruc</span>
+                  </div>
+                </div>
+              </section>
             </div>
 
             {/* Tags */}
@@ -661,7 +752,7 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
               <p className="text-gray-600 mb-6">
                 Liên hệ với chúng tôi để được tư vấn và trải nghiệm sản phẩm tấm lót hỗ trợ vòm bàn chân NAGEN
               </p>
-              <Button 
+              <Button
                 className="bg-red-600 hover:bg-red-700 text-white"
                 onClick={() => setIsConsultationModalOpen(true)}
               >
@@ -678,6 +769,15 @@ export default function RaMatTrungTamNghienCuuCanBangCauTrucPage() {
         <UnifiedRegistrationForm
           isOpen={isConsultationModalOpen}
           onClose={() => setIsConsultationModalOpen(false)}
+        />
+      )}
+
+      {/* Appointment Modal */}
+      {isAppointmentModalOpen && (
+        <UnifiedRegistrationForm
+          isOpen={isAppointmentModalOpen}
+          onClose={() => setIsAppointmentModalOpen(false)}
+          defaultType="appointment"
         />
       )}
 

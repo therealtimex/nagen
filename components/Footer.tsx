@@ -112,17 +112,17 @@ export default function Footer() {
                 </ul>
               </nav>
 
-              {/* Copyright */}
+              {/* Company Address */}
               <div className="mt-8 pt-4 border-t border-gray-200">
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  © {currentYear} Bản quyền thuộc về Công ty TNHH Nagen
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  <span className="font-bold text-gray-700">Trụ sở chính:</span> Tầng 7, Tòa VP-1, Sunsquare Complex, Số 21 Lê Đức Thọ, Mỹ Đình 2, Nam Từ Liêm, Hà Nội
                 </p>
               </div>
 
-              {/* Company Address */}
+              {/* Copyright */}
               <div className="mt-2">
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  <span className="font-bold text-gray-700">Trụ sở chính:</span> Tầng 7, Tòa VP-1, Sunsquare Complex, Số 21 Lê Đức Thọ, Mỹ Đình 2, Nam Từ Liêm, Hà Nội
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  © {currentYear} Bản quyền thuộc về Công ty TNHH Nagen
                 </p>
               </div>
 
@@ -243,7 +243,7 @@ export default function Footer() {
                   <li>
                     <button
                       onClick={() => {
-                        // Trigger appointment modal by dispatching custom event
+                        // Trigger appointment modal
                         window.dispatchEvent(new CustomEvent('openAppointmentModal'))
                       }}
                       className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block text-left w-full"
@@ -252,15 +252,12 @@ export default function Footer() {
                     </button>
                   </li>
                   <li>
-                    <button
-                      onClick={() => {
-                        // Trigger unified registration modal
-                        window.dispatchEvent(new CustomEvent('openUnifiedRegistration'))
-                      }}
-                      className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block text-left w-full"
+                    <Link
+                      href="/dai-ly"
+                      className="text-gray-600 hover:text-red-600 transition-colors text-sm leading-relaxed block"
                     >
                       Đăng ký đại lý
-                    </button>
+                    </Link>
                   </li>
                   <li>
                     <Link

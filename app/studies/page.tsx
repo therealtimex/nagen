@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft } from "lucide-react"
 import Footer from "@/components/Footer"
+import Header from "@/components/Header"
 
 export default function StudiesPage() {
   // Structured data for research studies
@@ -70,7 +71,9 @@ export default function StudiesPage() {
       </Head>
 
       <div className="min-h-screen bg-gray-50">
-        {/* Header */}
+        <Header currentPage="Nghiên cứu khoa học" />
+        
+        {/* Hero Section */}
         <div className="bg-[#21395D] text-white py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">

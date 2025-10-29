@@ -28,6 +28,7 @@ import { Product, productData } from "@/lib/products"
 import ProductMediaViewer from "@/components/ProductMediaViewer"
 import Footer from "@/components/Footer";
 import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm";
+import Header from "@/components/Header";
 
 // Product Card Component - Media on left, content on right
 function ProductCard({ product, onConsultationClick }: { product: Product; onConsultationClick: () => void }) {
@@ -357,38 +358,10 @@ export default function AllProductsPage() {
         }}
       />
 
-      {/* Header */}
-      <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-          } border-b border-gray-200`}
-      >
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3 ml-4">
-              <Image
-                src={getImagePath("/images/logo_slogan_1.png")}
-                alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
-                className="h-10 max-h-[40px]"
-                width={150}
-                height={40}
-                style={{ objectFit: 'contain' }}
-                title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
-              />
-            </Link>
-            <Link href="/">
-              <Button variant="outline" className="flex items-center space-x-2">
-                <ArrowLeft className="w-4 h-4" />
-                <span className="hidden sm:inline">Quay lại trang chủ</span>
-                <span className="sm:hidden">Quay lại</span>
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
-      <div className="w-full h-[8px]">
-        <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-        <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-      </div>
+      <Header
+        onConsultationClick={() => setIsUnifiedRegistrationOpen(true)}
+        onAppointmentClick={() => setIsUnifiedRegistrationOpen(true)}
+      />
       {/* Hero Section - Reduced Height */}
       <section className="bg-[#21395D] text-white py-8 lg:py-12">
         <div className="container mx-auto px-4">

@@ -13,6 +13,7 @@ import { getImagePath, navigateTo } from "@/lib/utils";
 import { useEffect } from "react";
 import Footer from "@/components/Footer";
 import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm";
+import Header from "@/components/Header";
 
 const faqs = [
   {
@@ -59,178 +60,7 @@ const faqs = [
   }
 ];
 
-// Enhanced Navigation Component
-function EnhancedNavigation() {
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
 
-  const menuItems = [
-    {
-      name: "Sản phẩm",
-      href: "#products",
-      submenu: [
-        { name: "Tấm lót hỗ trợ vòm bàn chân Sungen", href: "/san-pham/sungen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Winagen", href: "/san-pham/winagen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Softgen", href: "/san-pham/softgen" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Endurance", href: "/san-pham/endurance" },
-        { name: "Tấm lót hỗ trợ vòm bàn chân Silhouette", href: "/san-pham/silhouette" },
-        { name: "Đệm lót giày cao su xốp thiên nhiên", href: "/san-pham/dem-lot-cao-su" },
-      ],
-    },
-    { name: "Dịch vụ", href: "/#services" },
-    { name: "Đối tác", href: "/#partners" },
-    { name: "Giới thiệu", href: "/gioi-thieu-nagen" },
-    { name: "Sự kiện", href: "/su-kien" },
-    { name: "Liên hệ", href: "/#contact" },
-    { name: "Câu hỏi thường gặp", href: "/faqs" },
-  ];
-
-  const handleNavigation = (href: string) => {
-    if (href.startsWith("/") || href.startsWith("http")) {
-      navigateTo(href);
-      return;
-    }
-    // Handle anchor links for homepage
-    if (href.startsWith("/#")) {
-      navigateTo(href);
-      return;
-    }
-  };
-
-  return (
-    <>
-      {/* Contact Info Bar */}
-      <div className="bg-[#21395D] text-white py-2 text-sm">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center space-x-6">
-            <span className="flex items-center">
-              <Phone className="w-4 h-4 mr-2" />
-              0966578008
-            </span>
-            <span className="flex items-center">
-              <Mail className="w-4 h-4 mr-2" />
-              nagen@nagen.vn
-            </span>
-          </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <span className="flex items-center">
-              <Clock className="w-4 h-4 mr-2" />
-              T2-CN: 24/24
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation */}
-      <header className="sticky top-0 z-[1001] bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200">
-        <div className="container mx-auto px-4 py-1">
-          <div className="flex items-center justify-between">
-            <div>
-              <Link href="/" className="flex items-center space-x-3">
-                <Image
-                  src={getImagePath("/images/logo_slogan_1.png")}
-                  alt="Nagen Logo"
-                  width={200}
-                  height={40}
-                  priority
-                />
-              </Link>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-4">
-              {menuItems.map((item) => (
-                <div
-                  key={item.name}
-                  className="relative group"
-                  onMouseEnter={() => setActiveSubmenu(item.submenu ? item.name : null)}
-                  onMouseLeave={() => setActiveSubmenu(null)}
-                >
-                  <a
-                    href={item.href}
-                    className="text-gray-700 hover:text-blue-900 transition-colors font-medium flex items-center py-4 px-2"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavigation(item.href);
-                    }}
-                  >
-                    {item.name}
-                    {item.submenu && <ChevronDown className="w-4 h-4 ml-1" />}
-                  </a>
-
-                  {item.submenu && activeSubmenu === item.name && (
-                    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border py-2 z-50">
-                      {item.submenu.map((subItem) => (
-                        <a
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors text-sm"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavigation(subItem.href);
-                          }}
-                        >
-                          {subItem.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
-
-            {/* Mobile Navigation */}
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="lg:hidden bg-transparent">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <nav className="flex flex-col space-y-6 mt-8">
-                  {menuItems.map((item) => (
-                    <div key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-gray-700 hover:text-blue-900 transition-colors font-medium"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleNavigation(item.href);
-                        }}
-                      >
-                        {item.name}
-                      </a>
-                      {item.submenu && (
-                        <div className="ml-4 mt-2 space-y-2">
-                          {item.submenu.map((subItem) => (
-                            <a
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block text-sm text-gray-600 hover:text-blue-900"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNavigation(subItem.href);
-                              }}
-                            >
-                              {subItem.name}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
-        <div className="w-full h-[8px]">
-          <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-          <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-        </div>
-      </header>
-    </>
-  );
-}
 
 
 
@@ -316,7 +146,7 @@ const FAQPage = () => {
         }}
       />
 
-      <EnhancedNavigation />
+      <Header currentPage="Câu hỏi thường gặp" />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}

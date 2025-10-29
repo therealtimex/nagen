@@ -14,6 +14,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { getImagePath } from "@/lib/utils"
 import Footer from "@/components/Footer"
+import Header from "@/components/Header"
 
 export default function AboutNAGENPage() {
   const [activeSection, setActiveSection] = useState("")
@@ -52,33 +53,7 @@ export default function AboutNAGENPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md bg-white/95">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <Image
-                src={getImagePath("/images/logo_slogan_1.png")}
-                alt="Nagen Logo"
-                width={220}
-                height={44}
-                priority
-                className="h-8 object-contain"
-              />
-            </Link>
-            <Link href="/">
-              <Button variant="outline" className="flex items-center space-x-2 hover:bg-blue-50 transition-colors">
-                <ArrowLeft className="w-4 h-4" />
-                <span>Quay lại trang chủ</span>
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
-      <div className="w-full h-[8px]">
-        <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-        <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-      </div>
+      <Header currentPage="Giới thiệu" />
 
       {/* Hero Section */}
       <section className="relative bg-[#21395D] text-white py-4 lg:py-8 overflow-hidden">

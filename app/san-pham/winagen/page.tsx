@@ -13,13 +13,21 @@ import { getImagePath } from "@/lib/utils"
 import ProductMediaViewer from "@/components/ProductMediaViewer"
 import Footer from "@/components/Footer"
 import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
+import Header from "@/components/Header"
 
 // Dữ liệu sản phẩm Winagen
 const product = {
   id: "winagen-1",
   name: "Tấm lót hỗ trợ vòm bàn chân Winagen",
+  description: "Tấm lót hỗ trợ vòm bàn chân Winagen - sản phẩm lý tưởng cho việc sử dụng hàng ngày và cung cấp mức độ hỗ trợ cao nhất cho những người chơi thể thao và người mới làm quen với sản phẩm hỗ trợ vòm bàn chân.",
+  price: "699.000đ",
   image: "/images/products/Winagen.jpg",
   category: "winagen",
+  rating: 4.9,
+  reviewCount: 87,
+  popular: true,
+  new: false,
+  tags: ["premium", "comfort"],
 }
 
 export default function WinagenProductPage() {
@@ -49,35 +57,10 @@ export default function WinagenProductPage() {
         }}
       />
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3 ml-4">
-              <Image
-                src={getImagePath("/images/logo_slogan_1.png")}
-                alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
-                className="h-10 max-h-[40px]"
-                width={150}
-                height={40}
-                style={{ objectFit: 'contain' }}
-                title="NAGEN - Thương hiệu tấm lót hỗ trợ vòm bàn chân hàng đầu"
-              />
-            </Link>
-            <Link href="/tat-ca-san-pham">
-              <Button variant="outline" className="flex items-center space-x-2">
-                <ArrowLeft className="w-4 h-4" />
-                <span className="hidden sm:inline">Quay lại tất cả sản phẩm</span>
-                <span className="sm:hidden">Quay lại</span>
-              </Button>
-            </Link>
-          </div>
-        </div>
-        <div className="w-full h-[8px]">
-          <div className="bg-red-600 w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-          <div className="bg-[#21395D] w-full !h-[calc(8px/1.5)] md:!h-[calc(12px/1.5)]"></div>
-        </div>
-      </header>
+      <Header
+        onConsultationClick={() => setIsUnifiedRegistrationOpen(true)}
+        onAppointmentClick={() => setIsUnifiedRegistrationOpen(true)}
+      />
 
       {/* Product Detail Section */}
       <section className="py-12">
@@ -114,7 +97,7 @@ export default function WinagenProductPage() {
               {/* Thông tin về sản phẩm */}
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-blue-900 mb-8">Thông tin về sản phẩm</h2>
-                
+
                 <div className="space-y-8">
                   {/* Nguồn gốc, xuất xứ */}
                   <div>
@@ -161,7 +144,7 @@ export default function WinagenProductPage() {
               {/* Công dụng sản phẩm */}
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-blue-900 mb-8">Công dụng sản phẩm</h2>
-                
+
                 {/* Media Gallery */}
                 <div className="mb-12">
                   <div className="bg-gradient-to-r from-blue-50 to-gray-50 p-8 rounded-xl border border-blue-200">
@@ -170,7 +153,7 @@ export default function WinagenProductPage() {
                         <ProductMediaViewer product={product} />
                       </div>
                     </div>
-                    
+
                     {/* Media Note */}
                     <div className="mt-6 text-center">
                       <p className="text-gray-600 text-sm">
@@ -226,7 +209,7 @@ export default function WinagenProductPage() {
               {/* Sử dụng sản phẩm */}
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-blue-900 mb-8">Sử dụng sản phẩm</h2>
-                
+
                 <div className="space-y-8">
                   {/* Dễ dàng sử dụng */}
                   <div>
@@ -242,60 +225,60 @@ export default function WinagenProductPage() {
                     <p className="text-gray-700 leading-relaxed mb-4">
                       Winagen là giải pháp hỗ trợ và phòng ngừa tự nhiên, phù hợp với nhiều nhu cầu và nhiều độ tuổi:
                     </p>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
                         <div className="bg-orange-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-orange-900 mb-2">Người chơi thể thao:</h4>
                           <p className="text-gray-700 text-sm">Chạy bộ, bóng đá, pickleball, tennis, golf…</p>
                         </div>
-                        
+
                         <div className="bg-blue-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-blue-900 mb-2">Người gặp các vấn đề về bàn chân:</h4>
                           <p className="text-gray-700 text-sm">Bàn chân bẹt, bàn chân kiễng, chân vòng kiềng (chữ O), chân chữ X</p>
                         </div>
-                        
+
                         <div className="bg-green-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-green-900 mb-2">Người có nghề nghiệp phải đi đứng nhiều:</h4>
                           <p className="text-gray-700 text-sm">Giáo viên, bác sĩ, công nhân, kỹ sư xây dựng, quản lý bán hàng…</p>
                         </div>
-                        
+
                         <div className="bg-purple-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-purple-900 mb-2">Người đi giày cao gót:</h4>
                           <p className="text-gray-700 text-sm">Không phù hợp dẫn đến đau mỏi</p>
                         </div>
-                        
+
                         <div className="bg-red-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-red-900 mb-2">Người bị các bệnh lý:</h4>
                           <p className="text-gray-700 text-sm">Viêm/ đứt gân chân Achilles, viêm cân gan chân, viêm khớp dạng thấp, đau gót chân, gai gót chân, đau xương bàn chân, cong vẹo cột sống</p>
                         </div>
                       </div>
-                      
+
                       <div className="space-y-4">
                         <div className="bg-indigo-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-indigo-900 mb-2">Người bị suy giãn tĩnh mạch chân:</h4>
                           <p className="text-gray-700 text-sm">Hội chứng Marfan, u dây thần kinh Morton</p>
                         </div>
-                        
+
                         <div className="bg-teal-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-teal-900 mb-2">Người có hai chân không bằng nhau</h4>
                         </div>
-                        
+
                         <div className="bg-pink-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-pink-900 mb-2">Mẹ bầu:</h4>
                           <p className="text-gray-700 text-sm">Bị cân nặng áp lực lên xương khớp, thay đổi dáng đi</p>
                         </div>
-                        
+
                         <div className="bg-gray-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-gray-900 mb-2">Tuổi cao:</h4>
                           <p className="text-gray-700 text-sm">Bị đau mỏi cơ xương khớp</p>
                         </div>
-                        
+
                         <div className="bg-yellow-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-yellow-900 mb-2">Người thừa cân, béo phì:</h4>
                           <p className="text-gray-700 text-sm">Thường xuyên chịu áp lực lớn lên bàn chân và các khớp</p>
                         </div>
-                        
+
                         <div className="bg-cyan-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-cyan-900 mb-2">Trẻ em:</h4>
                           <p className="text-gray-700 text-sm">Trong giai đoạn phát triển vòm bàn chân, cần hỗ trợ định hình tư thế dáng đi từ sớm</p>
