@@ -292,7 +292,7 @@ export default function ContactPage() {
                 </a>
 
                 <a
-                  href="https://m.me/tamlotnagen"
+                  href="https://www.messenger.com/t/tamlotnagen"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-3 sm:p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300 border border-transparent hover:border-blue-200"
