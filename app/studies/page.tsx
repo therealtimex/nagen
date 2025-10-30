@@ -265,26 +265,7 @@ export default function StudiesPage() {
 
             </div>
 
-            {/* Research Collaboration - Full Width */}
-            <div className="mt-12 max-w-4xl mx-auto">
-              <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
-                <CardHeader>
-                  <Badge className="w-fit mb-4 bg-indigo-100 text-indigo-800">Lời mời hợp tác</Badge>
-                  <CardTitle className="text-2xl text-blue-900">5. Tổ chức của bạn có quan tâm đến việc tiến hành nghiên cứu với vật liệu hỗ trợ vòm Alzner® không?</CardTitle>
-                </CardHeader>
-                <CardContent className="text-gray-700 leading-relaxed">
-                  <p>
-                    Các tổ chức được công nhận quan tâm đến việc tiến hành nghiên cứu với vật liệu hỗ trợ vòm Alzner® nên liên hệ với chúng tôi kèm theo đề xuất của họ.
-                  </p>
-                  <div className="mt-6 p-4 bg-white rounded-lg border border-blue-200">
-                    <h4 className="font-semibold text-blue-900 mb-2">Liên hệ hợp tác nghiên cứu:</h4>
-                    <p className="text-blue-700">
-                      Chúng tôi luôn sẵn sàng hợp tác với các tổ chức nghiên cứu uy tín để tiếp tục phát triển và chứng minh hiệu quả của các sản phẩm hỗ trợ vòm bàn chân Alzner®.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+
           </div>
         </section>
 

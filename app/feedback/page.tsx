@@ -252,7 +252,7 @@ function VideoPlayer({ videoUrl, customerName }: { videoUrl: string; customerNam
     const embedUrl = getEmbedUrl(videoUrl)
 
     return (
-        <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden aspect-video shadow-lg border border-gray-200">
+        <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-200" style={{ aspectRatio: '4/3', minHeight: '400px' }}>
             <iframe
                 src={embedUrl}
                 className="w-full h-full"
@@ -263,7 +263,7 @@ function VideoPlayer({ videoUrl, customerName }: { videoUrl: string; customerNam
 
             <div className="absolute top-4 left-4">
                 <Badge className="bg-red-600 text-white border-0 shadow-lg">
-                    🎥 Video từ {customerName}
+                    🎥 Video từ ${customerName}
                 </Badge>
             </div>
         </div>
