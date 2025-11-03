@@ -69,6 +69,19 @@ function CTAButton({
 const blogPosts = [
     {
         id: 1,
+        title: "Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ - since 1969",
+        excerpt: "Khám phá lịch sử và chất lượng vượt trội của tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ với hơn 50 năm kinh nghiệm trong ngành.",
+        category: "Sản phẩm cao cấp",
+        author: "NAGEN Vietnam",
+        date: "2024-11-03",
+        readTime: "5 phút đọc",
+        views: 125,
+        image: "/images/tin-tuc/Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ - since 1969.jpg",
+        tags: ["tấm lót cao cấp", "made in USA", "since 1969", "chất lượng", "công nghệ tiên tiến"],
+        slug: "tam-lot-ho-tro-vom-ban-chan-cao-cap-tu-my-since-1969"
+    },
+    {
+        id: 2,
         title: "Tầm quan trọng của việc chăm sóc bàn chân hàng ngày",
         excerpt: "Bàn chân là nền tảng của cơ thể, việc chăm sóc đúng cách sẽ giúp bạn duy trì sức khỏe tổng thể và phòng ngừa nhiều vấn đề về xương khớp.",
         category: "Chăm sóc sức khỏe",
@@ -81,7 +94,7 @@ const blogPosts = [
         slug: "cham-soc-ban-chan-hang-ngay"
     },
     {
-        id: 2,
+        id: 3,
         title: "Hiểu về vòm bàn chân và tầm quan trọng của nó",
         excerpt: "Vòm bàn chân đóng vai trò quan trọng trong việc hấp thụ lực tác động và duy trì thăng bằng. Tìm hiểu cách bảo vệ và hỗ trợ vòm bàn chân hiệu quả.",
         category: "Kiến thức chuyên môn",
@@ -93,19 +106,7 @@ const blogPosts = [
         tags: ["vòm bàn chân", "giải phẫu", "chức năng"],
         slug: "hieu-ve-vom-ban-chan"
     },
-    {
-        id: 3,
-        title: "Lựa chọn giày phù hợp cho từng loại bàn chân",
-        excerpt: "Mỗi loại bàn chân cần một kiểu giày khác nhau. Hướng dẫn chi tiết cách chọn giày phù hợp để bảo vệ sức khỏe chân và tăng cường hiệu suất hoạt động.",
-        category: "Hướng dẫn",
-        author: "Chuyên gia NAGEN",
-        date: "2024-01-05",
-        readTime: "8 phút đọc",
-        views: 1450,
-        image: "/images/blog/shoe-selection.jpg",
-        tags: ["chọn giày", "hướng dẫn", "sức khỏe chân"],
-        slug: "lua-chon-giay-phu-hop"
-    }
+
 ]
 
 // Main Blog Page Component
@@ -113,7 +114,7 @@ export default function BlogKienThucPage() {
     const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState<string>("Tất cả")
 
-    const categories = ["Tất cả", "Chăm sóc sức khỏe", "Kiến thức chuyên môn", "Hướng dẫn"]
+    const categories = ["Tất cả", "Sản phẩm cao cấp", "Chăm sóc sức khỏe", "Kiến thức chuyên môn"]
 
     const filteredPosts = selectedCategory === "Tất cả"
         ? blogPosts

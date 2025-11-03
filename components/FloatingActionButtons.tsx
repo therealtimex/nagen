@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { MessageCircle, MessageSquare } from "lucide-react"
+import { MessageCircle, MessageSquare, Plus } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { getImagePath, navigateTo } from "@/lib/utils"
@@ -172,7 +172,7 @@ export default function FloatingActionButtons({ onScheduleClick, onConsultationC
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
           <div className="relative z-10 flex h-full w-full items-center justify-center">
-            <MessageCircle className="lg:w-7 lg:h-7 md:w-6 md:h-6 w-6 h-6 drop-shadow-sm" />
+            <Plus className="lg:w-7 lg:h-7 md:w-6 md:h-6 w-6 h-6 drop-shadow-sm" />
           </div>
         </Button>
       </div>

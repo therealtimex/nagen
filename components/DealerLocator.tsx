@@ -54,6 +54,14 @@ const DealerLocator = ({ onBookAppointment }: { onBookAppointment: () => void })
   // Handle dealer selection
   const handleSelectDealer = (dealer: Dealer) => {
     setSelectedDealer(dealer)
+    
+    // Force a small delay to ensure map component receives the update
+    setTimeout(() => {
+      // Trigger a window resize event to help Leaflet recalculate
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new Event('resize'))
+      }
+    }, 100)
   }
 
   // Handle booking appointment

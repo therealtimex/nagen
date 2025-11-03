@@ -14,6 +14,7 @@ import {
   User,
   ArrowLeft,
   Eye,
+  Play,
 } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
@@ -313,7 +314,7 @@ function EnhancedNavigation({
   )
 }
 
-export default function LuaChonGiayPhuHopPage() {
+export default function TamLotHoTroVomBanChanCaoCapTuMyPage() {
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false)
 
   // Handle custom events from Footer
@@ -338,15 +339,15 @@ export default function LuaChonGiayPhuHopPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": "Lựa chọn giày phù hợp cho từng loại bàn chân",
-            "description": "Mỗi loại bàn chân cần một kiểu giày khác nhau. Hướng dẫn chi tiết cách chọn giày phù hợp để bảo vệ sức khỏe chân và tăng cường hiệu suất hoạt động.",
+            "headline": "Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ - since 1969",
+            "description": "Khám phá lịch sử và chất lượng vượt trội của tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ với hơn 50 năm kinh nghiệm trong ngành.",
             "author": {
               "@type": "Person",
-              "name": "Chuyên gia NAGEN"
+              "name": "NAGEN Vietnam"
             },
-            "datePublished": "2024-01-05",
-            "image": "https://nagen.vn/images/blog/shoe-selection.jpg",
-            "url": "https://nagen.vn/blog-kien-thuc/lua-chon-giay-phu-hop",
+            "datePublished": "2024-11-03",
+            "image": "https://nagen.vn/images/tin-tuc/Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ - since 1969.jpg",
+            "url": "https://nagen.vn/blog-kien-thuc/tam-lot-ho-tro-vom-ban-chan-cao-cap-tu-my-since-1969",
             "publisher": {
               "@type": "Organization",
               "name": "NAGEN Vietnam",
@@ -369,7 +370,7 @@ export default function LuaChonGiayPhuHopPage() {
             <span className="mx-2">/</span>
             <Link href="/blog-kien-thuc" className="hover:text-blue-900">Blog kiến thức</Link>
             <span className="mx-2">/</span>
-            <span className="text-blue-900">Lựa chọn giày phù hợp cho từng loại bàn chân</span>
+            <span className="text-blue-900">Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ - since 1969</span>
           </div>
         </div>
       </section>
@@ -387,31 +388,25 @@ export default function LuaChonGiayPhuHopPage() {
             </Link>
 
             <div className="mb-6">
-              <Badge className="bg-blue-900 text-white mb-4">
-                Hướng dẫn
+              <Badge className="bg-red-600 text-white mb-4">
+                Sản phẩm cao cấp
               </Badge>
               <h1 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-                Lựa chọn giày phù hợp cho từng loại bàn chân
+                Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ - since 1969
               </h1>
               <div className="flex items-center text-sm text-gray-500 mb-6">
                 <User className="w-4 h-4 mr-1" />
-                <span className="mr-4">Chuyên gia NAGEN</span>
+                <span className="mr-4">NAGEN Vietnam</span>
                 <Calendar className="w-4 h-4 mr-1" />
-                <span className="mr-4">05/01/2024</span>
+                <span className="mr-4">03/11/2024</span>
                 <Clock className="w-4 h-4 mr-1" />
-                <span className="mr-4">8 phút đọc</span>
+                <span className="mr-4">5 phút đọc</span>
                 <Eye className="w-4 h-4 mr-1" />
-                <span>1,450 lượt xem</span>
+                <span>125 lượt xem</span>
               </div>
             </div>
 
-            <Image
-              src={getImagePath("/images/blog/shoe-selection.jpg")}
-              alt="Lựa chọn giày phù hợp cho từng loại bàn chân"
-              width={800}
-              height={400}
-              className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
-            />
+
           </div>
         </div>
       </section>
@@ -420,112 +415,269 @@ export default function LuaChonGiayPhuHopPage() {
       <section className="pb-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg max-w-none">
-              <h2>Tại sao việc chọn giày phù hợp lại quan trọng?</h2>
-              <p>Giày không phù hợp có thể gây ra nhiều vấn đề nghiêm trọng như đau chân, biến dạng ngón chân, và các vấn đề về cột sống. Việc chọn giày đúng cách không chỉ mang lại sự thoải mái mà còn bảo vệ sức khỏe lâu dài.</p>
-              
-              <h3>Các loại bàn chân phổ biến</h3>
-              
-              <h4>1. Bàn chân bình thường (Normal Arch)</h4>
-              <p><strong>Đặc điểm:</strong> Vòm bàn chân có độ cao vừa phải, dấu chân để lại vết rõ ràng nhưng không quá rộng.</p>
-              <p><strong>Lựa chọn giày:</strong></p>
-              <ul>
-                <li>Giày có độ ổn định vừa phải</li>
-                <li>Đế giữa có độ đàn hồi tốt</li>
-                <li>Hỗ trợ vòm nhẹ</li>
-              </ul>
+            {/* YouTube Video Section */}
+            <div className="mb-8">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/gBdLTlUOrJ8"
+                  title="Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ - since 1969"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
 
-              <h4>2. Bàn chân bẹt (Flat Feet)</h4>
-              <p><strong>Đặc điểm:</strong> Vòm bàn chân thấp hoặc không có, dấu chân để lại vết rộng.</p>
-              <p><strong>Lựa chọn giày:</strong></p>
-              <ul>
-                <li>Giày có độ ổn định cao (Motion Control)</li>
-                <li>Đế cứng, ít đàn hồi</li>
-                <li>Hỗ trợ vòm mạnh</li>
-                <li>Tránh giày có đệm quá mềm</li>
-              </ul>
+            <div className="space-y-8">
+              <div className="bg-gradient-to-r from-blue-50 to-red-50 p-6 rounded-lg mb-8 border-l-4 border-blue-500">
+                <p className="text-xl text-gray-800 leading-relaxed font-medium">
+                  Từ năm 1969, tấm lót hỗ trợ vòm bàn chân từ Mỹ đã không ngừng phát triển và hoàn thiện để mang đến những giải pháp tối ưu nhất cho sức khỏe bàn chân. Với hơn nửa thế kỷ kinh nghiệm, sản phẩm đã trở thành tiêu chuẩn vàng trong ngành công nghiệp hỗ trợ chân.
+                </p>
+              </div>
 
-              <h4>3. Bàn chân có vòm cao (High Arch)</h4>
-              <p><strong>Đặc điểm:</strong> Vòm bàn chân cao, dấu chân để lại vết hẹp ở giữa.</p>
-              <p><strong>Lựa chọn giày:</strong></p>
-              <ul>
-                <li>Giày có độ đàn hồi cao (Cushioned)</li>
-                <li>Đế mềm, hấp thụ lực tác động tốt</li>
-                <li>Không cần hỗ trợ ổn định quá mức</li>
-                <li>Ưu tiên sự linh hoạt</li>
-              </ul>
+              {/* Section 1 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Lịch sử hơn 50 năm phát triển</h2>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ được phát minh bởi <strong className="text-blue-900">Georg Alzner</strong> - Tiến sĩ, Bác sĩ phẫu thuật chỉnh hình người Đức và được cấp bằng sáng chế tại Canada (1969) và Hoa Kỳ (1970). Đây là nền tảng khoa học vững chắc cho sự phát triển của ngành công nghiệp hỗ trợ vòm bàn chân hiện đại.
+                </p>
+              </section>
 
-              <h3>Hướng dẫn chọn size giày</h3>
-              <ol>
-                <li><strong>Đo chân vào buổi chiều:</strong> Chân sẽ phồng lên một chút sau một ngày hoạt động</li>
-                <li><strong>Đo cả hai chân:</strong> Chọn size theo chân lớn hơn</li>
-                <li><strong>Để khoảng trống:</strong> Khoảng 1-1.5cm từ ngón chân dài nhất đến mũi giày</li>
-                <li><strong>Kiểm tra độ rộng:</strong> Giày không nên quá chật hoặc quá rộng</li>
-              </ol>
+              {/* Section 2 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Công nghệ tiên tiến từ Mỹ</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Sản phẩm được phát triển dựa trên những nghiên cứu khoa học sâu rộng và công nghệ tiên tiến nhất từ Hoa Kỳ:
+                </p>
 
-              <h3>Các tiêu chí quan trọng khi chọn giày</h3>
-              
-              <h4>Chất liệu</h4>
-              <ul>
-                <li><strong>Da thật:</strong> Thoáng khí, bền, co giãn theo hình dạng chân</li>
-                <li><strong>Vải mesh:</strong> Thoáng khí tốt, phù hợp cho thể thao</li>
-                <li><strong>Synthetic:</strong> Dễ vệ sinh, chống nước</li>
-              </ul>
+                <div className="bg-white border border-gray-200 rounded-lg p-6 my-6 shadow-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-blue-900">Vật liệu cao cấp</p>
+                          <p className="text-sm text-gray-600">Sử dụng các loại vật liệu y tế an toàn, bền bỉ</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-blue-900">Thiết kế ergonomic</p>
+                          <p className="text-sm text-gray-600">Phù hợp với cấu trúc giải phẫu tự nhiên của bàn chân</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-red-900">Độ bền vượt trội</p>
+                          <p className="text-sm text-gray-600">Có thể sử dụng lâu dài mà không bị biến dạng</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-semibold text-red-900">Khả năng hấp thụ sốc</p>
+                          <p className="text-sm text-gray-600">Giảm thiểu tác động lên khớp và cột sống</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
-              <h4>Đế giày</h4>
-              <ul>
-                <li><strong>Đế ngoài:</strong> Chống trượt, bền</li>
-                <li><strong>Đế giữa:</strong> Hấp thụ lực tác động</li>
-                <li><strong>Đế trong:</strong> Thoáng khí, kháng khuẩn</li>
-              </ul>
+              {/* Section 3 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Ưu điểm nổi bật</h2>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">1. Chất lượng được kiểm định</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                      Mỗi sản phẩm đều trải qua quá trình kiểm định nghiêm ngặt theo tiêu chuẩn FDA của Mỹ, đảm bảo:
+                    </p>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-3 mt-1">•</span>
+                        <span>An toàn tuyệt đối cho người sử dụng</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-3 mt-1">•</span>
+                        <span>Hiệu quả hỗ trợ được chứng minh lâm sàng</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-blue-600 mr-3 mt-1">•</span>
+                        <span>Độ bền và ổn định cao</span>
+                      </li>
+                    </ul>
+                  </div>
 
-              <h3>Lời khuyên cho từng hoạt động</h3>
-              
-              <h4>Giày đi bộ hàng ngày</h4>
-              <ul>
-                <li>Ưu tiên sự thoải mái</li>
-                <li>Đế có độ đàn hồi vừa phải</li>
-                <li>Chất liệu thoáng khí</li>
-              </ul>
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">2. Đa dạng mẫu mã</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                      Với nhiều dòng sản phẩm khác nhau phù hợp với từng nhu cầu cụ thể:
+                    </p>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-red-600 mr-3 mt-1">•</span>
+                        <span><strong className="text-blue-900">Dòng Endurance:</strong> Dành cho vận động viên và người hoạt động nhiều</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-red-600 mr-3 mt-1">•</span>
+                        <span><strong className="text-blue-900">Dòng Silhouette:</strong> Thiết kế mỏng, phù hợp với giày cao gót</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-red-600 mr-3 mt-1">•</span>
+                        <span><strong className="text-blue-900">Dòng Winagen:</strong> Hỗ trợ toàn diện cho mọi hoạt động hàng ngày</span>
+                      </li>
+                    </ul>
+                  </div>
 
-              <h4>Giày thể thao</h4>
-              <ul>
-                <li>Hỗ trợ tốt cho hoạt động cụ thể</li>
-                <li>Hấp thụ lực tác động cao</li>
-                <li>Ổn định và linh hoạt</li>
-              </ul>
+                  <div>
+                    <h3 className="text-xl font-bold text-blue-900 mb-4">3. Công nghệ cá nhân hóa</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg mb-4">
+                      Khả năng tùy chỉnh theo từng cá nhân:
+                    </p>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-3 mt-1">•</span>
+                        <span>Đo lường chính xác cấu trúc bàn chân</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-3 mt-1">•</span>
+                        <span>Thiết kế riêng biệt cho từng khách hàng</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-3 mt-1">•</span>
+                        <span>Điều chỉnh độ cứng và độ hỗ trợ phù hợp</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
 
-              <h4>Giày công sở</h4>
-              <ul>
-                <li>Thiết kế thanh lịch</li>
-                <li>Thoải mái khi đứng lâu</li>
-                <li>Gót giày không quá cao (dưới 5cm)</li>
-              </ul>
+              {/* Section 4 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Quy trình sản xuất nghiêm ngặt</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Mỗi sản phẩm được tạo ra thông qua quy trình 5 bước nghiêm ngặt:
+                </p>
 
-              <p>Nhớ rằng, đôi giày tốt nhất là đôi giày phù hợp với bàn chân của bạn. Đừng ngại đầu tư vào một đôi giày chất lượng - đó là khoản đầu tư cho sức khỏe lâu dài của bạn.</p>
+                <div className="bg-gradient-to-r from-blue-50 via-purple-50 to-red-50 p-6 rounded-xl border-l-4 border-blue-500 my-6">
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-sm">1</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-blue-900 mb-2">Nghiên cứu và phát triển</h4>
+                        <p className="text-gray-700">Đầu tư mạnh vào R&D với đội ngũ chuyên gia hàng đầu</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-sm">2</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-purple-900 mb-2">Lựa chọn nguyên liệu</h4>
+                        <p className="text-gray-700">Chỉ sử dụng vật liệu cao cấp nhất</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-sm">3</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-red-900 mb-2">Sản xuất</h4>
+                        <p className="text-gray-700">Quy trình tự động hóa hiện đại</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-sm">4</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-green-900 mb-2">Kiểm định chất lượng</h4>
+                        <p className="text-gray-700">Kiểm tra từng sản phẩm trước khi xuất xưởng</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white font-bold text-sm">5</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-orange-900 mb-2">Đóng gói và vận chuyển</h4>
+                        <p className="text-gray-700">Bảo quản trong điều kiện tối ưu</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Section 5 */}
+              <section>
+                <h2 className="text-2xl font-bold text-[#21395D] mb-6">Cam kết chất lượng</h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-6">
+                  Với hơn 50 năm kinh nghiệm, chúng tôi cam kết:
+                </p>
+
+                <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <ul className="space-y-3 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-3 mt-1">✓</span>
+                        <span>Sản phẩm chính hãng 100% từ Mỹ</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-3 mt-1">✓</span>
+                        <span>Bảo hành chất lượng lên đến 2 năm</span>
+                      </li>
+                    </ul>
+                    <ul className="space-y-3 text-gray-700">
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-3 mt-1">✓</span>
+                        <span>Dịch vụ tư vấn chuyên nghiệp</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-600 mr-3 mt-1">✓</span>
+                        <span>Hỗ trợ khách hàng 24/7</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <p className="text-gray-700 leading-relaxed text-lg mt-6">
+                  Tấm lót hỗ trợ vòm bàn chân cao cấp từ Mỹ không chỉ là một sản phẩm, mà là kết quả của hơn nửa thế kỷ nghiên cứu và phát triển không ngừng. Đây chính là lý do tại sao hàng triệu người trên thế giới tin tưởng và lựa chọn sản phẩm này để bảo vệ sức khỏe bàn chân của mình.
+                </p>
+              </section>
             </div>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t">
-              <Badge variant="outline">chọn giày</Badge>
-              <Badge variant="outline">hướng dẫn</Badge>
-              <Badge variant="outline">sức khỏe chân</Badge>
+              <Badge variant="outline">tấm lót cao cấp</Badge>
+              <Badge variant="outline">made in USA</Badge>
+              <Badge variant="outline">since 1969</Badge>
+              <Badge variant="outline">chất lượng</Badge>
+              <Badge variant="outline">công nghệ tiên tiến</Badge>
             </div>
 
             {/* CTA */}
             <div className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-red-50 rounded-lg text-center">
               <h3 className="text-xl font-bold text-blue-900 mb-4">
-                Cần tư vấn về sản phẩm hỗ trợ bàn chân?
+                Trải nghiệm sản phẩm cao cấp từ Mỹ
               </h3>
               <p className="text-gray-600 mb-6">
-                Đội ngũ chuyên gia NAGEN sẵn sàng tư vấn miễn phí về các giải pháp phù hợp với loại bàn chân của bạn
+                Liên hệ ngay với NAGEN để được tư vấn và trải nghiệm tấm lót hỗ trợ vòm bàn chân cao cấp với hơn 50 năm uy tín
               </p>
               <Button 
                 className="bg-red-600 hover:bg-red-700 text-white"
                 onClick={() => setIsConsultationModalOpen(true)}
               >
                 <Phone className="w-4 h-4 mr-2" />
-                Tư vấn miễn phí ngay
+                Tư vấn sản phẩm ngay
               </Button>
             </div>
           </div>

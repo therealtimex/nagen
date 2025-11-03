@@ -111,8 +111,8 @@ export default function ContactPage() {
             },
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": "21.038134",
-              "longitude": "105.780147"
+              "latitude": "21.0338373",
+              "longitude": "105.7701789"
             },
             "openingHours": "Mo-Su 00:00-23:59",
             "priceRange": "$$",
@@ -248,7 +248,7 @@ export default function ContactPage() {
                 <h3 className="font-bold text-blue-900 text-base sm:text-lg mb-2">Trụ sở chính</h3>
                 <p className="text-sm text-gray-800 mb-2">Hà Nội</p>
                 <a
-                  href="https://maps.google.com/?q=21+Lê+Đức+Thọ,+Mỹ+Đình+2,+Nam+Từ+Liêm,+Hà+Nội"
+                  href="https://www.google.com/maps/place/C%C3%94NG+TY+TNHH+NAGEN/@21.0338423,105.767604,1052m/data=!3m2!1e3!4b1!4m14!1m7!3m6!1s0x3134550fe0328507:0x68af5d16b216cd6d!2zVMOyYSBuaMOgIFN1bnNxdWFyZQ!8m2!3d21.0337472!4d105.7701789!16s%2Fg%2F11gy8nc4qx!3m5!1s0x313455003489c96f:0x3acb65f7d8c8eb73!8m2!3d21.0338373!4d105.7701789!16s%2Fg%2F11xgdysgds?entry=ttu&g_ep=EgoyMDI1MTAyNy4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs sm:text-sm text-blue-600 hover:text-blue-800 inline-flex items-center"
@@ -347,20 +347,20 @@ export default function ContactPage() {
               </div>
               <div className="w-full h-48 sm:h-64 lg:h-80 bg-gray-100">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.863944141!2d105.78014731533!3d21.03813398599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4cd0c66f05%3A0x3a4d4b8e8b8b8b8b!2s21%20L%C3%AA%20%C4%90%E1%BB%A9c%20Th%E1%BB%8D%2C%20M%E1%BB%B9%20%C4%90%C3%ACnh%202%2C%20Nam%20T%E1%BB%AB%20Li%C3%AAm%2C%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2s!4v1635000000000!5m2!1svi!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1052!2d105.767604!3d21.0338423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313455003489c96f%3A0x3acb65f7d8c8eb73!2zQ8OUTkcgVFkgVE5ISCBOQUdFTg!5e0!3m2!1svi!2s!4v1730707200000!5m2!1svi!2s"
                   width="100%"
                   height="100%"
                   style={{ border: 0, display: 'block' }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Vị trí trụ sở NAGEN"
+                  title="Vị trí trụ sở NAGEN - CÔNG TY TNHH NAGEN"
                 />
               </div>
               <div className="p-3 sm:p-4 bg-gray-50">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   <a
-                    href="https://maps.google.com/?q=21+Lê+Đức+Thọ,+Mỹ+Đình+2,+Nam+Từ+Liêm,+Hà+Nội"
+                    href="https://www.google.com/maps/place/C%C3%94NG+TY+TNHH+NAGEN/@21.0338423,105.767604,1052m/data=!3m2!1e3!4b1!4m14!1m7!3m6!1s0x3134550fe0328507:0x68af5d16b216cd6d!2zVMOyYSBuaMOgIFN1bnNxdWFyZQ!8m2!3d21.0337472!4d105.7701789!16s%2Fg%2F11gy8nc4qx!3m5!1s0x313455003489c96f:0x3acb65f7d8c8eb73!8m2!3d21.0338373!4d105.7701789!16s%2Fg%2F11xgdysgds?entry=ttu&g_ep=EgoyMDI1MTAyNy4wIKXMDSoASAFQAw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center px-3 sm:px-4 py-2 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-xs sm:text-sm font-medium"

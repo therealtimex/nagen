@@ -47,7 +47,12 @@ function MapController({
         setTimeout(() => {
           map.invalidateSize()
 
-          // Set bounds to show all markers
+          // Set bounds to show Vietnam territory including Hoang Sa and Truong Sa
+          const vietnamBounds = L.latLngBounds(
+            [8.8, 103.0], // Southwest corner (very tight bound)
+            [23.0, 115.5] // Northeast corner (tight bound including Hoang Sa and Truong Sa)
+          )
+          
           if (dealers.length > 0) {
             const bounds = L.latLngBounds([])
 
@@ -61,13 +66,27 @@ function MapController({
               bounds.extend([userLocation.lat, userLocation.lng])
             }
 
-            // Fit bounds with padding only if bounds is valid
+            // Fit bounds with padding only if bounds is valid, but constrain to Vietnam
             if (bounds.isValid()) {
-              map.fitBounds(bounds, {
+              // Ensure bounds don't exceed Vietnam territory
+              const constrainedBounds = bounds.intersects(vietnamBounds) ? bounds : vietnamBounds
+              map.fitBounds(constrainedBounds.isValid() ? constrainedBounds : vietnamBounds, {
                 padding: [20, 20],
                 maxZoom: 16,
               })
+            } else {
+              // Default to Vietnam bounds if no valid dealer bounds
+              map.fitBounds(vietnamBounds, {
+                padding: [5, 5],
+                maxZoom: 9,
+              })
             }
+          } else {
+            // Show all Vietnam if no dealers
+            map.fitBounds(vietnamBounds, {
+              padding: [5, 5],
+              maxZoom: 9,
+            })
           }
         }, 100)
       } catch (error) {
@@ -89,10 +108,16 @@ function MapController({
 
     // Handle selected dealer changes
     if (selectedDealer) {
-      map.setView([selectedDealer.lat, selectedDealer.lng], 15, {
-        animate: true,
-        duration: 0.5,
-      })
+      setTimeout(() => {
+        map.setView([selectedDealer.lat, selectedDealer.lng], 15, {
+          animate: true,
+          duration: 0.5,
+        })
+        // Force map invalidation after view change
+        setTimeout(() => {
+          map.invalidateSize()
+        }, 600) // Wait for animation to complete
+      }, 100)
     }
 
     return () => {
@@ -109,21 +134,37 @@ function ChangeMapView({ center, zoom }: { center: [number, number]; zoom: numbe
   const map = useMap()
 
   useEffect(() => {
-    map.setView(center, zoom, { animate: true, duration: 0.5 })
+    // Use a more reliable approach for view changes
+    const timeoutId = setTimeout(() => {
+      map.setView(center, zoom, { animate: true, duration: 0.5 })
+      
+      // Multiple invalidations to ensure proper rendering
+      setTimeout(() => {
+        map.invalidateSize()
+      }, 100)
+      
+      setTimeout(() => {
+        map.invalidateSize()
+      }, 600) // After animation completes
+    }, 50)
 
-    // Ensure map is properly sized after view change
-    setTimeout(() => {
-      map.invalidateSize()
-    }, 100)
+    return () => clearTimeout(timeoutId)
   }, [map, center, zoom])
 
   return null
 }
 
 const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLocation, onBookAppointment }: LeafletMapComponentProps) => {
-  const [mapCenter, setMapCenter] = useState<[number, number]>([21.0285, 105.8542]) // Default to Hanoi
-  const [mapZoom, setMapZoom] = useState(12)
+  // Vietnam bounds including Hoang Sa and Truong Sa - very tight bounds to focus only on Vietnam
+  const vietnamBounds = L.latLngBounds(
+    [8.8, 103.0], // Southwest corner (very tight bound - Ca Mau area)
+    [23.0, 115.5] // Northeast corner (tight bound including Hoang Sa and Truong Sa)
+  )
+  
+  const [mapCenter, setMapCenter] = useState<[number, number]>([15.8, 107.8]) // Center of Vietnam mainland
+  const [mapZoom, setMapZoom] = useState(8) // Much higher zoom to focus only on Vietnam
   const [isMapReady, setIsMapReady] = useState(false)
+  const [mapKey, setMapKey] = useState(0) // Key to force map re-render
   const mapContainerRef = useRef<HTMLDivElement>(null)
 
   // Create custom icons for markers
@@ -145,6 +186,15 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
     shadowSize: [41, 41],
   })
 
+  const territoryIcon = new Icon({
+    iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
+    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  })
+
   // Update map center when selected dealer or user location changes
   useEffect(() => {
     if (selectedDealer) {
@@ -154,9 +204,14 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
       setMapCenter([userLocation.lat, userLocation.lng])
       setMapZoom(13)
     } else {
-      setMapCenter([21.0285, 105.8542]) // Default to Hanoi
-      setMapZoom(12)
+      // Default to center of Vietnam to show entire territory including Hoang Sa and Truong Sa
+      setMapCenter([15.8, 107.8])
+      setMapZoom(8)
     }
+    
+    // Force map re-render when selected dealer changes
+    setIsMapReady(prev => !prev)
+    setMapKey(prev => prev + 1)
   }, [selectedDealer, userLocation])
 
   // Handle container resize
@@ -180,10 +235,33 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
     }
   }, [])
 
+  // Additional effect to handle selected dealer changes more aggressively
+  useEffect(() => {
+    if (selectedDealer) {
+      // Force multiple re-renders to ensure map displays correctly
+      const timeouts = [
+        setTimeout(() => setMapKey(prev => prev + 1), 50),
+        setTimeout(() => setMapKey(prev => prev + 1), 200),
+        setTimeout(() => setMapKey(prev => prev + 1), 500),
+      ]
+
+      return () => {
+        timeouts.forEach(timeout => clearTimeout(timeout))
+      }
+    }
+  }, [selectedDealer?.id]) // Only trigger when dealer ID changes
+
   const handleMarkerClick = (dealer: Dealer) => {
     if (onSelectDealer) {
       onSelectDealer(dealer)
     }
+    
+    // Additional handling to ensure map updates correctly
+    setTimeout(() => {
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new Event('resize'))
+      }
+    }, 100)
   }
 
   return (
@@ -191,7 +269,7 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
       {/* Map Header */}
       <div className="absolute top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-[1000] p-3 border-b">
         <div className="flex items-center justify-between">
-          <h4 className="font-semibold text-blue-900 text-sm">Bản đồ đại lý NAGEN</h4>
+          <h4 className="font-semibold text-blue-900 text-sm">Bản đồ đại lý NAGEN - Lãnh thổ Việt Nam</h4>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-xs text-gray-600">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -203,6 +281,11 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
                 </>
               )}
             </div>
+            {selectedDealer && (
+              <div className="text-xs text-blue-600 font-medium">
+                📍 {selectedDealer.name}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -215,8 +298,13 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
       >
         <div className="w-full h-full">
           <MapContainer
+            key={mapKey} // Force re-render when key changes
             center={mapCenter}
             zoom={mapZoom}
+            minZoom={8} // Much higher minZoom to show only Vietnam
+            maxZoom={18} // Allow detailed zoom
+            maxBounds={vietnamBounds} // Restrict panning to Vietnam bounds
+            maxBoundsViscosity={1.0} // Make bounds sticky
             style={{
               height: "100%",
               width: "100%",
@@ -230,12 +318,10 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
             className="leaflet-container"
           >
             <TileLayer
-              attribution='Nagen &copy; <a href="https://nagen.vn">nagen.vn</a>'
-              url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
-              maxZoom={20}
-              minZoom={3}
-              subdomains={['mt0', 'mt1', 'mt2', 'mt3']}
-              tileSize={256}
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Nagen &copy; <a href="https://nagen.vn">nagen.vn</a>'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              maxZoom={19}
+              minZoom={8} // Much higher minZoom to show only Vietnam territory
               detectRetina={true}
               errorTileUrl="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
             />

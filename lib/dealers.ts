@@ -15,8 +15,8 @@ export const dealerData: Dealer[] = [
     address: "Tầng 7, toà VP1, Sunsquare, 21 Lê Đức Thọ, Từ Liêm, Hà Nội",
     phone: "0966578008",
     distance: "",
-    lat: 21.0285,
-    lng: 105.8542,
+    lat: 21.0338373,
+    lng: 105.7701789,
   },
   {
     id: "dealer-2",
@@ -25,7 +25,7 @@ export const dealerData: Dealer[] = [
     phone: "0966578008",
     distance: "",
     lat: 21.0245,
-    lng: 105.8412,
+    lng: 105.7801,
   },
   {
     id: "dealer-3",
