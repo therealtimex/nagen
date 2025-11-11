@@ -38,6 +38,7 @@ function DealerRegistrationForm() {
     email: "",
     address: "",
     message: "",
+    partnerType: "dai-ly", // Mặc định chọn Đại lý
   })
   const [errors, setErrors] = useState<{[key: string]: string}>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -58,6 +59,10 @@ function DealerRegistrationForm() {
 
     if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email không hợp lệ"
+    }
+
+    if (!formData.partnerType) {
+      newErrors.partnerType = "Vui lòng chọn loại đối tác"
     }
 
     setErrors(newErrors)
@@ -109,7 +114,7 @@ function DealerRegistrationForm() {
           <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-600 mx-auto mb-4" />
           <div className="text-xl sm:text-2xl font-bold text-green-800 mb-4">Đăng ký thành công!</div>
           <p className="text-gray-600 mb-6 text-sm sm:text-base">
-            Cảm ơn bạn đã đăng ký trở thành đại lý NAGEN. Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để trao đổi chi tiết.
+            Cảm ơn bạn đã đăng ký trở thành đối tác NAGEN. Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để trao đổi chi tiết.
           </p>
           {formData.email && (
             <div className="bg-white p-3 sm:p-4 rounded-lg border-l-4 border-green-500">
@@ -135,14 +140,78 @@ function DealerRegistrationForm() {
             className="object-contain"
           />
         </div>
-        <CardTitle className="text-blue-900 text-lg sm:text-xl">Đăng ký trở thành Đại lý</CardTitle>
+        <CardTitle className="text-blue-900 text-lg sm:text-xl">Đăng ký trở thành đối tác NAGEN</CardTitle>
         <p className="text-gray-600 mt-2 text-sm sm:text-base">
-          Vui lòng điền thông tin để đăng ký trở thành đại lý NAGEN
+          Vui lòng điền thông tin để đăng ký trở thành đối tác NAGEN
         </p>
       </CardHeader>
 
       <CardContent className="p-4 sm:p-6">
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Loại đối tác */}
+          <div>
+            <label className="text-sm font-medium text-gray-700 mb-3 block">
+              Loại đối tác <span className="text-red-500">*</span>
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              <div
+                onClick={() => setFormData({ ...formData, partnerType: "dai-ly" })}
+                className={`cursor-pointer border-2 rounded-lg p-4 transition-all ${
+                  formData.partnerType === "dai-ly"
+                    ? "border-blue-600 bg-blue-50"
+                    : "border-gray-300 hover:border-blue-400"
+                }`}
+              >
+                <div className="flex items-center justify-center mb-2">
+                  <div
+                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      formData.partnerType === "dai-ly"
+                        ? "border-blue-600 bg-blue-600"
+                        : "border-gray-400"
+                    }`}
+                  >
+                    {formData.partnerType === "dai-ly" && (
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                    )}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <p className="font-semibold text-gray-900">Đại lý</p>
+                  <p className="text-xs text-gray-600 mt-1">Kinh doanh chuyên nghiệp</p>
+                </div>
+              </div>
+              <div
+                onClick={() => setFormData({ ...formData, partnerType: "cong-tac-vien" })}
+                className={`cursor-pointer border-2 rounded-lg p-4 transition-all ${
+                  formData.partnerType === "cong-tac-vien"
+                    ? "border-red-600 bg-red-50"
+                    : "border-gray-300 hover:border-red-400"
+                }`}
+              >
+                <div className="flex items-center justify-center mb-2">
+                  <div
+                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      formData.partnerType === "cong-tac-vien"
+                        ? "border-red-600 bg-red-600"
+                        : "border-gray-400"
+                    }`}
+                  >
+                    {formData.partnerType === "cong-tac-vien" && (
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                    )}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <p className="font-semibold text-gray-900">Cộng tác viên</p>
+                  <p className="text-xs text-gray-600 mt-1">Hợp tác linh hoạt</p>
+                </div>
+              </div>
+            </div>
+            {errors.partnerType && (
+              <p className="text-red-500 text-sm mt-2">{errors.partnerType}</p>
+            )}
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="text-sm font-medium text-gray-700 mb-2 block">
@@ -224,7 +293,7 @@ function DealerRegistrationForm() {
               disabled={isSubmitting}
               className="w-full h-12 text-base font-semibold bg-red-600 hover:bg-red-700 text-white"
             >
-              {isSubmitting ? "Đang gửi..." : "Đăng ký trở thành Đại lý"}
+              {isSubmitting ? "Đang gửi..." : "Đăng ký trở thành đối tác"}
               {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
             </Button>
           </div>
@@ -436,7 +505,7 @@ export default function DaiLyPage() {
           <section className="mb-8">
             <div className="bg-gradient-to-r from-blue-900 to-red-600 text-white p-6 rounded-lg text-center mb-6">
               <h2 className="text-2xl font-bold mb-2">
-                Đăng ký trở thành Đại lý Nagen
+                Đăng ký trở thành đối tác NAGEN
               </h2>
               <p className="text-blue-100">
                 "Nagen - Nuôi dưỡng từng bước chân"
