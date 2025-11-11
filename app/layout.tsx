@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
+import { GoogleTagManager } from "@next/third-parties/google"
 import "./globals.css"
 import StructuredData from "./structured-data"
 
@@ -91,6 +92,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        <GoogleTagManager gtmId="GTM-5PJNGNXJ" />
         <StructuredData />
         {children}
       </body>
