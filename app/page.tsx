@@ -42,6 +42,7 @@ import FloatingActionButtons from "@/components/FloatingActionButtons"
 import Footer from "@/components/Footer"
 import UnifiedRegistrationForm from "@/components/UnifiedRegistrationForm"
 import Header from "@/components/Header"
+import { dealerData } from "@/lib/dealers"
 
 // Type definitions
 interface FormData {
@@ -91,6 +92,8 @@ interface AppointmentFormData {
   shoeSize: string
   problems: string
   familyMembers: FamilyMembers
+  locationType: "office" | "home" | ""
+  selectedOffice: string
 }
 
 interface ModalProps {
@@ -827,7 +830,17 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
       children: 0,
       others: 0,
     },
+    locationType: "",
+    selectedOffice: "",
   })
+
+  // Lấy danh sách đại lý từ dữ liệu thực tế (loại bỏ NAGEN Thanh Xuân nếu cần)
+  const officeLocations = dealerData
+    .filter(dealer => dealer.name !== "NAGEN Thanh Xuân")
+    .map(dealer => ({
+      value: dealer.id,
+      label: `${dealer.name} - ${dealer.address}`
+    }))
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -908,6 +921,8 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
         children: 0,
         others: 0,
       },
+      locationType: "",
+      selectedOffice: "",
     })
     setIsSubmitted(false)
     setIsSubmitting(false)
@@ -946,10 +961,15 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-xl font-bold">Đặt lịch đo chân</div>
-                  <p className="text-red-100 mt-1">Đo vòm bàn chân miễn phí tại nhà</p>
+                  <p className="text-red-100 mt-1">Đo vòm bàn chân miễn phí</p>
                 </div>
-                <Button variant="ghost" size="icon" onClick={handleClose} className="text-white hover:bg-red-700">
-                  ×
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={handleClose} 
+                  className="text-white hover:bg-white/20 bg-blue-900/50 w-10 h-10 rounded-full flex items-center justify-center"
+                >
+                  <span className="text-2xl font-bold leading-none">×</span>
                 </Button>
               </div>
             </div>
@@ -1012,14 +1032,59 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
 
                 <div>
                   <label className="text-sm font-medium text-gray-700 mb-2 block">
-                    Địa chỉ <span className="text-red-500">*</span>
+                    Địa điểm đo chân <span className="text-red-500">*</span>
                   </label>
-                  <Input
-                    placeholder="Nhập địa chỉ chi tiết"
-                    value={formData.address}
-                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    required
-                  />
+                  <div className="space-y-3">
+                    <div className="flex gap-4">
+                      <label className="flex items-center space-x-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="locationType"
+                          value="office"
+                          checked={formData.locationType === "office"}
+                          onChange={(e) => setFormData({ ...formData, locationType: "office", address: "", selectedOffice: "" })}
+                          className="w-4 h-4 text-red-600 focus:ring-red-500"
+                        />
+                        <span className="text-sm text-gray-700">Tại trụ sở công ty, đại lý</span>
+                      </label>
+                      <label className="flex items-center space-x-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="locationType"
+                          value="home"
+                          checked={formData.locationType === "home"}
+                          onChange={(e) => setFormData({ ...formData, locationType: "home", selectedOffice: "" })}
+                          className="w-4 h-4 text-red-600 focus:ring-red-500"
+                        />
+                        <span className="text-sm text-gray-700">Tại nhà khách hàng</span>
+                      </label>
+                    </div>
+
+                    {formData.locationType === "office" && (
+                      <select
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                        value={formData.selectedOffice}
+                        onChange={(e) => setFormData({ ...formData, selectedOffice: e.target.value })}
+                        required
+                      >
+                        <option value="">Chọn địa điểm</option>
+                        {officeLocations.map((location) => (
+                          <option key={location.value} value={location.value}>
+                            {location.label}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+
+                    {formData.locationType === "home" && (
+                      <Input
+                        placeholder="Nhập địa chỉ chi tiết của bạn"
+                        value={formData.address}
+                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                        required
+                      />
+                    )}
+                  </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">

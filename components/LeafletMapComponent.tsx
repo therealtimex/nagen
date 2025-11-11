@@ -352,15 +352,11 @@ const LeafletMapComponent = ({ dealers, onSelectDealer, selectedDealer, userLoca
                     <h5 className="font-semibold text-blue-900 text-base mb-2">{dealer.name}</h5>
                     <p className="text-sm text-gray-600 mb-3 leading-relaxed">{dealer.address}</p>
 
-                    <div className="flex items-center justify-between mb-3">
-                      {dealer.distance && <span className="text-sm text-blue-600 font-medium">{dealer.distance}</span>}
-                    </div>
-
-                    <div className="mb-3">
-                      <p className="text-sm text-gray-600">
-                        <span className="font-medium">Điện thoại:</span> 0966578008
-                      </p>
-                    </div>
+                    {dealer.distance && (
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm text-blue-600 font-medium">{dealer.distance}</span>
+                      </div>
+                    )}
 
                     <div className="flex gap-2">
                       <button
