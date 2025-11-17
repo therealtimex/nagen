@@ -838,7 +838,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
   const officeLocations = dealerData
     .filter(dealer => dealer.name !== "NAGEN Thanh Xuân")
     .map(dealer => ({
-      value: dealer.id,
+      value: `${dealer.name} - ${dealer.address}`,
       label: `${dealer.name} - ${dealer.address}`
     }))
   const [isSubmitting, setIsSubmitting] = useState(false)
