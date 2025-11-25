@@ -1469,7 +1469,7 @@ function HomePageContent() {
                       <p className="text-[#21395D] text-base leading-relaxed line-clamp-6">{product.description}</p>
                       <CTAButton
                         variant="primary"
-                        className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white"
+                        className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white w-fit"
                         onClick={() => {
                           // Map category to correct URL path
                           const categoryToPath: { [key: string]: string } = {
