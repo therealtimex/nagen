@@ -21,7 +21,7 @@ const product = {
   name: "Tấm lót hỗ trợ vòm bàn chân Endurance",
   description: "Tấm lót hỗ trợ vòm bàn chân Endurance - sản phẩm hoàn hảo cho những đôi giày hẹp, lịch lãm và phong cách như giày tây, dép xăng đan và bốt cao bồi của phụ nữ.",
   price: "799.000đ",
-  image: "/images/products/Endurance.jpg",
+  image: "/images/products/Endurance.webp",
   category: "endurance",
   rating: 4.9,
   reviewCount: 76,

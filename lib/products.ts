@@ -26,7 +26,7 @@ export const productData: Product[] = [
     price: "599.000đ",
     originalPrice: "699.000đ",
     discount: "15%",
-    image: "/images/products/Sungen.jpg",
+    image: "/images/products/Sungen.webp",
     category: "sungen",
     rating: 4.9,
     reviewCount: 124,
@@ -42,7 +42,7 @@ export const productData: Product[] = [
       "Sản phẩm này cũng lý tưởng cho những người lần đầu sử dụng có bàn chân rất phẳng, giúp họ làm quen một cách nhẹ nhàng với tấm lót hỗ trợ vòm bàn chân Nagen.\n\n" +
       "Chất liệu trong suốt giúp tấm lót hỗ trợ có thể ẩn trong dép xăng đan và giày hở mũi, cũng như có thể kết hợp với hầu hết mọi loại giày dép.",
     price: "699.000đ",
-    image: "/images/products/Winagen.jpg",
+    image: "/images/products/Winagen.webp",
     category: "winagen",
     rating: 4.9,
     reviewCount: 87,
@@ -59,7 +59,7 @@ export const productData: Product[] = [
       "Sản phẩm này đặc biệt có giá trị đối với người cao tuổi vì giúp giảm chấn thương do vấp ngã cũng như những người chưa từng sử dụng tấm lót hỗ trợ vòm bàn chân hoàn toàn.\n\n" +
       "Đây cũng là sản phẩm tuyệt vời để sử dụng khi ở nhà vào cuối ngày.",
     price: "549.000đ",
-    image: "/images/products/Softgen.jpg",
+    image: "/images/products/Softgen.webp",
     category: "softgen",
     rating: 4.8,
     reviewCount: 112,
@@ -77,7 +77,7 @@ export const productData: Product[] = [
     price: "799.000đ",
     originalPrice: "899.000đ",
     discount: "11%",
-    image: "/images/products/Endurance.jpg",
+    image: "/images/products/Endurance.webp",
     category: "endurance",
     rating: 4.9,
     reviewCount: 76,
@@ -94,7 +94,7 @@ export const productData: Product[] = [
       "Giống như Tấm lót hỗ trợ vòm chân Endurance, người đeo có mong muốn cảm thấy thoải mái một cách nhanh chóng khi sử dụng mà hầu như không cần thời gian làm quen.\n\n" +
       "Các sản phẩm thuộc dòng Endurance hoàn hảo để duy trì sự hỗ trợ mà bạn có được khi sử dụng tấm lót hỗ trợ vòm bàn chân Nagen trong hầu hết mọi loại giày dép.",
     price: "649.000đ",
-    image: "/images/products/Silhouette.jpg",
+    image: "/images/products/Silhouette.webp",
     category: "silhouette",
     rating: 4.8,
     reviewCount: 92,
@@ -112,7 +112,7 @@ export const productData: Product[] = [
       "Chúng tôi cung cấp sản phẩm đệm lót giày cao su xốp thiên nhiên có độ dày 1/8\" để tiết kiệm không gian, đế lót giày thể thao có độ dày 3/16\" để bảo vệ tối đa khỏi chấn động khi bước chân và đế lót giày có độ dày ba phần tư được thiết kế riêng cho các thiết bị thuộc dòng Endurance.\n\n" +
       "Mỗi dòng sản phẩm có nhiều kích cỡ nên hầu như không cần cắt bớt và mỗi đệm được vát chính xác để phù hợp hoàn hảo với tấm lót hỗ trợ vòm bàn chân của chúng tôi.",
     price: "699.000đ",
-    image: "/images/products/Cushion.jpg",
+    image: "/images/products/Cao-su-xốp-tự-nhiên.webp",
     category: "demlotcaosu",
     rating: 4.8,
     reviewCount: 68,

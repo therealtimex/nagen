@@ -21,7 +21,7 @@ const product = {
   name: "Tấm lót hỗ trợ vòm bàn chân Silhouette",
   description: "Tấm lót hỗ trợ vòm bàn chân Silhouette - lựa chọn hoàn hảo cho bàn chân nhỏ và giày có đế giày hẹp như giày búp bê, giày tây ôm sát chân.",
   price: "649.000đ",
-  image: "/images/products/Silhouette.jpg",
+  image: "/images/products/Silhouette.webp",
   category: "silhouette",
   rating: 4.8,
   reviewCount: 92,

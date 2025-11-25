@@ -25,7 +25,7 @@ const product = {
   price: "599.000đ",
   originalPrice: "699.000đ",
   discount: "15%",
-  image: "/images/products/Sungen.jpg",
+  image: "/images/products/Sungen.webp",
   category: "sungen",
   rating: 4.9,
   reviewCount: 124,

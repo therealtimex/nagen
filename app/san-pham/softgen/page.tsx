@@ -21,7 +21,7 @@ const product = {
   name: "Tấm lót hỗ trợ vòm bàn chân Softgen",
   description: "Tấm lót hỗ trợ vòm bàn chân Softgen là sản phẩm dạng gel có khả năng hỗ trợ nhẹ nhàng và tạo cảm giác như đang đi trên không trung.",
   price: "549.000đ",
-  image: "/images/products/Softgen.jpg",
+  image: "/images/products/Softgen.webp",
   category: "softgen",
   rating: 4.8,
   reviewCount: 112,

@@ -21,7 +21,7 @@ const product = {
   name: "Đệm lót giày cao su thiên nhiên",
   description: "Đệm lót giày cao su thiên nhiên thân thiện với môi trường, được thiết kế để hấp thụ sốc, làm giảm áp lực lên bàn chân, không gây kích ứng hay tác dụng phụ.",
   price: "699.000đ",
-  image: "/images/products/Cushion.jpg",
+  image: "/images/products/Cao-su-xốp-tự-nhiên.webp",
   category: "demlotcaosu",
   rating: 4.8,
   reviewCount: 68,

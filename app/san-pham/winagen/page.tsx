@@ -21,7 +21,7 @@ const product = {
   name: "Tấm lót hỗ trợ vòm bàn chân Winagen",
   description: "Tấm lót hỗ trợ vòm bàn chân Winagen - sản phẩm lý tưởng cho việc sử dụng hàng ngày và cung cấp mức độ hỗ trợ cao nhất cho những người chơi thể thao và người mới làm quen với sản phẩm hỗ trợ vòm bàn chân.",
   price: "699.000đ",
-  image: "/images/products/Winagen.jpg",
+  image: "/images/products/Winagen.webp",
   category: "winagen",
   rating: 4.9,
   reviewCount: 87,
