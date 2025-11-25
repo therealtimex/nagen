@@ -1378,7 +1378,7 @@ function HomePageContent() {
             {/* Product Image - Full Width Below */}
             <div className="mt-8 sm:mt-12 max-w-5xl mx-auto flex justify-center px-2 sm:px-0">
               <Image
-                src={getImagePath("/images/20200624_161136PS.webp")}
+                src={getImagePath("/images/products/Ảnh tất cả sản phẩm.webp")}
                 alt="Bộ sưu tập tấm lót hỗ trợ vòm bàn chân NAGEN - Sungen, Winagen, Softgen, Endurance, Silhouette"
                 width={1200}
                 height={400}
