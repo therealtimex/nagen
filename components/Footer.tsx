@@ -15,7 +15,7 @@ export default function Footer() {
     "@type": "Organization",
     "name": "NAGEN",
     "url": "https://nagen.vn",
-    "logo": "https://nagen.vn/images/logo_slogan_1.png",
+    "logo": "https://nagen.vn/images/logo_nagen_chinh_thuc.png",
     "description": "NAGEN cung cấp sản phẩm tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ, giúp cải thiện tư thế và giảm đau chân hiệu quả.",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -57,7 +57,7 @@ export default function Footer() {
               <div className="mb-6">
                 <Link href="/" className="inline-block">
                   <Image
-                    src={getImagePath("/images/logo_slogan_1.png")}
+                    src={getImagePath("/images/logo_nagen_chinh_thuc.png")}
                     alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
                     width={180}
                     height={36}

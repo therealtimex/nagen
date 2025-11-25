@@ -168,7 +168,7 @@ function EnhancedNavigation({
             <div>
               <Link href="/" className="flex items-center space-x-3">
                 <Image
-                  src={getImagePath("/images/logo_slogan_1.png")}
+                  src={getImagePath("/images/logo_nagen_chinh_thuc.png")}
                   alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
                   width={200}
                   height={40}
@@ -350,7 +350,7 @@ export default function HieuVeVomBanChanPage() {
             "publisher": {
               "@type": "Organization",
               "name": "NAGEN Vietnam",
-              "logo": "https://nagen.vn/images/logo_slogan_1.png"
+              "logo": "https://nagen.vn/images/logo_nagen_chinh_thuc.png"
             }
           })
         }}

@@ -93,8 +93,8 @@ export default function DangKyPage() {
               },
               "openingHours": "Mo-Su 00:00-23:59",
               "priceRange": "$$",
-              "image": "https://nagen.vn/images/logo_slogan_1.png",
-              "logo": "https://nagen.vn/images/logo_slogan_1.png",
+              "image": "https://nagen.vn/images/logo_nagen_chinh_thuc.png",
+              "logo": "https://nagen.vn/images/logo_nagen_chinh_thuc.png",
               "sameAs": [
                 "https://facebook.com/nagen.vietnam",
                 "https://instagram.com/nagen.vietnam",
@@ -122,7 +122,7 @@ export default function DangKyPage() {
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center space-x-3">
                 <Image
-                  src={getImagePath("/images/logo_slogan_1.png")}
+                  src={getImagePath("/images/logo_nagen_chinh_thuc.png")}
                   alt="NAGEN - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ Mỹ"
                   width={200}
                   height={40}

@@ -26,7 +26,7 @@ export default function StudiesPage() {
       "name": "NAGEN",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nagen.vn/images/logo_slogan_1.png"
+        "url": "https://nagen.vn/images/logo_nagen_chinh_thuc.png"
       }
     },
     "mainEntityOfPage": {
@@ -67,7 +67,7 @@ export default function StudiesPage() {
         <meta property="og:description" content="Khám phá các nghiên cứu khoa học từ các trường đại học uy tín về hiệu quả tấm lót hỗ trợ vòm bàn chân NAGEN" />
         <meta property="og:url" content="https://nagen.vn/studies" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://nagen.vn/images/logo_slogan_1.png" />
+        <meta property="og:image" content="https://nagen.vn/images/logo_nagen_chinh_thuc.png" />
       </Head>
 
       <div className="min-h-screen bg-gray-50">

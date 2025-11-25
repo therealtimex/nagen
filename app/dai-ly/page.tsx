@@ -133,7 +133,7 @@ function DealerRegistrationForm() {
       <CardHeader className="p-4 sm:p-6">
         <div className="mb-4">
           <Image
-            src={getImagePath("/images/logo_slogan_1.png")}
+            src={getImagePath("/images/logo_nagen_chinh_thuc.png")}
             alt="NAGEN Logo"
             width={120}
             height={48}

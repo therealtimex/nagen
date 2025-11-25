@@ -5,7 +5,7 @@ export default function StructuredData() {
     "name": "NAGEN",
     "alternateName": "Nagen Vietnam",
     "url": "https://nagen.vn",
-    "logo": "https://nagen.vn/images/logo_slogan_1.png",
+    "logo": "https://nagen.vn/images/logo_nagen_chinh_thuc.png",
     "description": "Tấm lót hỗ trợ vòm bàn chân NAGEN nhập khẩu từ Mỹ - Bio Orthotics International",
     "address": {
       "@type": "PostalAddress",

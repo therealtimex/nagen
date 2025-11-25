@@ -57,10 +57,10 @@ export default function RootLayout({
         <meta name="google-site-verification" content="" />
         <meta property="og:site_name" content="NAGEN" />
         <meta property="og:url" content="https://nagen.vn" />
-        <meta property="og:image" content="https://nagen.vn/images/logo_slogan_1.png" />
+        <meta property="og:image" content="https://nagen.vn/images/logo_nagen_chinh_thuc.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta name="twitter:image" content="https://nagen.vn/images/logo_slogan_1.png" />
+        <meta name="twitter:image" content="https://nagen.vn/images/logo_nagen_chinh_thuc.png" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="VN" />
         <meta name="geo.country" content="Vietnam" />

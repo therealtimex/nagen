@@ -125,7 +125,7 @@ export default function TinTucPage() {
                         "publisher": {
                             "@type": "Organization",
                             "name": "NAGEN Vietnam",
-                            "logo": "https://nagen.vn/images/logo_slogan_1.png"
+                            "logo": "https://nagen.vn/images/logo_nagen_chinh_thuc.png"
                         },
                         "article": newsArticles.map(article => ({
                             "@type": "NewsArticle",

@@ -589,8 +589,8 @@ export default function FeedbackPage() {
                         },
                         "openingHours": "Mo-Su 00:00-23:59",
                         "priceRange": "$$",
-                        "image": "https://nagen.vn/images/logo_slogan_1.png",
-                        "logo": "https://nagen.vn/images/logo_slogan_1.png",
+                        "image": "https://nagen.vn/images/logo_nagen_chinh_thuc.png",
+                        "logo": "https://nagen.vn/images/logo_nagen_chinh_thuc.png",
                         "sameAs": [
                             "https://facebook.com/nagen.vietnam",
                             "https://instagram.com/nagen.vietnam",

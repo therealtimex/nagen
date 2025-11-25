@@ -152,7 +152,7 @@ export default function BlogKienThucPage() {
                         "publisher": {
                             "@type": "Organization",
                             "name": "NAGEN Vietnam",
-                            "logo": "https://nagen.vn/images/logo_slogan_1.png"
+                            "logo": "https://nagen.vn/images/logo_nagen_chinh_thuc.png"
                         },
                         "blogPost": blogPosts.map(post => ({
                             "@type": "BlogPosting",

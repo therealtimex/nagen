@@ -431,7 +431,7 @@ function EnhancedContactForm() {
       <CardHeader className="p-4 sm:p-6">
         <div className="mb-4">
           <Image
-            src="/images/logo_slogan_1.png"
+            src="/images/logo_nagen_chinh_thuc.png"
             alt="NAGEN Logo"
             width={120}
             height={48}
@@ -634,7 +634,7 @@ function PartnerRegistrationForm({ isOpen, onClose }: ModalProps) {
             <div className="bg-red-600 text-white p-4 sm:p-6 rounded-t-lg">
               <div className="mb-4">
                 <Image
-                  src="/images/logo_slogan_1.png"
+                  src="/images/logo_nagen_chinh_thuc.png"
                   alt="NAGEN Logo"
                   width={120}
                   height={48}
@@ -951,7 +951,7 @@ function AppointmentBookingForm({ isOpen, onClose }: ModalProps) {
             <div className="bg-red-600 text-white p-6 rounded-t-lg">
               <div className="mb-4">
                 <Image
-                  src="/images/logo_slogan_1.png"
+                  src="/images/logo_nagen_chinh_thuc.png"
                   alt="NAGEN Logo"
                   width={120}
                   height={48}
@@ -1256,8 +1256,8 @@ function HomePageContent() {
             },
             "openingHours": "Mo-Su 00:00-23:59",
             "priceRange": "$$",
-            "image": "https://nagen.vn/images/logo_slogan_1.png",
-            "logo": "https://nagen.vn/images/logo_slogan_1.png",
+            "image": "https://nagen.vn/images/logo_nagen_chinh_thuc.png",
+            "logo": "https://nagen.vn/images/logo_nagen_chinh_thuc.png",
             "sameAs": [
               "https://facebook.com/nagen.vietnam",
               "https://instagram.com/nagen.vietnam",

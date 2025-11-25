@@ -215,7 +215,7 @@ export default function UnifiedRegistrationForm({ isOpen, onClose, defaultType }
             <div className="bg-gradient-to-r from-blue-900 to-red-600 text-white p-4 sm:p-6 rounded-t-lg">
               <div className="mb-4">
                 <Image
-                  src={getImagePath("/images/logo_slogan_1.png")}
+                  src={getImagePath("/images/logo_nagen_chinh_thuc.png")}
                   alt="NAGEN Logo"
                   width={120}
                   height={48}
