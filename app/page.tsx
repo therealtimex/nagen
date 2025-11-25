@@ -1446,16 +1446,16 @@ function HomePageContent() {
                     <h3 className="text-xl font-bold text-blue-900">{product.name}</h3>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4 items-center">
+                  <div className="grid md:grid-cols-2 gap-6 items-stretch">
                     {/* Product Image */}
-                    <div className="order-1 md:order-1">
-                      <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden">
+                    <div className="order-1 md:order-1 flex">
+                      <div className="w-full bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden flex items-center justify-center p-4">
                         <Image
                           src={getImagePath(product.image)}
                           alt={`${product.name} - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ NAGEN`}
-                          width={500}
-                          height={300}
-                          className="w-full h-full object-cover"
+                          width={350}
+                          height={350}
+                          className="w-auto h-auto max-w-full max-h-[250px] object-contain"
                           loading="lazy"
                           title={`${product.name} - Giải pháp hỗ trợ bàn chân hiệu quả`}
                         />
@@ -1463,10 +1463,10 @@ function HomePageContent() {
                     </div>
 
                     {/* Product Info */}
-                    <div className="order-2 md:order-2 space-y-4">
+                    <div className="order-2 md:order-2 flex flex-col justify-center space-y-4">
                       {/* Product Title - Only shown on desktop */}
                       <h3 className="hidden md:block text-xl font-bold text-blue-900">{product.name}</h3>
-                      <p className="text-[#21395D] text-lg leading-relaxed">{product.description}</p>
+                      <p className="text-[#21395D] text-base leading-relaxed line-clamp-6">{product.description}</p>
                       <CTAButton
                         variant="primary"
                         className="group bg-[#21395D] hover:bg-[#1a2d4a] text-white"

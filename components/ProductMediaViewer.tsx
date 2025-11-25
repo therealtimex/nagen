@@ -65,7 +65,7 @@ export default function ProductMediaViewer({ product }: ProductMediaViewerProps)
     <div className="w-full">
 
       {/* Media Content */}
-      <div className="aspect-video bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden relative group">
+      <div className="aspect-square bg-gradient-to-br from-blue-100 to-red-100 rounded-xl overflow-hidden relative group">
         {!showVideo || !hasVideo ? (
           <>
             {/* Image Display */}
@@ -73,8 +73,8 @@ export default function ProductMediaViewer({ product }: ProductMediaViewerProps)
               src={getImagePath(product.image || "/placeholder.svg")}
               alt={`${product.name} - Tấm lót hỗ trợ vòm bàn chân chất lượng cao từ NAGEN`}
               width={500}
-              height={300}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              height={500}
+              className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
               title={`${product.name} - Giải pháp hỗ trợ bàn chân hiệu quả`}
             />
