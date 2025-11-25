@@ -308,6 +308,24 @@ export default function ContactPage() {
                     </span>
                   </div>
                 </a>
+
+                <a
+                  href="https://gopy.nagen.vn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-3 sm:p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300 border border-transparent hover:border-orange-200"
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-gray-900 mb-1 text-sm sm:text-base">Hòm thư góp ý</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm mb-1">Gửi ý kiến đóng góp của bạn</p>
+                    <span className="inline-flex items-center text-orange-600 font-medium text-xs sm:text-sm">
+                      Góp ý ngay <ExternalLink className="w-3 h-3 ml-1" />
+                    </span>
+                  </div>
+                </a>
               </div>
 
               {/* CTA Buttons */}
