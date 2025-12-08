@@ -108,6 +108,15 @@ export const dealerData: Dealer[] = [
     lat: 21.0378,
     lng: 105.7804,
   },
+  {
+    id: "dealer-12",
+    name: "Cửa hàng NAGEN Nghệ An",
+    address: "Số 23-25 Phan Đăng Lưu, Phường Trường Vinh, Tỉnh Nghệ An",
+    phone: "0966578008",
+    distance: "",
+    lat: 18.67224702929211,
+    lng: 105.69834902538554,
+  },
 ]
 
 // Function to calculate distance between two coordinates
