@@ -83,7 +83,8 @@ export default function RootLayout({
                     websiteToken: 'Xgft1pQhMTqqf4us17Vj9jhr',
                     baseUrl: BASE_URL,
                     position: 'left',
-                    type: 'standard'
+                    type: 'standard',
+                    locale: 'vi_VN',
                   })
                 }
               })(document,"script");
