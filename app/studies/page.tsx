@@ -36,7 +36,7 @@ export default function StudiesPage() {
     "datePublished": "2024-01-01",
     "dateModified": "2024-12-01",
     "articleSection": "Nghiên cứu khoa học",
-    "keywords": "nghiên cứu khoa học, tấm lót hỗ trợ vòm bàn chân, NAGEN, Bio Orthotics International, Alzner",
+    "keywords": "nghiên cứu khoa học, tấm lót hỗ trợ vòm bàn chân, NAGEN, Bio Orthotics International, Tấm lót Sungen",
     "about": [
       {
         "@type": "Thing",
@@ -60,7 +60,7 @@ export default function StudiesPage() {
       <Head>
         <title>Nghiên cứu khoa học về tấm lót hỗ trợ vòm bàn chân NAGEN - Bằng chứng khoa học</title>
         <meta name="description" content="Khám phá các nghiên cứu khoa học từ California College of Podiatry, Michigan State University về hiệu quả tấm lót hỗ trợ vòm bàn chân NAGEN. Bằng chứng khoa học chứng minh giảm đau, cải thiện cân bằng." />
-        <meta name="keywords" content="nghiên cứu khoa học NAGEN, tấm lót hỗ trợ vòm bàn chân, bằng chứng khoa học, California College of Podiatry, Michigan State University, East Carolina University, Armstrong Atlantic State University, Bio Orthotics International, Alzner" />
+        <meta name="keywords" content="nghiên cứu khoa học NAGEN, tấm lót hỗ trợ vòm bàn chân, bằng chứng khoa học, California College of Podiatry, Michigan State University, East Carolina University, Armstrong Atlantic State University, Bio Orthotics International, Tấm lót Sungen" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://nagen.vn/studies" />
         <meta property="og:title" content="Nghiên cứu khoa học về tấm lót hỗ trợ vòm bàn chân NAGEN" />
@@ -122,7 +122,7 @@ export default function StudiesPage() {
                     Độ ổn định mặt phẳng đứng đã được ghi nhận trong suốt nghiên cứu bằng cách "theo dõi" khối lượng trung tâm qua trục trung bình theo chiều dọc và với các dữ liệu động và kết quả đồ họa khác.
                   </p>
                   <p>
-                    Giá đỡ Alzner® dường như là một thiết kế khác thường, vừa hỗ trợ vừa ổn định với ít tác dụng phụ không mong muốn.
+                    Tấm lót Sungen dường như là một thiết kế khác thường, vừa hỗ trợ vừa ổn định với ít tác dụng phụ không mong muốn.
                   </p>
                 </CardContent>
               </Card>
@@ -135,7 +135,7 @@ export default function StudiesPage() {
                 </CardHeader>
                 <CardContent className="space-y-4 text-gray-700 leading-relaxed">
                   <p>
-                    Một nghiên cứu của Đại học Bang Michigan đánh giá về dụng cụ chỉnh hình Alzner đã xác định rằng khi được lắp đặt đúng cách, dụng cụ này sẽ thay đổi đáng kể trọng tâm của một người. Sự thay đổi trọng tâm này giúp cải thiện sự cân bằng và giảm áp lực lên các cơ và dây chằng được sử dụng khi đứng và đi bộ.
+                    Một nghiên cứu của Đại học Bang Michigan đánh giá về Tấm lót Sungen đã xác định rằng khi được lắp đặt đúng cách, dụng cụ này sẽ thay đổi đáng kể trọng tâm của một người. Sự thay đổi trọng tâm này giúp cải thiện sự cân bằng và giảm áp lực lên các cơ và dây chằng được sử dụng khi đứng và đi bộ.
                   </p>
                   <p>
                     Nghiên cứu này được thúc đẩy bởi nhiều báo cáo cho thấy dụng cụ chỉnh hình rất hiệu quả trong việc phân bố lại áp lực quá mức lên gót chân và xương bàn chân trên vòm bàn chân được hỗ trợ. Điều này giúp giảm lực tác động lên mắt cá chân, đầu gối, khớp hông và lưng dưới.
@@ -150,7 +150,7 @@ export default function StudiesPage() {
                     Sự thay đổi này của COP (Tâm áp lực) ở lòng bàn chân được phát hiện có tác động tích cực đáng kể đến hiệu quả hoạt động của cơ và giảm đáng kể tình trạng đau và khó chịu, được xác nhận bằng phép đo GRF (Lực Phản lực Mặt đất) khi mang chỉnh hình.
                   </p>
                   <p>
-                    Dữ liệu động học cho thấy sự khác biệt lớn khi mang chỉnh hình. Việc giảm mô men (hoặc mô men xoắn) tác động lên các khớp chi dưới cho thấy CG (Trọng tâm) của toàn bộ cơ thể đã bị dịch chuyển về phía trước. Sự giảm này dẫn đến giảm đáng kể mô men xoắn tác động lên các khớp, điều này có thể giải thích cho việc giảm đau và mệt mỏi được báo cáo một cách truyền miệng của người sử dụng chỉnh hình Alzner.
+                    Dữ liệu động học cho thấy sự khác biệt lớn khi mang chỉnh hình. Việc giảm mô men (hoặc mô men xoắn) tác động lên các khớp chi dưới cho thấy CG (Trọng tâm) của toàn bộ cơ thể đã bị dịch chuyển về phía trước. Sự giảm này dẫn đến giảm đáng kể mô men xoắn tác động lên các khớp, điều này có thể giải thích cho việc giảm đau và mệt mỏi được báo cáo một cách truyền miệng của người sử dụng Tấm lót Sungen.
                   </p>
                 </CardContent>
               </Card>
@@ -169,7 +169,7 @@ export default function StudiesPage() {
                     <h4 className="font-semibold text-blue-900 mb-2">Các điều kiện bàn chân bao gồm:</h4>
                     <ul className="list-disc list-inside space-y-1 text-blue-800">
                       <li>Không sử dụng nệm vòm</li>
-                      <li>Sử dụng nệm vòm Alzner®</li>
+                      <li>Sử dụng Tấm lót Sungen</li>
                       <li>Sử dụng nệm vòm tùy chỉnh</li>
                     </ul>
                   </div>
@@ -185,23 +185,23 @@ export default function StudiesPage() {
                   <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
                     <h4 className="font-semibold text-green-800 mb-2">Kết quả chính:</h4>
                     <p className="text-green-700">
-                      Sự cải thiện về sự cân bằng và độ ổn định trong giai đoạn tác động lực đứng với nệm Alzner®.
+                      Sự cải thiện về sự cân bằng và độ ổn định trong giai đoạn tác động lực đứng với Tấm lót Sungen.
                     </p>
                   </div>
                   <p>
                     Tải trọng được tác động trong khoảng thời gian gần ba giây và khiến các đối tượng nghiêng người về phía trước, đồng thời diện cơ Gastrocnemius tăng đáng kể trong thời gian này, cho thấy sự gia tăng nỗ lực cơ bắp.
                   </p>
                   <p>
-                    Khi sử dụng dụng cụ hỗ trợ Alzner®, chuyển động về phía trước của trọng tâm áp lực và biên độ của diện cơ ít hơn đáng kể so với các điều kiện khác.
+                    Khi sử dụng Tấm lót Sungen, chuyển động về phía trước của trọng tâm áp lực và biên độ của diện cơ ít hơn đáng kể so với các điều kiện khác.
                   </p>
                   <p>
-                    Những kết quả này cho thấy các đối tượng giữ thăng bằng tốt hơn và ổn định hơn khi sử dụng dụng cụ hỗ trợ Alzner® trong quá trình chịu tải đứng, hướng về phía trước.
+                    Những kết quả này cho thấy các đối tượng giữ thăng bằng tốt hơn và ổn định hơn khi sử dụng Tấm lót Sungen trong quá trình chịu tải đứng, hướng về phía trước.
                   </p>
                   <p>
-                    Những kết quả này cũng cho thấy dụng cụ hỗ trợ Alzner® có thể cải thiện sự cân bằng và ổn định trong các hoạt động vận động khác.
+                    Những kết quả này cũng cho thấy Tấm lót Sungen có thể cải thiện sự cân bằng và ổn định trong các hoạt động vận động khác.
                   </p>
                   <p>
-                    Sự gia tăng ít hơn của diện cơ Gastrocnemius khi sử dụng dụng cụ hỗ trợ Alzner® so với các điều kiện khác cho thấy cần ít nỗ lực cơ bắp hơn để duy trì thăng bằng trong điều kiện này.
+                    Sự gia tăng ít hơn của diện cơ Gastrocnemius khi sử dụng Tấm lót Sungen so với các điều kiện khác cho thấy cần ít nỗ lực cơ bắp hơn để duy trì thăng bằng trong điều kiện này.
                   </p>
                   <p>
                     Nỗ lực cơ bắp giảm có thể mang lại sức bền tốt hơn cho mọi người khi thực hiện các hoạt động vận động như thể thao.
