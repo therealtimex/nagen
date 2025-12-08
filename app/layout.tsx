@@ -70,7 +70,10 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.chatwootSettings = {"position":"left"};
+              window.chatwootSettings = {
+                "position": "left",
+                "locale": "vi",
+              };
               (function(d,t) {
                 var BASE_URL="https://rtchat.rtworkspace.com";
                 var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
@@ -84,7 +87,6 @@ export default function RootLayout({
                     baseUrl: BASE_URL,
                     position: 'left',
                     type: 'standard',
-                    locale: 'vi_VN',
                   })
                 }
               })(document,"script");
