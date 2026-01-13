@@ -1661,7 +1661,7 @@ function HomePageContent() {
             </div>
             <div className="aspect-video bg-black/10 rounded-xl flex items-center justify-center relative overflow-hidden">
               <Image
-                src={getImagePath("/images/cham-soc-ban-chan-chuyen-nghiep.png")}
+                src={getImagePath("/images/su-menh-nagen.jpg")}
                 alt="Dịch vụ chăm sóc bàn chân chuyên nghiệp NAGEN - Tư vấn và đo vòm bàn chân 3D"
                 width={600}
                 height={400}
