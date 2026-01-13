@@ -31,7 +31,7 @@ import {
   Send,
 } from "lucide-react"
 import Image from "next/image"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import DealerLocator from "@/components/DealerLocator"
 import NoSSRWrapper from "@/components/NoSSRWrapper"
@@ -104,6 +104,48 @@ interface ModalProps {
 interface FamilyMemberItem {
   key: FamilyMemberKey
   label: string
+}
+
+const HERO_VIDEO_URL = "https://www.youtube.com/watch?v=Yy-dV5jHH1I"
+
+const isDirectVideoUrl = (url: string) => /\.(mp4|webm|ogg)(\?.*)?$/i.test(url)
+
+const getVideoEmbedUrl = (url: string) => {
+  try {
+    const parsed = new URL(url)
+    const host = parsed.hostname.replace("www.", "")
+
+    if (host === "youtube.com" || host === "youtu.be" || host.endsWith(".youtube.com")) {
+      let videoId = ""
+      if (host === "youtu.be") {
+        videoId = parsed.pathname.replace("/", "")
+      } else {
+        videoId = parsed.searchParams.get("v") || ""
+        if (!videoId) {
+          const parts = parsed.pathname.split("/")
+          const embedIndex = parts.indexOf("embed")
+          if (embedIndex >= 0 && parts[embedIndex + 1]) {
+            videoId = parts[embedIndex + 1]
+          }
+        }
+      }
+
+      if (videoId) {
+        return `https://www.youtube.com/embed/${videoId}`
+      }
+    }
+
+    if (host === "vimeo.com" || host.endsWith(".vimeo.com")) {
+      const vimeoId = parsed.pathname.split("/").filter(Boolean)[0]
+      if (vimeoId) {
+        return `https://player.vimeo.com/video/${vimeoId}`
+      }
+    }
+  } catch {
+    return url
+  }
+
+  return url
 }
 
 // Standardized CTA Button Component
@@ -1196,14 +1238,8 @@ function HomePageContent() {
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
   const [isUnifiedRegistrationOpen, setIsUnifiedRegistrationOpen] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-
-  const handlePlayVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
-  };
+  const heroVideoUrl = HERO_VIDEO_URL.trim();
+  const heroVideoEmbedUrl = heroVideoUrl ? getVideoEmbedUrl(heroVideoUrl) : "";
 
   const handleScheduleClick = () => {
     setIsAppointmentModalOpen(true);
@@ -1350,17 +1386,35 @@ function HomePageContent() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Video Section - Left */}
               <div className="order-2 lg:order-1">
-                <div
-                  className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer hover:bg-black/30 transition-all duration-300 group"
-                  onClick={handlePlayVideo}
-                >
-                  <div className="">
-                    <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
-                      <Play className="w-10 h-10 text-white ml-1" />
+                <div className="aspect-video bg-black/20 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden">
+                  {heroVideoUrl ? (
+                    isDirectVideoUrl(heroVideoUrl) ? (
+                      <video
+                        src={heroVideoUrl}
+                        controls
+                        playsInline
+                        className="w-full h-full object-cover"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <iframe
+                        src={heroVideoEmbedUrl}
+                        title="Video giới thiệu NAGEN"
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    )
+                  ) : (
+                    <div className="group text-center px-6 py-8">
+                      <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Play className="w-10 h-10 text-white ml-1" />
+                      </div>
+                      <p className="text-white/90 font-medium">Thêm link video để hiển thị</p>
+                      <p className="text-white/70 text-sm mt-1">YouTube, Vimeo, hoặc link MP4</p>
                     </div>
-                    <p className="text-white/90 font-medium">Video giới thiệu NAGEN</p>
-                    <p className="text-white/70 text-sm mt-1">2 phút • Xem ngay</p>
-                  </div>
+                  )}
                 </div>
               </div>
 
