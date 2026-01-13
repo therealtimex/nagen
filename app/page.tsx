@@ -1543,7 +1543,7 @@ function HomePageContent() {
             </div>
             <div className="aspect-video bg-black/10 rounded-xl relative overflow-hidden">
               <video
-                src={getImagePath("/images/do-vom-ban-chan-tai-nha.mp4")}
+                src={getImagePath("/videos/do-chan.mp4")}
                 controls
                 autoPlay
                 muted
